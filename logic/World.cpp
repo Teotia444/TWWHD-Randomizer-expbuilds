@@ -432,7 +432,7 @@ World::WorldLoadingError World::setDungeonLocations(WorldPool& worlds)
 
 World::WorldLoadingError World::determineRequiredDungeons(WorldPool& worlds)
 {
-    if (settings.progression_dungeons != ProgressionDungeons::Disabled)
+    /*if (settings.progression_dungeons != ProgressionDungeons::Disabled)
     {
         std::vector<Dungeon> dungeonPool = {};
         for (auto& [name, dungeon] : dungeons)
@@ -596,7 +596,7 @@ World::WorldLoadingError World::determineRequiredDungeons(WorldPool& worlds)
                 dungeon.bossLocation->isRequiredBossLocation = true;
             }
         }
-    }
+    }*/
 
     return reparseMacro("All Required Bosses Defeated");
 }

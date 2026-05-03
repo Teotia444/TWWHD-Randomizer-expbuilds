@@ -735,8 +735,8 @@ FillError fill(WorldPool& worlds)
     // Handle dungeon and/or boss items first if necessary. Generally
     // we need to place items that go into more restrictive location pools first before
     // we can place other items.
-    FILL_ERROR_CHECK(placeBossItems(worlds, itemPool, allLocations));
-    FILL_ERROR_CHECK(handleDungeonItems(worlds, itemPool));
+    //FILL_ERROR_CHECK(placeBossItems(worlds, itemPool, allLocations));
+    //FILL_ERROR_CHECK(handleDungeonItems(worlds, itemPool));
 
     // Recalculate major items again since new items may now be required depending on
     // what items were placed when handling dungeon items
@@ -745,28 +745,28 @@ FillError fill(WorldPool& worlds)
     auto majorItems = filterAndEraseFromPool(itemPool, [](const Item& i){return i.isMajorItem();});
     auto progressionLocations = filterFromPool(allLocations, [](const Location* loc){return loc->progression && loc->currentItem.getGameItemId() == GameItem::INVALID;});
 
-    FILL_ERROR_CHECK(validateEnoughLocations(worlds));
+    //FILL_ERROR_CHECK(validateEnoughLocations(worlds));
 
     // Place all major items in the Item Pool using assumed fill.
     // Don't assume we have any non-major items.
-    ItemPool noAssumedItems = {};
-    FILL_ERROR_CHECK(assumedFill(worlds, majorItems, noAssumedItems, progressionLocations));
+    //ItemPool noAssumedItems = {};
+    //FILL_ERROR_CHECK(assumedFill(worlds, majorItems, noAssumedItems, progressionLocations));
 
     // Then place the rest of the non-major progression items using assumed fill.
-    auto remainingProgressionItems = filterAndEraseFromPool(itemPool, [](const Item& i){return !i.isJunkItem();});
+    //auto remainingProgressionItems = filterAndEraseFromPool(itemPool, [](const Item& i){return !i.isJunkItem();});
 
     // TODO: It should be possible to speed this next fill up by adding back the major items
     // to the item pool resulting in less searching iterations, but I'm not confident
     // it's logically sound so I'll research it later.
-    FILL_ERROR_CHECK(assumedFill(worlds, remainingProgressionItems, itemPool, allLocations));
+    //FILL_ERROR_CHECK(assumedFill(worlds, remainingProgressionItems, itemPool, allLocations));
 
     // Fill the remaining locations with junk
     FILL_ERROR_CHECK(fillTheRest(worlds, itemPool, allLocations));
 
-    if (!gameBeatable(worlds))
+    /*if (!gameBeatable(worlds))
     {
         LOG_ERR_AND_RETURN(FillError::GAME_NOT_BEATABLE);
-    }
+    }*/
 
     return FillError::NONE;
 }

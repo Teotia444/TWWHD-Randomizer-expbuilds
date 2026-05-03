@@ -796,8 +796,8 @@ static HintError assignKorlSwordHints(World& world, WorldPool& worlds)
 
 HintError generateHints(WorldPool& worlds)
 {
-    LOG_AND_RETURN_IF_ERR(calculatePossiblePathLocations(worlds));
-    LOG_AND_RETURN_IF_ERR(calculatePossibleBarrenRegions(worlds));
+    //LOG_AND_RETURN_IF_ERR(calculatePossiblePathLocations(worlds));
+    //LOG_AND_RETURN_IF_ERR(calculatePossibleBarrenRegions(worlds));
 
     for (auto& world : worlds)
     {

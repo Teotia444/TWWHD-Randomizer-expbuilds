@@ -215,7 +215,7 @@ int generateWorlds(WorldPool& worlds, std::vector<Settings>& settingsVector)
       UPDATE_DIALOG_VALUE(15);
       UPDATE_DIALOG_LABEL("Generating Playthrough");
   #endif
-  generatePlaythrough(worlds);
+  //generatePlaythrough(worlds);
 
   #ifndef LOGIC_TESTS
       Utility::platformLog("Generating Hints");

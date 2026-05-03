@@ -373,5 +373,11 @@ TextReplacements generate_text_replacements(World& world)
      {{"English", word_wrap_string(beedle900EnglishPronoun + beedle900.getUTF16Name("English") + beedle900EnglishConjugation + u"just " + TEXT_COLOR_RED + u"900 Rupees" + TEXT_COLOR_DEFAULT, 43) + u"\nBuy it! Buy it! Buy buy buy!\n" + TWO_CHOICES + u"I'll buy it\nNo thanks" + TEXT_END},
       {"Spanish", word_wrap_string(CAPITAL + beedle900SpanishPronoun + beedle900.getUTF16Name("Spanish") + beedle900SpanishConjugation + TEXT_COLOR_RED + u"900 Rupias" + TEXT_COLOR_DEFAULT, 43) + u"\nCompra... ¡Compra!\n" + TWO_CHOICES + u"Lo quiero\nNo, gracias" + TEXT_END},
       {"French",  word_wrap_string(beedle900.getUTF16Name("French") + u" seulement " + TEXT_COLOR_RED + u"900 Rubis" + TEXT_COLOR_DEFAULT, 43) + u".\nAcheter!\n" + TWO_CHOICES + u"Oui\nSans façon" + TEXT_END}}},
+     
+     //Custom AP Text
+     {"ap",
+     {{"English", u"You got an Archipelago item!\nThis item is said to belong to another game. You should tell your friends about it!\0"s},
+      {"Spanish", u"You got an Archipelago item!\nThis item is said to belong to another game. You should tell your friends about it!\0"s},
+      {"French",  u"Vous recevez un objet d'Archipelago!\nApparament, cet objet appartient à un autre jeu. Vous devriez prévenir vos amis!\0"s}}},
  };
 }

@@ -6,6 +6,7 @@
 #include <logic/World.hpp>
 #include <logic/PoolFunctions.hpp>
 #include <utility/string.hpp>
+#include <command/Log.hpp>
 
 GameItem nameToGameItem(const std::string& name)
 {
@@ -255,6 +256,7 @@ GameItem nameToGameItem(const std::string& name)
 
     if (!nameItemMap.contains(name))
     {
+        ErrorLog::getInstance().log("ERROR finding name: Item \"" + name + "\" is not defined.");
         return GameItem::INVALID;
     }
     return nameItemMap.at(name);

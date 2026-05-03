@@ -255,18 +255,18 @@ static EntranceShuffleError validateWorld(WorldPool& worlds, const Entrance* ent
 {
     LOG_TO_DEBUG("Validating World");
     // Ensure that all item locations are still reachable within the given world
-    if (!allLocationsReachable(worlds, itemPool))
+    /*if (!allLocationsReachable(worlds, itemPool))
     {
         #ifdef ENABLE_DEBUG
             LOG_TO_DEBUG("Error: All locations not reachable");
             logMissingLocations(worlds);
         #endif
         return EntranceShuffleError::ALL_LOCATIONS_NOT_REACHABLE;
-    }
+    }*/
 
     // Ensure that there's at least one sphere zero location available to place an item
     // for the beginning of the seed
-    ItemPool noItems = {};
+    /*ItemPool noItems = {};
     LocationPool progLocations = {};
     GET_COMPLETE_PROGRESSION_LOCATION_POOL(progLocations, worlds);
     auto locs = getAccessibleLocations(worlds, noItems, progLocations);
@@ -302,7 +302,7 @@ static EntranceShuffleError validateWorld(WorldPool& worlds, const Entrance* ent
         {
             return EntranceShuffleError::NOT_ENOUGH_SPHERE_ZERO_LOCATIONS;
         }
-    }
+    }*/
 
     for (auto& world : worlds)
     {
