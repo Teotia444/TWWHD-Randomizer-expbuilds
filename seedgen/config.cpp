@@ -653,7 +653,7 @@ ConfigError Config::writePreferences(const fspath& preferencesPath) const {
 }
 
 ConfigError Config::writeToFile(const fspath& filePath, const fspath& preferencesPath) const {
-    LOG_AND_RETURN_IF_ERR(writeSettings(filePath))
+    //LOG_AND_RETURN_IF_ERR(writeSettings(filePath))
     LOG_AND_RETURN_IF_ERR(writePreferences(preferencesPath))
     return ConfigError::NONE;
 }

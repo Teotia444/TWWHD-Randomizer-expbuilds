@@ -69,7 +69,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>6</number>
           </property>
           <widget class="QWidget" name="getting_started_tab">
            <attribute name="title">
@@ -306,15 +306,12 @@
             </item>
             <item>
              <layout class="QGridLayout" name="gridLayout">
-              <item row="1" column="3">
-               <widget class="QPushButton" name="output_folder_browse_button">
+              <item row="0" column="3">
+               <widget class="QPushButton" name="base_game_path_browse_button">
                 <property name="text">
                  <string>Browse</string>
                 </property>
                </widget>
-              </item>
-              <item row="0" column="2">
-               <widget class="QLineEdit" name="base_game_path"/>
               </item>
               <item row="0" column="0">
                <widget class="QLabel" name="label">
@@ -323,20 +320,40 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="2">
-               <widget class="QLineEdit" name="output_folder"/>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_2">
+                <property name="text">
+                 <string>Output Folder</string>
+                </property>
+               </widget>
               </item>
-              <item row="0" column="3">
-               <widget class="QPushButton" name="base_game_path_browse_button">
+              <item row="1" column="3">
+               <widget class="QPushButton" name="output_folder_browse_button">
                 <property name="text">
                  <string>Browse</string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="label_2">
+              <item row="1" column="2">
+               <widget class="QLineEdit" name="output_folder"/>
+              </item>
+              <item row="0" column="2">
+               <widget class="QLineEdit" name="base_game_path"/>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_11">
                 <property name="text">
-                 <string>Output Folder</string>
+                 <string>APTWWHD File</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLineEdit" name="aptwwhd_path"/>
+              </item>
+              <item row="2" column="3">
+               <widget class="QPushButton" name="aptwwhd_browse_button">
+                <property name="text">
+                 <string>Browse</string>
                 </property>
                </widget>
               </item>
@@ -1745,61 +1762,6 @@
                <string>Advanced Options</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_7">
-               <item row="1" column="0">
-                <widget class="QCheckBox" name="performance">
-                 <property name="text">
-                  <string>Performance</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="0">
-                <widget class="QCheckBox" name="do_not_generate_spoiler_log">
-                 <property name="text">
-                  <string>Do Not Generate Spoiler Log</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="1">
-                <widget class="QCheckBox" name="random_item_slide_item">
-                 <property name="text">
-                  <string>Start With Random Item Sliding Item</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QCheckBox" name="classic_mode">
-                 <property name="text">
-                  <string>Classic Mode</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1">
-                <widget class="QCheckBox" name="fix_rng">
-                 <property name="text">
-                  <string>Fix RNG</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="0">
-                <widget class="QCheckBox" name="required_boss_items">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="text">
-                  <string>Require Boss Items</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="0">
-                <widget class="QCheckBox" name="start_with_random_item">
-                 <property name="text">
-                  <string>Start With Random Item</string>
-                 </property>
-                </widget>
-               </item>
                <item row="4" column="0" colspan="2">
                 <layout class="QHBoxLayout" name="horizontalLayout_33">
                  <property name="sizeConstraint">
@@ -1843,6 +1805,61 @@
                   </widget>
                  </item>
                 </layout>
+               </item>
+               <item row="0" column="1">
+                <widget class="QCheckBox" name="classic_mode">
+                 <property name="text">
+                  <string>Classic Mode</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QCheckBox" name="fix_rng">
+                 <property name="text">
+                  <string>Fix RNG</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QCheckBox" name="random_item_slide_item">
+                 <property name="text">
+                  <string>Start With Random Item Sliding Item</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QCheckBox" name="required_boss_items">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Require Boss Items</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QCheckBox" name="start_with_random_item">
+                 <property name="text">
+                  <string>Start With Random Item</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QCheckBox" name="performance">
+                 <property name="text">
+                  <string>Performance</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QCheckBox" name="do_not_generate_spoiler_log">
+                 <property name="text">
+                  <string>Do Not Generate Spoiler Log</string>
+                 </property>
+                </widget>
                </item>
               </layout>
              </widget>
@@ -2480,7 +2497,7 @@ color: lightgray</string>
                <cursorShape>ArrowCursor</cursorShape>
               </property>
               <property name="autoFillBackground">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
               <property name="styleSheet">
                <string notr="true"/>
@@ -3315,6 +3332,121 @@ color: lightgray</string>
              </item>
             </layout>
            </widget>
+           <widget class="QPushButton" name="connect_ap_button">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>580</y>
+              <width>201</width>
+              <height>24</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background: rgba(79, 79, 79, 0.85);
+color: lightgray</string>
+            </property>
+            <property name="text">
+             <string>Connect to AP</string>
+            </property>
+           </widget>
+           <widget class="QLineEdit" name="ap_ip">
+            <property name="geometry">
+             <rect>
+              <x>110</x>
+              <y>610</y>
+              <width>291</width>
+              <height>24</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(0, 0, 0, 0); color: black;</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="connected_status">
+            <property name="geometry">
+             <rect>
+              <x>300</x>
+              <y>580</y>
+              <width>101</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">text-align: right;
+color: black;
+font-size: 15px;</string>
+            </property>
+            <property name="text">
+             <string>Not connected</string>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+           </widget>
+           <widget class="QLineEdit" name="ap_ip_2">
+            <property name="geometry">
+             <rect>
+              <x>110</x>
+              <y>640</y>
+              <width>291</width>
+              <height>24</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(0, 0, 0, 0); color: black;</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="connected_status_2">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>610</y>
+              <width>101</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">text-align: left;
+color: black;
+font-size: 15px;</string>
+            </property>
+            <property name="text">
+             <string>AP IP</string>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="connected_status_3">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>640</y>
+              <width>101</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">text-align: left;
+color: black;
+font-size: 15px;</string>
+            </property>
+            <property name="text">
+             <string>Player name</string>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+           </widget>
           </widget>
          </widget>
         </item>
@@ -3339,134 +3471,11 @@ color: lightgray</string>
      </widget>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_29">
-      <item>
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Seed (optional)</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="seed"/>
-      </item>
-      <item>
-       <widget class="QPushButton" name="generate_seed_button">
-        <property name="text">
-         <string>New seed</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="seed_hash_label">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>135</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>135</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Seed Hash:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_4">
-      <item>
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Permalink (copy paste to share your settings):</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="permalink"/>
-      </item>
-      <item>
-       <widget class="QPushButton" name="copy_permalink">
-        <property name="text">
-         <string>Copy</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="paste_permalink">
-        <property name="text">
-         <string>Paste</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QPushButton" name="about_button">
         <property name="text">
          <string>About</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="open_logs_folder_button">
-        <property name="text">
-         <string>Open Logs Folder</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_5">
-        <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="reset_settings_to_default">
-        <property name="minimumSize">
-         <size>
-          <width>180</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Reset All Settings to Default</string>
         </property>
        </widget>
       </item>

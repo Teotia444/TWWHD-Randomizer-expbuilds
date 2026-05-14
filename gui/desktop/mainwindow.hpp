@@ -315,6 +315,10 @@ private slots:
     void tracker_give_and_map_chart(TrackerLabel* label, GameItem chart);
     void tracker_set_required_boss(const QString& bossName, Qt::CheckState checked);
 
+    void on_aptwwhd_path_textEdited(const QString &arg1);
+
+    void on_aptwwhd_browse_button_clicked();
+
 public:
     void update_items_color();
     void update_locations_color();

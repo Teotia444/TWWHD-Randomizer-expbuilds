@@ -10,6 +10,7 @@
 #include <QFile>
 #include <QDesktopServices>
 #include <QClipboard>
+#include <QtZlib/zlib.h>
 
 #include <ui_mainwindow.h>
 #include <gui/desktop/randomizer_thread.hpp>
@@ -103,7 +104,7 @@ MainWindow::MainWindow(QWidget *parent)
     defaultWindowTitle = "Wind Waker HD Randomizer " RANDOMIZER_VERSION;
     this->setWindowTitle(defaultWindowTitle.c_str());
     update_option_description_text();
-    currentPermalink = ui->permalink->text();
+    //currentPermalink = ui->permalink->text();
 
     // Set the event filter that updates the option description
     // for all child widgets
@@ -113,6 +114,10 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     // Switch to first tab
+    for(int i = 1; i<ui->tabWidget->count() - 1; i++){
+        if(i != 4) ui->tabWidget->setTabVisible(i, false);
+    }
+
     ui->tabWidget->setCurrentIndex(0);
 
     // Hide options which won't exist for a while
@@ -465,7 +470,6 @@ void MainWindow::apply_config_settings()
     // Directories and Seed
     ui->base_game_path->setText(Utility::toQString(config.gameBaseDir));
     ui->output_folder->setText(Utility::toQString(config.outputDir));
-    ui->seed->setText(QString::fromStdString(config.seed));
 
     // Progression settings
     APPLY_CHECKBOX_SETTING(config, ui, progression_battlesquid);
@@ -674,18 +678,6 @@ void MainWindow::on_output_folder_browse_button_clicked()
 void MainWindow::on_output_folder_textChanged(const QString &arg1)
 {
     config.outputDir = Utility::fromQString(arg1);
-}
-
-void MainWindow::on_generate_seed_button_clicked()
-{
-    config.seed = generate_seed();
-    ui->seed->setText(config.seed.c_str());
-}
-
-void MainWindow::on_seed_textChanged(const QString &arg1)
-{
-    config.seed = arg1.toStdString();
-    update_permalink_and_seed_hash();
 }
 
 int MainWindow::calculate_total_progress_locations()
@@ -1184,21 +1176,19 @@ void MainWindow::update_option_description_text(const std::string& description /
 
 void MainWindow::update_permalink_and_seed_hash()
 {
-    ui->permalink->setText(QString::fromStdString(config.getPermalink()));
+    /*ui->permalink->setText(QString::fromStdString(config.getPermalink()));
     currentPermalink = ui->permalink->text();
 
     // Also update seed hash
     const std::string hash = hash_for_config(config);
     if(hash.empty()) {
         show_warning_dialog("Could not get seed hash.\nPlease tell a dev and provide the error log if you see this message.");
-    }
-
-    ui->seed_hash_label->setText(QString::fromStdString("Seed Hash: " + hash));
+    }*/
 }
 
 void MainWindow::on_permalink_textEdited(const QString &newPermalink)
 {
-    // loadPermalink keeps the old config if there is an error
+    /*// loadPermalink keeps the old config if there is an error
     const PermalinkError err = config.loadPermalink(newPermalink.toStdString());
     if (err == PermalinkError::INVALID_VERSION)
     {
@@ -1213,14 +1203,14 @@ void MainWindow::on_permalink_textEdited(const QString &newPermalink)
         return;
     }
     currentPermalink = newPermalink;
-    apply_config_settings();
+    apply_config_settings();*/
 }
 
 
 void MainWindow::on_reset_settings_to_default_clicked()
 {
-    config.resetDefaultSettings();
-    apply_config_settings();
+    /*config.resetDefaultSettings();
+    apply_config_settings();*/
 }
 
 void MainWindow::on_randomize_button_clicked()
@@ -1247,11 +1237,13 @@ void MainWindow::on_randomize_button_clicked()
     }
 
     // And check to make sure the plando path leads to a file
-    if (config.settings.plandomizer && (!std::filesystem::exists(config.settings.plandomizerFile) || std::filesystem::is_directory(config.settings.plandomizerFile)))
+    if ((!std::filesystem::exists(config.settings.plandomizerFile) || std::filesystem::is_directory(config.settings.plandomizerFile)))
     {
-        show_warning_dialog("Cannot find specified plandomizer file.\nPlease check to make sure it's entered correctly.", "Bad plandomizer file path");
+        show_warning_dialog("Cannot find specified APTWWHD file.\nPlease check to make sure it's entered correctly.", "Bad plandomizer file path");
         return;
     }
+
+
 
     // Write config to file so that the main randomization algorithm can pick it up
     // and to keep compatibility with non-gui version
@@ -1365,18 +1357,51 @@ void MainWindow::on_about_button_clicked()
 
 void MainWindow::on_open_logs_folder_button_clicked()
 {
-    QDesktopServices::openUrl(QUrl::fromLocalFile(Utility::toQString(Utility::get_logs_path())));
+    //QDesktopServices::openUrl(QUrl::fromLocalFile(Utility::toQString(Utility::get_logs_path())));
 }
 
 void MainWindow::on_copy_permalink_clicked()
-{
+{/*
     auto permalink = ui->permalink->text();
     QGuiApplication::clipboard()->setText(permalink);
+ */
 }
 
 
 void MainWindow::on_paste_permalink_clicked()
-{
+{/*
     auto permalink = QGuiApplication::clipboard()->text();
     on_permalink_textEdited(permalink);
+*/
 }
+
+void MainWindow::on_seed_textChanged(QString const&){
+
+}
+
+void MainWindow::on_generate_seed_button_clicked(){
+
+}
+
+void MainWindow::on_aptwwhd_path_textEdited(const QString &arg1)
+{
+    config.settings.plandomizerFile = Utility::fromQString(arg1);
+}
+
+
+void MainWindow::on_aptwwhd_browse_button_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open APTWWHD File"), QDir::current().absolutePath(), tr("APTWWHD Files (*.aptwwhd)"));
+    if (!fileName.isEmpty() && !fileName.isNull())
+    {
+        ui->aptwwhd_path->setText(fileName);
+        config.settings.plandomizerFile = Utility::fromQString(fileName);
+    }
+}
+
+
+void MainWindow::on_connect_ap_button_clicked()
+{
+
+}
+

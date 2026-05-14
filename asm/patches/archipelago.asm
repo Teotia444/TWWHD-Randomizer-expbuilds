@@ -43,9 +43,6 @@ give_archipelago_item:
   mtlr    r0
   addi    sp, sp, 0x10
 
-
-
-
   blr
 
 .global give_archipelago_item_byte
