@@ -17,3 +17,6 @@
 [submodule "libs/base64pp"]
 	path = libs/base64pp
 	url = https://github.com/matheusgomes28/base64pp
+[submodule "libs/minizip-ng"]
+	path = libs/minizip-ng
+	url = https://github.com/zlib-ng/minizip-ng
