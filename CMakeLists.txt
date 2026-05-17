@@ -92,8 +92,8 @@ file(COPY "customizer/data/" DESTINATION "${CMAKE_BINARY_DIR}/data/customizer") 
 if(QT_GUI)
   message("Building with Qt GUI")
 
-  find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
-  find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+  find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets WebSockets)
+  find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets WebSockets)
 
   add_compile_definitions(QT_GUI)
 

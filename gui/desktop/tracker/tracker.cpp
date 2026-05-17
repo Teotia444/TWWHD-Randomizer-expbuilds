@@ -100,7 +100,7 @@ void MainWindow::initialize_tracker_world(Settings& settings,
     if(trackerWorld.getSettings().plandomizer)
     {
         std::vector<Plandomizer> plandos(1);
-        PlandomizerError err = loadPlandomizer(trackerWorld.getSettings().plandomizerFile, plandos, 1);
+        PlandomizerError err = loadPlandomizer(APplando, plandos, 1);
         if (err != PlandomizerError::NONE)
         {
             show_warning_dialog("Could not load provided plandomizer file. Continuing without plandomizer data.");
@@ -454,7 +454,7 @@ bool MainWindow::autosave_current_tracker_config()
     std::ofstream autosave_file(trackerPreferences.autosaveFilePath);
     if (autosave_file.is_open() == false)
     {
-        show_error_dialog("Failed to open " + Utility::toUtf8String(trackerPreferences.autosaveFilePath));
+        //show_error_dialog("Failed to open " + Utility::toUtf8String(trackerPreferences.autosaveFilePath));
         return false;
     }
 

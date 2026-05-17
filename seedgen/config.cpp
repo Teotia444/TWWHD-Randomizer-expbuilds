@@ -597,6 +597,34 @@ YAML::Node Config::settingsToYaml() const {
     return root;
 }
 
+void Config::YamlToSettings(YAML::Node node){
+    settings.progression_dungeons= ProgressionDungeons::Standard;
+    settings.progression_great_fairies= node["progression_great_fairies"].as<bool>();
+    settings.progression_puzzle_secret_caves= node["progression_puzzle_secret_caves"].as<bool>();
+    settings.progression_combat_secret_caves= node["progression_combat_secret_caves"].as<bool>();
+    settings.progression_short_sidequests= node["progression_short_sidequests"].as<bool>();
+    settings.progression_long_sidequests= node["progression_long_sidequests"].as<bool>();
+    settings.progression_spoils_trading= node["progression_spoils_trading"].as<bool>();
+    settings.progression_minigames= node["progression_minigames"].as<bool>();
+    settings.progression_free_gifts= node["progression_free_gifts"].as<bool>();
+    settings.progression_mail= node["progression_mail"].as<bool>();
+    settings.progression_platforms_rafts= node["progression_platforms_rafts"].as<bool>();
+    settings.progression_submarines= node["progression_submarines"].as<bool>();
+    settings.progression_eye_reef_chests= node["progression_eye_reef_chests"].as<bool>();
+    settings.progression_big_octos_gunboats= node["progression_big_octos_gunboats"].as<bool>();
+    settings.progression_triforce_charts= node["progression_triforce_charts"].as<bool>();
+    settings.progression_treasure_charts= node["progression_treasure_charts"].as<bool>();
+    settings.progression_expensive_purchases= node["progression_expensive_purchases"].as<bool>();
+    settings.progression_misc= node["progression_misc"].as<bool>();
+    settings.progression_tingle_chests= node["progression_tingle_chests"].as<bool>();
+    settings.progression_battlesquid= node["progression_battlesquid"].as<bool>();
+    settings.progression_savage_labyrinth= node["progression_savage_labyrinth"].as<bool>();
+    settings.progression_island_puzzles= node["progression_island_puzzles"].as<bool>();
+    settings.progression_dungeon_secrets= node["progression_dungeon_secrets"].as<bool>();
+    settings.progression_obscure= node["progression_obscure"].as<bool>();
+    settings.plandomizer=true;
+}
+
 YAML::Node Config::preferencesToYaml() const {
     YAML::Node preferencesRoot;
     SET_FIELD(preferencesRoot, "gameBaseDir", Utility::toUtf8String(gameBaseDir))

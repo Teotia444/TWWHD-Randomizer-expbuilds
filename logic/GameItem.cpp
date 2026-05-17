@@ -256,7 +256,6 @@ GameItem nameToGameItem(const std::string& name)
 
     if (!nameItemMap.contains(name))
     {
-        ErrorLog::getInstance().log("ERROR finding name: Item \"" + name + "\" is not defined.");
         return GameItem::INVALID;
     }
     return nameItemMap.at(name);

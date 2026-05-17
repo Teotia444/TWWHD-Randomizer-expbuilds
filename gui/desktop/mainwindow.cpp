@@ -10,7 +10,9 @@
 #include <QFile>
 #include <QDesktopServices>
 #include <QClipboard>
-#include <QtZlib/zlib.h>
+#include <QtWebSockets/QtWebSockets>
+#include <miniz.h>
+
 
 #include <ui_mainwindow.h>
 #include <gui/desktop/randomizer_thread.hpp>
@@ -22,6 +24,7 @@
 #include <utility/string.hpp>
 #include <utility/file.hpp>
 #include <utility/color.hpp>
+
 
 #define UPDATE_CONFIG_STATE(config, ui, name) config.settings.name = ui->name->isChecked(); update_permalink_and_seed_hash(); update_progress_locations_text();
 #define UPDATE_CONFIG_STATE_MIXED_POOLS(config, name) config.settings.name = (name.checkState() == Qt::Checked); update_permalink_and_seed_hash();
@@ -128,10 +131,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->disable_custom_player_items->setVisible(false);
     ui->disable_custom_player_voice->setVisible(false);
     ui->install_custom_model->setVisible(false);
-
     // Setup Tracker
     initialize_tracker();
     load_tracker_autosave();
+    connect(&apWS, &QWebSocket::connected, this, &MainWindow::on_ap_connected);
 }
 
 MainWindow::~MainWindow()
@@ -454,7 +457,7 @@ void MainWindow::apply_config_settings()
     // Validate the state of plando options to avoid seed hash errors
     if(config.settings.plandomizer && !std::filesystem::is_regular_file(config.settings.plandomizerFile)) {
         QMessageBox confirmDialog;
-        confirmDialog.setText("No valid plandomizer file was found. Select a new one?");
+        confirmDialog.setText("No valid APTWWHD file was found. Select a new one?");
         confirmDialog.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
         switch(confirmDialog.exec()) {
             case QMessageBox::Yes:
@@ -607,7 +610,7 @@ void MainWindow::apply_config_settings()
     APPLY_CHECKBOX_SETTING(config, ui, progressive_magic_always_double);
     APPLY_CHECKBOX_SETTING(config, ui, plandomizer);
     update_plandomizer_widget_visbility();
-    ui->plandomizer_path->setText(Utility::toQString(config.settings.plandomizerFile));
+    ui->aptwwhd_path->setText(Utility::toQString(config.settings.plandomizerFile));
 
     // Hints
     APPLY_CHECKBOX_SETTING(config, ui, ho_ho_hints);
@@ -1215,6 +1218,10 @@ void MainWindow::on_reset_settings_to_default_clicked()
 
 void MainWindow::on_randomize_button_clicked()
 {
+    // Restore the default config file (full settings) to make sure the plando file passes
+    config.resetDefaultSettings();
+    apply_config_settings();
+
     // Check to make sure the base game and output are directories
     if (!std::filesystem::is_directory(config.gameBaseDir))
     {
@@ -1396,12 +1403,235 @@ void MainWindow::on_aptwwhd_browse_button_clicked()
     {
         ui->aptwwhd_path->setText(fileName);
         config.settings.plandomizerFile = Utility::fromQString(fileName);
+        mz_zip_archive zip;
+        memset(&zip, 0, sizeof(zip));
+
+        if (!mz_zip_reader_init_file(&zip, ui->aptwwhd_path->text().toStdString().c_str() , 0)) return;
+
+        int config_index = mz_zip_reader_locate_file(&zip, "config.yaml", nullptr, 0);
+
+        if (config_index < 0) {
+            mz_zip_reader_end(&zip);
+            return;
+        }
+
+        size_t cfg_size = 0;
+        void* cfg_data = mz_zip_reader_extract_to_heap(&zip, config_index, &cfg_size, 0);
+
+        int plando_index = mz_zip_reader_locate_file(&zip, "plandomizer.yaml", nullptr, 0);
+        size_t plando_size = 0;
+        void* plando_data = mz_zip_reader_extract_to_heap(&zip, plando_index, &plando_size, 0);
+
+
+        std::string cfgText((char*)cfg_data, cfg_size);
+        std::string plandoText((char*)plando_data, plando_size);
+        mz_free(cfg_data);
+        mz_free(plando_data);
+
+        APconfig = YAML::Load(cfgText);
+        APplando = YAML::Load(plandoText);
+
+        mz_zip_reader_end(&zip);
+        qDebug() << APplando.IsNull();
     }
 }
 
 
 void MainWindow::on_connect_ap_button_clicked()
 {
+    if(ui->aptwwhd_path->text().isEmpty()){
+        QMessageBox messageBox;
+        messageBox.critical(0,"Error","No APTWWHD files were provided! The tracker won't launch");
+        messageBox.setFixedSize(500,200);
+        return;
+    }
+    YAML::Node currentSettings = config.settingsToYaml();
+
+    for(const auto& item:APconfig){
+        currentSettings[item.first.as<std::string>()] = item.second;
+    }
+
+
+    config.YamlToSettings(currentSettings);
+
+    config.settings.starting_gear = {
+        GameItem::ProgressiveShield,
+        GameItem::BalladOfGales,
+        GameItem::SongOfPassing,
+        GameItem::ProgressiveMagicMeter,
+        GameItem::ProgressiveSail
+    };
+
+    QUrl url = "wss://" + ui->ap_ip->text();
+    apWS.open(url);
+    initialize_tracker_world(config.settings);
+
+
+
+    // Get the first search iteration
+    update_tracker();
+
+    switch_to_overworld_tracker();
+}
+
+void MainWindow::on_ap_connected(){
+    ui->connected_status_label->setText("Connected");
+    ui->connected_status_label->setStyleSheet("QLabel#connected_status_label {color: rgb(0, 255, 0);background-color: rgba(255, 255, 255, 0);font: 13pt \"Segoe UI\";}");
+
+    connect(&apWS, &QWebSocket::textMessageReceived, this, &MainWindow::on_ap_message);
+
+    QJsonObject connectData;
+    QJsonObject version;
+    version.insert("class", "Version");
+    version.insert("major", 0);
+    version.insert("minor", 6);
+    version.insert("build", 7);
+
+    connectData.insert("cmd", "Connect");
+    connectData.insert("password", "");
+    connectData.insert("game", "The Wind Waker HD");
+    connectData.insert("name", ui->ap_player_name->text());
+    connectData.insert("uuid", "61564a12-71bb-40ae-93df-94f0550c1e69");
+    connectData.insert("version", version);
+    connectData.insert("items_handling", 7);
+    QJsonArray tags = {"WWHDIntegrated", "NoText", "Tracker"};
+    connectData.insert("tags", tags);
+    connectData.insert("slot_data", false);
+
+    QJsonDocument doc(connectData);
+    QByteArray jsonMessage(doc.toJson(QJsonDocument::Compact));
+    QString stringMessage = QString::fromUtf8(jsonMessage);
+    stringMessage = "[" + stringMessage + "]";
+    apWS.sendTextMessage(stringMessage);
+    qDebug()<<stringMessage;
+
+
+    QJsonObject dataPackage;
+    dataPackage.insert("cmd", "GetDataPackage");
+    QJsonArray games = {"The Wind Waker HD"};
+    dataPackage.insert("games", games);
+
+    QJsonDocument doc2(dataPackage);
+    QByteArray jsonMessage2(doc2.toJson(QJsonDocument::Compact));
+    QString stringMessage2 = QString::fromUtf8(jsonMessage2);
+    stringMessage2 = "[" + stringMessage2 + "]";
+    apWS.sendTextMessage(stringMessage2);
+
+    QJsonObject syncPackage;
+    syncPackage.insert("cmd", "Sync");
+    QJsonDocument doc3(syncPackage);
+    QByteArray jsonMessage3(doc3.toJson(QJsonDocument::Compact));
+    QString stringMessage3 = QString::fromUtf8(jsonMessage3);
+    stringMessage3 = "[" + stringMessage3 + "]";
+    apWS.sendTextMessage(stringMessage3);
+
+}
+
+void MainWindow::update_items(Item item){
+    trackerInventory.emplace_back(item);
+    // Update buttons with the current inventory
+    for (auto inventoryButton : ui->tracker_tab->findChildren<TrackerInventoryButton*>())
+    {
+        for (auto& itemState : inventoryButton->itemStates)
+        {
+            if (itemState.gameItem == nameToGameItem(item.getName()))
+            {
+                if(inventoryButton->getState() >= inventoryButton->itemStates.size() - 1) return;
+                inventoryButton->setState(inventoryButton->getState() + 1);
+                // Then update the icon
+                inventoryButton->updateIcon();
+                return;
+            }
+        }
+    }
+}
+
+void MainWindow::update_locations(QString locName){
+    if (trackerWorlds[0].locationTable.contains(locName.toStdString()))
+    {
+        trackerWorlds[0].locationTable[locName.toStdString()]->marked = true;
+        for(auto area : ui->tracker_tab->findChildren<TrackerAreaWidget*>()){
+            if(currentTrackerArea.starts_with(area->getPrefix())) {
+                qDebug() << "found"; //todo
+                area->updateArea();
+            }
+        }
+    }
+    update_tracker();
+}
+
+
+void MainWindow::on_ap_message(QString message){
+    QJsonDocument doc = QJsonDocument::fromJson(message.toUtf8());
+    QJsonArray dumbArr = doc.array();
+    QJsonObject content = dumbArr.first().toObject();
+
+
+    qDebug() << "Message received:" << content.value("cmd");
+
+    if(content.value("cmd").toString().contains("Connected")){
+        tempLocationHold = content.value("checked_locations").toArray();
+    }
+
+    else if(content.value("cmd").toString().contains("Sync")){
+        //update items
+        content = dumbArr.at(1).toObject();
+        foreach (const QJsonValue& val, content.value("items").toArray()){
+            QJsonObject currentItem = val.toObject();
+            qDebug() << QString::number(currentItem.value("item").toInt());
+            QString itemName = gameItemToId.value(QString::number(currentItem.value("item").toInt())).toString();
+            qDebug() << "yo item" << itemName;
+            if(itemName.isEmpty()) continue;
+            Item item = Item(itemName.toStdString(), &trackerWorlds[0]);
+
+            update_items(item);
+        }
+    }
+
+    else if(content.value("cmd").toString().contains("DataPackage")){
+        QJsonObject tempItems = content.value("data").toObject().value("games").toObject().value("The Wind Waker HD").toObject().value("item_name_to_id").toObject();
+        for (auto it = tempItems.begin(); it != tempItems.end(); ++it) {
+            QString newKey = QString::number(it.value().toInt());
+            gameItemToId.insert(newKey, it.key());
+        }
+
+        QJsonObject tempLoc = content.value("data").toObject().value("games").toObject().value("The Wind Waker HD").toObject().value("location_name_to_id").toObject();
+        for (auto it = tempLoc.begin(); it != tempLoc.end(); ++it) {
+            QString newKey = QString::number(it.value().toInt());
+            gameLocationToId.insert(newKey, it.key());
+        }
+
+        //treat temp check locations
+        foreach (const QJsonValue& val, tempLocationHold){
+            QString locationName = gameLocationToId.value(QString::number(val.toInt())).toString();
+            if(locationName.isEmpty()) continue;
+            update_locations(locationName);
+        }
+    }
+    else if(content.value("cmd").toString().contains("ReceivedItems")){
+        foreach (const QJsonValue& val, content.value("items").toArray()) {
+            QJsonObject currentItem = val.toObject();
+            qDebug() << QString::number(currentItem.value("item").toInt());
+            QString itemName = gameItemToId.value(QString::number(currentItem.value("item").toInt())).toString();
+            qDebug() << "yo item" << itemName;
+            if(itemName.isEmpty()) continue;
+            Item item = Item(itemName.toStdString(), &trackerWorlds[0]);
+
+            update_items(item);
+        }
+    }
+
+    else if(content.value("cmd").toString().contains("RoomUpdate")){
+        foreach (const QJsonValue& val, content.value("checked_locations").toArray()){
+            QString locationName = gameLocationToId.value(QString::number(val.toInt())).toString();
+            if(locationName.isEmpty()) continue;
+            update_locations(locationName);
+        }
+    }
+
+}
+
+void MainWindow::on_ap_disconnected(){
 
 }
 

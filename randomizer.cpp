@@ -23,6 +23,8 @@
 #include <utility/file.hpp>
 #include <utility/time.hpp>
 
+#include <miniz.h>
+
 #include <gui/desktop/update_dialog_header.hpp>
 
 #ifdef DEVKITPRO
@@ -200,9 +202,45 @@ public:
 
         Utility::platformLog("Randomizing...");
         UPDATE_DIALOG_VALUE(5);
-        if (generateWorlds(worlds, settingsVector) != 0) {
+
+        mz_zip_archive zip;
+        memset(&zip, 0, sizeof(zip));
+
+        Utility::platformLog((const char*)config.settings.plandomizerFile.string().c_str());
+        if (!mz_zip_reader_init_file(&zip, (const char*)config.settings.plandomizerFile.string().c_str() , 0)) return 1;
+
+        Utility::platformLog("Randomizing b...");
+        int config_index = mz_zip_reader_locate_file(&zip, "config.yaml", nullptr, 0);
+
+        if (config_index < 0) {
+            mz_zip_reader_end(&zip);
             return 1;
         }
+
+        size_t cfg_size = 0;
+        void* cfg_data = mz_zip_reader_extract_to_heap(&zip, config_index, &cfg_size, 0);
+
+        int plando_index = mz_zip_reader_locate_file(&zip, "plandomizer.yaml", nullptr, 0);
+        size_t plando_size = 0;
+        void* plando_data = mz_zip_reader_extract_to_heap(&zip, plando_index, &plando_size, 0);
+
+
+        std::string cfgText((char*)cfg_data, cfg_size);
+        std::string plandoText((char*)plando_data, plando_size);
+        mz_free(cfg_data);
+        mz_free(plando_data);
+
+        YAML::Node APconfig = YAML::Load(cfgText);
+        YAML::Node APplando = YAML::Load(plandoText);
+
+        mz_zip_reader_end(&zip);
+
+        Utility::platformLog("Randomizing 2...");
+
+        if (generateWorlds(worlds, settingsVector, APplando) != 0) {
+            return 1;
+        }
+        Utility::platformLog("Randomizing 3...");
 
         generateNonSpoilerLog(worlds);
         if (!config.settings.do_not_generate_spoiler_log) {

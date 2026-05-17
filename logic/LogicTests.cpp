@@ -40,7 +40,8 @@ static int testSettings(const Settings& settings, bool& settingToChange, const s
         const fspath preferencesFilename = ERROR_CONFIG_PATH "/" + settingName + " " + config.seed + "_error_preferences.yaml";
         ConfigError err = config.writeToFile(errorConfigFilename, preferencesFilename);
 
-        int retVal = generateWorlds(worlds, settingsVector);
+        YAML::Node empty;
+        int retVal = generateWorlds(worlds, settingsVector, empty);
 
         if (retVal == 0)
         {
@@ -86,7 +87,9 @@ static int multiWorldTest(const Settings& settings)
     WorldPool worlds (worldCount);
     std::vector<Settings> settingsVector (worldCount, settings);
 
-    int retVal = generateWorlds(worlds, settingsVector);
+    YAML::Node empty;
+    int retVal = generateWorlds(worlds, settingsVector, empty);
+
 
     if (retVal != 0)
     {
@@ -318,7 +321,9 @@ void testSettings(Config& newConfig, int testCount /*= 1*/)
         WorldPool worlds (worldCount);
         std::vector<Settings> settingsVector (1, config.settings);
 
-        int retVal = generateWorlds(worlds, settingsVector);
+        YAML::Node empty;
+        int retVal = generateWorlds(worlds, settingsVector, empty);
+
 
         if (retVal == 0)
         {

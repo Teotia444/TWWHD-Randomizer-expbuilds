@@ -53,6 +53,7 @@ public:
     void resetDefaultPreferences(const bool& paths = false);
     ConfigError loadFromFile(const fspath& filePath, const fspath& preferencesPath, bool ignoreErrors = false);
     YAML::Node settingsToYaml() const;
+    void YamlToSettings(YAML::Node node);
     YAML::Node preferencesToYaml() const;
     ConfigError writeSettings(const fspath& filePath) const;
     ConfigError writePreferences(const fspath& preferencesPath) const;

@@ -41,5 +41,5 @@ struct Plandomizer
     uint8_t startingIslandRoomNum = 0;
 };
 
-PlandomizerError loadPlandomizer(const fspath& plandoFilepath, std::vector<Plandomizer>& plandos, size_t numWorlds);
+PlandomizerError loadPlandomizer(const YAML::Node yamlNode, std::vector<Plandomizer>& plandos, size_t numWorlds);
 std::string errorToName(PlandomizerError err);

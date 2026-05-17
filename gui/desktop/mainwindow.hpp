@@ -9,6 +9,9 @@
 #include <QStringList>
 #include <QStandardItemModel>
 #include <QLabel>
+#include <QWebSocket>
+#include <QJsonObject>
+#include <QJsonArray>
 
 #include <seedgen/config.hpp>
 #include <logic/Location.hpp>
@@ -137,6 +140,20 @@ public:
     uint8_t islandForChart(GameItem chart);
     GameItem chartForIsland(uint8_t islandNum);
     void tracker_update_chart_visibility();
+
+    QJsonObject gameItemToId;
+    QJsonObject gameLocationToId;
+    QJsonArray tempLocationHold;
+
+    YAML::Node APconfig;
+    YAML::Node APplando;
+
+    void update_items(Item item);
+    void update_locations(QString locName);
+    void on_ap_connected();
+    void on_ap_message(QString message);
+    void on_ap_disconnected();
+
 
 private slots:
     void show_error_dialog(const std::string& s, const std::string& title = "An error has occured!");
@@ -319,6 +336,8 @@ private slots:
 
     void on_aptwwhd_browse_button_clicked();
 
+    void on_connect_ap_button_clicked();
+
 public:
     void update_items_color();
     void update_locations_color();
@@ -343,6 +362,8 @@ public:
         {"Jalhalla", "Earth Temple - Jalhalla Heart Container"},
         {"Molgera", "Wind Temple - Molgera Heart Container"},
     };
+
+    QWebSocket apWS;
 
 private:
     LocationPool trackerLocations = {};

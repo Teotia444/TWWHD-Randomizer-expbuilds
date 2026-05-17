@@ -5,15 +5,16 @@
 #include <utility/file.hpp>
 #include <utility/platform.hpp>
 
-PlandomizerError loadPlandomizer(const fspath& plandoFilepath, std::vector<Plandomizer>& plandos, size_t numWorlds)
+PlandomizerError loadPlandomizer(const YAML::Node yamlNode, std::vector<Plandomizer>& plandos, size_t numWorlds)
 {
     LOG_TO_DEBUG("Loading plandomizer file");
 
-    YAML::Node plandoTree;
-    if(!LoadYAML(plandoTree, plandoFilepath)) {
+    YAML::Node plandoTree = yamlNode;
+    if(yamlNode.IsNull()) {
         Utility::platformLog("Will skip using plando file");
         return PlandomizerError::NONE;
     }
+    Utility::platformLog("Will NOT skip using plando file");
 
     // Go through and make plandomizer objects for each world
     for (size_t i = 0; i < numWorlds; i++)

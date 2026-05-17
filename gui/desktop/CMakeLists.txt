@@ -26,6 +26,7 @@ if(DEFINED EMBED_DATA)
   endif()
 endif()
 
+
 # Set Icon on Windows
 file(WRITE "${CMAKE_CURRENT_SOURCE_DIR}/icon.rc" "IDI_ICON1 ICON DISCARDABLE \"appicon.ico\"")
 set(app_icon_resource_windows "${CMAKE_CURRENT_SOURCE_DIR}/icon.rc")
@@ -39,6 +40,7 @@ target_sources(wwhd_rando PRIVATE mainwindow.cpp mainwindow.ui player_customizat
                                   ${app_icon_resource_windows} ${app_icon_macos})
 
 target_link_libraries(wwhd_rando PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(wwhd_rando PRIVATE Qt${QT_VERSION_MAJOR}::WebSockets)  
 
 set_target_properties(wwhd_rando PROPERTIES
     MACOSX_BUNDLE_BUNDLE_NAME "WWHD Randomizer" # 15 character limit
