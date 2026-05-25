@@ -90,7 +90,6 @@ void Settings::resetDefaultSettings() {
     chest_type_matches_contents = false;
 
     starting_gear = {
-        GameItem::ProgressiveSword,
         GameItem::ProgressiveShield,
         GameItem::BalladOfGales,
         GameItem::SongOfPassing,

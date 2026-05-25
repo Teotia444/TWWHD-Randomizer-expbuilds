@@ -61,7 +61,6 @@ int generateWorlds(WorldPool& worlds, std::vector<Settings>& settingsVector, YAM
       {
           std::vector<Plandomizer> plandos(worlds.size());
           PlandomizerError err = loadPlandomizer(plando, plandos, worlds.size());
-          Utility::platformLog("plando grandma:" + std::to_string((int)plandos[0].locationsStr["Outset Island - Under Link's House"].gameItem));
           if (err != PlandomizerError::NONE)
           {
               return 1;
