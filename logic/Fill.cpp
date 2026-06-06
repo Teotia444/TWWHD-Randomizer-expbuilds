@@ -38,7 +38,7 @@ static FillError fastFill(ItemPool& items, LocationPool& locations)
 
     // Get rid of locations which already have items
     filterAndEraseFromPool(locations, [](const Location* loc){return loc->currentItem.getGameItemId() != GameItem::INVALID;});
-    ENOUGH_SPACE_CHECK(items, locations);
+    //ENOUGH_SPACE_CHECK(items, locations);
 
     while (!items.empty() && !locations.empty())
     {
@@ -53,10 +53,12 @@ static FillError fastFill(ItemPool& items, LocationPool& locations)
 
 static FillError fillTheRest(WorldPool& worlds, ItemPool& items, LocationPool& locations)
 {
+    // Completely skip filling the rest of progression stuff. replace them with junk instead
+
     // First place the non consumable junk already in the pool
     // Filter out the consumable junk to place afterwards
-    auto consumableJunk = filterAndEraseFromPool(items, [](const Item& i){return i.isConsumableJunkItem();});
-    FILL_ERROR_CHECK(fastFill(items, locations));
+    // auto consumableJunk = filterAndEraseFromPool(items, [](const Item& i){return i.isConsumableJunkItem();});
+    // FILL_ERROR_CHECK(fastFill(items, locations));
 
     // For the remaining locations, get items from the consumable junk. If the consumable junk runs out, just get more random
     // consumable junk
@@ -65,13 +67,13 @@ static FillError fillTheRest(WorldPool& worlds, ItemPool& items, LocationPool& l
         if (location->currentItem.getGameItemId() == GameItem::INVALID)
         {
             Item item;
-            if (!consumableJunk.empty())
+            /* if (!consumableJunk.empty())
             {
                 item = popRandomElement(consumableJunk);
             }
-            else
+            else */
             {
-                item = location->world->getItem(getRandomJunk());
+                item = location->world->getItem("Green Rupee");
             }
             location->currentItem = item;
             LOG_TO_DEBUG("Placed " + item.getName() + " at " + location->getName() + " in world " + std::to_string(location->world->getWorldId() + 1));

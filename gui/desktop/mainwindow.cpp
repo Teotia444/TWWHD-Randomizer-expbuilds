@@ -1486,10 +1486,6 @@ void MainWindow::on_connect_ap_button_clicked()
     config.YamlToSettings(currentSettings);
 
     config.settings.starting_gear = {
-        GameItem::ProgressiveShield,
-        GameItem::BalladOfGales,
-        GameItem::SongOfPassing,
-        GameItem::ProgressiveMagicMeter,
         GameItem::ProgressiveSail
     };
 
