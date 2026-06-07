@@ -621,7 +621,13 @@ void Config::YamlToSettings(YAML::Node node){
     settings.progression_savage_labyrinth= node["progression_savage_labyrinth"].as<bool>();
     settings.progression_island_puzzles= node["progression_island_puzzles"].as<bool>();
     settings.progression_dungeon_secrets= node["progression_dungeon_secrets"].as<bool>();
-    settings.progression_obscure= node["progression_obscure"].as<bool>();
+    settings.randomize_starting_island= node["randomize_starting_island"].as<bool>();
+    settings.randomize_dungeon_entrances= node["randomize_dungeon_entrances"].as<bool>();
+    settings.randomize_cave_entrances= node["randomize_dungeon_entrances"].as<std::string>().find("Caves and")
+                                            ? ShuffleCaveEntrances::CavesFairies : (node["randomize_dungeon_entrances"].as<std::string>().find("Caves")
+                                                                            ? ShuffleCaveEntrances::Caves : ShuffleCaveEntrances::Disabled);
+    settings.randomize_miniboss_entrances= node["randomize_miniboss_entrances"].as<bool>();
+    settings.randomize_boss_entrances= node["randomize_boss_entrances"].as<bool>();
     settings.plandomizer=true;
 }
 

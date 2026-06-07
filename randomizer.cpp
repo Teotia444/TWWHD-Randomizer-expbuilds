@@ -196,10 +196,6 @@ public:
 
         UPDATE_DIALOG_TITLE("Randomizing - Hash: " + LogInfo::getSeedHash());
 
-        // Create all necessary worlds (for any potential multiworld support in the future)
-        WorldPool worlds(numPlayers);
-        std::vector<Settings> settingsVector (numPlayers, config.settings);
-
         Utility::platformLog("Randomizing...");
         UPDATE_DIALOG_VALUE(5);
 
@@ -234,8 +230,15 @@ public:
         YAML::Node APplando = YAML::Load(plandoText);
 
         mz_zip_reader_end(&zip);
+        if(!APconfig.IsNull()) Utility::platformLog("bruh");
 
-        Utility::platformLog("Randomizing 2...");
+        config.YamlToSettings(APconfig);
+        // Create all necessary worlds (for any potential multiworld support in the future)
+        WorldPool worlds(numPlayers);
+        std::vector<Settings> settingsVector (numPlayers, config.settings);
+
+
+        Utility::platformLog(std::to_string(settingsVector[0].getSetting(Option::RandomizeCaveEntrances)));
 
         if (generateWorlds(worlds, settingsVector, APplando) != 0) {
             return 1;

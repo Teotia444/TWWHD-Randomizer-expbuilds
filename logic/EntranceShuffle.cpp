@@ -1,5 +1,6 @@
 
 #include "EntranceShuffle.hpp"
+#include "utility/platform.hpp"
 
 #include <map>
 #include <utility>
@@ -558,7 +559,7 @@ static EntranceShuffleError setPlandomizerEntrances(World& world, WorldPool& wor
             else
             {
                 ErrorLog::getInstance().log("Entrance \"" + entrance->getOriginalName() + "\"'s type is not being shuffled and thus can't be plandomized.");
-                return EntranceShuffleError::PLANDOMIZER_ERROR;
+                continue;
             }
         }
 
@@ -599,7 +600,7 @@ static EntranceShuffleError setPlandomizerEntrances(World& world, WorldPool& wor
         else
         {
             ErrorLog::getInstance().log("Entrance \"" + entrance->getOriginalName() + "\" is not being shuffled and thus can't be plandomized.");
-            return EntranceShuffleError::PLANDOMIZER_ERROR;
+            continue;
         }
 
     }
@@ -750,6 +751,7 @@ EntrancePools createEntrancePools(World& world, std::set<EntranceType>& poolsToM
         
         // include fairy fountains with caves
         if(settings.randomize_cave_entrances == ShuffleCaveEntrances::CavesFairies) {
+            Utility::platformLog("w");
             auto fairyEntrances = world.getShuffleableEntrances(EntranceType::FAIRY, true);
             addElementsToPool(entrancePools[EntranceType::CAVE], fairyEntrances);
         }
