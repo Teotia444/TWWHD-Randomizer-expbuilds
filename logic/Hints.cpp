@@ -39,7 +39,7 @@ static HintError calculatePossiblePathLocations(WorldPool& worlds)
                 world.goalLocations.push_back(dungeon.bossLocation);
             }
         }
-
+        /*
         for (auto& [name, location] : world.locationTable)
         {
             if (!location->progression && !location->categories.contains(LocationCategory::BlueChuChu))
@@ -47,8 +47,10 @@ static HintError calculatePossiblePathLocations(WorldPool& worlds)
                 nonRequiredLocations.insert({location.get(), location->currentItem});
                 location->currentItem = {GameItem::INVALID, location->world};
             }
-        }
+        }*/
     }
+
+    return HintError::NONE;
 
     // Determine path locations for each goal location by going through the playthrough
     // and seeing if taking away the item at each location can still access the goal locations
@@ -311,12 +313,19 @@ static HintError generatePathHintLocations(World& world, std::list<Hint>& hints)
     std::vector<Location*> goalLocations = {};
     for (auto& goalLocation : world.goalLocations)
     {
-        shufflePool(goalLocation->pathLocations);
-        // Initially we want to pull path hints from required dungeons before pulling from Ganondorf
-        if (goalLocation->getName() != "Ganon's Tower - Defeat Ganondorf")
+        auto possiblePathLocations = goalLocation->pathLocations;
+
+        auto hintLocation = getHintableLocation(possiblePathLocations);
+        if (hintLocation == nullptr)
         {
-            goalLocations.push_back(goalLocation);
+            LOG_TO_DEBUG("No more path locations for " + goalLocation->getName());
+            filterAndEraseFromPool(goalLocations, [&goalLocation](Location* goal){return goal == goalLocation;});
+            continue;
         }
+
+        LOG_AND_RETURN_IF_ERR(generatePathHintMessage(hintLocation, goalLocation, hints));
+        hintLocation->hasBeenHinted = true;
+        LOG_TO_DEBUG("Chose \"" + hintLocation->getName() + "\" as path hint for " + goalLocation->getName())
     }
 
     bool addedGanonPathLocation = false;
@@ -796,7 +805,7 @@ static HintError assignKorlSwordHints(World& world, WorldPool& worlds)
 
 HintError generateHints(WorldPool& worlds)
 {
-    //LOG_AND_RETURN_IF_ERR(calculatePossiblePathLocations(worlds));
+    LOG_AND_RETURN_IF_ERR(calculatePossiblePathLocations(worlds));
     //LOG_AND_RETURN_IF_ERR(calculatePossibleBarrenRegions(worlds));
 
     for (auto& world : worlds)

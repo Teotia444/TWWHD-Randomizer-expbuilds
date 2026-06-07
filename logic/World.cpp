@@ -432,6 +432,36 @@ World::WorldLoadingError World::setDungeonLocations(WorldPool& worlds)
 
 World::WorldLoadingError World::determineRequiredDungeons(WorldPool& worlds)
 {
+    std::vector<Dungeon> dungeonPool = {};
+    for (auto& [name, dungeon] : dungeons)
+    {
+        // Verify that each dungeon has a boss location
+        if (dungeon.bossLocation == nullptr)
+        {
+            ErrorLog::getInstance().log("Dungeon \"" + dungeon.name + "\" has no set boss location");
+            LOG_ERR_AND_RETURN(WorldLoadingError::DUNGEON_HAS_NO_BOSS_LOCATION);
+        }
+
+        dungeonPool.push_back(dungeon);
+    }
+
+    for (const Dungeon& dungeon : dungeonPool)
+    {
+        auto allDungeonLocations = dungeon.locations;
+        // Add any outside dependent locations from this dungeon's locations
+        const auto& outsideLocs = dungeon.getOutsideDependentLocations();
+        allDungeonLocations.insert(allDungeonLocations.end(), outsideLocs.begin(), outsideLocs.end());
+        for (auto dungeonLocation : allDungeonLocations)
+        {
+            if (plandomizer.locations.contains(dungeonLocation))
+            {
+                LOG_TO_DEBUG("Chose dungeon : " + dungeon.name);
+                dungeons[dungeon.name].isRequiredDungeon = true;
+                break;
+            }
+        }
+    }
+
     /*if (settings.progression_dungeons != ProgressionDungeons::Disabled)
     {
         std::vector<Dungeon> dungeonPool = {};
