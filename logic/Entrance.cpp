@@ -12,7 +12,6 @@ Entrance::Entrance(Area* parentArea_, Area* connectedArea_, World* world_) :
     alreadySetOriginalConnectedArea(true),
     world(world_)
 {
-    worldId = world->getWorldId();
     setOriginalName();
     requirement = Requirement();
     requirement.type = RequirementType::NOTHING;
@@ -197,16 +196,6 @@ bool Entrance::hasWindWarp() const
     return windWarp;
 }
 
-int Entrance::getWorldId() const
-{
-    return worldId;
-}
-
-void Entrance::setWorldId(int& newWorldId)
-{
-    worldId = newWorldId;
-}
-
 Entrance* Entrance::getReverse()
 {
     return reverse;
@@ -346,9 +335,9 @@ Entrance* Entrance::assumeReachable()
 
 bool Entrance::operator<(const Entrance& rhs) const
 {
-    if (this->worldId != rhs.worldId)
+    if (this->world->getWorldId() != rhs.world->getWorldId())
     {
-        return this->worldId < rhs.worldId;
+        return this->world->getWorldId() < rhs.world->getWorldId();
     }
 
     return PointerLess<Area>{}(this->parentArea, rhs.parentArea);
@@ -423,7 +412,7 @@ EntranceType entranceTypeToReverse(const EntranceType& type, bool miscReverse /*
         return EntranceType::MISC;
     }
 
-    std::unordered_map<EntranceType, EntranceType> typeReverseMap = {
+    static const std::unordered_map<EntranceType, EntranceType> typeReverseMap = {
         {EntranceType::NONE, EntranceType::NONE},
         {EntranceType::DUNGEON, EntranceType::DUNGEON_REVERSE},
         {EntranceType::DUNGEON_REVERSE, EntranceType::DUNGEON},

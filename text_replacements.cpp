@@ -100,10 +100,10 @@ TextReplacements generate_text_replacements(World& world)
 
   // If the last item in a list in spanish with an 'i' change the and conjunction to 'e' instead of 'y'
   const std::u16string auction100Spanish = auction60.getUTF16Name("Spanish", Type::PRETTY, Color::NONE);
-  const std::u16string spanishAuctionFlyerConjunction = std::tolower(auction100Spanish[0]) == u'i' ? u"e " : u"y ";
+  const std::u16string spanishAuctionFlyerConjunction = auction100Spanish.starts_with(u'i') || auction100Spanish.starts_with(u'I') ? u"e " : u"y ";
 
   const std::u16string savageFloor50Spanish = savageFloor50.getUTF16Name("Spanish", Type::CRYPTIC, Color::NONE);
-  const std::u16string spanishSavageConjunction = std::tolower(savageFloor50Spanish[0]) == u'i' ? u" e " : u" y ";
+  const std::u16string spanishSavageConjunction = savageFloor50Spanish.starts_with(u'i') || savageFloor50Spanish.starts_with(u'I') ? u" e " : u" y ";
 
   // French conjugation (of "aider") for Big Octo Fairy Hint
   const std::u16string bigOctoFrenchConjugation = IS_SINGULAR(octoFairyItem, "French") ? u"t'aidera" : u"t'aideront";
@@ -202,8 +202,8 @@ TextReplacements generate_text_replacements(World& world)
      // Required bosses text
      {"00851",
      {{"English", u"You sense that this door will not open\nuntil the gigantic monsters lurking\nthroughout the world have been defeated...\0"s},
-      {"Spanish", u"You sense that this door will not open\nuntil the gigantic monsters lurking\nthroughout the world have been defeated...\0"s},
-      {"French",  u"You sense that this door will not open\nuntil the gigantic monsters lurking\nthroughout the world have been defeated...\0"s}}},
+      {"Spanish", u"Parece que no abrirá hasta que\ntodos los monstruos gigantes del mundo\nhayan sido abatidos...\0"s},
+      {"French",  u"On dirait que la porte ne s'ouvrira pas\ntant que vous n'aurez pas vaincu\nles monstres gigantesques toujours en vie.\0"s}}},
 
      // Swordless Text
      {"01128",
@@ -221,8 +221,8 @@ TextReplacements generate_text_replacements(World& world)
      // KoRL Barren Dungeon Text
      {"01509",
      {{"English", CAPITAL + REPLACE(ReplaceTags::PLAYER_NAME) + u", this area is unrequired and\nthere are no valuable items in here. You can\nskip it in full confidence." + TEXT_END},
-      {"Spanish", CAPITAL + REPLACE(ReplaceTags::PLAYER_NAME) + u", this area is unrequired and\nthere are no valuable items in here. You can\nskip it in full confidence." + TEXT_END}, //TODO:
-      {"French",  CAPITAL + REPLACE(ReplaceTags::PLAYER_NAME) + u", this area is unrequired and\nthere are no valuable items in here. You can\nskip it in full confidence." + TEXT_END}}},
+      {"Spanish", CAPITAL + REPLACE(ReplaceTags::PLAYER_NAME) + u", aquí no hay objetos de valor.\nPuedes irte sin problema." + TEXT_END},
+      {"French",  CAPITAL + REPLACE(ReplaceTags::PLAYER_NAME) + u", cet endroit n'est pas requis et\nil n'y a rien d'important ici. Tu peux\npartir en toute tranquillité." + TEXT_END}}},
 
      // Savage Labyrinth Hints
      {"00837",
@@ -328,7 +328,7 @@ TextReplacements generate_text_replacements(World& world)
       {"Spanish", SOUND(0x8E) + u"¡Viva, viva!\n¡Gracias, señor, gracias!\n\n\n" + word_wrap_string(u"Esta es nuestra muestra de gratitud. Ha sido pasado de generación en generación, así que no le digas a los ancianos de la isla, está bien? ¡Por favor!" +
                                  TEXT_COLOR_RED + IMAGE(ImageTags::HEART) + TEXT_COLOR_DEFAULT + u"¡Acepta " + splooshSecondSpanishPronoun + splooshSecondPrize.getUTF16Name("Spanish") + u'!', 43) + u'\0'},
       {"French",  SOUND(0x8E) + u"Oui, oui!\nMerci l'ami!\n\n\nNous tenons à te faire un cadeau pour\nte remercier de nous avoir protégés.\n\n\n" + word_wrap_string(u"Voici " +
-                                splooshSecondPrize.getUTF16Name("English", Text::Type::PRETTY) + u" qui se transmet depuis fort longtemps sur cette île. Prends-là et surtout ne le dis pas aux anciens!", 43) + u'\0'}}},
+                                splooshSecondPrize.getUTF16Name("French", Text::Type::PRETTY) + u" qui se transmet depuis fort longtemps sur cette île. Prends-là et surtout ne le dis pas aux anciens!", 43) + u'\0'}}},
 
      // Great Fairy Big Octo Text
      {"12015",

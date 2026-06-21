@@ -24,9 +24,9 @@ static std::stringstream lastError;
 #define YAML_FIELD_CHECK(ref, key, err) if(!ref[key]) {lastError << "Unable to find key: \"" << key << '"'; return err;}
 #define VALID_CHECK(e, invalid, msg, err) if(e == invalid) {lastError << msg; LOG_ERR_AND_RETURN(err);}
 #define ITEM_VALID_CHECK(item, msg) VALID_CHECK(item, GameItem::INVALID, msg, WorldLoadingError::GAME_ITEM_DOES_NOT_EXIST)
-#define AREA_VALID_CHECK(area, msg) VALID_CHECK(0, areaTable.count(area), msg, WorldLoadingError::AREA_DOES_NOT_EXIST)
-#define REGION_VALID_CHECK(region, msg) VALID_CHECK(0, hintRegions.count(region), msg, WorldLoadingError::AREA_DOES_NOT_EXIST)
-#define LOCATION_VALID_CHECK(loc, msg) VALID_CHECK(0, locationTable.count(loc), msg, WorldLoadingError::LOCATION_DOES_NOT_EXIST)
+#define AREA_VALID_CHECK(area, msg) VALID_CHECK(areaTable.contains(area), false, msg, WorldLoadingError::AREA_DOES_NOT_EXIST)
+#define REGION_VALID_CHECK(region, msg) VALID_CHECK(hintRegions.contains(region), false, msg, WorldLoadingError::AREA_DOES_NOT_EXIST)
+#define LOCATION_VALID_CHECK(loc, msg) VALID_CHECK(locationTable.contains(loc), false, msg, WorldLoadingError::LOCATION_DOES_NOT_EXIST)
 #define VALID_DUNGEON_CHECK(dungeon) if (!isValidDungeon(dungeon)) {ErrorLog::getInstance().log("Unrecognized dungeon name: \"" + dungeon + "\""); LOG_ERR_AND_RETURN(WorldLoadingError::INVALID_DUNGEON_NAME)};
 
 int World::eventCounter = 0;
@@ -368,7 +368,7 @@ World::WorldLoadingError World::determineProgressionLocations()
 
 // Properly set the dungeons for boss room locations
 // in case boss/miniboss entrances are randomized
-World::WorldLoadingError World::setDungeonLocations(WorldPool& worlds)
+World::WorldLoadingError World::setDungeonLocations()
 {
     // Keep track of any unassigned boss locations
     LocationPool unassignedBossLocations = {};
@@ -380,11 +380,11 @@ World::WorldLoadingError World::setDungeonLocations(WorldPool& worlds)
             auto loc = locAcc.location;
             if (loc->hintRegions.empty())
             {
-                auto connectedDungeons = area->findDungeons();
-                auto hintRegions = area->findHintRegions();
+                const auto& connectedDungeons = area->findDungeons();
+                const auto& hintRegions = area->findHintRegions();
                 if (!connectedDungeons.empty() && connectedDungeons.size() == hintRegions.size())
                 {
-                    auto& dungeonName = connectedDungeons.front();
+                    const auto& dungeonName = connectedDungeons.front();
                     auto& dungeon = getDungeon(dungeonName);
 
                     LOG_TO_DEBUG(loc->getName() + " has been assigned to dungeon " + dungeonName);
@@ -872,7 +872,6 @@ World::WorldLoadingError World::loadExit(const std::string& connectedArea, const
     AREA_VALID_CHECK(connectedArea, "Connected area of name \"" << connectedArea << "\" does not exist!");
     loadedExit.setParentArea(getArea(parentArea));
     loadedExit.setConnectedArea(getArea(connectedArea));
-    loadedExit.setWorldId(worldId);
     loadedExit.setWorld(this);
     // load exit requirements
     if(const RequirementError err = parseRequirementString(logicExpression, loadedExit.getRequirement(), this); err != RequirementError::NONE)
@@ -977,7 +976,7 @@ World::WorldLoadingError World::loadArea(const YAML::Node& areaObject)
             auto location = locationTable[locationName].get();
             location->accessPoints.push_back(&area->locations.back());
             // If this area is part of a dungeon, then add any locations to that dungeon
-            if (area->dungeon != "")
+            if (!area->dungeon.empty())
             {
                 dungeons[area->dungeon].locations.push_back(location);
                 LOG_TO_DEBUG("\t\tAdding location to dungeon " + area->dungeon);
@@ -985,11 +984,11 @@ World::WorldLoadingError World::loadArea(const YAML::Node& areaObject)
                 // dungeon, island, or general hint region
                 location->hintRegions = {area->dungeon};
             }
-            else if (area->island != "")
+            else if (!area->island.empty())
             {
                 location->hintRegions = {area->island};
             }
-            else if (area->hintRegion != "")
+            else if (!area->hintRegion.empty())
             {
                 location->hintRegions = {area->hintRegion};
             }
@@ -1312,9 +1311,9 @@ int World::loadWorld(const fspath& worldFilePath, const fspath& macrosFilePath, 
             exit.setOriginalName();
 
             // Set each dungeon's associated starting entrance
-            auto connectedDungeon = exit.getConnectedArea()->dungeon;
-            auto connectedArea = exit.getConnectedArea();
-            if (area->dungeon == "" && connectedDungeon != "")
+            const auto& connectedDungeon = exit.getConnectedArea()->dungeon;
+            const auto& connectedArea = exit.getConnectedArea();
+            if (area->dungeon.empty() && !connectedDungeon.empty())
             {
                 auto& dungeon = dungeons[connectedDungeon];
                 if (dungeon.startingArea == connectedArea)
@@ -1547,7 +1546,7 @@ bool World::isSphereEvent(const EventId& event)
         "Molgera Defeated",
     };
 
-    auto eventName = reverseEventMap[event];
+    const std::string& eventName = reverseEventMap[event];
     return sphereEvents.contains(eventName) && settings.isRequiredBoss(eventName);
 }
 

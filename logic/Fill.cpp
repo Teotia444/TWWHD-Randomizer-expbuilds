@@ -51,7 +51,7 @@ static FillError fastFill(ItemPool& items, LocationPool& locations)
     return FillError::NONE;
 }
 
-static FillError fillTheRest(WorldPool& worlds, ItemPool& items, LocationPool& locations)
+static FillError fillTheRest(ItemPool& items, LocationPool& locations)
 {
     // Completely skip filling the rest of progression stuff. replace them with junk instead
 
@@ -623,7 +623,7 @@ static FillError placeBossItems(WorldPool& worlds, ItemPool& itemPool, LocationP
     }
 
     // Build up the list of boss items with major items.
-    auto majorItems = filterAndEraseFromPool(itemPool, [](const Item& item){return item.isMajorItem();});
+    auto majorItems = filterAndEraseFromPool(itemPool, [](const Item& item){ return item.isMajorItem() && !item.isSmallKey() && !item.isBigKey(); });
     generateBossItems(bossLocations, bossItems, majorItems, itemPool);
 
     logItemPool("Boss Items", bossItems);
@@ -763,7 +763,7 @@ FillError fill(WorldPool& worlds)
     //FILL_ERROR_CHECK(assumedFill(worlds, remainingProgressionItems, itemPool, allLocations));
 
     // Fill the remaining locations with junk
-    FILL_ERROR_CHECK(fillTheRest(worlds, itemPool, allLocations));
+    FILL_ERROR_CHECK(fillTheRest(itemPool, allLocations));
 
     /*if (!gameBeatable(worlds))
     {

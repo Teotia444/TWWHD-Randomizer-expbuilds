@@ -55,12 +55,12 @@ MCPError getTitlePath(const uint64_t& titleID, fspath& outPath) {
 }
 
 bool checkEnoughFreeSpace(const MCPInstallTarget& device, const uint64_t& minSpace) {
-    static const std::string deviceToPath[2] = {"/vol/storage_mlc01", "/vol/storage_usb01"};
+    static const std::array<std::string, 2> deviceToPath = {"/vol/storage_mlc01", "/vol/storage_usb01"};
     if(device < 0 || device > 1) {
         ErrorLog::getInstance().log("Invalid device for checkEnoughFreeSpace()!");
         return false;
     }
-    const std::string& path = deviceToPath[device]; // 0 is TARGET_MLC, 1 is TARGET_USB
+    const std::string& path = deviceToPath.at(device); // 0 is TARGET_MLC, 1 is TARGET_USB
 
     const FSAClientHandle handle = FSAAddClient(NULL);
     if(handle < 0) {
@@ -132,7 +132,7 @@ static bool installFreeChannel(const fspath& relPath, const MCPInstallTarget& lo
     }
 
     alignas(0x40) char installPath[FS_MAX_PATH]{};
-    const size_t count = path.string().copy(installPath, sizeof(installPath));
+    const size_t count = path.string().copy(installPath, sizeof(installPath) - 1);
     if(count != path.string().length()) {
         ErrorLog::getInstance().log("Could not copy full channel path \"" + relPath.string() + "\" to buffer");
         MCP_Close(mcpHandle);
@@ -175,7 +175,7 @@ static bool installFreeChannel(const fspath& relPath, const MCPInstallTarget& lo
     alignas(0x40) IOSVec pathInfoVector[1]{};
 
     pathInfoVector[0].vaddr = installPath;
-    pathInfoVector[0].len = FS_MAX_PATH;
+    pathInfoVector[0].len = sizeof(installPath);
 
     reinterpret_cast<uint32_t*>(&installInfo)[2] = MCP_COMMAND_INSTALL_ASYNC;
     reinterpret_cast<uint32_t*>(&installInfo)[3] = reinterpret_cast<uint32_t>(&pathInfoVector[0]);
@@ -301,7 +301,7 @@ static bool packFreeChannel(const fspath& baseDir) {
         ErrorLog::getInstance().log("Failed to open filler content " + (DataPath / "content" / "filler.txt").string());
     }
     const std::string str("This is filler data so things don't break!");
-    data.write(&str[0], str.size());
+    data.write(str.data(), str.size());
     data.close();
 
     if(!Utility::copy(baseDir / "meta", DataPath / "meta")) {
@@ -325,7 +325,7 @@ static bool packFreeChannel(const fspath& baseDir) {
     meta.Print(&printer);
     std::ofstream metaOut(DataPath / "meta" / "meta.xml", std::ios::binary);
     std::string metaStr(printer.CStr());
-    metaOut.write(&metaStr[0], metaStr.size());
+    metaOut.write(metaStr.data(), metaStr.size());
     metaOut.close();
     printer.ClearBuffer();
 
@@ -341,7 +341,7 @@ static bool packFreeChannel(const fspath& baseDir) {
     app.Print(&printer);
     std::ofstream appOut(DataPath / "code" / "app.xml", std::ios::binary);
     std::string appStr(printer.CStr());
-    appOut.write(&appStr[0], appStr.size());
+    appOut.write(appStr.data(), appStr.size());
     appOut.close();
     
     // get common key

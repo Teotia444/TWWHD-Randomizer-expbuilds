@@ -268,7 +268,7 @@ RequirementError parseRequirementString(const std::string& str, Requirement& req
         }
 
         // Then an event...
-        if (argStr[0] == '\'')
+        if (argStr.starts_with('\''))
         {
             req.type = RequirementType::EVENT;
             std::string eventName (argStr.begin() + 1, argStr.end() - 1); // Remove quotes
@@ -413,8 +413,8 @@ RequirementError parseRequirementString(const std::string& str, Requirement& req
     // If our expression has two parts, then we don't know what that is
     if (splitLogicStr.size() == 2)
     {
-            ErrorLog::getInstance().log("Unrecognized 2 part expression: " + str);
-            return RequirementError::LOGIC_SYMBOL_DOES_NOT_EXIST;
+        ErrorLog::getInstance().log("Unrecognized 2 part expression: " + str);
+        return RequirementError::LOGIC_SYMBOL_DOES_NOT_EXIST;
     }
 
     // If we have more than two parts to our expression, then we have either "and"
@@ -451,7 +451,7 @@ RequirementError parseRequirementString(const std::string& str, Requirement& req
             if (*itr == "not")
             {
                 *itr = *itr + " " + *(itr + 1);
-                splitLogicStr.erase(itr + 1);
+                itr = splitLogicStr.erase(itr + 1);
             }
         }
 
@@ -460,7 +460,7 @@ RequirementError parseRequirementString(const std::string& str, Requirement& req
         for (auto& reqStr : splitLogicStr)
         {
             // Get rid of parenthesis surrounding each deeper expression
-            if (reqStr[0] == '(')
+            if (reqStr.starts_with('('))
             {
                 reqStr = reqStr.substr(1, reqStr.length() - 2);
             }
@@ -489,7 +489,7 @@ void Requirement::simplifyParenthesis()
 {
     if (type == RequirementType::AND || type == RequirementType::OR)
     {
-        for (auto i = 0; i < args.size(); i++)
+        for (size_t i = 0; i < args.size(); i++)
         {
             // Make a copy of the nested argument before using it
             // Doing push_back or erase later will reallocate the vector
@@ -532,40 +532,39 @@ void Requirement::sortArgs()
 }
 
 // Returns a set of all items that are listed in this requirement
-std::unordered_set<GameItem> Requirement::getItems(World* world)
+std::unordered_set<GameItem> Requirement::getItems(World* world) const
 {
-    int expectedHearts;
-    Item item;
     std::unordered_set<GameItem> items = {};
-    std::unordered_set<GameItem> argItems = {};
+
     switch(type)
     {
     case RequirementType::OR:
     case RequirementType::AND:
         for (auto& arg : args)
         {
-            argItems = std::get<Requirement>(arg).getItems(world);
+            const auto& argItems = std::get<Requirement>(arg).getItems(world);
             items.insert(argItems.begin(), argItems.end());
         }
         break;
     case RequirementType::HAS_ITEM:
-        item = std::get<Item>(args[0]);
-        items.insert(item.getGameItemId());
+        items.insert(std::get<Item>(args[0]).getGameItemId());
         break;
     case RequirementType::COUNT:
-        item = std::get<Item>(args[1]);
-        items.insert(item.getGameItemId());
+        items.insert(std::get<Item>(args[1]).getGameItemId());
         break;
     case RequirementType::HEALTH:
         items.insert({GameItem::HeartContainer, GameItem::PieceOfHeart});
         break;
     case RequirementType::MACRO:
-        argItems = world->macros[std::get<MacroIndex>(args[0])].getItems(world);
+    {
+        const auto& argItems = world->macros[std::get<MacroIndex>(args[0])].getItems(world);
         items.insert(argItems.begin(), argItems.end());
         break;
-    default:
-        return items;
     }
+    default:
+        break;
+    }
+
     return items;
 }
 

@@ -425,7 +425,7 @@ bool RandoSession::repackFile(std::shared_ptr<CacheEntry> current)
             std::ofstream output(outputDir / current->element, std::ios::binary);
             if(!output.is_open()) return false;
             const std::string& data = dynamic_cast<RawFile*>(current->data.get())->data.str();
-            output.write(&data[0], data.size());
+            output.write(data.data(), data.size());
         }
         return true;
         case Fmt::EMPTY:
@@ -470,7 +470,7 @@ std::shared_ptr<RandoSession::CacheEntry> RandoSession::getEntry(const std::vect
             resultKey = cacheKey + element;
         }
         // if we've already cached this
-        if (parentEntry->children.count(resultKey) > 0)
+        if (parentEntry->children.contains(resultKey))
         {
             cacheKey = resultKey;
             parentEntry = parentEntry->children.at(cacheKey);
