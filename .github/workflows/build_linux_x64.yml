@@ -50,6 +50,7 @@ jobs:
           target: 'desktop'
           arch: 'linux_gcc_64'
           cache: true
+          modules: 'qtwebsockets'
 
       - name: Set Debug Flags
         if: inputs.build_type == 'Debug'
