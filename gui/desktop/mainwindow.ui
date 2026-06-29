@@ -69,7 +69,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>6</number>
           </property>
           <widget class="QWidget" name="getting_started_tab">
            <attribute name="title">
@@ -2606,8 +2606,8 @@ font-size: 15px;</string>
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>100</width>
-                    <height>30</height>
+                    <width>360</width>
+                    <height>313</height>
                    </rect>
                   </property>
                   <layout class="QGridLayout" name="specific_locations_layout">
@@ -2879,7 +2879,7 @@ font-size: 15px;
                     <x>0</x>
                     <y>0</y>
                     <width>360</width>
-                    <height>30</height>
+                    <height>265</height>
                    </rect>
                   </property>
                   <layout class="QVBoxLayout" name="entrance_targets_scroll_layout">

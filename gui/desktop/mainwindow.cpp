@@ -1489,7 +1489,8 @@ void MainWindow::on_connect_ap_button_clicked()
         GameItem::ProgressiveSail
     };
 
-    QUrl url = "wss://" + ui->ap_ip->text();
+    QString urlPrefix = ui->ap_ip->text().contains("archipelago.gg") ? ("wss://") : ("ws://");
+    QUrl url = urlPrefix + ui->ap_ip->text();
     apWS.open(url);
     initialize_tracker_world(config.settings);
 
