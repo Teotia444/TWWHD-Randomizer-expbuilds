@@ -1490,6 +1490,7 @@ void MainWindow::on_connect_ap_button_clicked()
     };
 
     QString urlPrefix = ui->ap_ip->text().contains("archipelago.gg") ? ("wss://") : ("ws://");
+    if(ui->ap_ip->text().contains("://")) urlPrefix = "";
     QUrl url = urlPrefix + ui->ap_ip->text();
     apWS.open(url);
     initialize_tracker_world(config.settings);
