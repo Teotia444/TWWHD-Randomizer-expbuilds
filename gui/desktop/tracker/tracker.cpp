@@ -100,7 +100,7 @@ void MainWindow::initialize_tracker_world(Settings& settings,
     if(trackerWorld.getSettings().plandomizer)
     {
         std::vector<Plandomizer> plandos(1);
-        PlandomizerError err = loadPlandomizer(APplando, plandos, 1);
+        PlandomizerError err = loadPlandomizer(config.apPlando, plandos, 1);
         if (err != PlandomizerError::NONE)
         {
             show_warning_dialog("Could not load provided plandomizer file. Continuing without plandomizer data.");
@@ -589,12 +589,12 @@ void MainWindow::load_tracker_autosave()
         return;
     }
 
-    Config trackerConfig;
+    /*Config trackerConfig;
     if (const ConfigError err = trackerConfig.loadFromFile(trackerPreferences.autosaveFilePath, preferencesPath, true); err != ConfigError::NONE)
     {
         show_warning_dialog("Could not load tracker autosave config\nError: " + ConfigErrorGetName(err));
         return;
-    }
+    }*/
 
     YAML::Node root;
     if(!LoadYAML(root, trackerPreferences.autosaveFilePath)) {
@@ -673,7 +673,7 @@ void MainWindow::load_tracker_autosave()
         }
     }
 
-    initialize_tracker_world(trackerConfig.settings, markedItems, markedLocations, entranceConnections, chartMappings, requiredBosses_, true);
+    initialize_tracker_world(config.settings, markedItems, markedLocations, entranceConnections, chartMappings, requiredBosses_, true);
 
     update_tracker();
 }

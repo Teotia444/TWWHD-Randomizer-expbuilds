@@ -42,6 +42,7 @@ public:
 
     std::string seed;
     Settings settings;
+    YAML::Node apPlando;
 
     bool converted = false;
     bool updated = false;

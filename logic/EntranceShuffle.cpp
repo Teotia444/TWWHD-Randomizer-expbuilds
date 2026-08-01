@@ -305,7 +305,7 @@ static EntranceShuffleError validateWorld(WorldPool& worlds, const Entrance* ent
         }
     }*/
 
-    for (auto& world : worlds)
+    /*for (auto& world : worlds)
     {
         // Ensure that all required bosses are assigned to a single island
         auto& settings = world.getSettings();
@@ -349,7 +349,7 @@ static EntranceShuffleError validateWorld(WorldPool& worlds, const Entrance* ent
                 }
             }
         }
-    }
+    }*/
 
     return EntranceShuffleError::NONE;
 }
@@ -412,7 +412,7 @@ static EntranceShuffleError shuffleEntrances(WorldPool& worlds, EntrancePool& en
 
         if (entrance->getConnectedArea() == nullptr)
         {
-            LOG_TO_DEBUG("Could not connect " + entrance->getOriginalName() + ". Error: " + errorToName(err));
+            Utility::platformLog("Could not connect " + entrance->getOriginalName() + ". Error: " + errorToName(err));
             return EntranceShuffleError::NO_MORE_VALID_ENTRANCES;
         }
     }
@@ -440,7 +440,6 @@ static EntranceShuffleError shuffleEntrancePool(World& world, WorldPool& worlds,
     {
         retryCount--;
         std::vector<EntrancePair> rollbacks = {};
-
         if (const EntranceShuffleError err = shuffleEntrances(worlds, entrancePool, targetEntrances, rollbacks); err != EntranceShuffleError::NONE)
         {
             LOG_TO_DEBUG("Failed to place all entrances in a pool for world " + std::to_string(world.getWorldId() + 1) + ". Will retry " + std::to_string(retryCount) + " more times.");
@@ -697,6 +696,8 @@ EntrancePools createEntrancePools(World& world, std::set<EntranceType>& poolsToM
                           (mix_doors ? 1 : 0) +
                           (mix_misc ? 1 : 0);
 
+    Utility::platformLog("currently active:" + std::to_string(settings.mix_doors) + std::to_string(settings.randomize_door_entrances) +std::to_string(settings.randomize_misc_entrances) +std::to_string(settings.mix_misc));
+
     // Determine entrance pools based on settings, to be shuffled in the order we set them by
     EntrancePools entrancePools = {};
 
@@ -761,7 +762,6 @@ EntrancePools createEntrancePools(World& world, std::set<EntranceType>& poolsToM
         
         // include fairy fountains with caves
         if(settings.randomize_cave_entrances == ShuffleCaveEntrances::CavesFairies) {
-            Utility::platformLog("w");
             auto fairyEntrances = world.getShuffleableEntrances(EntranceType::FAIRY, true);
             addElementsToPool(entrancePools[EntranceType::CAVE], fairyEntrances);
         }
@@ -936,13 +936,18 @@ EntranceShuffleError randomizeEntrances(WorldPool& worlds)
         auto entrancePools = createEntrancePools(world, poolsToMix);
         auto targetEntrancePools = createTargetEntrances(entrancePools);
 
+        Utility::platformLog("hi 1");
+
         // Set Plandomized entrances at this point
         err = setPlandomizerEntrances(world, worlds, entrancePools, targetEntrancePools, poolsToMix);
+                Utility::platformLog("hi 2");
+
         if (err != EntranceShuffleError::NONE)
         {
             LOG_TO_DEBUG("| Encountered when setting plandomizer entrances");
             return err;
         }
+        Utility::platformLog("hi 3");
 
         // Shuffle the entrances
         for (auto& [type, entrancePool] : entrancePools)
@@ -954,16 +959,20 @@ EntranceShuffleError randomizeEntrances(WorldPool& worlds)
                 return err;
             }
         }
+        Utility::platformLog("hi 4");
 
         // Now set the islands the dungeons are in
         for (auto& [name, dungeon] : world.dungeons)
         {
             dungeon.islands = dungeon.startingArea->findIslands();
         }
+        Utility::platformLog("hi 5");
+
     }
 
     // Validate the worlds one last time to ensure everything went okay
     ENTRANCE_SHUFFLE_ERROR_CHECK(validateWorld(worlds, nullptr, completeItemPool));
+        Utility::platformLog("hi 6");
 
     return EntranceShuffleError::NONE;
 }

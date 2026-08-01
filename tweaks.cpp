@@ -4371,7 +4371,7 @@ TweakError apply_necessary_post_randomization_tweaks(World& world/* , const bool
     TWEAK_ERR_CHECK(add_ganons_tower_warp_to_ff2());
     TWEAK_ERR_CHECK(add_more_magic_jars());
     TWEAK_ERR_CHECK(add_pirate_ship_to_windfall());
-    TWEAK_ERR_CHECK(update_required_bosses(world));
+    //TWEAK_ERR_CHECK(update_required_bosses(world)); TODO: properly implement this
     TWEAK_ERR_CHECK(add_hint_signs());
     TWEAK_ERR_CHECK(prevent_reverse_door_softlocks());
     TWEAK_ERR_CHECK(add_barren_dungeon_hint_triggers(world));
