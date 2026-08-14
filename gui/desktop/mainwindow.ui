@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="autoFillBackground">
-   <bool>false</bool>
+   <bool>true</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -69,7 +69,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>6</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="getting_started_tab">
            <attribute name="title">
@@ -2431,7 +2431,7 @@ color: lightgray</string>
              </rect>
             </property>
             <property name="currentIndex">
-             <number>2</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="overworld_page">
              <property name="cursor">
@@ -2497,7 +2497,7 @@ color: lightgray</string>
                <cursorShape>ArrowCursor</cursorShape>
               </property>
               <property name="autoFillBackground">
-               <bool>false</bool>
+               <bool>true</bool>
               </property>
               <property name="styleSheet">
                <string notr="true"/>
@@ -2721,6 +2721,9 @@ font-size: 15px;</string>
                    <width>360</width>
                    <height>290</height>
                   </size>
+                 </property>
+                 <property name="autoFillBackground">
+                  <bool>false</bool>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">background: transparent;</string>
@@ -3338,7 +3341,7 @@ color: lightgray</string>
               <x>10</x>
               <y>550</y>
               <width>421</width>
-              <height>131</height>
+              <height>141</height>
              </rect>
             </property>
             <property name="styleSheet">
@@ -3453,6 +3456,44 @@ background-color: rgba(255, 255, 255, 0);
              </property>
              <property name="text">
               <string>Player Name:</string>
+             </property>
+            </widget>
+            <widget class="QLabel" name="label_13">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>100</y>
+               <width>131</width>
+               <height>21</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(0, 0, 0);
+font: 12pt &quot;Segoe UI&quot;;
+background-color: rgba(255, 255, 255, 0);
+</string>
+             </property>
+             <property name="text">
+              <string>Server Password:</string>
+             </property>
+            </widget>
+            <widget class="QLineEdit" name="ap_password">
+             <property name="geometry">
+              <rect>
+               <x>140</x>
+               <y>100</y>
+               <width>261</width>
+               <height>24</height>
+              </rect>
+             </property>
+             <property name="autoFillBackground">
+              <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgba(255,255,255,255); color: black;</string>
+             </property>
+             <property name="placeholderText">
+              <string>leave blank if the server doesn't require one</string>
              </property>
             </widget>
            </widget>

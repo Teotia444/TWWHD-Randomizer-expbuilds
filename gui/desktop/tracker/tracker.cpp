@@ -1015,7 +1015,7 @@ void MainWindow::check_special_accessibility_conditions()
     auto& trackerWorld = trackerWorlds[0];
     auto startingItems = trackerWorld.getStartingItems();
 
-    if (trackerWorld.locationTable["Forsaken Fortress - Helmaroc King Heart Container"]->marked)
+    /*if (trackerWorld.locationTable["Forsaken Fortress - Helmaroc King Heart Container"]->marked)
     {
         auto songOfPassing = Item(GameItem::SongOfPassing, &trackerWorld);
         if (elementInPool(songOfPassing, trackerInventory) || elementInPool(songOfPassing, startingItems)) {
@@ -1041,7 +1041,7 @@ void MainWindow::check_special_accessibility_conditions()
         {
             trackerWorld.locationTable["Mailbox - Letter from Baito"]->hasBeenFound = true;
         }
-    }
+    }*/
 
     // If chart randomization is on, the tracker logic uses the world's chart mappings and not just the tracked ones
     // That can leak the mappings, so set the location as inaccessible as long as its chart mapping is not tracked

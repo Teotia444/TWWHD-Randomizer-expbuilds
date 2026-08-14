@@ -1451,7 +1451,7 @@ void MainWindow::on_ap_connected(){
     version.insert("build", 7);
 
     connectData.insert("cmd", "Connect");
-    connectData.insert("password", "");
+    connectData.insert("password", ui->ap_password->text().isEmpty() ? "" : ui->ap_password->text());
     connectData.insert("game", "The Wind Waker HD");
     connectData.insert("name", ui->ap_player_name->text());
     connectData.insert("uuid", "61564a12-71bb-40ae-93df-94f0550c1e69");
