@@ -31,58 +31,58 @@ void SeedPage::open() {
 void SeedPage::close() {}
 
 bool SeedPage::update() {
-    if(typing_seed || typing_perma) {
-        bool update = board.update();
-        if(board.isClosed()) {
-            if(const std::optional<std::string>& input = board.getInput(); input.has_value()) {
-                const std::string str = input.value();
-                if(typing_seed) {
-                    OptionCB::setSeed(str);
-                }
-                else if(typing_perma) {
-                    OptionCB::loadPermalink(str);
-                }
-            }
-
-            typing_seed = false;
-            typing_perma = false;
-
-            return true;
-        }
-        
-        return update;
-    }
-
-    if(InputManager::getInstance().pressed(ButtonInfo::A)) {
-        OptionCB::changeSeed();
-        return true;
-    }
-    else if(InputManager::getInstance().pressed(ButtonInfo::X)) {
-        typing_seed = true;
-        board.open("Seed", "", getSeed(), std::nullopt);
-
-        return true;
-    }
-    else if(InputManager::getInstance().pressed(ButtonInfo::Y)) {
-        typing_perma = true;
-        board.open("Permalink", "", "", std::nullopt); // would be annoying to backspace a ton of permalink
-
-        return true;
-    }
-
-    if(!InputManager::getInstance().held(ButtonInfo::B)) {
-        resetTimer();
-
-        return true;
-    }
-    else {
-        if(Clock::now() >= resetTime) {
-            OptionCB::resetInternal();
-            resetTimer();
-        }
-
-        return true;
-    }
+    // if(typing_seed || typing_perma) {
+    //     bool update = board.update();
+    //     if(board.isClosed()) {
+    //         if(const std::optional<std::string>& input = board.getInput(); input.has_value()) {
+    //             const std::string str = input.value();
+    //             if(typing_seed) {
+    //                 OptionCB::setSeed(str);
+    //             }
+    //             else if(typing_perma) {
+    //                 OptionCB::loadPermalink(str);
+    //             }
+    //         }
+// 
+    //         typing_seed = false;
+    //         typing_perma = false;
+// 
+    //         return true;
+    //     }
+    //     
+    //     return update;
+    // }
+// 
+    // if(InputManager::getInstance().pressed(ButtonInfo::A)) {
+    //     OptionCB::changeSeed();
+    //     return true;
+    // }
+    // else if(InputManager::getInstance().pressed(ButtonInfo::X)) {
+    //     typing_seed = true;
+    //     board.open("Seed", "", getSeed(), std::nullopt);
+// 
+    //     return true;
+    // }
+    // else if(InputManager::getInstance().pressed(ButtonInfo::Y)) {
+    //     typing_perma = true;
+    //     board.open("Permalink", "", "", std::nullopt); // would be annoying to backspace a ton of permalink
+// 
+    //     return true;
+    // }
+// 
+    // if(!InputManager::getInstance().held(ButtonInfo::B)) {
+    //     resetTimer();
+// 
+    //     return true;
+    // }
+    // else {
+    //     if(Clock::now() >= resetTime) {
+    //         OptionCB::resetInternal();
+    //         resetTimer();
+    //     }
+// 
+    //     return true;
+    // }
 
     return false;
 }
@@ -94,22 +94,23 @@ void SeedPage::drawTV() const {
         board.drawTV(PAGE_FIRST_ROW, 0);
     }
     else {
-        OSScreenPutFontEx(SCREEN_TV, 0, PAGE_FIRST_ROW, ("The current seed is \"" + getSeed() + "\". Hash: " + getSeedHash()).c_str());
-        OSScreenPutFontEx(SCREEN_TV, 0, PAGE_FIRST_ROW + 1, "Press A to generate a new seed, press X to enter manually");
+        // OSScreenPutFontEx(SCREEN_TV, 0, PAGE_FIRST_ROW, ("The current seed is \"" + getSeed() + "\". Hash: " + getSeedHash()).c_str());
+        // OSScreenPutFontEx(SCREEN_TV, 0, PAGE_FIRST_ROW + 1, "Press A to generate a new seed, press X to enter manually");
 
-        const std::vector<std::string>& permaLines = wrap_string("Permalink: \"" + getPermalink() + "\".", ScreenSizeData::tv_line_length);
-        for(size_t i = 0; i < permaLines.size(); i++) {
-            OSScreenPutFontEx(SCREEN_TV, 0, 6 + i, permaLines[i].c_str());
-        }
-        OSScreenPutFontEx(SCREEN_TV, 0, 6 + permaLines.size(),  "Press Y to enter a new permalink");
+        // const std::vector<std::string>& permaLines = wrap_string("Permalink: \"" + getPermalink() + "\".", ScreenSizeData::tv_line_length);
+        // for(size_t i = 0; i < permaLines.size(); i++) {
+        //     OSScreenPutFontEx(SCREEN_TV, 0, 6 + i, permaLines[i].c_str());
+        // }
+        // OSScreenPutFontEx(SCREEN_TV, 0, 6 + permaLines.size(),  "Press Y to enter a new permalink");
 
         // (total time - (final time - current time)) / (total duration / 10) = fraction of total in 10 increments
-        const std::chrono::milliseconds remaining = 3s - std::chrono::duration_cast<std::chrono::milliseconds>(resetTime - Clock::now());
-        const size_t count = remaining.count() / 300;
-        std::string bar(10, ' ');
-        bar.replace(0, count, count, '-');
-        OSScreenPutFontEx(SCREEN_TV, 0, 6 + permaLines.size() + 2, ("Hold B to reset all settings to default [" + bar + "]").c_str());
-
+        // const std::chrono::milliseconds remaining = 3s - std::chrono::duration_cast<std::chrono::milliseconds>(resetTime - Clock::now());
+        // const size_t count = remaining.count() / 300;
+        // std::string bar(10, ' ');
+        // bar.replace(0, count, count, '-');
+        //OSScreenPutFontEx(SCREEN_TV, 0, 6 + permaLines.size() + 2, ("Hold B to reset all settings to default [" + bar + "]").c_str());
+        if(!wasAptwwhdLoaded()) OSScreenPutFontEx(SCREEN_TV, 0, PAGE_FIRST_ROW, ("No valid APTWWHD file was loaded! Please check your sd card before attempting generation."));
+        else OSScreenPutFontEx(SCREEN_TV, 0, PAGE_FIRST_ROW, ("Found the APTWWHD file! Generate with Start (+)."));
         const std::vector<std::string>& warnLines = wrap_string(warnings, ScreenSizeData::tv_line_length);
         const size_t startLine = ScreenSizeData::tv_num_lines - 3 - warnLines.size();
         for(size_t i = 0; i < warnLines.size(); i++) {
@@ -1740,7 +1741,7 @@ bool MetaPage::update() {
 }
 
 void MetaPage::drawTV() const {
-    const std::vector<std::string>& lines = wrap_string("Written by csunday95, gymnast86, and SuperDude88.\n\nIf you get stuck, check the seed's spoiler log in " + savePath + ".\nReport any issues in the Discord server or create a GitHub issue.", ScreenSizeData::tv_line_length);
+    const std::vector<std::string>& lines = wrap_string("Written by csunday95, gymnast86, and SuperDude88. AP Modifications by Teotia444. \n\nIf you get stuck, check the seed's spoiler log in the AP server.\nReport any issues in the Archipelago Discord server or create a GitHub issue.", ScreenSizeData::tv_line_length);
 
     for(size_t i = 0; i < lines.size(); i++) {
         OSScreenPutFontEx(SCREEN_TV, 0, PAGE_FIRST_ROW + i, lines[i].c_str());

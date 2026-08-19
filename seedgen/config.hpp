@@ -10,6 +10,7 @@
 
 enum struct [[nodiscard]] ConfigError {
     NONE = 0,
+    MISSING_APTWWHD,
     COULD_NOT_OPEN,
     MISSING_KEY,
     DIFFERENT_FILE_VERSION,
@@ -47,6 +48,7 @@ public:
     bool converted = false;
     bool updated = false;
     bool configSet = false;
+    bool aptwwhdLoadedCorrectly = false;
 
     Config();
     

@@ -881,8 +881,15 @@ namespace OptionCB {
         LOG_AND_RETURN_IF_ERR(Config::writeDefault(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml"));
 
         Utility::platformLog("Loading config into UI");
-        LOG_AND_RETURN_IF_ERR(conf.loadFromFile(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml", true)); // ignore errors, attempt to convert
-
+        ConfigError err = conf.loadFromFile(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml", true); // ignore errors, attempt to convert
+        if(err != ConfigError::NONE){
+            if(err == ConfigError::MISSING_APTWWHD){
+                conf.aptwwhdLoadedCorrectly = false;
+            }
+            else LOG_AND_RETURN_IF_ERR(err);
+            return ConfigError::NONE;
+        }
+        conf.aptwwhdLoadedCorrectly = true;
         return ConfigError::NONE;
     }
     
@@ -897,6 +904,10 @@ bool wasUpdated() {
 
 bool wasConverted() {
     return conf.converted;
+}
+
+bool wasAptwwhdLoaded() {
+    return conf.aptwwhdLoadedCorrectly;
 }
 
 std::string getSeed() {

@@ -129,7 +129,7 @@ void Settings::resetDefaultSettings() {
 void Settings::resetDefaultPreferences(const bool& paths) {
     if(paths) {
         #ifdef DEVKITPRO
-            plandomizerFile = Utility::get_app_save_path() / "plandomizer.yaml";
+            plandomizerFile = Utility::get_app_save_path() / "world.aptwwhd";
         #else
             plandomizerFile.clear();
         #endif

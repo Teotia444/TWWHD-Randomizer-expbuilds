@@ -138,6 +138,7 @@ namespace ColorCB {
 
 bool wasUpdated();
 bool wasConverted();
+bool wasAptwwhdLoaded();
 std::string getSeed();
 std::string getSeedHash();
 std::string getPermalink();

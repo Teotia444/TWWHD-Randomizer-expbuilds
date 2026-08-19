@@ -95,46 +95,8 @@ ConfigError Config::loadFromFile(const fspath& filePath, const fspath& preferenc
         LOG_ERR_AND_RETURN(ConfigError::COULD_NOT_OPEN);
     }
 
-
+    bool openedAPTWWHDFile = true;
     std::string plandoTemp;
-    GET_FIELD_NO_FAIL(preferencesRoot, "plandomizerFile", plandoTemp)
-
-    mz_zip_archive zip;
-    memset(&zip, 0, sizeof(zip));
-    Utility::platformLog("Found the APTWWHD file at: " + plandoTemp);
-    
-    if (!mz_zip_reader_init_file(&zip, plandoTemp.c_str() , 0)) return ConfigError::COULD_NOT_OPEN;
-
-    int plando_idx = mz_zip_reader_locate_file(&zip, "plando", nullptr, 0);
-    if (plando_idx < 0) {
-        mz_zip_reader_end(&zip);
-        return ConfigError::COULD_NOT_OPEN;
-    }
-    size_t plando_size = 0;
-    void* plando_data = mz_zip_reader_extract_to_heap(&zip, plando_idx, &plando_size, 0);
-
-    std::string plandoText((char*)plando_data, plando_size);
-
-    mz_free(plando_data);
-    
-    apPlando = YAML::Load(plandoText);
-    root = apPlando;
-    mz_zip_reader_end(&zip);
-    if(root.IsNull()) {
-        Utility::platformLog("Could not read the plando file");
-        return ConfigError::COULD_NOT_OPEN;
-    }
-
-    /*std::string rando_version, file_version;
-    GET_FIELD(root, "program_version", rando_version)
-    GET_FIELD(root, "file_version", file_version)
-
-    if(file_version != CONFIG_VERSION) {
-        converted = true;
-
-        Utility::platformLog("Attempted to load config version " + file_version + ", current version is " CONFIG_VERSION);
-        if(!ignoreErrors) LOG_ERR_AND_RETURN(ConfigError::DIFFERENT_FILE_VERSION);
-    }*/
 
     // hardcode paths for console, otherwise use config
     #ifdef DEVKITPRO
@@ -142,7 +104,7 @@ ConfigError Config::loadFromFile(const fspath& filePath, const fspath& preferenc
         /* out.gameBaseDir = "storage_mlc01:/usr/title/00050000/10143500"; */
         /* out.outputDir = "storage_mlc01:/usr/title/00050000/10143599"; */
 
-        settings.plandomizerFile = Utility::get_app_save_path() / "plandomizer.yaml";
+        settings.plandomizerFile = Utility::get_app_save_path() / "world.aptwwhd";
     #else
         std::string baseTemp, outTemp;
         GET_FIELD_NO_FAIL(preferencesRoot, "gameBaseDir", baseTemp)
@@ -153,242 +115,284 @@ ConfigError Config::loadFromFile(const fspath& filePath, const fspath& preferenc
         outputDir = Utility::Str::toUTF16(outTemp);
         settings.plandomizerFile = Utility::Str::toUTF16(plandoTemp);
     #endif
-
-    if(!root["game_version"]) {
-        //if(!ignoreErrors) LOG_ERR_AND_RETURN(ConfigError::MISSING_KEY);
-        settings.game_version = GameVersion::HD;
-    }
-    else {
-        settings.game_version = nameToGameVersion(root["game_version"].as<std::string>("INVALID"));
-        if (settings.game_version == GameVersion::INVALID) {
-            if(!ignoreErrors) {
-                LOG_ERR_AND_RETURN(ConfigError::INVALID_VALUE);
-            }
-            else {
-                settings.game_version = GameVersion::HD;
-            }
-        }
-    }
-
-    GET_FIELD_NO_FAIL(root, "Seed", seed)
-
-    if(!root["Options"]["progression_dungeons"]) {
-        if(!ignoreErrors) LOG_ERR_AND_RETURN(ConfigError::MISSING_KEY);
-    }
-    else {
-        settings.progression_dungeons = static_cast<ProgressionDungeons>(root["Options"]["progression_dungeons"].as<int>(3));
-        if (settings.progression_dungeons == ProgressionDungeons::INVALID) {
-            if(!ignoreErrors) {
-                LOG_ERR_AND_RETURN(ConfigError::INVALID_VALUE);
-            }
-            else {
-                settings.progression_dungeons = ProgressionDungeons::Standard;
-            }
-        }
-    }
-    GET_AP_FIELD(root, "progression_great_fairies", "Options", settings.progression_great_fairies)
-    GET_AP_FIELD(root, "progression_puzzle_secret_caves", "Options", settings.progression_puzzle_secret_caves)
-    GET_AP_FIELD(root, "progression_combat_secret_caves", "Options", settings.progression_combat_secret_caves)
-    GET_AP_FIELD(root, "progression_short_sidequests", "Options", settings.progression_short_sidequests)
-    GET_AP_FIELD(root, "progression_long_sidequests", "Options", settings.progression_long_sidequests)
-    GET_AP_FIELD(root, "progression_spoils_trading", "Options", settings.progression_spoils_trading)
-    GET_AP_FIELD(root, "progression_minigames", "Options", settings.progression_minigames)
-    GET_AP_FIELD(root, "progression_free_gifts", "Options", settings.progression_free_gifts)
-    GET_AP_FIELD(root, "progression_mail", "Options", settings.progression_mail)
-    GET_AP_FIELD(root, "progression_platforms_rafts", "Options", settings.progression_platforms_rafts)
-    GET_AP_FIELD(root, "progression_submarines", "Options", settings.progression_submarines)
-    GET_AP_FIELD(root, "progression_eye_reef_chests", "Options", settings.progression_eye_reef_chests)
-    GET_AP_FIELD(root, "progression_big_octos_gunboats", "Options", settings.progression_big_octos_gunboats)
-    GET_AP_FIELD(root, "progression_triforce_charts", "Options", settings.progression_triforce_charts)
-    GET_AP_FIELD(root, "progression_treasure_charts", "Options", settings.progression_treasure_charts)
-    GET_AP_FIELD(root, "progression_expensive_purchases", "Options", settings.progression_expensive_purchases)
-    GET_AP_FIELD(root, "progression_misc", "Options", settings.progression_misc)
-    GET_AP_FIELD(root, "progression_tingle_chests", "Options", settings.progression_tingle_chests)
-    GET_AP_FIELD(root, "progression_battlesquid", "Options", settings.progression_battlesquid)
-    GET_AP_FIELD(root, "progression_savage_labyrinth", "Options", settings.progression_savage_labyrinth)
-    GET_AP_FIELD(root, "progression_island_puzzles", "Options", settings.progression_island_puzzles)
-    GET_AP_FIELD(root, "progression_dungeon_secrets", "Options", settings.progression_dungeon_secrets)
-    //GET_AP_FIELD(root, "progression_obscure", "Options", settings.progression_obscure)
-    settings.progression_obscure = false;
     
-    GET_AP_FIELD(root, "randomize_charts", "Options", settings.randomize_charts)
-    GET_AP_FIELD(root, "randomize_starting_island", "Options", settings.randomize_starting_island)
-    GET_AP_FIELD(root, "randomize_dungeon_entrances", "Options", settings.randomize_dungeon_entrances)
-    GET_AP_FIELD(root, "randomize_boss_entrances", "Options", settings.randomize_boss_entrances)
-    GET_AP_FIELD(root, "randomize_miniboss_entrances", "Options", settings.randomize_miniboss_entrances)
-    if(!root["Options"]["randomize_secret_cave_entrances"]) {
-        if(!ignoreErrors) LOG_ERR_AND_RETURN(ConfigError::MISSING_KEY);
+
+    GET_FIELD_NO_FAIL(preferencesRoot, "plandomizerFile", plandoTemp)
+    if(plandoTemp.empty()) {
+        resetDefaultSettings();
+        openedAPTWWHDFile = false;
     }
-    else {
-        int secret_cave, fairy_fountain, inner_cave;
-        GET_AP_FIELD(root, "randomize_secret_cave_entrances", "Options", secret_cave)
-        GET_AP_FIELD(root, "randomize_fairy_fountain_entrances", "Options", fairy_fountain)
-        GET_AP_FIELD(root, "randomize_secret_cave_inner_entrances", "Options", inner_cave)
 
-        if(secret_cave != 0 || inner_cave != 0) settings.randomize_cave_entrances = ShuffleCaveEntrances::Caves;
-        else settings.randomize_cave_entrances = ShuffleCaveEntrances::Disabled;
-        if(fairy_fountain != 0) settings.randomize_cave_entrances = ShuffleCaveEntrances::CavesFairies;
+    mz_zip_archive zip;
+    memset(&zip, 0, sizeof(zip));
+    Utility::platformLog("Found the APTWWHD file at: " + plandoTemp);
+    
+    if (!mz_zip_reader_init_file(&zip, plandoTemp.c_str() , 0)) openedAPTWWHDFile = false;
+    int plando_idx = mz_zip_reader_locate_file(&zip, "plando", nullptr, 0);
+    if (plando_idx < 0) {
+        mz_zip_reader_end(&zip);
+        openedAPTWWHDFile = false;
+    }
+    size_t plando_size = 0;
+    void* plando_data = mz_zip_reader_extract_to_heap(&zip, plando_idx, &plando_size, 0);
+    std::string plandoText((char*)plando_data, plando_size);
+    mz_free(plando_data);
+    apPlando = YAML::Load(plandoText);
+    root = apPlando;
+    mz_zip_reader_end(&zip);
+    if(root.IsNull()) {
+        Utility::platformLog("Could not read the plando file");
+        openedAPTWWHDFile = false;
+    }
+    if(openedAPTWWHDFile) {
+        /*std::string rando_version, file_version;
+        GET_FIELD(root, "program_version", rando_version)
+        GET_FIELD(root, "file_version", file_version)
 
-        Utility::platformLog("caves mode: " + std::to_string((int)settings.randomize_cave_entrances));
+        if(file_version != CONFIG_VERSION) {
+            converted = true;
 
-        if (settings.randomize_cave_entrances == ShuffleCaveEntrances::INVALID) {
-            if(!ignoreErrors) {
-                LOG_ERR_AND_RETURN(ConfigError::INVALID_VALUE);
-            }
-            else {
-                settings.randomize_cave_entrances = ShuffleCaveEntrances::Disabled;
+            Utility::platformLog("Attempted to load config version " + file_version + ", current version is " CONFIG_VERSION);
+            if(!ignoreErrors) LOG_ERR_AND_RETURN(ConfigError::DIFFERENT_FILE_VERSION);
+        }*/
+
+
+        if(!root["game_version"]) {
+            //if(!ignoreErrors) LOG_ERR_AND_RETURN(ConfigError::MISSING_KEY);
+            settings.game_version = GameVersion::HD;
+        }
+        else {
+            settings.game_version = nameToGameVersion(root["game_version"].as<std::string>("INVALID"));
+            if (settings.game_version == GameVersion::INVALID) {
+                if(!ignoreErrors) {
+                    LOG_ERR_AND_RETURN(ConfigError::INVALID_VALUE);
+                }
+                else {
+                    settings.game_version = GameVersion::HD;
+                }
             }
         }
-    }
-    //GET_FIELD(root, "randomize_door_entrances", settings.randomize_door_entrances)
 
-    GET_AP_FIELD(root, "randomize_secret_cave_inner_entrances", "Options", settings.randomize_misc_entrances)
-    bool mix;
-    GET_AP_FIELD(root, "mix_entrances", "Options", mix)
-    settings.mix_dungeons = mix;
-    settings.mix_bosses = mix;
-    settings.mix_minibosses = mix;
-    settings.mix_caves = mix;
-    settings.mix_doors = mix;
-    settings.mix_misc = mix;
-    settings.decouple_entrances = mix;
+        GET_FIELD_NO_FAIL(root, "Seed", seed)
 
-    //GET_FIELD(root, "mix_dungeons", settings.mix_dungeons)
-    //GET_FIELD(root, "mix_bosses", settings.mix_bosses)
-    //GET_FIELD(root, "mix_minibosses", settings.mix_minibosses)
-    //GET_FIELD(root, "mix_caves", settings.mix_caves)
-    //GET_FIELD(root, "mix_doors", settings.mix_doors)
-    //GET_FIELD(root, "mix_misc", settings.mix_misc)
-    //GET_FIELD(root, "decouple_entrances", settings.decouple_entrances)
-
-    //GET_FIELD(root, "ho_ho_hints", settings.ho_ho_hints)
-    //GET_FIELD(root, "ho_ho_triforce_hints", settings.ho_ho_triforce_hints)
-    //GET_FIELD(root, "korl_hints", settings.korl_hints)
-    //GET_FIELD(root, "korl_sword_hints", settings.korl_sword_hints)
-    //GET_FIELD(root, "kreeb_bow_hints", settings.kreeb_bow_hints)
-    //GET_FIELD(root, "clearer_hints", settings.clearer_hints)
-    //GET_FIELD(root, "use_always_hints", settings.use_always_hints)
-    //GET_FIELD(root, "hint_importance", settings.hint_importance)
-    //GET_FIELD(root, "path_hints", settings.path_hints)
-    //GET_FIELD(root, "barren_hints", settings.barren_hints)
-    //GET_FIELD(root, "item_hints", settings.item_hints)
-    //GET_FIELD(root, "location_hints", settings.location_hints)
-
-    settings.path_hints = 0;
-    settings.barren_hints = 0;
-    settings.item_hints = 0;
-    settings.location_hints = 0; //TODO: hints!
-
-
-    GET_AP_FIELD(root, "instant_text_boxes", "Options", settings.instant_text_boxes)
-    //GET_FIELD(root, "fix_rng", settings.fix_rng)
-    //GET_FIELD(root, "performance", settings.performance) TODO: those options
-    GET_AP_FIELD(root, "reveal_full_sea_chart", "Options", settings.reveal_full_sea_chart)
-    GET_AP_FIELD(root, "add_shortcut_warps_between_dungeons", "Options", settings.add_shortcut_warps_between_dungeons)
-    GET_AP_FIELD(root, "skip_rematch_bosses", "Options", settings.skip_rematch_bosses)
-    //GET_AP_FIELD(root, "invert_sea_compass_x_axis", "Options", settings.invert_sea_compass_x_axis)
-    GET_AP_FIELD(root, "num_required_bosses", "Options", settings.num_required_dungeons)
-    //GET_AP_FIELD(root, "damage_multiplier", "Options", settings.damage_multiplier);
-    //GET_AP_FIELD(root, "chest_type_matches_contents", "Options", settings.chest_type_matches_contents)
-    int swordMode;
-    GET_AP_FIELD(root, "sword_mode", "Options", swordMode)
-    if(swordMode == 3 || swordMode == 4) settings.remove_swords = true;
-    else settings.remove_swords = false;
-    //GET_AP_FIELD(root, "required_boss_items", "Options", settings.required_boss_items)
-
-    //GET_FIELD(root, "starting_pohs", settings.starting_pohs)
-    //GET_FIELD(root, "starting_hcs", settings.starting_hcs)
-    //GET_FIELD(root, "starting_joy_pendants", settings.starting_joy_pendants)
-    //GET_FIELD(root, "starting_skull_necklaces", settings.starting_skull_necklaces)
-    //GET_FIELD(root, "starting_boko_baba_seeds", settings.starting_boko_baba_seeds)
-    //GET_FIELD(root, "starting_golden_feathers", settings.starting_golden_feathers)
-    //GET_FIELD(root, "starting_knights_crests", settings.starting_knights_crests)
-    //GET_FIELD(root, "starting_red_chu_jellys", settings.starting_red_chu_jellys)
-    //GET_FIELD(root, "starting_green_chu_jellys", settings.starting_green_chu_jellys)
-    //GET_FIELD(root, "starting_blue_chu_jellys", settings.starting_blue_chu_jellys)
-    GET_AP_FIELD(root, "remove_music", "Options", settings.remove_music)
-
-    //GET_FIELD(root, "do_not_generate_spoiler_log", settings.do_not_generate_spoiler_log)
-    //GET_FIELD(root, "start_with_random_item", settings.start_with_random_item)
-    //GET_FIELD(root, "random_item_slide_item", settings.random_item_slide_item)
-    GET_AP_FIELD(root, "classic_mode", "Options", settings.classic_mode)
-    settings.plandomizer = true;
-
-    //GET_FIELD(root, "open_drc", settings.open_drc)
-    //GET_FIELD(root, "progressive_magic_always_double", settings.progressive_magic_always_double)
-
-    /*if(!preferencesRoot["pig_color"])  {
-        if(!ignoreErrors) LOG_ERR_AND_RETURN(ConfigError::MISSING_KEY);
-    }
-    else {
-        settings.pig_color = nameToPigColor(preferencesRoot["pig_color"].as<std::string>("INVALID"));
-        if(settings.pig_color == PigColor::INVALID) {
-            if (!ignoreErrors) {
-                LOG_ERR_AND_RETURN(ConfigError::INVALID_VALUE);
-            }
-            else {
-                settings.pig_color = PigColor::Random;
+        if(!root["Options"]["progression_dungeons"]) {
+            if(!ignoreErrors) LOG_ERR_AND_RETURN(ConfigError::MISSING_KEY);
+        }
+        else {
+            settings.progression_dungeons = static_cast<ProgressionDungeons>(root["Options"]["progression_dungeons"].as<int>(3));
+            if (settings.progression_dungeons == ProgressionDungeons::INVALID) {
+                if(!ignoreErrors) {
+                    LOG_ERR_AND_RETURN(ConfigError::INVALID_VALUE);
+                }
+                else {
+                    settings.progression_dungeons = ProgressionDungeons::Standard;
+                }
             }
         }
-    }*/
+        GET_AP_FIELD(root, "progression_great_fairies", "Options", settings.progression_great_fairies)
+        GET_AP_FIELD(root, "progression_puzzle_secret_caves", "Options", settings.progression_puzzle_secret_caves)
+        GET_AP_FIELD(root, "progression_combat_secret_caves", "Options", settings.progression_combat_secret_caves)
+        GET_AP_FIELD(root, "progression_short_sidequests", "Options", settings.progression_short_sidequests)
+        GET_AP_FIELD(root, "progression_long_sidequests", "Options", settings.progression_long_sidequests)
+        GET_AP_FIELD(root, "progression_spoils_trading", "Options", settings.progression_spoils_trading)
+        GET_AP_FIELD(root, "progression_minigames", "Options", settings.progression_minigames)
+        GET_AP_FIELD(root, "progression_free_gifts", "Options", settings.progression_free_gifts)
+        GET_AP_FIELD(root, "progression_mail", "Options", settings.progression_mail)
+        GET_AP_FIELD(root, "progression_platforms_rafts", "Options", settings.progression_platforms_rafts)
+        GET_AP_FIELD(root, "progression_submarines", "Options", settings.progression_submarines)
+        GET_AP_FIELD(root, "progression_eye_reef_chests", "Options", settings.progression_eye_reef_chests)
+        GET_AP_FIELD(root, "progression_big_octos_gunboats", "Options", settings.progression_big_octos_gunboats)
+        GET_AP_FIELD(root, "progression_triforce_charts", "Options", settings.progression_triforce_charts)
+        GET_AP_FIELD(root, "progression_treasure_charts", "Options", settings.progression_treasure_charts)
+        GET_AP_FIELD(root, "progression_expensive_purchases", "Options", settings.progression_expensive_purchases)
+        GET_AP_FIELD(root, "progression_misc", "Options", settings.progression_misc)
+        GET_AP_FIELD(root, "progression_tingle_chests", "Options", settings.progression_tingle_chests)
+        GET_AP_FIELD(root, "progression_battlesquid", "Options", settings.progression_battlesquid)
+        GET_AP_FIELD(root, "progression_savage_labyrinth", "Options", settings.progression_savage_labyrinth)
+        GET_AP_FIELD(root, "progression_island_puzzles", "Options", settings.progression_island_puzzles)
+        GET_AP_FIELD(root, "progression_dungeon_secrets", "Options", settings.progression_dungeon_secrets)
+        //GET_AP_FIELD(root, "progression_obscure", "Options", settings.progression_obscure)
+        settings.progression_obscure = false;
 
-    if(!root["Options"]["randomize_smallkeys"]) {
-        if(!ignoreErrors) LOG_ERR_AND_RETURN(ConfigError::MISSING_KEY);
-    }
-    else {
-        int setting = root["Options"]["randomize_smallkeys"].as<int>(0);
-        if(setting >= 1) settings.dungeon_small_keys = PlacementOption::Vanilla;
-        if(setting >= 2) settings.dungeon_small_keys = PlacementOption::OwnDungeon;
-        if(setting >= 3) settings.dungeon_small_keys = PlacementOption::AnyDungeon;
-        if(setting >= 4) settings.dungeon_small_keys = PlacementOption::Keysanity;
+        GET_AP_FIELD(root, "randomize_charts", "Options", settings.randomize_charts)
+        GET_AP_FIELD(root, "randomize_starting_island", "Options", settings.randomize_starting_island)
+        GET_AP_FIELD(root, "randomize_dungeon_entrances", "Options", settings.randomize_dungeon_entrances)
+        GET_AP_FIELD(root, "randomize_boss_entrances", "Options", settings.randomize_boss_entrances)
+        GET_AP_FIELD(root, "randomize_miniboss_entrances", "Options", settings.randomize_miniboss_entrances)
+        if(!root["Options"]["randomize_secret_cave_entrances"]) {
+            if(!ignoreErrors) LOG_ERR_AND_RETURN(ConfigError::MISSING_KEY);
+        }
+        else {
+            int secret_cave, fairy_fountain, inner_cave;
+            GET_AP_FIELD(root, "randomize_secret_cave_entrances", "Options", secret_cave)
+            GET_AP_FIELD(root, "randomize_fairy_fountain_entrances", "Options", fairy_fountain)
+            GET_AP_FIELD(root, "randomize_secret_cave_inner_entrances", "Options", inner_cave)
 
-        if(settings.dungeon_small_keys == PlacementOption::INVALID) {
-            if (!ignoreErrors) {
-                LOG_ERR_AND_RETURN(ConfigError::INVALID_VALUE);
-            }
-            else {
-                settings.dungeon_small_keys = PlacementOption::Vanilla;
+            if(secret_cave != 0 || inner_cave != 0) settings.randomize_cave_entrances = ShuffleCaveEntrances::Caves;
+            else settings.randomize_cave_entrances = ShuffleCaveEntrances::Disabled;
+            if(fairy_fountain != 0) settings.randomize_cave_entrances = ShuffleCaveEntrances::CavesFairies;
+
+            Utility::platformLog("caves mode: " + std::to_string((int)settings.randomize_cave_entrances));
+
+            if (settings.randomize_cave_entrances == ShuffleCaveEntrances::INVALID) {
+                if(!ignoreErrors) {
+                    LOG_ERR_AND_RETURN(ConfigError::INVALID_VALUE);
+                }
+                else {
+                    settings.randomize_cave_entrances = ShuffleCaveEntrances::Disabled;
+                }
             }
         }
-    }
+        //GET_FIELD(root, "randomize_door_entrances", settings.randomize_door_entrances)
 
-    if(!root["Options"]["randomize_bigkeys"]) {
-        if(!ignoreErrors) LOG_ERR_AND_RETURN(ConfigError::MISSING_KEY);
-    }
-    else {
-        int setting = root["Options"]["randomize_bigkeys"].as<int>(0);
-        if(setting >= 1) settings.dungeon_big_keys = PlacementOption::Vanilla;
-        if(setting >= 2) settings.dungeon_big_keys = PlacementOption::OwnDungeon;
-        if(setting >= 3) settings.dungeon_big_keys = PlacementOption::AnyDungeon;
-        if(setting >= 4) settings.dungeon_big_keys = PlacementOption::Keysanity;
+        GET_AP_FIELD(root, "randomize_secret_cave_inner_entrances", "Options", settings.randomize_misc_entrances)
+        bool mix;
+        GET_AP_FIELD(root, "mix_entrances", "Options", mix)
+        settings.mix_dungeons = mix;
+        settings.mix_bosses = mix;
+        settings.mix_minibosses = mix;
+        settings.mix_caves = mix;
+        settings.mix_doors = mix;
+        settings.mix_misc = mix;
+        settings.decouple_entrances = mix;
 
-        if(settings.dungeon_big_keys == PlacementOption::INVALID) {
-            if (!ignoreErrors) {
-                LOG_ERR_AND_RETURN(ConfigError::INVALID_VALUE);
+        //GET_FIELD(root, "mix_dungeons", settings.mix_dungeons)
+        //GET_FIELD(root, "mix_bosses", settings.mix_bosses)
+        //GET_FIELD(root, "mix_minibosses", settings.mix_minibosses)
+        //GET_FIELD(root, "mix_caves", settings.mix_caves)
+        //GET_FIELD(root, "mix_doors", settings.mix_doors)
+        //GET_FIELD(root, "mix_misc", settings.mix_misc)
+        //GET_FIELD(root, "decouple_entrances", settings.decouple_entrances)
+
+        //GET_FIELD(root, "ho_ho_hints", settings.ho_ho_hints)
+        //GET_FIELD(root, "ho_ho_triforce_hints", settings.ho_ho_triforce_hints)
+        //GET_FIELD(root, "korl_hints", settings.korl_hints)
+        //GET_FIELD(root, "korl_sword_hints", settings.korl_sword_hints)
+        //GET_FIELD(root, "kreeb_bow_hints", settings.kreeb_bow_hints)
+        //GET_FIELD(root, "clearer_hints", settings.clearer_hints)
+        //GET_FIELD(root, "use_always_hints", settings.use_always_hints)
+        //GET_FIELD(root, "hint_importance", settings.hint_importance)
+        //GET_FIELD(root, "path_hints", settings.path_hints)
+        //GET_FIELD(root, "barren_hints", settings.barren_hints)
+        //GET_FIELD(root, "item_hints", settings.item_hints)
+        //GET_FIELD(root, "location_hints", settings.location_hints)
+
+        settings.path_hints = 0;
+        settings.barren_hints = 0;
+        settings.item_hints = 0;
+        settings.location_hints = 0; //TODO: hints!
+
+
+        GET_AP_FIELD(root, "instant_text_boxes", "Options", settings.instant_text_boxes)
+        //GET_FIELD(root, "fix_rng", settings.fix_rng)
+        //GET_FIELD(root, "performance", settings.performance) TODO: those options
+        GET_AP_FIELD(root, "reveal_full_sea_chart", "Options", settings.reveal_full_sea_chart)
+        GET_AP_FIELD(root, "add_shortcut_warps_between_dungeons", "Options", settings.add_shortcut_warps_between_dungeons)
+        GET_AP_FIELD(root, "skip_rematch_bosses", "Options", settings.skip_rematch_bosses)
+        //GET_AP_FIELD(root, "invert_sea_compass_x_axis", "Options", settings.invert_sea_compass_x_axis)
+        GET_AP_FIELD(root, "num_required_bosses", "Options", settings.num_required_dungeons)
+        //GET_AP_FIELD(root, "damage_multiplier", "Options", settings.damage_multiplier);
+        //GET_AP_FIELD(root, "chest_type_matches_contents", "Options", settings.chest_type_matches_contents)
+        int swordMode;
+        GET_AP_FIELD(root, "sword_mode", "Options", swordMode)
+        if(swordMode == 3 || swordMode == 4) settings.remove_swords = true;
+        else settings.remove_swords = false;
+        //GET_AP_FIELD(root, "required_boss_items", "Options", settings.required_boss_items)
+
+        //GET_FIELD(root, "starting_pohs", settings.starting_pohs)
+        //GET_FIELD(root, "starting_hcs", settings.starting_hcs)
+        //GET_FIELD(root, "starting_joy_pendants", settings.starting_joy_pendants)
+        //GET_FIELD(root, "starting_skull_necklaces", settings.starting_skull_necklaces)
+        //GET_FIELD(root, "starting_boko_baba_seeds", settings.starting_boko_baba_seeds)
+        //GET_FIELD(root, "starting_golden_feathers", settings.starting_golden_feathers)
+        //GET_FIELD(root, "starting_knights_crests", settings.starting_knights_crests)
+        //GET_FIELD(root, "starting_red_chu_jellys", settings.starting_red_chu_jellys)
+        //GET_FIELD(root, "starting_green_chu_jellys", settings.starting_green_chu_jellys)
+        //GET_FIELD(root, "starting_blue_chu_jellys", settings.starting_blue_chu_jellys)
+        GET_AP_FIELD(root, "remove_music", "Options", settings.remove_music)
+
+        //GET_FIELD(root, "do_not_generate_spoiler_log", settings.do_not_generate_spoiler_log)
+        //GET_FIELD(root, "start_with_random_item", settings.start_with_random_item)
+        //GET_FIELD(root, "random_item_slide_item", settings.random_item_slide_item)
+        GET_AP_FIELD(root, "classic_mode", "Options", settings.classic_mode)
+        settings.plandomizer = true;
+
+        //GET_FIELD(root, "open_drc", settings.open_drc)
+        //GET_FIELD(root, "progressive_magic_always_double", settings.progressive_magic_always_double)
+
+        /*if(!preferencesRoot["pig_color"])  {
+            if(!ignoreErrors) LOG_ERR_AND_RETURN(ConfigError::MISSING_KEY);
+        }
+        else {
+            settings.pig_color = nameToPigColor(preferencesRoot["pig_color"].as<std::string>("INVALID"));
+            if(settings.pig_color == PigColor::INVALID) {
+                if (!ignoreErrors) {
+                    LOG_ERR_AND_RETURN(ConfigError::INVALID_VALUE);
+                }
+                else {
+                    settings.pig_color = PigColor::Random;
+                }
             }
-            else {
-                settings.dungeon_big_keys = PlacementOption::Vanilla;
+        }*/
+
+        if(!root["Options"]["randomize_smallkeys"]) {
+            if(!ignoreErrors) LOG_ERR_AND_RETURN(ConfigError::MISSING_KEY);
+        }
+        else {
+            int setting = root["Options"]["randomize_smallkeys"].as<int>(0);
+            if(setting >= 1) settings.dungeon_small_keys = PlacementOption::Vanilla;
+            if(setting >= 2) settings.dungeon_small_keys = PlacementOption::OwnDungeon;
+            if(setting >= 3) settings.dungeon_small_keys = PlacementOption::AnyDungeon;
+            if(setting >= 4) settings.dungeon_small_keys = PlacementOption::Keysanity;
+
+            if(settings.dungeon_small_keys == PlacementOption::INVALID) {
+                if (!ignoreErrors) {
+                    LOG_ERR_AND_RETURN(ConfigError::INVALID_VALUE);
+                }
+                else {
+                    settings.dungeon_small_keys = PlacementOption::Vanilla;
+                }
             }
         }
-    }
 
-    if(!root["Options"]["randomize_mapcompass"]) {
-        if (!ignoreErrors) LOG_ERR_AND_RETURN(ConfigError::MISSING_KEY);
-    }
-    else {
-        int setting = root["Options"]["randomize_mapcompass"].as<int>(0);
-        if(setting >= 1) settings.dungeon_maps_compasses = PlacementOption::Vanilla;
-        if(setting >= 2) settings.dungeon_maps_compasses = PlacementOption::OwnDungeon;
-        if(setting >= 3) settings.dungeon_maps_compasses = PlacementOption::AnyDungeon;
-        if(setting >= 4) settings.dungeon_maps_compasses = PlacementOption::Keysanity;
-        if(settings.dungeon_maps_compasses == PlacementOption::INVALID) {
-            if(!ignoreErrors) {
-                LOG_ERR_AND_RETURN(ConfigError::INVALID_VALUE);
+        if(!root["Options"]["randomize_bigkeys"]) {
+            if(!ignoreErrors) LOG_ERR_AND_RETURN(ConfigError::MISSING_KEY);
+        }
+        else {
+            int setting = root["Options"]["randomize_bigkeys"].as<int>(0);
+            if(setting >= 1) settings.dungeon_big_keys = PlacementOption::Vanilla;
+            if(setting >= 2) settings.dungeon_big_keys = PlacementOption::OwnDungeon;
+            if(setting >= 3) settings.dungeon_big_keys = PlacementOption::AnyDungeon;
+            if(setting >= 4) settings.dungeon_big_keys = PlacementOption::Keysanity;
+
+            if(settings.dungeon_big_keys == PlacementOption::INVALID) {
+                if (!ignoreErrors) {
+                    LOG_ERR_AND_RETURN(ConfigError::INVALID_VALUE);
+                }
+                else {
+                    settings.dungeon_big_keys = PlacementOption::Vanilla;
+                }
             }
-            else {
-                settings.dungeon_maps_compasses = PlacementOption::Vanilla;
-            }
-          }
+        }
+
+        if(!root["Options"]["randomize_mapcompass"]) {
+            if (!ignoreErrors) LOG_ERR_AND_RETURN(ConfigError::MISSING_KEY);
+        }
+        else {
+            int setting = root["Options"]["randomize_mapcompass"].as<int>(0);
+            if(setting >= 1) settings.dungeon_maps_compasses = PlacementOption::Vanilla;
+            if(setting >= 2) settings.dungeon_maps_compasses = PlacementOption::OwnDungeon;
+            if(setting >= 3) settings.dungeon_maps_compasses = PlacementOption::AnyDungeon;
+            if(setting >= 4) settings.dungeon_maps_compasses = PlacementOption::Keysanity;
+            if(settings.dungeon_maps_compasses == PlacementOption::INVALID) {
+                if(!ignoreErrors) {
+                    LOG_ERR_AND_RETURN(ConfigError::INVALID_VALUE);
+                }
+                else {
+                    settings.dungeon_maps_compasses = PlacementOption::Vanilla;
+                }
+              }
+        }
     }
 
     /*if(!preferencesRoot["target_type"]) {
@@ -570,7 +574,7 @@ ConfigError Config::loadFromFile(const fspath& filePath, const fspath& preferenc
         if(!ignoreErrors) LOG_ERR_AND_RETURN(ConfigError::DIFFERENT_RANDO_VERSION);
     }*/
 
-    return ConfigError::NONE;
+    return openedAPTWWHDFile ? ConfigError::NONE : ConfigError::MISSING_APTWWHD;
 }
 
 YAML::Node Config::settingsToYaml() const {

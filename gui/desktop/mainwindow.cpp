@@ -163,9 +163,10 @@ void MainWindow::load_config_into_ui()
     // Ignore errors and just load in whatever we can. The gui will write a proper config file
     // when the user begins randomization
     ConfigError err = config.loadFromFile(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml", true);
-    if (err != ConfigError::NONE)
+    if (err != ConfigError::NONE && err != ConfigError::MISSING_APTWWHD)
     {
         show_error_dialog("Failed to load settings file\ncode " + ConfigErrorGetName(err));
+
     }
     else
     {
@@ -465,8 +466,11 @@ void MainWindow::apply_config_settings()
                 on_aptwwhd_browse_button_clicked();
                 break;
             case QMessageBox::No:
-                config.settings.plandomizer = false;
+                config.aptwwhdLoadedCorrectly = false;
                 config.settings.plandomizerFile.clear();
+                ui->base_game_path->setText(Utility::toQString(config.gameBaseDir));
+                ui->output_folder->setText(Utility::toQString(config.outputDir));
+                return;
         }
     }
 
@@ -1403,7 +1407,13 @@ void MainWindow::on_aptwwhd_browse_button_clicked()
         ui->aptwwhd_path->setText(fileName);
         config.settings.plandomizerFile = Utility::fromQString(fileName);
         config.writeToFile(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml");
-        config.loadFromFile(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml");
+        ConfigError err = config.loadFromFile(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml");
+        if(err != ConfigError::NONE){
+            show_error_dialog("Failed to load settings file\ncode " + ConfigErrorGetName(err));
+            config.aptwwhdLoadedCorrectly = false;
+            return;
+        }
+        config.aptwwhdLoadedCorrectly = true;
     }
 }
 
@@ -1417,7 +1427,11 @@ void MainWindow::on_connect_ap_button_clicked()
         return;
     }
 
-    config.loadFromFile(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml");
+    ConfigError err = config.loadFromFile(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml");
+    if(err != ConfigError::NONE){
+        show_error_dialog("Failed to load settings file\ncode " + ConfigErrorGetName(err));
+    }
+
 
     config.settings.starting_gear = {
         GameItem::ProgressiveSail
