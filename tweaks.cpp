@@ -827,15 +827,15 @@ TweakError update_name_and_icon() {
         meta.Parse(metaStream.str().c_str(), metaStream.str().size());
 
         tinyxml2::XMLElement* metaRoot = meta.RootElement();
-        metaRoot->FirstChildElement("longname_en")->SetText("THE LEGEND OF ZELDA\nThe Wind Waker HD Randomizer");
-        metaRoot->FirstChildElement("longname_fr")->SetText("THE LEGEND OF ZELDA\nThe Wind Waker HD Randomizer");
-        metaRoot->FirstChildElement("longname_es")->SetText("THE LEGEND OF ZELDA\nThe Wind Waker HD Randomizer");
-        metaRoot->FirstChildElement("longname_pt")->SetText("THE LEGEND OF ZELDA\nThe Wind Waker HD Randomizer");
+        metaRoot->FirstChildElement("longname_en")->SetText("THE LEGEND OF ZELDA\nThe Wind Waker HD AP Randomizer");
+        metaRoot->FirstChildElement("longname_fr")->SetText("THE LEGEND OF ZELDA\nThe Wind Waker HD AP Randomizer");
+        metaRoot->FirstChildElement("longname_es")->SetText("THE LEGEND OF ZELDA\nThe Wind Waker HD AP Randomizer");
+        metaRoot->FirstChildElement("longname_pt")->SetText("THE LEGEND OF ZELDA\nThe Wind Waker HD AP Randomizer");
 
-        metaRoot->FirstChildElement("shortname_en")->SetText("The Wind Waker HD Randomizer");
-        metaRoot->FirstChildElement("shortname_fr")->SetText("The Wind Waker HD Randomizer");
-        metaRoot->FirstChildElement("shortname_es")->SetText("The Wind Waker HD Randomizer");
-        metaRoot->FirstChildElement("shortname_pt")->SetText("The Wind Waker HD Randomizer");
+        metaRoot->FirstChildElement("shortname_en")->SetText("The Wind Waker HD AP Randomizer");
+        metaRoot->FirstChildElement("shortname_fr")->SetText("The Wind Waker HD AP Randomizer");
+        metaRoot->FirstChildElement("shortname_es")->SetText("The Wind Waker HD AP Randomizer");
+        metaRoot->FirstChildElement("shortname_pt")->SetText("The Wind Waker HD AP Randomizer");
 
         // change the title ID so it gets its own channel when repacked
         metaRoot->FirstChildElement("title_id")->SetText("0005000010143599");
