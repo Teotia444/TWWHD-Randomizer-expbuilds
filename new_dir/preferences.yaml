@@ -1,0 +1,24 @@
+gameBaseDir: /mnt/d/Roms/Nintendo/WIIU/TWWHD
+outputDir: /mnt/d/Roms/Nintendo/WIIU/wwhd_rando
+plandomizerFile: /mnt/c/Users/teoti/Downloads/fixed.aptwwhd
+pig_color: Random
+target_type: Hold
+camera: Standard
+first_person_camera: Standard
+gyroscope: On
+ui_display: On
+quiet_swift_sail: false
+player_in_casual_clothes: false
+custom_player_model: Link
+custom_colors:
+  Belt Buckle: FFEF10
+  Belt: 633008
+  Undershirt: ADE342
+  Pants: FFFFFF
+  Sclera: FFFFFF
+  Eyes: 10514A
+  Boots: 944908
+  Mouth: F74963
+  Skin: F7DB9C
+  Tunic: 5AB24A
+  Hair: FFEF10

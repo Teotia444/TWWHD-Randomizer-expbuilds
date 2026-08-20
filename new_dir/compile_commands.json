@@ -1,0 +1,896 @@
+[
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/main.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/main.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/main.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/main.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/randomizer.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/randomizer.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/randomizer.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/randomizer.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/options.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/options.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/options.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/options.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/tweaks.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/tweaks.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/tweaks.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/tweaks.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/text_replacements.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/text_replacements.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/text_replacements.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/text_replacements.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/libs/hash-library/sha1.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/hash-library/sha1.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/hash-library/sha1.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/libs/hash-library/sha1.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/libs/hash-library/sha256.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/hash-library/sha256.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/hash-library/sha256.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/libs/hash-library/sha256.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/libs/yaml.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/libs/yaml.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/utility/platform.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/utility/platform.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/utility/platform.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/utility/platform.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/utility/endian.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/utility/endian.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/utility/endian.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/utility/endian.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/utility/common.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/utility/common.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/utility/common.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/utility/common.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/utility/file.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/utility/file.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/utility/file.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/utility/file.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/utility/string.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/utility/string.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/utility/string.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/utility/string.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/utility/text.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/utility/text.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/utility/text.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/utility/text.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/utility/time.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/utility/time.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/utility/time.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/utility/time.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/utility/color.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/utility/color.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/utility/color.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/utility/color.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/utility/path.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/utility/path.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/utility/path.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/utility/path.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/command/Log.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/command/Log.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/command/Log.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/command/Log.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/command/WWHDStructs.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/command/WWHDStructs.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/command/WWHDStructs.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/command/WWHDStructs.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/command/RandoSession.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/command/RandoSession.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/command/RandoSession.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/command/RandoSession.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/command/WriteLocations.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/command/WriteLocations.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/command/WriteLocations.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/command/WriteLocations.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/command/WriteEntrances.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/command/WriteEntrances.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/command/WriteEntrances.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/command/WriteEntrances.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/command/WriteCharts.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/command/WriteCharts.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/command/WriteCharts.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/command/WriteCharts.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/filetypes/wiiurpx.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/wiiurpx.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/wiiurpx.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/filetypes/wiiurpx.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/filetypes/yaz0.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/yaz0.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/yaz0.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/filetypes/yaz0.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/filetypes/sarc.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/sarc.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/sarc.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/filetypes/sarc.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/filetypes/msbt.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/msbt.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/msbt.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/filetypes/msbt.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/filetypes/elf.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/elf.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/elf.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/filetypes/elf.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/filetypes/events.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/events.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/events.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/filetypes/events.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/filetypes/bfres.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/bfres.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/bfres.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/filetypes/bfres.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/filetypes/jpc.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/jpc.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/jpc.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/filetypes/jpc.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/filetypes/dzx.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/dzx.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/dzx.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/filetypes/dzx.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/filetypes/charts.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/charts.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/charts.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/filetypes/charts.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/filetypes/bflyt.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/bflyt.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/bflyt.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/filetypes/bflyt.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/filetypes/dds.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/dds.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/dds.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/filetypes/dds.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/filetypes/bflim.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/bflim.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/bflim.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/filetypes/bflim.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/filetypes/msbp.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/msbp.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/msbp.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/filetypes/msbp.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/filetypes/bdt.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/bdt.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/bdt.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/filetypes/bdt.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/filetypes/bffnt.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/bffnt.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/bffnt.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/filetypes/bffnt.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/filetypes/util/elfUtil.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/util/elfUtil.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/util/elfUtil.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/filetypes/util/elfUtil.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/filetypes/shared/lms.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/shared/lms.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/shared/lms.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/filetypes/shared/lms.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/filetypes/texture/addrlib.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/texture/addrlib.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/texture/addrlib.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/filetypes/texture/addrlib.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/filetypes/texture/formconv.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/texture/formconv.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/texture/formconv.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/filetypes/texture/formconv.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/filetypes/subfiles/bftex.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/subfiles/bftex.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/filetypes/subfiles/bftex.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/filetypes/subfiles/bftex.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/seedgen/random.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/seedgen/random.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/seedgen/random.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/seedgen/random.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/seedgen/config.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/seedgen/config.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/seedgen/config.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/seedgen/config.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/seedgen/seed.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/seedgen/seed.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/seedgen/seed.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/seedgen/seed.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/logic/GameItem.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/GameItem.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/GameItem.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/logic/GameItem.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/logic/Location.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/Location.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/Location.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/logic/Location.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/logic/World.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/World.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/World.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/logic/World.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/logic/ItemPool.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/ItemPool.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/ItemPool.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/logic/ItemPool.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/logic/Area.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/Area.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/Area.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/logic/Area.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/logic/Fill.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/Fill.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/Fill.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/logic/Fill.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/logic/Search.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/Search.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/Search.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/logic/Search.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/logic/SpoilerLog.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/SpoilerLog.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/SpoilerLog.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/logic/SpoilerLog.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/logic/Dungeon.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/Dungeon.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/Dungeon.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/logic/Dungeon.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/logic/Generate.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/Generate.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/Generate.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/logic/Generate.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/logic/Requirements.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/Requirements.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/Requirements.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/logic/Requirements.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/logic/Entrance.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/Entrance.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/Entrance.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/logic/Entrance.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/logic/EntranceShuffle.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/EntranceShuffle.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/EntranceShuffle.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/logic/EntranceShuffle.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/logic/LogicTests.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/LogicTests.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/LogicTests.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/logic/LogicTests.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/logic/Hints.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/Hints.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/Hints.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/logic/Hints.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/logic/Plandomizer.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/Plandomizer.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/Plandomizer.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/logic/Plandomizer.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/logic/flatten/bits.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/flatten/bits.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/flatten/bits.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/logic/flatten/bits.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/logic/flatten/simplify_algebraic.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/flatten/simplify_algebraic.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/flatten/simplify_algebraic.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/logic/flatten/simplify_algebraic.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/logic/flatten/flatten.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/flatten/flatten.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/logic/flatten/flatten.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/logic/flatten/flatten.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir",
+  "command": "/usr/bin/c++ -DMINIZ_STATIC_DEFINE -DSOURCE_PATH_SIZE=44 -DYAML_CPP_STATIC_DEFINE -DZLIBNG_NATIVE_API -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/wwhd_rando.dir/customizer/model.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/customizer/model.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/customizer/model.cpp",
+  "output": "CMakeFiles/wwhd_rando.dir/customizer/model.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/arch/generic/adler32_c.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/generic/adler32_c.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/generic/adler32_c.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/generic/adler32_c.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/arch/generic/adler32_fold_c.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/generic/adler32_fold_c.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/generic/adler32_fold_c.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/generic/adler32_fold_c.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/arch/generic/chunkset_c.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/generic/chunkset_c.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/generic/chunkset_c.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/generic/chunkset_c.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/arch/generic/compare256_c.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/generic/compare256_c.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/generic/compare256_c.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/generic/compare256_c.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/arch/generic/crc32_braid_c.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/generic/crc32_braid_c.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/generic/crc32_braid_c.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/generic/crc32_braid_c.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/arch/generic/crc32_fold_c.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/generic/crc32_fold_c.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/generic/crc32_fold_c.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/generic/crc32_fold_c.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/arch/generic/slide_hash_c.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/generic/slide_hash_c.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/generic/slide_hash_c.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/generic/slide_hash_c.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/adler32.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/adler32.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/adler32.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/adler32.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/compress.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/compress.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/compress.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/compress.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/crc32.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/crc32.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/crc32.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/crc32.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/crc32_braid_comb.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/crc32_braid_comb.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/crc32_braid_comb.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/crc32_braid_comb.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/deflate.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/deflate.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/deflate.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/deflate.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/deflate_fast.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/deflate_fast.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/deflate_fast.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/deflate_fast.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/deflate_huff.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/deflate_huff.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/deflate_huff.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/deflate_huff.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/deflate_medium.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/deflate_medium.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/deflate_medium.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/deflate_medium.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/deflate_quick.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/deflate_quick.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/deflate_quick.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/deflate_quick.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/deflate_rle.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/deflate_rle.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/deflate_rle.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/deflate_rle.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/deflate_slow.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/deflate_slow.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/deflate_slow.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/deflate_slow.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/deflate_stored.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/deflate_stored.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/deflate_stored.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/deflate_stored.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/functable.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/functable.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/functable.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/functable.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/infback.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/infback.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/infback.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/infback.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/inflate.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/inflate.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/inflate.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/inflate.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/inftrees.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/inftrees.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/inftrees.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/inftrees.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/insert_string.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/insert_string.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/insert_string.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/insert_string.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/insert_string_roll.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/insert_string_roll.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/insert_string_roll.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/insert_string_roll.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/trees.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/trees.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/trees.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/trees.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/uncompr.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/uncompr.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/uncompr.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/uncompr.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/zutil.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/zutil.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/zutil.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/zutil.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/cpu_features.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/cpu_features.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/cpu_features.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/cpu_features.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -mxsave -o CMakeFiles/zlib.dir/arch/x86/x86_features.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/x86_features.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/x86_features.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/x86/x86_features.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/arch/x86/chunkset_sse2.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/chunkset_sse2.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/chunkset_sse2.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/x86/chunkset_sse2.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/arch/x86/compare256_sse2.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/compare256_sse2.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/compare256_sse2.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/x86/compare256_sse2.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -o CMakeFiles/zlib.dir/arch/x86/slide_hash_sse2.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/slide_hash_sse2.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/slide_hash_sse2.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/x86/slide_hash_sse2.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -mssse3 -fno-lto -o CMakeFiles/zlib.dir/arch/x86/adler32_ssse3.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/adler32_ssse3.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/adler32_ssse3.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/x86/adler32_ssse3.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -mssse3 -fno-lto -o CMakeFiles/zlib.dir/arch/x86/chunkset_ssse3.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/chunkset_ssse3.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/chunkset_ssse3.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/x86/chunkset_ssse3.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -msse4.2 -fno-lto -o CMakeFiles/zlib.dir/arch/x86/adler32_sse42.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/adler32_sse42.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/adler32_sse42.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/x86/adler32_sse42.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -msse4.2 -mpclmul -fno-lto -o CMakeFiles/zlib.dir/arch/x86/crc32_pclmulqdq.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/crc32_pclmulqdq.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/crc32_pclmulqdq.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/x86/crc32_pclmulqdq.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -mavx2 -mbmi2 -fno-lto -o CMakeFiles/zlib.dir/arch/x86/slide_hash_avx2.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/slide_hash_avx2.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/slide_hash_avx2.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/x86/slide_hash_avx2.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -mavx2 -mbmi2 -fno-lto -o CMakeFiles/zlib.dir/arch/x86/chunkset_avx2.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/chunkset_avx2.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/chunkset_avx2.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/x86/chunkset_avx2.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -mavx2 -mbmi2 -fno-lto -o CMakeFiles/zlib.dir/arch/x86/compare256_avx2.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/compare256_avx2.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/compare256_avx2.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/x86/compare256_avx2.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -mavx2 -mbmi2 -fno-lto -o CMakeFiles/zlib.dir/arch/x86/adler32_avx2.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/adler32_avx2.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/adler32_avx2.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/x86/adler32_avx2.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -mavx512f -mavx512dq -mavx512bw -mavx512vl -mbmi2 -mtune=cascadelake -fno-lto -o CMakeFiles/zlib.dir/arch/x86/adler32_avx512.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/adler32_avx512.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/adler32_avx512.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/x86/adler32_avx512.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -mavx512f -mavx512dq -mavx512bw -mavx512vl -mbmi2 -mtune=cascadelake -fno-lto -o CMakeFiles/zlib.dir/arch/x86/chunkset_avx512.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/chunkset_avx512.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/chunkset_avx512.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/x86/chunkset_avx512.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -mavx512f -mavx512dq -mavx512bw -mavx512vl -mavx512vnni -mbmi2 -mtune=cascadelake -fno-lto -o CMakeFiles/zlib.dir/arch/x86/adler32_avx512_vnni.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/adler32_avx512_vnni.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/adler32_avx512_vnni.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/x86/adler32_avx512_vnni.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng",
+  "command": "/usr/bin/cc -DHAVE_ALIGNED_ALLOC -DHAVE_ATTRIBUTE_ALIGNED -DHAVE_BUILTIN_ASSUME_ALIGNED -DHAVE_BUILTIN_CTZ -DHAVE_BUILTIN_CTZLL -DHAVE_LINUX_AUXVEC_H -DHAVE_POSIX_MEMALIGN -DHAVE_SYS_AUXV_H -DHAVE_VISIBILITY_HIDDEN -DHAVE_VISIBILITY_INTERNAL -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DX86_AVX2 -DX86_AVX512 -DX86_AVX512VNNI -DX86_FEATURES -DX86_HAVE_XSAVE_INTRIN -DX86_PCLMULQDQ_CRC -DX86_SSE2 -DX86_SSE42 -DX86_SSSE3 -DX86_VPCLMULQDQ_CRC -DZLIBNG_NATIVE_API -D_LARGEFILE64_SOURCE=1 -D__USE_LARGEFILE64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/zlib-ng -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng -O2 -DNDEBUG -std=c11 -Wall -mpclmul -mvpclmulqdq -mavx512f -mavx512f -mavx512dq -mavx512bw -mavx512vl -mbmi2 -mtune=cascadelake -fno-lto -o CMakeFiles/zlib.dir/arch/x86/crc32_vpclmulqdq.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/crc32_vpclmulqdq.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/zlib-ng/arch/x86/crc32_vpclmulqdq.c",
+  "output": "libs/zlib-ng/CMakeFiles/zlib.dir/arch/x86/crc32_vpclmulqdq.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/binary.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/binary.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/binary.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/binary.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/convert.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/convert.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/convert.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/convert.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/depthguard.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/depthguard.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/depthguard.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/depthguard.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/directives.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/directives.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/directives.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/directives.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/emit.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/emit.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/emit.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/emit.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/emitfromevents.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/emitfromevents.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/emitfromevents.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/emitfromevents.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/emitter.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/emitter.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/emitter.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/emitter.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/emitterstate.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/emitterstate.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/emitterstate.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/emitterstate.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/emitterutils.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/emitterutils.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/emitterutils.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/emitterutils.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/exceptions.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/exceptions.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/exceptions.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/exceptions.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/exp.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/exp.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/exp.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/exp.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/fptostring.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/fptostring.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/fptostring.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/fptostring.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/memory.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/memory.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/memory.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/memory.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/node.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/node.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/node.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/node.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/node_data.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/node_data.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/node_data.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/node_data.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/nodebuilder.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/nodebuilder.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/nodebuilder.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/nodebuilder.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/nodeevents.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/nodeevents.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/nodeevents.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/nodeevents.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/null.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/null.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/null.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/null.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/ostream_wrapper.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/ostream_wrapper.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/ostream_wrapper.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/ostream_wrapper.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/parse.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/parse.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/parse.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/parse.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/parser.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/parser.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/parser.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/parser.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/regex_yaml.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/regex_yaml.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/regex_yaml.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/regex_yaml.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/scanner.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/scanner.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/scanner.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/scanner.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/scanscalar.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/scanscalar.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/scanscalar.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/scanscalar.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/scantag.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/scantag.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/scantag.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/scantag.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/scantoken.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/scantoken.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/scantoken.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/scantoken.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/simplekey.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/simplekey.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/simplekey.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/simplekey.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/singledocparser.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/singledocparser.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/singledocparser.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/singledocparser.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/stream.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/stream.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/stream.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/stream.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/yaml-cpp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -DYAML_CPP_NO_CONTRIB -DYAML_CPP_STATIC_DEFINE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/include -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/yaml-cpp.dir/src/tag.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/tag.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/yaml-cpp/src/tag.cpp",
+  "output": "libs/yaml-cpp/CMakeFiles/yaml-cpp.dir/src/tag.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/tinyxml2",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -D_FILE_OFFSET_BITS=64 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2 -O3 -DNDEBUG -std=gnu++20 -fvisibility=hidden -fvisibility-inlines-hidden -o CMakeFiles/tinyxml2.dir/tinyxml2.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2/tinyxml2.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/tinyxml2/tinyxml2.cpp",
+  "output": "libs/tinyxml2/CMakeFiles/tinyxml2.dir/tinyxml2.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/AES",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src -O3 -DNDEBUG -std=gnu++20 -o CMakeFiles/AES.dir/src/AES.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src/AES.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/AES/src/AES.cpp",
+  "output": "libs/AES/CMakeFiles/AES.dir/src/AES.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/base64pp/base64pp",
+  "command": "/usr/bin/c++ -DNO_GZIP -DSOURCE_PATH_SIZE=44 -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/include -O3 -DNDEBUG -std=c++20 -fvisibility=hidden -fvisibility-inlines-hidden -o CMakeFiles/base64pp.dir/base64pp.cpp.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/base64pp.cpp",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/base64pp/base64pp/base64pp.cpp",
+  "output": "libs/base64pp/base64pp/CMakeFiles/base64pp.dir/base64pp.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz",
+  "command": "/usr/bin/cc -DNO_GZIP -DSOURCE_PATH_SIZE=44 -D_GNU_SOURCE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz  -Wshadow -Wformat=2 -Wall -Wno-overlength-strings -pedantic -O3 -DNDEBUG -std=gnu90 -o CMakeFiles/miniz.dir/miniz.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz/miniz.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz/miniz.c",
+  "output": "libs/miniz/CMakeFiles/miniz.dir/miniz.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz",
+  "command": "/usr/bin/cc -DNO_GZIP -DSOURCE_PATH_SIZE=44 -D_GNU_SOURCE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz  -Wshadow -Wformat=2 -Wall -Wno-overlength-strings -pedantic -O3 -DNDEBUG -std=gnu90 -o CMakeFiles/miniz.dir/miniz_zip.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz/miniz_zip.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz/miniz_zip.c",
+  "output": "libs/miniz/CMakeFiles/miniz.dir/miniz_zip.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz",
+  "command": "/usr/bin/cc -DNO_GZIP -DSOURCE_PATH_SIZE=44 -D_GNU_SOURCE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz  -Wshadow -Wformat=2 -Wall -Wno-overlength-strings -pedantic -O3 -DNDEBUG -std=gnu90 -o CMakeFiles/miniz.dir/miniz_tinfl.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz/miniz_tinfl.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz/miniz_tinfl.c",
+  "output": "libs/miniz/CMakeFiles/miniz.dir/miniz_tinfl.c.o"
+},
+{
+  "directory": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz",
+  "command": "/usr/bin/cc -DNO_GZIP -DSOURCE_PATH_SIZE=44 -D_GNU_SOURCE -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz -I/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/new_dir/libs/miniz  -Wshadow -Wformat=2 -Wall -Wno-overlength-strings -pedantic -O3 -DNDEBUG -std=gnu90 -o CMakeFiles/miniz.dir/miniz_tdef.c.o -c /mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz/miniz_tdef.c",
+  "file": "/mnt/c/Users/teoti/Desktop/TWWHD-Randomizer/libs/miniz/miniz_tdef.c",
+  "output": "libs/miniz/CMakeFiles/miniz.dir/miniz_tdef.c.o"
+}
+]

@@ -1,0 +1,94 @@
+program_version: 1.1.1-239-g17d5d24-dirty
+file_version: 1.0
+game_version: HD
+seed: FrigidShelledSewing
+progression_dungeons: Standard
+progression_great_fairies: true
+progression_puzzle_secret_caves: true
+progression_combat_secret_caves: true
+progression_short_sidequests: true
+progression_long_sidequests: true
+progression_spoils_trading: true
+progression_minigames: true
+progression_free_gifts: true
+progression_mail: true
+progression_platforms_rafts: true
+progression_submarines: true
+progression_eye_reef_chests: true
+progression_big_octos_gunboats: true
+progression_triforce_charts: true
+progression_treasure_charts: true
+progression_expensive_purchases: true
+progression_misc: true
+progression_tingle_chests: true
+progression_battlesquid: true
+progression_savage_labyrinth: true
+progression_island_puzzles: true
+progression_dungeon_secrets: true
+progression_obscure: true
+randomize_charts: false
+randomize_starting_island: false
+randomize_dungeon_entrances: false
+randomize_boss_entrances: false
+randomize_miniboss_entrances: false
+randomize_cave_entrances: Disabled
+randomize_door_entrances: false
+randomize_misc_entrances: false
+mix_dungeons: false
+mix_bosses: false
+mix_minibosses: false
+mix_caves: false
+mix_doors: false
+mix_misc: false
+decouple_entrances: false
+ho_ho_hints: false
+ho_ho_triforce_hints: false
+korl_hints: false
+korl_sword_hints: false
+kreeb_bow_hints: false
+clearer_hints: false
+use_always_hints: false
+hint_importance: false
+path_hints: 0
+barren_hints: 0
+item_hints: 0
+location_hints: 0
+instant_text_boxes: true
+fix_rng: false
+performance: false
+reveal_full_sea_chart: true
+add_shortcut_warps_between_dungeons: false
+skip_rematch_bosses: true
+invert_sea_compass_x_axis: false
+num_required_dungeons: 0
+damage_multiplier: 2
+chest_type_matches_contents: false
+remove_swords: false
+required_boss_items: false
+starting_pohs: 0
+starting_hcs: 3
+starting_joy_pendants: 0
+starting_skull_necklaces: 0
+starting_boko_baba_seeds: 0
+starting_golden_feathers: 0
+starting_knights_crests: 0
+starting_red_chu_jellys: 0
+starting_green_chu_jellys: 0
+starting_blue_chu_jellys: 0
+remove_music: false
+do_not_generate_spoiler_log: true
+start_with_random_item: false
+random_item_slide_item: false
+classic_mode: true
+plandomizer: true
+open_drc: true
+progressive_magic_always_double: false
+dungeon_small_keys: Own Dungeon
+dungeon_big_keys: Own Dungeon
+dungeon_maps_compasses: Own Dungeon
+starting_gear:
+  - Progressive Sail
+excluded_locations:
+  - Mailbox - Beedle's Gold Membership Reward
+  - Mailbox - Beedle's Silver Membership Reward
+  - Outset Island - Orca Hit 500 Times

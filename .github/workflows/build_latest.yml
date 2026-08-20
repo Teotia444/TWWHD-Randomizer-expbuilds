@@ -1,9 +1,5 @@
 name: Build Latest
 
-on: 
-  - push
-  - workflow_dispatch
-
 jobs:
   build-windows:
     uses: ./.github/workflows/build_windows.yml

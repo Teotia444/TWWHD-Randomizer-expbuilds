@@ -1,0 +1,11 @@
+Program opened Wed, Aug 12, 2026, 03:23:26 PM
+Wind Waker HD Randomizer Version 1.1.1-239-g17d5d24-dirty
+Seed: FrigidShelledSewing
+Selected options:
+	Progress Dungeons, Progress Great Fairies, Progress Puzzle Caves, Progress Combat Caves, Progress Short Sidequests, Progress Long Sidequests, Progress Spoils Trading, Progress Minigames, Progress Free Gifts, Progress Mail, Progress Platforms Rafts, Progress Submarines, Progress Eye Reefs, Progress Octos Gunboats, Progress Triforce Charts, Progress Treasure Charts, Progress Exp Purchases, Progress Misc, Progress Tingle Chests, Progress Battlesquid, Progress Savage Labyrinth, Progress Island Puzzles, Progress Dungeon Secrets, Progress Obscure, Num Required Dungeons: 0, Dungeon Small Keys, Dungeon Big Keys, Dungeon Maps And Compasses, Instant Text, Reveal Sea Chart, Skip Refights, Starting HC, No Spoiler Log, Classic Mode, Plandomizer, Open DRC, PigColor: 3, Damage Multiplier: 2, Gyroscope, 
+
+[00:00:00.582] Unable to open file "./data/asm/patch_diffs/test_patch_diff.yaml"
+[00:00:00.583] Unable to get data from ./data/asm/patch_diffs/test_patch_diff.yaml
+[00:00:00.583] Encountered TweakError::DATA_FILE_MISSING on line 74 of tweaks.cpp
+[00:00:00.583] Encountered error on line 4237 of tweaks.cpp
+[00:00:00.583] Encountered DATA_FILE_MISSING in pre-randomization tweaks!
