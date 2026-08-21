@@ -761,13 +761,13 @@ TweakError modify_title_screen() {
 
         // Update subtitle size/position
         layout.rootPane.children[0].children[1].children[1].children[1].children[0].pane->translation.Y = -30.0f;
-        layout.rootPane.children[0].children[1].children[1].children[1].children[0].pane->translation.X = -40.0f;
+        layout.rootPane.children[0].children[1].children[1].children[1].children[0].pane->translation.X = 40.0f;
         layout.rootPane.children[0].children[1].children[1].children[1].children[0].pane->height = 120.0f;
         layout.rootPane.children[0].children[1].children[1].children[1].children[0].pane->width = 420.0f;
 
         // Update subtitle mask size/position
         layout.rootPane.children[0].children[1].children[1].children[1].children[1].pane->translation.Y = -30.0f;
-        layout.rootPane.children[0].children[1].children[1].children[1].children[1].pane->translation.X = -40.0f;
+        layout.rootPane.children[0].children[1].children[1].children[1].children[1].pane->translation.X = 40.0f;
         layout.rootPane.children[0].children[1].children[1].children[1].children[1].pane->height = 120.0f;
         layout.rootPane.children[0].children[1].children[1].children[1].children[1].pane->width = 420.0f;
 
