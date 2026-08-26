@@ -140,7 +140,7 @@ enum struct GameItem : uint8_t
     FountainIdol,
     PostmanStatue,
     ShopGuruStatue,
-    FathersLetter,
+    ArchipelagoItem,
     NoteToMom,
     MaggiesLetter,
     MoblinsLetter,
@@ -449,6 +449,10 @@ public:
     bool canBeInBarrenRegion() const;
     bool operator==(const Item& rhs) const;
     bool operator<(const Item& rhs) const;
+    std::string displayName;
+    std::string playerName;
+    bool isApRequired() const {return apRequired;}
+    void setApRequired(bool val) {apRequired = val;}
 
 private:
     GameItem gameItemId = GameItem::INVALID;
@@ -460,6 +464,7 @@ private:
     bool junkItem = false;
     bool junkConsumable = false;
     bool originallyJunk = false;
+    bool apRequired = false;
     World* world = nullptr; // The world that this item is *FOR*
 };
 

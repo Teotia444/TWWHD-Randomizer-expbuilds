@@ -26,6 +26,9 @@ struct PlandomizerItem
 {
     GameItem gameItem = GameItem::INVALID;
     int world = -1;
+    std::string displayName = "";
+    std::string playerName = "";
+    bool apRequired = false;
 };
 
 struct Plandomizer
