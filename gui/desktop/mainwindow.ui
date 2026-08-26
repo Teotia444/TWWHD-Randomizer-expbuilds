@@ -1734,6 +1734,13 @@
                  </property>
                 </widget>
                </item>
+               <item row="1" column="3">
+                <widget class="QCheckBox" name="ap3dmodel">
+                 <property name="text">
+                  <string>Use the 3D model for AP Items</string>
+                 </property>
+                </widget>
+               </item>
               </layout>
              </widget>
             </item>

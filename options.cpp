@@ -136,6 +136,7 @@ void Settings::resetDefaultPreferences(const bool& paths) {
     }
 
     pig_color = PigColor::Random;
+    ap3DModel = AP3DModel::LETTER;
 
     target_type = TargetTypePreference::Hold;
     camera = CameraPreference::Standard;
@@ -290,6 +291,8 @@ uint8_t Settings::getSetting(const Option& option) const {
             return chest_type_matches_contents;
         case Option::PigColor:
             return static_cast<std::underlying_type_t<PigColor>>(pig_color);
+        case Option::AP3DModel:
+            return static_cast<std::underlying_type_t<AP3DModel>>(ap3DModel);
         // Can't return these like everything else, just here as placeholder
         case Option::StartingGear:
         case Option::ExcludedLocations:
@@ -499,6 +502,8 @@ void Settings::setSetting(const Option& option, const size_t& value) {
             chest_type_matches_contents = value; return;
         case Option::PigColor:
             pig_color = static_cast<PigColor>(value); return;
+        case Option::AP3DModel:
+            ap3DModel = static_cast<AP3DModel>(value); return;
         // Can't set these like everything else, just here as placeholder
         case Option::StartingGear: 
         case Option::ExcludedLocations:
@@ -624,6 +629,16 @@ static const std::unordered_map<GameVersion, std::string> gameVersionNameMap = {
     {GameVersion::SD, "SD"}
 };
 
+static const std::unordered_map<std::string, AP3DModel> nameAP3DModelMap = {
+    {"Letter", AP3DModel::LETTER},
+    {"Spheres", AP3DModel::SPHERES}
+};
+
+static const std::unordered_map<AP3DModel, std::string> AP3DModelNameMap = {
+    {AP3DModel::LETTER, "Letter"},
+    {AP3DModel::SPHERES, "Spheres"}
+};
+
 static const std::unordered_map<std::string, PigColor> namePigColorMap = {
     {"Black", PigColor::Black},
     {"Pink", PigColor::Pink},
@@ -743,6 +758,24 @@ std::string GameVersionToName(const GameVersion& version) {
     if (gameVersionNameMap.contains(version))
     {
         return gameVersionNameMap.at(version);
+    }
+
+    return "INVALID";
+}
+
+AP3DModel nameToAP3DModel(const std::string& name) {
+    if (nameAP3DModelMap.contains(name))
+    {
+        return nameAP3DModelMap.at(name);
+    }
+
+    return AP3DModel::INVALID;
+}
+
+std::string AP3DModelToName(const AP3DModel& type) {
+    if (AP3DModelNameMap.contains(type))
+    {
+        return AP3DModelNameMap.at(type);
     }
 
     return "INVALID";
@@ -922,6 +955,10 @@ std::string UIDisplayPreferenceToName(const UIDisplayPreference& preference)
 
 // Make sure there aren't any naming conflicts when adding future settings
 int nameToSettingInt(const std::string& name) {
+    if (nameAP3DModelMap.contains(name))
+    {
+        return static_cast<std::underlying_type_t<AP3DModel>>(nameAP3DModelMap.at(name));
+    }
     if (namePigColorMap.contains(name))
     {
         return static_cast<std::underlying_type_t<PigColor>>(namePigColorMap.at(name));
@@ -1019,6 +1056,7 @@ Option nameToSetting(const std::string& name) {
         {"Num Required Dungeons", Option::NumRequiredDungeons},
         {"Damage Multiplier", Option::DamageMultiplier},
         {"CTMC", Option::CTMC},
+        {"AP 3D Model", Option::AP3DModel},
         {"Pig Color", Option::PigColor},
         {"Starting Gear", Option::StartingGear},
         {"Excluded Locations", Option::ExcludedLocations},
@@ -1130,6 +1168,7 @@ std::string settingToName(const Option& setting) {
         {Option::NumRequiredDungeons, "Num Required Dungeons"},
         {Option::DamageMultiplier, "Damage Multiplier"},
         {Option::CTMC, "CTMC"},
+        {Option::AP3DModel, "AP3DModel"},
         {Option::PigColor, "PigColor"},
         {Option::StartingGear, "Starting Gear"},
         {Option::ExcludedLocations, "Excluded Locations"},

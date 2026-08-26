@@ -89,6 +89,7 @@ namespace OptionCB {
     std::string randomizeColorsOrderly();
     std::string randomizeColorsChaotically();
 
+    std::string toggleAP3DModel();
     std::string cyclePigColor();
 
     // this one gets special handling

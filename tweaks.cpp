@@ -3484,6 +3484,12 @@ TweakError replace_ctmc_chest_texture() {
     return TweakError::NONE;
 }
 
+TweakError replace_fathers_letter_model(bool fullModel) {
+    if(fullModel) g_session.copyToGameFile(Utility::get_data_path() / "assets/APItem3D.szs", "content/Common/Object/VleTT.szs", true);
+    else g_session.copyToGameFile(Utility::get_data_path() / "assets/APItem2D.szs", "content/Common/Object/VleTT.szs", true);
+    return TweakError::NONE;
+}
+
 TweakError apply_ingame_preferences(const Settings& settings) {
     if(!custom_symbols.contains("target_type_preference")) LOG_ERR_AND_RETURN(TweakError::MISSING_SYMBOL);
     if(!custom_symbols.contains("camera_preference")) LOG_ERR_AND_RETURN(TweakError::MISSING_SYMBOL);
@@ -4312,6 +4318,7 @@ TweakError apply_necessary_tweaks(const Settings& settings) {
         LOG_AND_RETURN_IF_ERR(Apply_Patch(Utility::get_data_path() / "asm/patch_diffs/mesa_door_fix_diff.yaml"));
     }
 
+    TWEAK_ERR_CHECK(replace_fathers_letter_model(settings.ap3DModel == AP3DModel::SPHERES));
     TWEAK_ERR_CHECK(fix_deku_leaf_model());
     TWEAK_ERR_CHECK(allow_all_items_to_be_field_items());
     TWEAK_ERR_CHECK(remove_shop_item_forced_uniqueness_bit());

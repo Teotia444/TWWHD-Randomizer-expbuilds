@@ -653,6 +653,8 @@ void MainWindow::apply_config_settings()
     APPLY_COMBOBOX_SETTING(config, ui, gyroscope);
     APPLY_COMBOBOX_SETTING(config, ui, ui_display);
 
+    if(config.settings.ap3DModel == AP3DModel::SPHERES) {ui->ap3dmodel->setCheckState(Qt::Checked);} else {ui->ap3dmodel->setCheckState(Qt::Unchecked);}
+
     update_excluded_locations(); // make sure the visible locations are consistent with the enabled settings
     update_permalink_and_seed_hash();
 }
@@ -1152,6 +1154,11 @@ void MainWindow::on_first_person_camera_currentTextChanged(const QString &arg1)
     update_permalink_and_seed_hash();
 }
 
+void MainWindow::on_ap3dmodel_stateChanged(int arg1)
+{
+    config.settings.ap3DModel = arg1 ? AP3DModel::SPHERES : AP3DModel::LETTER;
+    update_permalink_and_seed_hash();
+}
 
 void MainWindow::on_gyroscope_currentTextChanged(const QString &arg1)
 {

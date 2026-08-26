@@ -292,7 +292,7 @@ ConfigError Config::loadFromFile(const fspath& filePath, const fspath& preferenc
         //GET_AP_FIELD(root, "invert_sea_compass_x_axis", "Options", settings.invert_sea_compass_x_axis)
         GET_AP_FIELD(root, "num_required_bosses", "Options", settings.num_required_dungeons)
         //GET_AP_FIELD(root, "damage_multiplier", "Options", settings.damage_multiplier);
-        //GET_AP_FIELD(root, "chest_type_matches_contents", "Options", settings.chest_type_matches_contents)
+        GET_AP_FIELD(root, "chest_type_matches_contents", "Options", settings.chest_type_matches_contents)
         int swordMode;
         GET_AP_FIELD(root, "sword_mode", "Options", swordMode)
         if(swordMode == 3 || swordMode == 4) settings.remove_swords = true;
@@ -309,7 +309,7 @@ ConfigError Config::loadFromFile(const fspath& filePath, const fspath& preferenc
         //GET_FIELD(root, "starting_red_chu_jellys", settings.starting_red_chu_jellys)
         //GET_FIELD(root, "starting_green_chu_jellys", settings.starting_green_chu_jellys)
         //GET_FIELD(root, "starting_blue_chu_jellys", settings.starting_blue_chu_jellys)
-        GET_AP_FIELD(root, "remove_music", "Options", settings.remove_music)
+        //GET_AP_FIELD(root, "remove_music", "Options", settings.remove_music)
 
         //GET_FIELD(root, "do_not_generate_spoiler_log", settings.do_not_generate_spoiler_log)
         //GET_FIELD(root, "start_with_random_item", settings.start_with_random_item)
@@ -497,6 +497,22 @@ ConfigError Config::loadFromFile(const fspath& filePath, const fspath& preferenc
         }
     }*/
 
+    if(!preferencesRoot["ap3DModel"]) {
+        Utility::platformLog("Warning: couldn't fetch the AP model type. Bad pref file?");
+        settings.ap3DModel = AP3DModel::LETTER;
+    }
+    else {
+        settings.ap3DModel = nameToAP3DModel(preferencesRoot["ap3DModel"].as<std::string>("INVALID"));
+        if(settings.ap3DModel == AP3DModel::INVALID) {
+            if(!ignoreErrors) {
+                LOG_ERR_AND_RETURN(ConfigError::INVALID_VALUE);
+            }
+            else {
+                settings.ap3DModel = AP3DModel::LETTER;
+            }
+        }
+    }
+
     settings.starting_gear.clear();
     settings.starting_gear = {
         nameToGameItem("Progressive Sail")
@@ -666,6 +682,7 @@ YAML::Node Config::settingsToYaml() const {
     SET_FIELD(root, "starting_blue_chu_jellys", settings.starting_blue_chu_jellys)
     SET_FIELD(root, "remove_music", settings.remove_music)
 
+
     SET_FIELD(root, "do_not_generate_spoiler_log", settings.do_not_generate_spoiler_log)
     SET_FIELD(root, "start_with_random_item", settings.start_with_random_item)
     SET_FIELD(root, "random_item_slide_item", settings.random_item_slide_item)
@@ -737,6 +754,7 @@ YAML::Node Config::preferencesToYaml() const {
     SET_FIELD(preferencesRoot, "plandomizerFile", Utility::toUtf8String(settings.plandomizerFile))
 
     SET_FIELD(preferencesRoot, "pig_color", PigColorToName(settings.pig_color))
+    SET_FIELD(preferencesRoot, "ap3DModel", AP3DModelToName(settings.ap3DModel))
 
     SET_FIELD(preferencesRoot, "target_type", TargetTypePreferenceToName(settings.target_type))
     SET_FIELD(preferencesRoot, "camera", CameraPreferenceToName(settings.camera))

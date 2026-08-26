@@ -25,6 +25,12 @@ constexpr uint8_t MAXIMUM_BARREN_HINT_COUNT = 7;
 constexpr uint8_t MAXIMUM_ITEM_HINT_COUNT = 7;
 constexpr uint8_t MAXIMUM_LOCATION_HINT_COUNT = 7;
 
+enum struct AP3DModel {
+    LETTER = 0,
+    SPHERES,
+    INVALID
+};
+
 enum struct PigColor : uint8_t {
     Black = 0,
     Pink,
@@ -208,6 +214,7 @@ enum struct Option {
 
     // Cosmetics
     PigColor,
+    AP3DModel,
 
 
     DamageMultiplier,
@@ -307,6 +314,7 @@ public:
     bool chest_type_matches_contents;
 
     PigColor pig_color;
+    AP3DModel ap3DModel;
 
     std::vector<GameItem> starting_gear;
     std::set<std::string> excluded_locations;
@@ -362,6 +370,9 @@ public:
 
 GameVersion nameToGameVersion(const std::string& name);
 std::string GameVersionToName(const GameVersion& version);
+
+AP3DModel nameToAP3DModel(const std::string& name);
+std::string AP3DModelToName(const AP3DModel& color);
 
 PigColor nameToPigColor(const std::string& name);
 std::string PigColorToName(const PigColor& color);

@@ -538,6 +538,25 @@ namespace OptionCB {
         return "";
     }
 
+    std::string toggleAP3DModel() {
+        using enum AP3DModel;
+
+        switch(conf.settings.ap3DModel) {
+            case LETTER:
+                conf.settings.ap3DModel = LETTER;
+                break;
+            case SPHERES:
+                conf.settings.ap3DModel = SPHERES;
+                break;
+            case INVALID:
+            default:
+                conf.settings.ap3DModel = LETTER;
+                break;
+        }
+
+        return AP3DModelToName(conf.settings.ap3DModel);
+    }
+
     std::string cyclePigColor() {
         using enum PigColor;
 
@@ -1064,6 +1083,8 @@ std::string getValue(const Option& option) {
         //    return fromBool(conf.settings.player_in_casual_clothes);
         case Option::PigColor:
             return PigColorToName(conf.settings.pig_color);
+        case Option::AP3DModel:
+            return fromBool(conf.settings.ap3DModel != AP3DModel::SPHERES);
         case Option::StartingGear: // placeholder
             return "";
         case Option::StartingHP:
@@ -1282,6 +1303,8 @@ TriggerCallback getCallback(const Option& option) {
             return &toggleCTMC;
         //case Option::CasualClothes:
         //    return &toggleCasualClothes;
+        case Option::AP3DModel:
+            return &toggleAP3DModel;
         case Option::PigColor:
             return &cyclePigColor;
         case Option::StartingGear: // placeholder
@@ -1435,6 +1458,7 @@ std::pair<std::string, std::string> getNameDesc(const Option& option) {
         {MixMisc,                     {"Mix Misc",                            "Add miscellaneous entrances into the combined entrance pool, instead of keeping them separated."}},
         {DecoupleEntrances,           {"Decouple Entrances",                  "Decouple entrances when shuffling. This means you may not end up where you came from if you go back through an entrance."}},
         {RandomStartIsland,           {"Randomize Starting Island",           "Randomzies which island you start the game on."}},
+        {AP3DModel,                   {"AP 3D Model",                         "By default the AP Item is a letter model with the AP logo on it. \nThis changes it to a full 3D models of the AP logo"}},
 
         {PigColor,                    {"Pig Color",                           "Controls the color of the big pig on Outset Island."}},
 

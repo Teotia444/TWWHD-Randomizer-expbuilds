@@ -506,6 +506,7 @@ ConveniencePage::ConveniencePage() {
     buttonColumns[1].emplace_back(std::make_unique<BasicButton>(Option::InvertCompass));
     buttonColumns[1].emplace_back(std::make_unique<BasicButton>(Option::Performance));
     buttonColumns[1].emplace_back(std::make_unique<BasicButton>(Option::PigColor));
+    buttonColumns[1].emplace_back(std::make_unique<BasicButton>(Option::AP3DModel));
     buttonColumns[1].emplace_back(std::make_unique<BasicButton>(Option::Gyroscope));
     buttonColumns[1].emplace_back(std::make_unique<BasicButton>(Option::UIDisplay));
 }
