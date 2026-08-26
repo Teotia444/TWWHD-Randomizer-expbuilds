@@ -509,6 +509,8 @@ ConveniencePage::ConveniencePage() {
     buttonColumns[1].emplace_back(std::make_unique<BasicButton>(Option::AP3DModel));
     buttonColumns[1].emplace_back(std::make_unique<BasicButton>(Option::Gyroscope));
     buttonColumns[1].emplace_back(std::make_unique<BasicButton>(Option::UIDisplay));
+
+    buttonColumns[2].emplace_back(std::make_unique<BasicButton>(Option::SGIM));
 }
 
 void ConveniencePage::open() {

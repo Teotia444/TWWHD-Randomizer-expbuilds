@@ -412,4 +412,8 @@ static const std::unordered_map<std::string, std::string> optionDescriptions = {
       "ap3dmodel",
       "By default the AP Item is a letter model with the AP logo on it. This changes it to a full 3D models of the AP logo"
     },
+    {
+      "sgim",
+      "This options allows to have the correct model display over their item if someone else is playing WWHD/SD, as opposed to having a generic AP item"
+    },
 };

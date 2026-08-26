@@ -100,7 +100,7 @@ void MainWindow::initialize_tracker_world(Settings& settings,
     if(trackerWorld.getSettings().plandomizer)
     {
         std::vector<Plandomizer> plandos(1);
-        PlandomizerError err = loadPlandomizer(config.apPlando, plandos, 1);
+        PlandomizerError err = loadPlandomizer(config.apPlando, plandos, 1, settings.sgim == SGIM::SAMEMODEL);
         if (err != PlandomizerError::NONE)
         {
             show_warning_dialog("Could not load provided plandomizer file. Continuing without plandomizer data.");

@@ -137,6 +137,7 @@ void Settings::resetDefaultPreferences(const bool& paths) {
 
     pig_color = PigColor::Random;
     ap3DModel = AP3DModel::LETTER;
+    sgim = SGIM::GENERICAP;
 
     target_type = TargetTypePreference::Hold;
     camera = CameraPreference::Standard;
@@ -293,6 +294,8 @@ uint8_t Settings::getSetting(const Option& option) const {
             return static_cast<std::underlying_type_t<PigColor>>(pig_color);
         case Option::AP3DModel:
             return static_cast<std::underlying_type_t<AP3DModel>>(ap3DModel);
+        case Option::SGIM:
+            return static_cast<std::underlying_type_t<SGIM>>(sgim);
         // Can't return these like everything else, just here as placeholder
         case Option::StartingGear:
         case Option::ExcludedLocations:
@@ -504,6 +507,8 @@ void Settings::setSetting(const Option& option, const size_t& value) {
             pig_color = static_cast<PigColor>(value); return;
         case Option::AP3DModel:
             ap3DModel = static_cast<AP3DModel>(value); return;
+        case Option::SGIM:
+            sgim = static_cast<SGIM>(value); return;
         // Can't set these like everything else, just here as placeholder
         case Option::StartingGear: 
         case Option::ExcludedLocations:
@@ -627,6 +632,16 @@ static const std::unordered_map<std::string, GameVersion> nameGameVersionMap = {
 static const std::unordered_map<GameVersion, std::string> gameVersionNameMap = {
     {GameVersion::HD, "HD"},
     {GameVersion::SD, "SD"}
+};
+
+static const std::unordered_map<std::string, SGIM> nameSGIMMap = {
+    {"GenericAP", SGIM::GENERICAP},
+    {"SameModel", SGIM::SAMEMODEL}
+};
+
+static const std::unordered_map<SGIM, std::string> SGIMNameMap = {
+    {SGIM::GENERICAP, "GenericAP"},
+    {SGIM::SAMEMODEL, "SameModel"}
 };
 
 static const std::unordered_map<std::string, AP3DModel> nameAP3DModelMap = {
@@ -758,6 +773,24 @@ std::string GameVersionToName(const GameVersion& version) {
     if (gameVersionNameMap.contains(version))
     {
         return gameVersionNameMap.at(version);
+    }
+
+    return "INVALID";
+}
+
+SGIM nameToSGIM(const std::string& name) {
+    if (nameSGIMMap.contains(name))
+    {
+        return nameSGIMMap.at(name);
+    }
+
+    return SGIM::INVALID;
+}
+
+std::string SGIMToName(const SGIM& type) {
+    if (SGIMNameMap.contains(type))
+    {
+        return SGIMNameMap.at(type);
     }
 
     return "INVALID";
@@ -955,6 +988,10 @@ std::string UIDisplayPreferenceToName(const UIDisplayPreference& preference)
 
 // Make sure there aren't any naming conflicts when adding future settings
 int nameToSettingInt(const std::string& name) {
+    if (nameSGIMMap.contains(name))
+    {
+        return static_cast<std::underlying_type_t<SGIM>>(nameSGIMMap.at(name));
+    }
     if (nameAP3DModelMap.contains(name))
     {
         return static_cast<std::underlying_type_t<AP3DModel>>(nameAP3DModelMap.at(name));
@@ -1056,6 +1093,7 @@ Option nameToSetting(const std::string& name) {
         {"Num Required Dungeons", Option::NumRequiredDungeons},
         {"Damage Multiplier", Option::DamageMultiplier},
         {"CTMC", Option::CTMC},
+        {"Same Game Item Model", Option::SGIM},
         {"AP 3D Model", Option::AP3DModel},
         {"Pig Color", Option::PigColor},
         {"Starting Gear", Option::StartingGear},
@@ -1168,6 +1206,7 @@ std::string settingToName(const Option& setting) {
         {Option::NumRequiredDungeons, "Num Required Dungeons"},
         {Option::DamageMultiplier, "Damage Multiplier"},
         {Option::CTMC, "CTMC"},
+        {Option::SGIM, "Same Game Item Model"},
         {Option::AP3DModel, "AP3DModel"},
         {Option::PigColor, "PigColor"},
         {Option::StartingGear, "Starting Gear"},

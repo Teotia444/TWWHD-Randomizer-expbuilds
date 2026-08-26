@@ -25,6 +25,12 @@ constexpr uint8_t MAXIMUM_BARREN_HINT_COUNT = 7;
 constexpr uint8_t MAXIMUM_ITEM_HINT_COUNT = 7;
 constexpr uint8_t MAXIMUM_LOCATION_HINT_COUNT = 7;
 
+enum struct SGIM {
+    GENERICAP = 0,
+    SAMEMODEL,
+    INVALID
+};
+
 enum struct AP3DModel {
     LETTER = 0,
     SPHERES,
@@ -215,6 +221,7 @@ enum struct Option {
     // Cosmetics
     PigColor,
     AP3DModel,
+    SGIM,
 
 
     DamageMultiplier,
@@ -315,6 +322,7 @@ public:
 
     PigColor pig_color;
     AP3DModel ap3DModel;
+    SGIM sgim;
 
     std::vector<GameItem> starting_gear;
     std::set<std::string> excluded_locations;
@@ -371,8 +379,11 @@ public:
 GameVersion nameToGameVersion(const std::string& name);
 std::string GameVersionToName(const GameVersion& version);
 
+SGIM nameToSGIM(const std::string& name);
+std::string SGIMToName(const SGIM& type);
+
 AP3DModel nameToAP3DModel(const std::string& name);
-std::string AP3DModelToName(const AP3DModel& color);
+std::string AP3DModelToName(const AP3DModel& type);
 
 PigColor nameToPigColor(const std::string& name);
 std::string PigColorToName(const PigColor& color);

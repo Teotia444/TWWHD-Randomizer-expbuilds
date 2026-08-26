@@ -654,6 +654,7 @@ void MainWindow::apply_config_settings()
     APPLY_COMBOBOX_SETTING(config, ui, ui_display);
 
     if(config.settings.ap3DModel == AP3DModel::SPHERES) {ui->ap3dmodel->setCheckState(Qt::Checked);} else {ui->ap3dmodel->setCheckState(Qt::Unchecked);}
+    if(config.settings.sgim == SGIM::SAMEMODEL) {ui->sgim->setCheckState(Qt::Checked);} else {ui->sgim->setCheckState(Qt::Unchecked);}
 
     update_excluded_locations(); // make sure the visible locations are consistent with the enabled settings
     update_permalink_and_seed_hash();
@@ -1151,6 +1152,12 @@ void MainWindow::on_camera_currentTextChanged(const QString &arg1)
 void MainWindow::on_first_person_camera_currentTextChanged(const QString &arg1)
 {
     config.settings.first_person_camera = nameToFirstPersonCameraPreference(arg1.toStdString());
+    update_permalink_and_seed_hash();
+}
+
+void MainWindow::on_sgim_stateChanged(int arg1)
+{
+    config.settings.sgim = arg1 ? SGIM::SAMEMODEL : SGIM::GENERICAP;
     update_permalink_and_seed_hash();
 }
 

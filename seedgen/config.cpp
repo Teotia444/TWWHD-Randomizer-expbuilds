@@ -513,6 +513,22 @@ ConfigError Config::loadFromFile(const fspath& filePath, const fspath& preferenc
         }
     }
 
+    if(!preferencesRoot["sgim"]) {
+        Utility::platformLog("Warning: couldn't fetch the SGIM type. Bad pref file?");
+        settings.sgim = SGIM::GENERICAP;
+    }
+    else {
+        settings.sgim = nameToSGIM(preferencesRoot["sgim"].as<std::string>("INVALID"));
+        if(settings.sgim == SGIM::INVALID) {
+            if(!ignoreErrors) {
+                LOG_ERR_AND_RETURN(ConfigError::INVALID_VALUE);
+            }
+            else {
+                settings.sgim = SGIM::GENERICAP;
+            }
+        }
+    }
+
     settings.starting_gear.clear();
     settings.starting_gear = {
         nameToGameItem("Progressive Sail")
@@ -755,6 +771,7 @@ YAML::Node Config::preferencesToYaml() const {
 
     SET_FIELD(preferencesRoot, "pig_color", PigColorToName(settings.pig_color))
     SET_FIELD(preferencesRoot, "ap3DModel", AP3DModelToName(settings.ap3DModel))
+    SET_FIELD(preferencesRoot, "sgim", SGIMToName(settings.sgim))
 
     SET_FIELD(preferencesRoot, "target_type", TargetTypePreferenceToName(settings.target_type))
     SET_FIELD(preferencesRoot, "camera", CameraPreferenceToName(settings.camera))

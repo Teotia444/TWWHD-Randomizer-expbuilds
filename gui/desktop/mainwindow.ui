@@ -69,7 +69,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>4</number>
           </property>
           <widget class="QWidget" name="getting_started_tab">
            <attribute name="title">
@@ -1671,35 +1671,152 @@
              </spacer>
             </item>
             <item>
+             <widget class="QGroupBox" name="gridGroupBox_2">
+              <property name="title">
+               <string>In-Game Preferences</string>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_34">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_28">
+                 <item>
+                  <widget class="QLabel" name="label_for_ui_display">
+                   <property name="text">
+                    <string>UI Display</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="ui_display">
+                   <item>
+                    <property name="text">
+                     <string>On</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Off</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_24">
+                 <item>
+                  <widget class="QLabel" name="label_for_target_type">
+                   <property name="text">
+                    <string>Target Type</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="target_type">
+                   <item>
+                    <property name="text">
+                     <string>Hold</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Switch</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_25">
+                 <item>
+                  <widget class="QLabel" name="label_for_camera">
+                   <property name="text">
+                    <string>Camera</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="camera">
+                   <item>
+                    <property name="text">
+                     <string>Standard</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Reverse Left/Right</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_26">
+                 <item>
+                  <widget class="QLabel" name="label_for_first_person_camera">
+                   <property name="text">
+                    <string>First-Person Camera</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="first_person_camera">
+                   <item>
+                    <property name="text">
+                     <string>Standard</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Reverse Up/Down</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_27">
+                 <item>
+                  <widget class="QLabel" name="label_for_gyroscope">
+                   <property name="text">
+                    <string>Gyroscope</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="gyroscope">
+                   <property name="currentText">
+                    <string>Off</string>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>Off</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>On</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
              <widget class="QGroupBox" name="groupBox_2">
               <property name="title">
                <string>Convenience Tweaks</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_4">
-               <item row="1" column="0">
-                <widget class="QCheckBox" name="skip_rematch_bosses">
+               <item row="0" column="3">
+                <widget class="QCheckBox" name="quiet_swift_sail">
                  <property name="text">
-                  <string>Skip Boss Rematches</string>
-                 </property>
-                 <property name="checked">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1">
-                <widget class="QCheckBox" name="add_shortcut_warps_between_dungeons">
-                 <property name="text">
-                  <string>Add Shortcut Warps Between Dungeons</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QCheckBox" name="instant_text_boxes">
-                 <property name="text">
-                  <string>Instant Text Boxes</string>
-                 </property>
-                 <property name="checked">
-                  <bool>false</bool>
+                  <string>Quiet Swift Sail</string>
                  </property>
                 </widget>
                </item>
@@ -1710,34 +1827,17 @@
                  </property>
                 </widget>
                </item>
-               <item row="0" column="2">
-                <widget class="QCheckBox" name="reveal_full_sea_chart">
+               <item row="1" column="0">
+                <widget class="QCheckBox" name="ap3dmodel">
                  <property name="text">
-                  <string>Reveal Full Sea Chart</string>
-                 </property>
-                 <property name="checked">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="3">
-                <widget class="QCheckBox" name="quiet_swift_sail">
-                 <property name="text">
-                  <string>Quiet Swift Sail</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="2">
-                <widget class="QCheckBox" name="remove_music">
-                 <property name="text">
-                  <string>Remove Music</string>
+                  <string>Use the 3D model for AP Items</string>
                  </property>
                 </widget>
                </item>
                <item row="1" column="3">
-                <widget class="QCheckBox" name="ap3dmodel">
+                <widget class="QCheckBox" name="sgim">
                  <property name="text">
-                  <string>Use the 3D model for AP Items</string>
+                  <string>Same Game Item Model</string>
                  </property>
                 </widget>
                </item>
@@ -1769,7 +1869,78 @@
                <string>Advanced Options</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_7">
-               <item row="4" column="0" colspan="2">
+               <item row="3" column="0">
+                <widget class="QCheckBox" name="required_boss_items">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>Require Boss Items</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QCheckBox" name="start_with_random_item">
+                 <property name="text">
+                  <string>Start With Random Item</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QCheckBox" name="instant_text_boxes">
+                 <property name="text">
+                  <string>Instant Text Boxes</string>
+                 </property>
+                 <property name="checked">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QCheckBox" name="skip_rematch_bosses">
+                 <property name="text">
+                  <string>Skip Boss Rematches</string>
+                 </property>
+                 <property name="checked">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QCheckBox" name="reveal_full_sea_chart">
+                 <property name="text">
+                  <string>Reveal Full Sea Chart</string>
+                 </property>
+                 <property name="checked">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QCheckBox" name="performance">
+                 <property name="text">
+                  <string>Performance</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QCheckBox" name="classic_mode">
+                 <property name="text">
+                  <string>Classic Mode</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QCheckBox" name="random_item_slide_item">
+                 <property name="text">
+                  <string>Start With Random Item Sliding Item</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="13" column="0" colspan="2">
                 <layout class="QHBoxLayout" name="horizontalLayout_33">
                  <property name="sizeConstraint">
                   <enum>QLayout::SizeConstraint::SetNoConstraint</enum>
@@ -1813,13 +1984,6 @@
                  </item>
                 </layout>
                </item>
-               <item row="0" column="1">
-                <widget class="QCheckBox" name="classic_mode">
-                 <property name="text">
-                  <string>Classic Mode</string>
-                 </property>
-                </widget>
-               </item>
                <item row="1" column="1">
                 <widget class="QCheckBox" name="fix_rng">
                  <property name="text">
@@ -1827,44 +1991,24 @@
                  </property>
                 </widget>
                </item>
-               <item row="2" column="1">
-                <widget class="QCheckBox" name="random_item_slide_item">
-                 <property name="text">
-                  <string>Start With Random Item Sliding Item</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="0">
-                <widget class="QCheckBox" name="required_boss_items">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="text">
-                  <string>Require Boss Items</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="0">
-                <widget class="QCheckBox" name="start_with_random_item">
-                 <property name="text">
-                  <string>Start With Random Item</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="0">
-                <widget class="QCheckBox" name="performance">
-                 <property name="text">
-                  <string>Performance</string>
-                 </property>
-                </widget>
-               </item>
                <item row="0" column="0">
                 <widget class="QCheckBox" name="do_not_generate_spoiler_log">
                  <property name="text">
                   <string>Do Not Generate Spoiler Log</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QCheckBox" name="remove_music">
+                 <property name="text">
+                  <string>Remove Music</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="1">
+                <widget class="QCheckBox" name="add_shortcut_warps_between_dungeons">
+                 <property name="text">
+                  <string>Add Shortcut Warps Between Dungeons</string>
                  </property>
                 </widget>
                </item>
@@ -2145,10 +2289,10 @@
                <string>Logic Tweaks</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_9">
-               <item row="0" column="1">
-                <widget class="QCheckBox" name="progressive_magic_always_double">
+               <item row="0" column="0">
+                <widget class="QCheckBox" name="open_drc">
                  <property name="text">
-                  <string>Progressive Magic is Always Double</string>
+                  <string>Open DRC</string>
                  </property>
                 </widget>
                </item>
@@ -2159,149 +2303,12 @@
                  </property>
                 </widget>
                </item>
-               <item row="0" column="0">
-                <widget class="QCheckBox" name="open_drc">
+               <item row="0" column="1">
+                <widget class="QCheckBox" name="progressive_magic_always_double">
                  <property name="text">
-                  <string>Open DRC</string>
+                  <string>Progressive Magic is Always Double</string>
                  </property>
                 </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item>
-             <widget class="QGroupBox" name="gridGroupBox_2">
-              <property name="title">
-               <string>In-Game Preferences</string>
-              </property>
-              <layout class="QHBoxLayout" name="horizontalLayout_34">
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_28">
-                 <item>
-                  <widget class="QLabel" name="label_for_ui_display">
-                   <property name="text">
-                    <string>UI Display</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="ui_display">
-                   <item>
-                    <property name="text">
-                     <string>On</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Off</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_24">
-                 <item>
-                  <widget class="QLabel" name="label_for_target_type">
-                   <property name="text">
-                    <string>Target Type</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="target_type">
-                   <item>
-                    <property name="text">
-                     <string>Hold</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Switch</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_25">
-                 <item>
-                  <widget class="QLabel" name="label_for_camera">
-                   <property name="text">
-                    <string>Camera</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="camera">
-                   <item>
-                    <property name="text">
-                     <string>Standard</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Reverse Left/Right</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_26">
-                 <item>
-                  <widget class="QLabel" name="label_for_first_person_camera">
-                   <property name="text">
-                    <string>First-Person Camera</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="first_person_camera">
-                   <item>
-                    <property name="text">
-                     <string>Standard</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Reverse Up/Down</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_27">
-                 <item>
-                  <widget class="QLabel" name="label_for_gyroscope">
-                   <property name="text">
-                    <string>Gyroscope</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="gyroscope">
-                   <property name="currentText">
-                    <string>Off</string>
-                   </property>
-                   <item>
-                    <property name="text">
-                     <string>Off</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>On</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                </layout>
                </item>
               </layout>
              </widget>
@@ -2504,7 +2511,7 @@ color: lightgray</string>
                <cursorShape>ArrowCursor</cursorShape>
               </property>
               <property name="autoFillBackground">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
               <property name="styleSheet">
                <string notr="true"/>

@@ -5,7 +5,7 @@
 #include <utility/file.hpp>
 #include <utility/platform.hpp>
 
-PlandomizerError loadPlandomizer(const YAML::Node yamlNode, std::vector<Plandomizer>& plandos, size_t numWorlds)
+PlandomizerError loadPlandomizer(const YAML::Node yamlNode, std::vector<Plandomizer>& plandos, size_t numWorlds, bool sgim)
 {
     LOG_TO_DEBUG("Loading plandomizer file");
 
@@ -101,8 +101,8 @@ PlandomizerError loadPlandomizer(const YAML::Node yamlNode, std::vector<Plandomi
                 // Get GameItem
                 const GameItem& gameItem = nameToGameItem(itemName);
 
-                // we're on an AP item
-                if (gameItem == GameItem::INVALID || itemSlot != slot) plandomizer.locationsStr.insert({locationName, {GameItem::ArchipelagoItem, plandoWorldId, itemName, playerName, apRequired}});
+                // we're on an AP item (if sgim is on, make this always false if the other game is wind waker)
+                if (gameItem == GameItem::INVALID || (itemSlot != slot && !sgim)) plandomizer.locationsStr.insert({locationName, {GameItem::ArchipelagoItem, plandoWorldId, itemName, playerName, apRequired}});
                 // this is our item
                 else plandomizer.locationsStr.insert({locationName, {gameItem, plandoWorldId, itemName, playerName, apRequired}});
 
