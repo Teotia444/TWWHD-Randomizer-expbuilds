@@ -667,13 +667,13 @@ static FillError placeNonProgressLocationPlandomizerItems(WorldPool& worlds, Ite
         if (!item.isJunkItem())
         {
             item = removeElementFromPool(itemPool, item);
-            // Don't accept trying to place major items in non-progress locations
-            if (item.isMajorItem())
+            // Accept trying to place major items in non-progress locations (trust the aptwwhd file)
+            /*if (item.isMajorItem())
             {
                 ErrorLog::getInstance().log("Attempted to plandomize major item \"" + gameItemToName(item.getGameItemId()) + "\" in non-progress location \"" + location->getName() + "\"");
                 ErrorLog::getInstance().log("Plandomizing major items in non-progress locations is not allowed.");
                 return FillError::PLANDOMIZER_ERROR;
-            }
+            }*/
         }
         location->currentItem = item;
         LOG_TO_DEBUG("Placed " + item.getName() + " at " + location->getName());

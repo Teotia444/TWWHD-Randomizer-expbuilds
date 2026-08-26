@@ -518,18 +518,18 @@ ConfigError Config::loadFromFile(const fspath& filePath, const fspath& preferenc
         nameToGameItem("Progressive Sail")
     };
 
-    /*if(!root["excluded_locations"] || (!root["excluded_locations"].IsSequence() && root["excluded_locations"].as<std::string>() != "None")) {
-        if(!ignoreErrors) LOG_ERR_AND_RETURN(ConfigError::MISSING_KEY);
+    if(!root["Excluded"] || (!root["Excluded"].IsSequence() && root["Excluded"].as<std::string>() != "None")) {
+        Utility::platformLog("Warning: excluded locations were unable to be fetched. bad aptwwhd?");
+        settings.excluded_locations.clear();
     }
     else {
         settings.excluded_locations.clear();
-        for (const auto& locObject : root["excluded_locations"]) {
+        for (const auto& locObject : root["Excluded"]) {
             const auto locName = locObject.as<std::string>();
             settings.excluded_locations.insert(locName);
         }
-    }*/
-    settings.excluded_locations.clear();
-
+    }
+    
     GET_FIELD(preferencesRoot, "quiet_swift_sail", settings.quiet_swift_sail)
 
     GET_FIELD(preferencesRoot, "custom_player_model", settings.selectedModel.modelName)
