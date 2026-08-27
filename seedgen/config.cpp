@@ -268,7 +268,7 @@ ConfigError Config::loadFromFile(const fspath& filePath, const fspath& preferenc
         //GET_FIELD(root, "ho_ho_triforce_hints", settings.ho_ho_triforce_hints)
         //GET_FIELD(root, "korl_hints", settings.korl_hints)
         //GET_FIELD(root, "korl_sword_hints", settings.korl_sword_hints)
-        //GET_FIELD(root, "kreeb_bow_hints", settings.kreeb_bow_hints)
+        GET_AP_FIELD(root, "kreeb_bow_hints", "Options", settings.kreeb_bow_hints)
         //GET_FIELD(root, "clearer_hints", settings.clearer_hints)
         //GET_FIELD(root, "use_always_hints", settings.use_always_hints)
         //GET_FIELD(root, "hint_importance", settings.hint_importance)

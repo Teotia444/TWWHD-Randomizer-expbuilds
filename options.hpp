@@ -296,7 +296,7 @@ public:
     bool ho_ho_triforce_hints;
     bool korl_hints;
     bool korl_sword_hints;
-    bool kreeb_bow_hints;
+    uint8_t kreeb_bow_hints;
     bool clearer_hints;
     bool use_always_hints;
     bool hint_importance;

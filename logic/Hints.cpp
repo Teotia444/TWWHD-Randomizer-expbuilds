@@ -6,6 +6,7 @@
 #include <command/Log.hpp>
 #include <filetypes/util/msbtMacros.hpp>
 #include <utility/string.hpp>
+#include <utility/platform.hpp>
 
 template<typename Container>
 static Location* getHintableLocation(Container& locations)
@@ -455,9 +456,13 @@ static HintError generateItemHintMessage(Location* location, std::list<Hint>& hi
     std::list<std::string> hintRegions = location->hintRegions;
 
     // If this is an item in a dungeon, use the dungeon's island(s) for the hint instead
-    if (world->dungeons.contains(hintRegions.front()))
+    if (!hintRegions.empty() && world->dungeons.contains(hintRegions.front()))
     {
         hintRegions = world->dungeons.at(hintRegions.front()).islands;
+    }
+    if(hintRegions.empty()){
+        hintRegions.emplace_back(location->getName());
+        Utility::platformLog("Warning: could not generate a hint region for " + location->getName());
     }
 
     for (const std::string& hintRegion : hintRegions)
@@ -771,13 +776,16 @@ static HintError assignKreebHints(World& world)
     // Get all bow locations
     // Shuffle locations to prevent any possible meta-gaming where the last bow might be
     // since otherwise they'll appear in order of location id
-    auto allLocations = world.getProgressionLocations();
+    auto allLocations = world.getLocations();
     shufflePool(allLocations);
+    int amountChosen = 0;
     for (auto& location : allLocations)
     {
-        if (location->currentItem.getGameItemId() == GameItem::ProgressiveBow)
+        if (amountChosen >= world.getSettings().kreeb_bow_hints) break; 
+        if (location->currentItem.getGameItemId() == GameItem::ProgressiveBow || location->currentItem.displayName.find("Bow") != std::string::npos)
         {
             LOG_AND_RETURN_IF_ERR(generateItemHintMessage(location, world.kreebHints));
+            amountChosen++;
         }
     }
     return HintError::NONE;
@@ -839,10 +847,11 @@ HintError generateHints(WorldPool& worlds)
         hints.assign(hintsVector.begin(), hintsVector.end());
 
         // Assign Kreeb Bow Hints if the setting is enabled
-        if (settings.kreeb_bow_hints)
+        if (settings.kreeb_bow_hints > 0)
         {
             assignKreebHints(world);
         }
+
 
         // Assign Korl Sword Hints if the setting is enabled
         if (settings.korl_sword_hints)

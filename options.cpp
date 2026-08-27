@@ -63,7 +63,7 @@ void Settings::resetDefaultSettings() {
 
     korl_hints = false;
     korl_sword_hints = false;
-    kreeb_bow_hints = false;
+    kreeb_bow_hints = 0;
     ho_ho_hints = false;
     ho_ho_triforce_hints = false;
     path_hints = 0;

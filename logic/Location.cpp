@@ -217,7 +217,7 @@ std::u16string Location::generateImportanceText(const std::string& language) con
 
     // If this item is on the path to Ganondorf, then it is required
     const auto& requiredLocations = world->locationTable["Ganon's Tower - Defeat Ganondorf"]->pathLocations;
-    if (elementInPool(this, requiredLocations))
+    if (elementInPool(this, requiredLocations) || item.isApRequired())
     {
         return u" (" + TEXT_COLOR_GREEN + required + TEXT_COLOR_DEFAULT + u")";
     }
@@ -227,7 +227,7 @@ std::u16string Location::generateImportanceText(const std::string& language) con
     {
         return u" (" + TEXT_COLOR_GRAY + notRequired + TEXT_COLOR_DEFAULT + u")";
     }
-
+    
     // If the item doesn't fall into required or not required, then it's possibly required
     return u" (" + TEXT_COLOR_YELLOW + possiblyRequired + TEXT_COLOR_DEFAULT + u")";
 }
