@@ -1200,12 +1200,14 @@ World::WorldLoadingError World::processPlandomizerLocations(WorldPool& worlds)
         // so that the entrance randomizer doesn't consider potential out
         // of logic items such as extra bottles.
         location->currentItem.setApRequired(plandoItem.apRequired);
+        location->isRequiredBossLocation = plandoItem.isDungeonRequired;
         if (location->progression)
         {
             location->currentItem = item;
             location->currentItem.displayName = plandoItem.displayName;
             location->currentItem.playerName = plandoItem.playerName;
             location->currentItem.setApRequired(plandoItem.apRequired);
+            location->isRequiredBossLocation = plandoItem.isDungeonRequired;
             LOG_TO_DEBUG("Plandomized " + itemName + " at " + locationName);
             // Remove placed items from the item's world's item pool
             removeElementFromPool(itemsWorld.getItemPoolReference(), item);

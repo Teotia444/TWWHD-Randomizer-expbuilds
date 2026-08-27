@@ -29,6 +29,7 @@ struct PlandomizerItem
     std::string displayName = "";
     std::string playerName = "";
     bool apRequired = false;
+    bool isDungeonRequired = false;
 };
 
 struct Plandomizer
