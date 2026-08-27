@@ -858,7 +858,7 @@ std::u16string Item::getUTF16Name(const std::string& language /*= "English"*/, c
             str = Utility::Str::toUTF16(playerName + "'s " + displayName);
         }
         if(strcmp(language.c_str(), "Spanish") == 0){
-            str = Utility::Str::toUTF16(playerName + "'s " + displayName);
+            str = Utility::Str::toUTF16(displayName + " para " + playerName);
         }
         if(strcmp(language.c_str(), "French") == 0){
             str = Utility::Str::toUTF16(displayName + " de " + playerName);
