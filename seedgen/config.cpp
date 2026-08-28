@@ -278,8 +278,8 @@ ConfigError Config::loadFromFile(const fspath& filePath, const fspath& preferenc
         GET_AP_FIELD(root, "location_hints", "Options", settings.location_hints)
 
         GET_AP_FIELD(root, "instant_text_boxes", "Options", settings.instant_text_boxes)
-        //GET_FIELD(root, "fix_rng", settings.fix_rng)
-        //GET_FIELD(root, "performance", settings.performance) TODO: those options
+        GET_AP_FIELD(root, "fix_rng", "Options", settings.fix_rng)
+        GET_AP_FIELD(root, "performance", "Options", settings.performance)
         GET_AP_FIELD(root, "reveal_full_sea_chart", "Options", settings.reveal_full_sea_chart)
         GET_AP_FIELD(root, "add_shortcut_warps_between_dungeons", "Options", settings.add_shortcut_warps_between_dungeons)
         GET_AP_FIELD(root, "skip_rematch_bosses", "Options", settings.skip_rematch_bosses)
