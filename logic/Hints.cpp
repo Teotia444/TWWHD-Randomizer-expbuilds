@@ -40,18 +40,15 @@ static HintError calculatePossiblePathLocations(WorldPool& worlds)
                 world.goalLocations.push_back(dungeon.bossLocation);
             }
         }
-        /*
         for (auto& [name, location] : world.locationTable)
         {
-            if (!location->progression && !location->categories.contains(LocationCategory::BlueChuChu))
+            if (!location->currentItem.isApRequired() && !location->categories.contains(LocationCategory::BlueChuChu))
             {
                 nonRequiredLocations.insert({location.get(), location->currentItem});
                 location->currentItem = {GameItem::INVALID, location->world};
             }
-        }*/
+        }
     }
-
-    return HintError::NONE;
 
     // Determine path locations for each goal location by going through the playthrough
     // and seeing if taking away the item at each location can still access the goal locations
@@ -125,6 +122,7 @@ static HintError calculatePossibleBarrenRegions(WorldPool& worlds)
                 // have them
                 if (location->hintRegions.empty())
                 {
+                    Utility::platformLog("wtf " + location->getName());
                     location->hintRegions = area->findHintRegions();
                 }
                 // If this location is progression, then add its hint regions to
@@ -623,7 +621,7 @@ static HintError generateAlwaysHints(World& world, std::list<Hint>& hints)
     std::vector<Location*> alwaysLocations = {};
     for (auto& [name, location] : world.locationTable)
     {
-        if (location->progression && location->hintPriority == "Always")
+        if (location->currentItem.isApRequired() && location->hintPriority == "Always")
         {
             alwaysLocations.push_back(location.get());
         }
@@ -811,7 +809,7 @@ static HintError assignKorlSwordHints(World& world)
 HintError generateHints(WorldPool& worlds)
 {
     LOG_AND_RETURN_IF_ERR(calculatePossiblePathLocations(worlds));
-    //LOG_AND_RETURN_IF_ERR(calculatePossibleBarrenRegions(worlds));
+    LOG_AND_RETURN_IF_ERR(calculatePossibleBarrenRegions(worlds));
 
     for (auto& world : worlds)
     {

@@ -266,18 +266,17 @@ ConfigError Config::loadFromFile(const fspath& filePath, const fspath& preferenc
 
         GET_AP_FIELD(root, "ho_ho_hints", "Options", settings.ho_ho_hints)
         GET_AP_FIELD(root, "ho_ho_triforce_hints", "Options", settings.ho_ho_triforce_hints)
-        //GET_FIELD(root, "korl_hints", settings.korl_hints)
+        GET_AP_FIELD(root, "korl_hints", "Options", settings.korl_hints)
         //GET_FIELD(root, "korl_sword_hints", settings.korl_sword_hints)
         GET_AP_FIELD(root, "kreeb_bow_hints", "Options", settings.kreeb_bow_hints)
         //GET_FIELD(root, "clearer_hints", settings.clearer_hints)
         //GET_FIELD(root, "use_always_hints", settings.use_always_hints)
         //GET_FIELD(root, "hint_importance", settings.hint_importance)
-        //GET_FIELD(root, "path_hints", settings.path_hints)
+        GET_AP_FIELD(root, "path_hints", "Options", settings.path_hints)
         //GET_FIELD(root, "barren_hints", settings.barren_hints)
         //GET_FIELD(root, "item_hints", settings.item_hints)
         //GET_FIELD(root, "location_hints", settings.location_hints)
 
-        settings.path_hints = 0;
         settings.barren_hints = 0;
         settings.item_hints = 0;
         settings.location_hints = 0; //TODO: hints!
