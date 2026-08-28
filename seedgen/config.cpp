@@ -273,14 +273,9 @@ ConfigError Config::loadFromFile(const fspath& filePath, const fspath& preferenc
         //GET_FIELD(root, "use_always_hints", settings.use_always_hints)
         //GET_FIELD(root, "hint_importance", settings.hint_importance)
         GET_AP_FIELD(root, "path_hints", "Options", settings.path_hints)
-        //GET_FIELD(root, "barren_hints", settings.barren_hints)
-        //GET_FIELD(root, "item_hints", settings.item_hints)
-        //GET_FIELD(root, "location_hints", settings.location_hints)
-
-        settings.barren_hints = 0;
-        settings.item_hints = 0;
-        settings.location_hints = 0; //TODO: hints!
-
+        GET_AP_FIELD(root, "barren_hints", "Options", settings.barren_hints)
+        GET_AP_FIELD(root, "item_hints", "Options", settings.item_hints)
+        GET_AP_FIELD(root, "location_hints", "Options", settings.location_hints)
 
         GET_AP_FIELD(root, "instant_text_boxes", "Options", settings.instant_text_boxes)
         //GET_FIELD(root, "fix_rng", settings.fix_rng)

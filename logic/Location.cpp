@@ -134,6 +134,8 @@ std::string Location::getName() const
 // Calculates whether the current item can be barren given it's placement at this specific location in mind
 bool Location::currentItemCanBeBarren() const
 {
+    return !currentItem.isApRequired();
+
     if (currentItem.getGameItemId() == GameItem::GameBeatable)
     {
         return false;
@@ -181,7 +183,7 @@ bool Location::currentItemCanBeBarren() const
 // if it's a required race mode location
 bool Location::isBarrenAsChainLocation() const
 {
-    return !progression || (currentItem.canBeInBarrenRegion() && !isRequiredBossLocation);
+    return !currentItem.isApRequired() || (currentItem.canBeInBarrenRegion() && !isRequiredBossLocation);
 }
 
 std::u16string Location::generateImportanceText(const std::string& language) const
