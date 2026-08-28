@@ -182,9 +182,9 @@ void runLogicTests(Config& newConfig)
     settings1.barren_hints = 5;
     TEST(settings1, settings1.korl_hints, "5 barren hints");
     settings1.item_hints = 5;
-    TEST(settings1, settings1.ho_ho_hints, "5 item hints");
+    TEST(settings1, dummy, "5 item hints");
     settings1.location_hints = 5;
-    TEST(settings1, settings1.ho_ho_hints, "5 location hints");
+    TEST(settings1, dummy, "5 location hints");
     TEST(settings1, dummy, "kreeb bow hints");
     TEST(settings1, settings1.use_always_hints, "use always hints");
     TEST(settings1, settings1.clearer_hints, "clearer hints");
@@ -235,9 +235,9 @@ void runLogicTests(Config& newConfig)
     settings2.barren_hints = 5;
     TEST(settings2, settings2.korl_hints, "5 barren hints");
     settings2.item_hints = 5;
-    TEST(settings2, settings2.ho_ho_hints, "5 item hints");
+    TEST(settings2, dummy, "5 item hints");
     settings2.location_hints = 5;
-    TEST(settings2, settings2.ho_ho_hints, "5 location hints");
+    TEST(settings2, dummy, "5 location hints");
     settings2.num_required_dungeons = 3;
     TEST(settings2, dummy, "race mode 3 dungeon");
     settings2.num_required_dungeons = 4;

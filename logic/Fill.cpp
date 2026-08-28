@@ -331,7 +331,7 @@ void determineMajorItems(WorldPool& worlds, ItemPool& itemPool, LocationPool& al
 {
     LOG_TO_DEBUG("Determining Major Items");
     LOG_TO_DEBUG("New Major Items: [");
-    auto progressionLocations = filterFromPool(allLocations, [](const Location* location){return location->progression;});
+    auto progressionLocations = filterFromPool(allLocations, [](const Location* location){return location->currentItem.isApRequired();});
 
     // Combine the item pool as well as all items that have already been placed to test
     std::vector<Item*> totalItemPool = {};
@@ -356,7 +356,7 @@ void determineMajorItems(WorldPool& worlds, ItemPool& itemPool, LocationPool& al
         // Don't check junk items
         if (!item->isJunkItem())
         {
-            // Temporarily take this item out of the pool
+            /*// Temporarily take this item out of the pool
             const auto gameItemId = item->getGameItemId();
             item->setGameItemId(GameItem::NOTHING);
 
@@ -374,7 +374,7 @@ void determineMajorItems(WorldPool& worlds, ItemPool& itemPool, LocationPool& al
             else
             {
                 item->setDelayedItemId(gameItemId);
-            }
+            }*/
         }
     }
     LOG_TO_DEBUG("]");

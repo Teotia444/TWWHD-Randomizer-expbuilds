@@ -264,8 +264,8 @@ ConfigError Config::loadFromFile(const fspath& filePath, const fspath& preferenc
         //GET_FIELD(root, "mix_misc", settings.mix_misc)
         //GET_FIELD(root, "decouple_entrances", settings.decouple_entrances)
 
-        //GET_FIELD(root, "ho_ho_hints", settings.ho_ho_hints)
-        //GET_FIELD(root, "ho_ho_triforce_hints", settings.ho_ho_triforce_hints)
+        GET_AP_FIELD(root, "ho_ho_hints", "Options", settings.ho_ho_hints)
+        GET_AP_FIELD(root, "ho_ho_triforce_hints", "Options", settings.ho_ho_triforce_hints)
         //GET_FIELD(root, "korl_hints", settings.korl_hints)
         //GET_FIELD(root, "korl_sword_hints", settings.korl_sword_hints)
         GET_AP_FIELD(root, "kreeb_bow_hints", "Options", settings.kreeb_bow_hints)

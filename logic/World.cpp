@@ -212,7 +212,7 @@ LocationPool World::getLocations(bool onlyProgression /*= false*/)
 {
     LocationPool locations = {};
     for (auto& [name, location] : locationTable) {
-        if (!onlyProgression || location->progression)
+        if (!onlyProgression || location->currentItem.isApRequired())
         {
             locations.push_back(location.get());
         }
@@ -1424,6 +1424,10 @@ std::string World::getUTF8HintRegion(const std::string& hintRegion, const std::s
 }
 std::u16string World::getUTF16HintRegion(const std::string& hintRegion, const std::string& language /*= "English"*/, const Text::Type& type /*= Text::Type::STANDARD*/, const Text::Color& color /*= Text::Color::RED*/) const
 {
+    if(hintRegions.find(hintRegion) == hintRegions.end()){ // this is ugly. figure out why some locations never get a region assigned
+        return Text::apply_name_color(Utility::Str::toUTF16(hintRegion), color);
+    }
+    
     std::u16string str = Utility::Str::toUTF16(hintRegions.at(hintRegion).at(language).types.at(type));
     return Text::apply_name_color(str, color);
 }

@@ -663,7 +663,7 @@ static HintError generateLocationHintLocations(World& world, std::list<Hint>& hi
            !location->hasBeenHinted && 
            !location->isBossLocation && 
             location->hintPriority == "Sometimes" && 
-           !(world.getSettings().ho_ho_triforce_hints && location->currentItem.isTriforceShard()))
+           !(world.getSettings().ho_ho_triforce_hints > 0 && location->currentItem.isTriforceShard()))
             {
                 sometimesLocations.push_back(location.get());
             }
@@ -690,11 +690,11 @@ static HintError generateLocationHintLocations(World& world, std::list<Hint>& hi
 static HintError assignHoHoHints(World& world, WorldPool& worlds, std::list<Hint>& hints)
 {
     // If ho ho is hinting triforces, make those hints now
-    if (world.getSettings().ho_ho_triforce_hints)
+    if (world.getSettings().ho_ho_triforce_hints > 0)
     {
-        for (const auto location : world.getProgressionLocations())
+        for (const auto location : world.getLocations())
         {
-            if (location->currentItem.isTriforceShard())
+            if (location->currentItem.isTriforceShard() || location->currentItem.displayName.find("Triforce") != std::string::npos)
             {
                 LOG_AND_RETURN_IF_ERR(generateItemHintMessage(location, hints));
             }
@@ -863,7 +863,7 @@ HintError generateHints(WorldPool& worlds)
         std::vector<std::string> hintPlacementOptions = {};
         std::unordered_map<std::string, std::list<Hint>> hintsForCategory = {};
         // Only include ho ho if he's not hinting triforces
-        if (settings.ho_ho_hints && !settings.ho_ho_triforce_hints)
+        if (settings.ho_ho_hints > 0 && settings.ho_ho_triforce_hints <= 0)
         {
             hintPlacementOptions.emplace_back("ho ho");
         }
@@ -873,7 +873,7 @@ HintError generateHints(WorldPool& worlds)
         }
 
         // No placement options selected, don't use hints
-        if (hintPlacementOptions.empty() && !settings.ho_ho_triforce_hints)
+        if (hintPlacementOptions.empty() && settings.ho_ho_triforce_hints <= 0)
         {
             return HintError::NONE;
         }
