@@ -1185,11 +1185,11 @@ World::WorldLoadingError World::processPlandomizerLocations(WorldPool& worlds)
         LOG_TO_DEBUG("Plandomizer Location for world " + std::to_string(worldId + 1) + " - " + locationName + ": " + itemName + " [W" + std::to_string(plandoWorldId + 1) + "]");
         Location* location = locationTable[locationName].get();
 
-        if (location->hasKnownVanillaItem)
+        /*if (location->hasKnownVanillaItem)
         {
             ErrorLog::getInstance().log("Plandomizer Error: Attempted to plandomize item \"" + itemName + "\" at a location \"" + locationName + "\" which already has vanilla item \"" + location->currentItem.getName() + "\"");
             return WorldLoadingError::PLANDOMIZER_ERROR;
-        }
+        }*/
 
         location->plandomized = true;
         Item item = itemsWorld.getItem(itemName);
