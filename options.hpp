@@ -292,8 +292,8 @@ public:
     bool mix_misc;
     bool decouple_entrances;
 
-    uint8_t ho_ho_hints;
-    uint8_t ho_ho_triforce_hints;
+    bool ho_ho_hints;
+    bool ho_ho_triforce_hints;
     bool korl_hints;
     bool korl_sword_hints;
     uint8_t kreeb_bow_hints;

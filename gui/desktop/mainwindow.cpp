@@ -165,7 +165,7 @@ void MainWindow::load_config_into_ui()
     ConfigError err = config.loadFromFile(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml", true);
     if (err != ConfigError::NONE && err != ConfigError::MISSING_APTWWHD)
     {
-        show_error_dialog("Failed to load settings file\ncode " + ConfigErrorGetName(err));
+        show_error_dialog("Failed to load APTWWHD file\ncode " + ConfigErrorGetName(err));
 
     }
     else
@@ -1423,7 +1423,7 @@ void MainWindow::on_aptwwhd_browse_button_clicked()
         config.writeToFile(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml");
         ConfigError err = config.loadFromFile(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml");
         if(err != ConfigError::NONE){
-            show_error_dialog("Failed to load settings file\ncode " + ConfigErrorGetName(err));
+            show_error_dialog("Failed to load APTWWHD file\ncode " + ConfigErrorGetName(err));
             config.aptwwhdLoadedCorrectly = false;
             return;
         }
@@ -1443,7 +1443,7 @@ void MainWindow::on_connect_ap_button_clicked()
 
     ConfigError err = config.loadFromFile(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml");
     if(err != ConfigError::NONE){
-        show_error_dialog("Failed to load settings file\ncode " + ConfigErrorGetName(err));
+        show_error_dialog("Failed to load APTWWHD file\ncode " + ConfigErrorGetName(err));
     }
 
 

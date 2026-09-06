@@ -660,7 +660,7 @@ static HintError generateLocationHintLocations(World& world, std::list<Hint>& hi
            !location->hasBeenHinted && 
            !location->isBossLocation && 
             location->hintPriority == "Sometimes" && 
-           !(world.getSettings().ho_ho_triforce_hints > 0 && location->currentItem.isTriforceShard()))
+           !(world.getSettings().ho_ho_triforce_hints && location->currentItem.isTriforceShard()))
             {
                 sometimesLocations.push_back(location.get());
             }
@@ -687,7 +687,7 @@ static HintError generateLocationHintLocations(World& world, std::list<Hint>& hi
 static HintError assignHoHoHints(World& world, WorldPool& worlds, std::list<Hint>& hints)
 {
     // If ho ho is hinting triforces, make those hints now
-    if (world.getSettings().ho_ho_triforce_hints > 0)
+    if (world.getSettings().ho_ho_triforce_hints)
     {
         for (const auto location : world.getLocations())
         {
@@ -833,6 +833,7 @@ HintError generateHints(WorldPool& worlds)
         auto& settings = world.getSettings();
         uint8_t totalNumHints = settings.path_hints + settings.barren_hints + settings.item_hints + settings.location_hints;
         uint8_t totalMadeHints = hints.size();
+        
         LOG_AND_RETURN_IF_ERR(generateLocationHintLocations(world, hints, totalNumHints - totalMadeHints));
 
         // Sort hints by type
@@ -842,7 +843,6 @@ HintError generateHints(WorldPool& worlds)
             return h1.type < h2.type;
         });
         hints.assign(hintsVector.begin(), hintsVector.end());
-
         // Assign Kreeb Bow Hints if the setting is enabled
         if (settings.kreeb_bow_hints > 0)
         {
@@ -860,7 +860,7 @@ HintError generateHints(WorldPool& worlds)
         std::vector<std::string> hintPlacementOptions = {};
         std::unordered_map<std::string, std::list<Hint>> hintsForCategory = {};
         // Only include ho ho if he's not hinting triforces
-        if (settings.ho_ho_hints > 0 && settings.ho_ho_triforce_hints <= 0)
+        if (settings.ho_ho_hints && !settings.ho_ho_triforce_hints)
         {
             hintPlacementOptions.emplace_back("ho ho");
         }
@@ -870,7 +870,7 @@ HintError generateHints(WorldPool& worlds)
         }
 
         // No placement options selected, don't use hints
-        if (hintPlacementOptions.empty() && settings.ho_ho_triforce_hints <= 0)
+        if (hintPlacementOptions.empty() && !settings.ho_ho_triforce_hints)
         {
             return HintError::NONE;
         }
@@ -878,6 +878,10 @@ HintError generateHints(WorldPool& worlds)
         size_t i = 0;
         for (auto& hint : hints)
         {
+            // this can happen if we've avoided korl hints earlier but we had ho ho triforce hints on
+            // assignHoHoHints generate the triforce hints anyway so breaking out of that loop is not a big deal
+            if(hintPlacementOptions.empty()) break;
+            
             // iterate to the next placement option on each index of the hint locations
             std::string placementOption = hintPlacementOptions[i % hintPlacementOptions.size()];
             // add the hint location to that placement option
