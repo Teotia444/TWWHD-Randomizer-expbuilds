@@ -133,7 +133,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->install_custom_model->setVisible(false);
     // Setup Tracker
     initialize_tracker();
-    load_tracker_autosave();
+    //load_tracker_autosave();
     connect(&apWS, &QWebSocket::connected, this, &MainWindow::on_ap_connected);
 }
 
@@ -1434,6 +1434,7 @@ void MainWindow::on_aptwwhd_browse_button_clicked()
 
 void MainWindow::on_connect_ap_button_clicked()
 {
+    apWS.close();
     if(ui->aptwwhd_path->text().isEmpty()){
         QMessageBox messageBox;
         messageBox.critical(0,"Error","No APTWWHD files were provided! The tracker won't launch");
@@ -1548,6 +1549,34 @@ void MainWindow::update_locations(QString locName){
             }
         }
     }
+    int checkedLocations = 0;
+    int accessibleLocations = 0;
+    int remainingLocations = 0;
+    for (auto loc : trackerWorlds[0].getLocations(!trackerPreferences.showNonProgressLocations))
+    {
+        // Don't do anything with hint locations
+        if (loc->categories.contains(LocationCategory::HoHoHint) || loc->categories.contains(LocationCategory::BlueChuChu))
+        {
+            continue;
+        }
+        if (loc->marked)
+        {
+            checkedLocations++;
+        }
+        else if (loc->hasBeenFound)
+        {
+            accessibleLocations++;
+            remainingLocations++;
+        }
+        else
+        {
+            remainingLocations++;
+        }
+    }
+    ui->locations_checked_number->setText(std::to_string(checkedLocations).c_str());
+    ui->locations_accessible_number->setText(std::to_string(accessibleLocations).c_str());
+    ui->locations_remaining_number->setText(std::to_string(remainingLocations).c_str());
+
     update_tracker();
 }
 
