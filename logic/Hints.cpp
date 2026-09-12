@@ -6,6 +6,7 @@
 #include <command/Log.hpp>
 #include <filetypes/util/msbtMacros.hpp>
 #include <utility/string.hpp>
+#include <utility/platform.hpp>
 
 template<typename Container>
 static Location* getHintableLocation(Container& locations)
@@ -39,18 +40,15 @@ static HintError calculatePossiblePathLocations(WorldPool& worlds)
                 world.goalLocations.push_back(dungeon.bossLocation);
             }
         }
-        /*
         for (auto& [name, location] : world.locationTable)
         {
-            if (!location->progression && !location->categories.contains(LocationCategory::BlueChuChu))
+            if (!location->currentItem.isApRequired() && !location->categories.contains(LocationCategory::BlueChuChu))
             {
                 nonRequiredLocations.insert({location.get(), location->currentItem});
                 location->currentItem = {GameItem::INVALID, location->world};
             }
-        }*/
+        }
     }
-
-    return HintError::NONE;
 
     // Determine path locations for each goal location by going through the playthrough
     // and seeing if taking away the item at each location can still access the goal locations
@@ -193,44 +191,41 @@ static HintError calculatePossibleBarrenRegions(WorldPool& worlds)
         // of their locations. Otherwise add the location to the list of locations
         // in the barren region. For barren hints, dungeons within islands also
         // count as being part of the island.
-        for (auto& [name, location] : world.locationTable)
+        for (const auto& [name, location] : world.locationTable)
         {
-            // Locations which have known vanilla/expected items should not block a region from being barren
-            if (location->progression && !location->hasKnownVanillaItem && !location->hasExpectedItem)
-            {
-                for (auto& locAccess : location->accessPoints)
-                {
-                    auto area = locAccess->area;
-                    const auto& generalHintRegions = area->findHintRegions(/*onlyNonIslands = */true);
-                    const auto& islands = area->findIslands();
-                    for (auto hintRegions : {generalHintRegions, islands})
-                    {
-                        for (auto& hintRegion : hintRegions)
-                        {
-                            if (world.barrenRegions.contains(hintRegion))
-                            {
-                                if (location->currentItemCanBeBarren())
-                                {
+            // Locations which are non-progress or have known vanilla/expected items should not be considered in barren hints
+            // (so they should neither appear as a barren location nor block the region from being barren)
+            const bool& canBlockBarren = location->progression && !location->hasKnownVanillaItem && !location->hasExpectedItem;
+
+            // Keep track of which outside dependent location (if any) prevents this check from being barren
+            Location* nonBarrenDependent = nullptr;
+            if(const auto& it = std::ranges::find_if(location->outsideDependentLocations, [](const auto& loc){ return !loc->isBarrenAsChainLocation(); }); it != location->outsideDependentLocations.end()) {
+                nonBarrenDependent = *it;
+            }
+
+            if(!canBlockBarren && nonBarrenDependent == nullptr) continue;
+
+            const bool& isBarren = location->currentItemCanBeBarren();
+
+            for(const auto& locAccess : location->accessPoints) {
+                const auto& area = locAccess->area;
+                for(const auto& hintRegions : {area->findHintRegions(true), area->findIslands()}) {
+                    for(const auto& hintRegion : hintRegions) {
+                        if(world.barrenRegions.contains(hintRegion)) {
+                            if(canBlockBarren) {
+                                if(isBarren) {
                                     world.barrenRegions[hintRegion].insert(location.get());
                                 }
-                                else
-                                {
+                                else {
                                     LOG_TO_DEBUG("Removed " + hintRegion + " from barren pool due to item " + location->currentItem.getName() + " at location " + location->getName());
                                     world.barrenRegions.erase(hintRegion);
                                     continue;
                                 }
+                            }
 
-                                // Also make sure the outside dependent locations are barren a well
-                                for (auto outsideLoc : location->outsideDependentLocations)
-                                {
-                                    // If an outside dependent location is not barren, remove the region from being barren
-                                    if (!outsideLoc->isBarrenAsChainLocation())
-                                    {
-                                        LOG_TO_DEBUG("Removed " + hintRegion + " from barren pool due to item " + outsideLoc->currentItem.getName() + " at location " + outsideLoc->getName() + " which is dependent on " + location->getName());
-                                        world.barrenRegions.erase(hintRegion);
-                                        break;
-                                    }
-                                }
+                            if(nonBarrenDependent) {
+                                LOG_TO_DEBUG("Removed " + hintRegion + " from barren pool due to item " + nonBarrenDependent->currentItem.getName() + " at location " + nonBarrenDependent->getName() + " which is dependent on " + location->getName());
+                                world.barrenRegions.erase(hintRegion);
                             }
                         }
                     }
@@ -458,9 +453,13 @@ static HintError generateItemHintMessage(Location* location, std::list<Hint>& hi
     std::list<std::string> hintRegions = location->hintRegions;
 
     // If this is an item in a dungeon, use the dungeon's island(s) for the hint instead
-    if (world->dungeons.contains(hintRegions.front()))
+    if (!hintRegions.empty() && world->dungeons.contains(hintRegions.front()))
     {
         hintRegions = world->dungeons.at(hintRegions.front()).islands;
+    }
+    if(hintRegions.empty()){
+        hintRegions.emplace_back(location->getName());
+        Utility::platformLog("Warning: could not generate a hint region for " + location->getName());
     }
 
     for (const std::string& hintRegion : hintRegions)
@@ -529,11 +528,11 @@ static HintError generateItemHintLocations(World& world, std::list<Hint>& hints)
     std::vector<Location*> possibleItemHintLocations = {};
     for (auto& [name, location] : world.locationTable)
     {
-        if (location->progression              &&  // if the location is a progression location...
-           !location->currentItem.isJunkItem() &&  // and does not have a junk item...
-           !location->hasKnownVanillaItem      &&  // and does not have a known vanilla item...
-           !location->hasExpectedItem          &&  // and does not have an expected item...
-           !location->hasBeenHinted            &&  // and has not been hinted at yet...
+        if (location->currentItem.isApRequired() &&  // if the location is a progression location...
+           !location->currentItem.isJunkItem()   &&  // and does not have a junk item...
+           !location->hasKnownVanillaItem        &&  // and does not have a known vanilla item...
+           !location->hasExpectedItem            &&  // and does not have an expected item...
+           !location->hasBeenHinted              &&  // and has not been hinted at yet...
            !(settings.ho_ho_triforce_hints && location->currentItem.isTriforceShard())) // and isn't a shard when ho ho will hint shards...
            
            {
@@ -621,7 +620,7 @@ static HintError generateAlwaysHints(World& world, std::list<Hint>& hints)
     std::vector<Location*> alwaysLocations = {};
     for (auto& [name, location] : world.locationTable)
     {
-        if (location->progression && location->hintPriority == "Always")
+        if (location->currentItem.isApRequired() && location->hintPriority == "Always")
         {
             alwaysLocations.push_back(location.get());
         }
@@ -690,9 +689,9 @@ static HintError assignHoHoHints(World& world, WorldPool& worlds, std::list<Hint
     // If ho ho is hinting triforces, make those hints now
     if (world.getSettings().ho_ho_triforce_hints)
     {
-        for (const auto location : world.getProgressionLocations())
+        for (const auto location : world.getLocations())
         {
-            if (location->currentItem.isTriforceShard())
+            if (location->currentItem.isTriforceShard() || location->currentItem.displayName.find("Triforce") != std::string::npos)
             {
                 LOG_AND_RETURN_IF_ERR(generateItemHintMessage(location, hints));
             }
@@ -774,13 +773,16 @@ static HintError assignKreebHints(World& world)
     // Get all bow locations
     // Shuffle locations to prevent any possible meta-gaming where the last bow might be
     // since otherwise they'll appear in order of location id
-    auto allLocations = world.getProgressionLocations();
+    auto allLocations = world.getLocations();
     shufflePool(allLocations);
+    int amountChosen = 0;
     for (auto& location : allLocations)
     {
-        if (location->currentItem.getGameItemId() == GameItem::ProgressiveBow)
+        if (amountChosen >= world.getSettings().kreeb_bow_hints) break; 
+        if (location->currentItem.getGameItemId() == GameItem::ProgressiveBow || location->currentItem.displayName.find("Bow") != std::string::npos)
         {
             LOG_AND_RETURN_IF_ERR(generateItemHintMessage(location, world.kreebHints));
+            amountChosen++;
         }
     }
     return HintError::NONE;
@@ -806,7 +808,7 @@ static HintError assignKorlSwordHints(World& world)
 HintError generateHints(WorldPool& worlds)
 {
     LOG_AND_RETURN_IF_ERR(calculatePossiblePathLocations(worlds));
-    //LOG_AND_RETURN_IF_ERR(calculatePossibleBarrenRegions(worlds));
+    LOG_AND_RETURN_IF_ERR(calculatePossibleBarrenRegions(worlds));
 
     for (auto& world : worlds)
     {
@@ -831,6 +833,7 @@ HintError generateHints(WorldPool& worlds)
         auto& settings = world.getSettings();
         uint8_t totalNumHints = settings.path_hints + settings.barren_hints + settings.item_hints + settings.location_hints;
         uint8_t totalMadeHints = hints.size();
+        
         LOG_AND_RETURN_IF_ERR(generateLocationHintLocations(world, hints, totalNumHints - totalMadeHints));
 
         // Sort hints by type
@@ -840,12 +843,12 @@ HintError generateHints(WorldPool& worlds)
             return h1.type < h2.type;
         });
         hints.assign(hintsVector.begin(), hintsVector.end());
-
         // Assign Kreeb Bow Hints if the setting is enabled
-        if (settings.kreeb_bow_hints)
+        if (settings.kreeb_bow_hints > 0)
         {
             assignKreebHints(world);
         }
+
 
         // Assign Korl Sword Hints if the setting is enabled
         if (settings.korl_sword_hints)
@@ -875,6 +878,10 @@ HintError generateHints(WorldPool& worlds)
         size_t i = 0;
         for (auto& hint : hints)
         {
+            // this can happen if we've avoided korl hints earlier but we had ho ho triforce hints on
+            // assignHoHoHints generate the triforce hints anyway so breaking out of that loop is not a big deal
+            if(hintPlacementOptions.empty()) break;
+            
             // iterate to the next placement option on each index of the hint locations
             std::string placementOption = hintPlacementOptions[i % hintPlacementOptions.size()];
             // add the hint location to that placement option

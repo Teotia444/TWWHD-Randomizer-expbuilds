@@ -189,7 +189,7 @@ public:
             ErrorLog::getInstance().log("Could not generate permalink for RNG seeding.");
             return 1;
         }
-        const Seed_t integer_seed = seedFromString(permalink);
+        const Seed_t integer_seed = 2;
         Random_Init(integer_seed);
 
         LogInfo::setSeedHash(generate_seed_hash());

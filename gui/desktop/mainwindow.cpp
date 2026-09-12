@@ -133,7 +133,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->install_custom_model->setVisible(false);
     // Setup Tracker
     initialize_tracker();
-    load_tracker_autosave();
+    //load_tracker_autosave();
     connect(&apWS, &QWebSocket::connected, this, &MainWindow::on_ap_connected);
 }
 
@@ -163,9 +163,10 @@ void MainWindow::load_config_into_ui()
     // Ignore errors and just load in whatever we can. The gui will write a proper config file
     // when the user begins randomization
     ConfigError err = config.loadFromFile(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml", true);
-    if (err != ConfigError::NONE)
+    if (err != ConfigError::NONE && err != ConfigError::MISSING_APTWWHD)
     {
-        show_error_dialog("Failed to load settings file\ncode " + ConfigErrorGetName(err));
+        show_error_dialog("Failed to load APTWWHD file\ncode " + ConfigErrorGetName(err));
+
     }
     else
     {
@@ -465,8 +466,11 @@ void MainWindow::apply_config_settings()
                 on_aptwwhd_browse_button_clicked();
                 break;
             case QMessageBox::No:
-                config.settings.plandomizer = false;
+                config.aptwwhdLoadedCorrectly = false;
                 config.settings.plandomizerFile.clear();
+                ui->base_game_path->setText(Utility::toQString(config.gameBaseDir));
+                ui->output_folder->setText(Utility::toQString(config.outputDir));
+                return;
         }
     }
 
@@ -648,6 +652,9 @@ void MainWindow::apply_config_settings()
     APPLY_COMBOBOX_SETTING(config, ui, first_person_camera);
     APPLY_COMBOBOX_SETTING(config, ui, gyroscope);
     APPLY_COMBOBOX_SETTING(config, ui, ui_display);
+
+    if(config.settings.ap3DModel == AP3DModel::SPHERES) {ui->ap3dmodel->setCheckState(Qt::Checked);} else {ui->ap3dmodel->setCheckState(Qt::Unchecked);}
+    if(config.settings.sgim == SGIM::SAMEMODEL) {ui->sgim->setCheckState(Qt::Checked);} else {ui->sgim->setCheckState(Qt::Unchecked);}
 
     update_excluded_locations(); // make sure the visible locations are consistent with the enabled settings
     update_permalink_and_seed_hash();
@@ -1148,6 +1155,17 @@ void MainWindow::on_first_person_camera_currentTextChanged(const QString &arg1)
     update_permalink_and_seed_hash();
 }
 
+void MainWindow::on_sgim_stateChanged(int arg1)
+{
+    config.settings.sgim = arg1 ? SGIM::SAMEMODEL : SGIM::GENERICAP;
+    update_permalink_and_seed_hash();
+}
+
+void MainWindow::on_ap3dmodel_stateChanged(int arg1)
+{
+    config.settings.ap3DModel = arg1 ? AP3DModel::SPHERES : AP3DModel::LETTER;
+    update_permalink_and_seed_hash();
+}
 
 void MainWindow::on_gyroscope_currentTextChanged(const QString &arg1)
 {
@@ -1403,13 +1421,20 @@ void MainWindow::on_aptwwhd_browse_button_clicked()
         ui->aptwwhd_path->setText(fileName);
         config.settings.plandomizerFile = Utility::fromQString(fileName);
         config.writeToFile(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml");
-        config.loadFromFile(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml");
+        ConfigError err = config.loadFromFile(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml");
+        if(err != ConfigError::NONE){
+            show_error_dialog("Failed to load APTWWHD file\ncode " + ConfigErrorGetName(err));
+            config.aptwwhdLoadedCorrectly = false;
+            return;
+        }
+        config.aptwwhdLoadedCorrectly = true;
     }
 }
 
 
 void MainWindow::on_connect_ap_button_clicked()
 {
+    apWS.close();
     if(ui->aptwwhd_path->text().isEmpty()){
         QMessageBox messageBox;
         messageBox.critical(0,"Error","No APTWWHD files were provided! The tracker won't launch");
@@ -1417,7 +1442,11 @@ void MainWindow::on_connect_ap_button_clicked()
         return;
     }
 
-    config.loadFromFile(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml");
+    ConfigError err = config.loadFromFile(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml");
+    if(err != ConfigError::NONE){
+        show_error_dialog("Failed to load APTWWHD file\ncode " + ConfigErrorGetName(err));
+    }
+
 
     config.settings.starting_gear = {
         GameItem::ProgressiveSail
@@ -1520,6 +1549,34 @@ void MainWindow::update_locations(QString locName){
             }
         }
     }
+    int checkedLocations = 0;
+    int accessibleLocations = 0;
+    int remainingLocations = 0;
+    for (auto loc : trackerWorlds[0].getLocations(!trackerPreferences.showNonProgressLocations))
+    {
+        // Don't do anything with hint locations
+        if (loc->categories.contains(LocationCategory::HoHoHint) || loc->categories.contains(LocationCategory::BlueChuChu))
+        {
+            continue;
+        }
+        if (loc->marked)
+        {
+            checkedLocations++;
+        }
+        else if (loc->hasBeenFound)
+        {
+            accessibleLocations++;
+            remainingLocations++;
+        }
+        else
+        {
+            remainingLocations++;
+        }
+    }
+    ui->locations_checked_number->setText(std::to_string(checkedLocations).c_str());
+    ui->locations_accessible_number->setText(std::to_string(accessibleLocations).c_str());
+    ui->locations_remaining_number->setText(std::to_string(remainingLocations).c_str());
+
     update_tracker();
 }
 

@@ -5,7 +5,7 @@
 #include <utility/file.hpp>
 #include <utility/platform.hpp>
 
-PlandomizerError loadPlandomizer(const YAML::Node yamlNode, std::vector<Plandomizer>& plandos, size_t numWorlds)
+PlandomizerError loadPlandomizer(const YAML::Node yamlNode, std::vector<Plandomizer>& plandos, size_t numWorlds, bool sgim)
 {
     LOG_TO_DEBUG("Loading plandomizer file");
 
@@ -33,6 +33,13 @@ PlandomizerError loadPlandomizer(const YAML::Node yamlNode, std::vector<Plandomi
         // Process locations
         if (world["Locations"] && world["Locations"].IsMap())
         {
+            std::set<std::string> reqBoss;
+            // Process required bosses so we can insert them asap
+            if (world["Required Bosses"] && world["Required Bosses"].IsSequence()){
+                for (const auto& location : world["Required Bosses"]){
+                    reqBoss.insert(location.as<std::string>());
+                }
+            }
             for (const auto& locationObject : world["Locations"])
             {
                 if (locationObject.first.IsNull())
@@ -44,7 +51,9 @@ PlandomizerError loadPlandomizer(const YAML::Node yamlNode, std::vector<Plandomi
                 // the item name and potential world id from those children.
                 // If no world id is given, then the current world's id will be used.
                 int plandoWorldId = i;
-                std::string itemName;
+                std::string itemName = "Unknown";
+                std::string playerName = "Unknown";
+                bool apRequired;
                 int itemSlot;
                 if (locationObject.second.IsMap())
                 {
@@ -52,12 +61,18 @@ PlandomizerError loadPlandomizer(const YAML::Node yamlNode, std::vector<Plandomi
                     {
                         itemSlot = locationObject.second["player"].as<int>();
                     }
-
+                    if(locationObject.second["player_name"])
+                    {
+                        playerName = locationObject.second["player_name"].as<std::string>();
+                    }
+                    if (locationObject.second["classification"])
+                    {
+                        apRequired = locationObject.second["classification"].as<std::string>().find("progression") != std::string::npos || locationObject.second["classification"].as<std::string>().find("trap") != std::string::npos;
+                    }
                     if (locationObject.second["name"])
                     {
                         itemName = locationObject.second["name"].as<std::string>();
                     }
-
                     else
                     {
                         ErrorLog::getInstance().log("Plandomizer Error: Missing key \"name\" in location \"" + locationObject.first.as<std::string>() + "\"");
@@ -92,10 +107,18 @@ PlandomizerError loadPlandomizer(const YAML::Node yamlNode, std::vector<Plandomi
 
                 // Get GameItem
                 const GameItem& gameItem = nameToGameItem(itemName);
-                if (gameItem == GameItem::INVALID || itemSlot != slot) plandomizer.locationsStr.insert({locationName, {GameItem::FathersLetter, plandoWorldId}});
-                else plandomizer.locationsStr.insert({locationName, {gameItem, plandoWorldId}});
 
+                bool isReqBoss = false;
+                if(reqBoss.find(locationName) != reqBoss.end()) {
+                    Utility::platformLog("Found a req loc at " + locationName);
+                    isReqBoss = true;
+                }
                 
+                // we're on an AP item (if sgim is on, make this always false if the other game is wind waker)
+                if (gameItem == GameItem::INVALID || (itemSlot != slot && !sgim)) plandomizer.locationsStr.insert({locationName, {GameItem::ArchipelagoItem, plandoWorldId, itemName, playerName, apRequired, isReqBoss}});
+                // this is our item
+                else plandomizer.locationsStr.insert({locationName, {gameItem, plandoWorldId, itemName, playerName, apRequired, isReqBoss}});
+
                 LOG_TO_DEBUG("\tPlandomizing " +  gameItemToName(gameItem) + " [W" + std::to_string(plandoWorldId + 1) + "] to " + locationName + " [W" + std::to_string(i + 1) + "]");
             }
         }

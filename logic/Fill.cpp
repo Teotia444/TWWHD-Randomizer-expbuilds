@@ -108,7 +108,7 @@ FillError forwardFillUntilMoreFreeSpace(WorldPool& worlds, ItemPool& itemsToPlac
     while (accessibleLocations.size() < openLocations * worlds.size() || !successfullyPlacedItems)
     {
         successfullyPlacedItems = false;
-        #if ENABLE_DEBUG
+        #ifdef ENABLE_DEBUG
             for (const Location* loc : accessibleLocations)
             {
                 LOG_TO_DEBUG("\t" + loc->getName());
@@ -331,7 +331,7 @@ void determineMajorItems(WorldPool& worlds, ItemPool& itemPool, LocationPool& al
 {
     LOG_TO_DEBUG("Determining Major Items");
     LOG_TO_DEBUG("New Major Items: [");
-    auto progressionLocations = filterFromPool(allLocations, [](const Location* location){return location->progression;});
+    auto progressionLocations = filterFromPool(allLocations, [](const Location* location){return location->currentItem.isApRequired();});
 
     // Combine the item pool as well as all items that have already been placed to test
     std::vector<Item*> totalItemPool = {};
@@ -356,7 +356,7 @@ void determineMajorItems(WorldPool& worlds, ItemPool& itemPool, LocationPool& al
         // Don't check junk items
         if (!item->isJunkItem())
         {
-            // Temporarily take this item out of the pool
+            /*// Temporarily take this item out of the pool
             const auto gameItemId = item->getGameItemId();
             item->setGameItemId(GameItem::NOTHING);
 
@@ -374,7 +374,7 @@ void determineMajorItems(WorldPool& worlds, ItemPool& itemPool, LocationPool& al
             else
             {
                 item->setDelayedItemId(gameItemId);
-            }
+            }*/
         }
     }
     LOG_TO_DEBUG("]");
@@ -667,13 +667,13 @@ static FillError placeNonProgressLocationPlandomizerItems(WorldPool& worlds, Ite
         if (!item.isJunkItem())
         {
             item = removeElementFromPool(itemPool, item);
-            // Don't accept trying to place major items in non-progress locations
-            if (item.isMajorItem())
+            // Accept trying to place major items in non-progress locations (trust the aptwwhd file)
+            /*if (item.isMajorItem())
             {
                 ErrorLog::getInstance().log("Attempted to plandomize major item \"" + gameItemToName(item.getGameItemId()) + "\" in non-progress location \"" + location->getName() + "\"");
                 ErrorLog::getInstance().log("Plandomizing major items in non-progress locations is not allowed.");
                 return FillError::PLANDOMIZER_ERROR;
-            }
+            }*/
         }
         location->currentItem = item;
         LOG_TO_DEBUG("Placed " + item.getName() + " at " + location->getName());

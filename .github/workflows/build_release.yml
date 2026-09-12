@@ -47,7 +47,7 @@ jobs:
 
   attach-to-release:
     name: Attach To Release
-    needs: [build-windows, build-wiiu, build-mac-x64, build-mac-arm]
+    needs: [build-windows, build-wiiu, build-mac-x64, build-mac-arm, build-linux-x64]
     runs-on: ubuntu-latest
  
     steps:
@@ -64,7 +64,7 @@ jobs:
      - name: Download Wii U Artifact
        uses: actions/download-artifact@v8
        with:
-        name: wwhd_rando_${{ github.event.release.tag_name }}.wuhb # pass name so it doesn't get put in a folder
+        name: wwhd_rando.wuhb # pass name so it doesn't get put in a folder
     
      - name: Download Mac OS Artifact (x64)
        uses: actions/download-artifact@v8

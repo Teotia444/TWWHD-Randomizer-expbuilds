@@ -118,3 +118,4 @@ g_fopAc_Method = 0x101F3088;
 shopItems_setData_FoodAll = 0x101EB850;
 current_file_idx = 0x47d4b717; /* Not used in custom asm, but keep it documented if necessary */
 fopOvlpM_IsPeek = 0x025dbe00;
+dComIfG_instance = 0x025200d4;

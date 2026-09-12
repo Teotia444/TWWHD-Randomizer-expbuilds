@@ -14,24 +14,41 @@ give_archipelago_item:
   ; Store value of r3 in r31
   mr      r31, r3
   
-  ; Load the address of give_archipelago_item_byte into r4
-  lis     r4, give_archipelago_item_byte@ha
-  addi    r4, r4, give_archipelago_item_byte@l
-  
-  ; Load the item ID into r3
+  ; load the dcomifg instance 
+  bl dComIfG_instance
+  mr r4, r3
+
+  addi r4, r4, 0x514E
+
+  ; Load the address of the ap item byte into r4
   lbz     r3, 0 (r4)
+  lbz     r5, 1 (r4)
   
+  ;verify we instanced dcomifg correctly, if not skip
+  cmpwi   r5, 0x1
+  bne     dcomifg_maintainence
+
   ; If item ID is 0xFF, there's no item to give
   cmpwi   r3, 0xFF
   beq     give_archipelago_item_end
   
-  ; Else, clear the byte to 0xFF before giving the item
-  li      r5, 0xFF
-  stb     r5, 0 (r4)
-  
   ; Branch to execItemGet to give the item
   bl      execItemGet
-  
+
+  ; reload the dcomifg instance
+  bl dComIfG_instance
+  mr r4, r3
+
+  addi r4, r4, 0x514E
+
+  dcomifg_maintainence:
+  ; set the item val byte to 0xFF
+  li      r5, 0xFF
+  stb     r5, 0 (r4)
+  ; also make sure the instance is marked as initialized
+  li      r5, 0x1
+  stb     r5, 1 (r4)
+
   give_archipelago_item_end:
   ; Restore the value of r3
   mr      r3, r31
@@ -45,10 +62,6 @@ give_archipelago_item:
 
   blr
 
-.global give_archipelago_item_byte
-give_archipelago_item_byte:
-  .byte 0xFF
-.align 2 ; Align to the next 4 bytes
 
 ; Allocate 0x40 bytes in memory for the player's slot name
 .global archipelago_slot_name

@@ -137,11 +137,11 @@ if(DEFINED DEVKITPRO)
   
   wut_create_rpx(wwhd_rando)
   wut_create_wuhb(wwhd_rando
-    NAME       "The Legend of Zelda: The Wind Waker HD Randomizer"
+    NAME       "The Legend of Zelda: The Wind Waker HD AP Randomizer"
 
     CONTENT    "${CMAKE_BINARY_DIR}/data"
-    SHORTNAME  "TWWHD Randomizer"
-    AUTHOR     "SuperDude88, csunday95, gymnast86"
+    SHORTNAME  "TWWHD AP Randomizer"
+    AUTHOR     "SuperDude88, csunday95, gymnast86, teotia444"
     ICON       "${CMAKE_SOURCE_DIR}/platform/Icon.png"
     #TVSPLASH   "${CMAKE_SOURCE_DIR}/platform/Splash.png"
     #DRCSPLASH  "${CMAKE_SOURCE_DIR}/platform/Splash.png"

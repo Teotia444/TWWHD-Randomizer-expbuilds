@@ -761,11 +761,15 @@ TweakError modify_title_screen() {
 
         // Update subtitle size/position
         layout.rootPane.children[0].children[1].children[1].children[1].children[0].pane->translation.Y = -30.0f;
+        layout.rootPane.children[0].children[1].children[1].children[1].children[0].pane->translation.X = 40.0f;
         layout.rootPane.children[0].children[1].children[1].children[1].children[0].pane->height = 120.0f;
+        layout.rootPane.children[0].children[1].children[1].children[1].children[0].pane->width = 420.0f;
 
         // Update subtitle mask size/position
         layout.rootPane.children[0].children[1].children[1].children[1].children[1].pane->translation.Y = -30.0f;
+        layout.rootPane.children[0].children[1].children[1].children[1].children[1].pane->translation.X = 40.0f;
         layout.rootPane.children[0].children[1].children[1].children[1].children[1].pane->height = 120.0f;
+        layout.rootPane.children[0].children[1].children[1].children[1].children[1].pane->width = 420.0f;
 
         return true;
     });
@@ -827,15 +831,15 @@ TweakError update_name_and_icon() {
         meta.Parse(metaStream.str().c_str(), metaStream.str().size());
 
         tinyxml2::XMLElement* metaRoot = meta.RootElement();
-        metaRoot->FirstChildElement("longname_en")->SetText("THE LEGEND OF ZELDA\nThe Wind Waker HD Randomizer");
-        metaRoot->FirstChildElement("longname_fr")->SetText("THE LEGEND OF ZELDA\nThe Wind Waker HD Randomizer");
-        metaRoot->FirstChildElement("longname_es")->SetText("THE LEGEND OF ZELDA\nThe Wind Waker HD Randomizer");
-        metaRoot->FirstChildElement("longname_pt")->SetText("THE LEGEND OF ZELDA\nThe Wind Waker HD Randomizer");
+        metaRoot->FirstChildElement("longname_en")->SetText("THE LEGEND OF ZELDA\nThe Wind Waker HD AP Randomizer");
+        metaRoot->FirstChildElement("longname_fr")->SetText("THE LEGEND OF ZELDA\nThe Wind Waker HD AP Randomizer");
+        metaRoot->FirstChildElement("longname_es")->SetText("THE LEGEND OF ZELDA\nThe Wind Waker HD AP Randomizer");
+        metaRoot->FirstChildElement("longname_pt")->SetText("THE LEGEND OF ZELDA\nThe Wind Waker HD AP Randomizer");
 
-        metaRoot->FirstChildElement("shortname_en")->SetText("The Wind Waker HD Randomizer");
-        metaRoot->FirstChildElement("shortname_fr")->SetText("The Wind Waker HD Randomizer");
-        metaRoot->FirstChildElement("shortname_es")->SetText("The Wind Waker HD Randomizer");
-        metaRoot->FirstChildElement("shortname_pt")->SetText("The Wind Waker HD Randomizer");
+        metaRoot->FirstChildElement("shortname_en")->SetText("The Wind Waker HD AP Randomizer");
+        metaRoot->FirstChildElement("shortname_fr")->SetText("The Wind Waker HD AP Randomizer");
+        metaRoot->FirstChildElement("shortname_es")->SetText("The Wind Waker HD AP Randomizer");
+        metaRoot->FirstChildElement("shortname_pt")->SetText("The Wind Waker HD AP Randomizer");
 
         // change the title ID so it gets its own channel when repacked
         metaRoot->FirstChildElement("title_id")->SetText("0005000010143599");
@@ -2223,11 +2227,11 @@ TweakError update_required_bosses(const World& world) {
 
     uint16_t required_boss_stages_bitset = 0x0000;
     for (const auto& [dungeonName, dungeon] : world.dungeons) {
-        if (dungeon.isRequiredDungeon) {
-            required_boss_stages_bitset |= (1 << dungeon.bossLocation->stageId);
+        for (const auto& loc : dungeon.locations) { 
+            if(loc->isRequiredBossLocation) required_boss_stages_bitset |= (1 << dungeon.bossLocation->stageId);
         }
     }
-
+       
     final_staircase.addAction([required_boss_stages_bitset](RandoSession* session, FileType* data) -> int {
         CAST_ENTRY_TO_FILETYPE(dzr, FileTypes::DZXFile, data)
         // Add a custom actor to check if the bosses are dead and set a switch when they are
@@ -3480,6 +3484,12 @@ TweakError replace_ctmc_chest_texture() {
     return TweakError::NONE;
 }
 
+TweakError replace_fathers_letter_model(bool fullModel) {
+    if(fullModel) g_session.copyToGameFile(Utility::get_data_path() / "assets/APItem3D.szs", "content/Common/Object/VleTT.szs", true);
+    else g_session.copyToGameFile(Utility::get_data_path() / "assets/APItem2D.szs", "content/Common/Object/VleTT.szs", true);
+    return TweakError::NONE;
+}
+
 TweakError apply_ingame_preferences(const Settings& settings) {
     if(!custom_symbols.contains("target_type_preference")) LOG_ERR_AND_RETURN(TweakError::MISSING_SYMBOL);
     if(!custom_symbols.contains("camera_preference")) LOG_ERR_AND_RETURN(TweakError::MISSING_SYMBOL);
@@ -4221,6 +4231,7 @@ TweakError apply_necessary_tweaks(const Settings& settings) {
 
     TWEAK_ERR_CHECK(updateCodeSize());
 
+    LOG_AND_RETURN_IF_ERR(Apply_Patch(Utility::get_data_path() / "asm/patch_diffs/archipelago_diff.yaml"));
     LOG_AND_RETURN_IF_ERR(Apply_Patch(Utility::get_data_path() / "asm/patch_diffs/custom_funcs_diff.yaml"));
     LOG_AND_RETURN_IF_ERR(Apply_Patch(Utility::get_data_path() / "asm/patch_diffs/custom_actors_diff.yaml"));
     LOG_AND_RETURN_IF_ERR(Apply_Patch(Utility::get_data_path() / "asm/patch_diffs/make_game_nonlinear_diff.yaml"));
@@ -4233,7 +4244,6 @@ TweakError apply_necessary_tweaks(const Settings& settings) {
     LOG_AND_RETURN_IF_ERR(Apply_Patch(Utility::get_data_path() / "asm/patch_diffs/misc_rando_features_diff.yaml"));
     LOG_AND_RETURN_IF_ERR(Apply_Patch(Utility::get_data_path() / "asm/patch_diffs/switch_dungeon_flag_diff.yaml"));
     LOG_AND_RETURN_IF_ERR(Apply_Patch(Utility::get_data_path() / "asm/patch_diffs/switch_op_diff.yaml"));
-    LOG_AND_RETURN_IF_ERR(Apply_Patch(Utility::get_data_path() / "asm/patch_diffs/archipelago_diff.yaml"));
 
     g_session.openGameFile("code/cking.rpx@RPX@ELF").addAction([](RandoSession* session, FileType* data) -> int {
         CAST_ENTRY_TO_FILETYPE(elf, FileTypes::ELF, data)
@@ -4308,6 +4318,7 @@ TweakError apply_necessary_tweaks(const Settings& settings) {
         LOG_AND_RETURN_IF_ERR(Apply_Patch(Utility::get_data_path() / "asm/patch_diffs/mesa_door_fix_diff.yaml"));
     }
 
+    TWEAK_ERR_CHECK(replace_fathers_letter_model(settings.ap3DModel == AP3DModel::SPHERES));
     TWEAK_ERR_CHECK(fix_deku_leaf_model());
     TWEAK_ERR_CHECK(allow_all_items_to_be_field_items());
     TWEAK_ERR_CHECK(remove_shop_item_forced_uniqueness_bit());
@@ -4371,7 +4382,7 @@ TweakError apply_necessary_post_randomization_tweaks(World& world/* , const bool
     TWEAK_ERR_CHECK(add_ganons_tower_warp_to_ff2());
     TWEAK_ERR_CHECK(add_more_magic_jars());
     TWEAK_ERR_CHECK(add_pirate_ship_to_windfall());
-    //TWEAK_ERR_CHECK(update_required_bosses(world)); TODO: properly implement this
+    TWEAK_ERR_CHECK(update_required_bosses(world));
     TWEAK_ERR_CHECK(add_hint_signs());
     TWEAK_ERR_CHECK(prevent_reverse_door_softlocks());
     TWEAK_ERR_CHECK(add_barren_dungeon_hint_triggers(world));

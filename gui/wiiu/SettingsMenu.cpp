@@ -41,15 +41,15 @@ static void showVersionWarning() {
 
 SettingsMenu::SettingsMenu() {
     pages[0] = std::make_unique<SeedPage>();
-    pages[1] = std::make_unique<ProgressionPage>();
-    pages[2] = std::make_unique<HintsPage>();
-    pages[3] = std::make_unique<EntrancePage>();
-    pages[4] = std::make_unique<ItemsPage>(); 
-    pages[5] = std::make_unique<LocationsPage>(); 
-    pages[6] = std::make_unique<ConveniencePage>();
-    pages[7] = std::make_unique<AdvancedPage>();
-    pages[8] = std::make_unique<ColorPage>();
-    pages[9] = std::make_unique<MetaPage>();
+    //pages[1] = std::make_unique<ProgressionPage>();
+    //pages[2] = std::make_unique<HintsPage>();
+    //pages[3] = std::make_unique<EntrancePage>();
+    //pages[4] = std::make_unique<ItemsPage>(); 
+    //pages[5] = std::make_unique<LocationsPage>(); 
+    //pages[6] = std::make_unique<ConveniencePage>();
+    //pages[7] = std::make_unique<AdvancedPage>();
+    pages[1] = std::make_unique<ColorPage>();
+    pages[2] = std::make_unique<MetaPage>();
 }
 
 
@@ -109,40 +109,24 @@ void SettingsMenu::draw() const {
 
 void SettingsMenu::drawTV() const {
     std::string headerFirstLine;
-    for(size_t i = 0; i < 7; i++) {
+    for(size_t i = 0; i < pages.size(); i++) {
         if(i == curPage) {
             headerFirstLine += '<' + pages[i]->getName() + '>';
         }
         else {
             headerFirstLine += ' ' + pages[i]->getName() + ' ';
         }
-        headerFirstLine += '|';
-    }
-
-    std::string headerSecondLine;
-    for(size_t i = 7; i < pages.size(); i++) {
-        if(i == curPage) {
-            headerSecondLine += '<' + pages[i]->getName() + '>';
-        }
-        else {
-            headerSecondLine += ' ' + pages[i]->getName() + ' ';
-        }
-
-        // not the last item
-        if(i + 1 != pages.size()) {
-            headerSecondLine += '|';
-        }
+        headerFirstLine += i != pages.size() - 1 ? '|' : ' ';
     }
 
     OSScreenPutFontEx(SCREEN_TV, 0, 0, headerFirstLine.c_str());
-    OSScreenPutFontEx(SCREEN_TV, 0, 1, headerSecondLine.c_str());
-    OSScreenPutFontEx(SCREEN_TV, 0, 2, line_break.c_str());
+    OSScreenPutFontEx(SCREEN_TV, 0, 1, line_break.c_str());
     
     pages[curPage]->drawTV();
 
     OSScreenPutFontEx(SCREEN_TV, 0, ScreenSizeData::tv_num_lines - 3, line_break.c_str());
     OSScreenPutFontEx(SCREEN_TV, 0, ScreenSizeData::tv_num_lines - 2, "ZL Left Page | A Toggle Option | DPad Navigate | ZR Right Page | Start (+) to Randomize");
-    OSScreenPutFontEx(SCREEN_TV, 0, ScreenSizeData::tv_num_lines - 1, "TWWHD Randomizer Version " RANDOMIZER_VERSION);
+    OSScreenPutFontEx(SCREEN_TV, 0, ScreenSizeData::tv_num_lines - 1, "TWWHD AP Randomizer Version " RANDOMIZER_VERSION);
 }
 
 void SettingsMenu::drawDRC() const {
@@ -171,9 +155,9 @@ SettingsMenu::Result SettingsMenu::run() {
 
     SettingsMenu& sInstance = getInstance();
 
-    if (std::string(RANDOMIZER_VERSION).empty()) {
+    /*if (std::string(RANDOMIZER_VERSION).empty()) {
         showVersionWarning();
-    }
+    }*/
 
     if(const ConfigError err = OptionCB::loadConfig(); err != ConfigError::NONE) {
         ErrorLog::getInstance().log("Failed to prepare config, ERROR: " + ConfigErrorGetName(err));

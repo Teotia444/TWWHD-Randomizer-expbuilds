@@ -60,7 +60,7 @@ int generateWorlds(WorldPool& worlds, std::vector<Settings>& settingsVector, YAM
       if (usePlando)
       {
           std::vector<Plandomizer> plandos(worlds.size());
-          PlandomizerError err = loadPlandomizer(plando, plandos, worlds.size());
+          PlandomizerError err = loadPlandomizer(plando, plandos, worlds.size(), worlds[0].getSettings().sgim == SGIM::SAMEMODEL);
           if (err != PlandomizerError::NONE)
           {
               return 1;
