@@ -538,44 +538,6 @@ namespace OptionCB {
         return "";
     }
 
-    std::string toggleSGIM() {
-        using enum SGIM;
-
-        switch(conf.settings.sgim) {
-            case GENERICAP:
-                conf.settings.sgim = GENERICAP;
-                break;
-            case SAMEMODEL:
-                conf.settings.sgim = SAMEMODEL;
-                break;
-            case INVALID:
-            default:
-                conf.settings.sgim = GENERICAP;
-                break;
-        }
-
-        return SGIMToName(conf.settings.sgim);
-    }
-
-    std::string toggleAP3DModel() {
-        using enum AP3DModel;
-
-        switch(conf.settings.ap3DModel) {
-            case LETTER:
-                conf.settings.ap3DModel = LETTER;
-                break;
-            case SPHERES:
-                conf.settings.ap3DModel = SPHERES;
-                break;
-            case INVALID:
-            default:
-                conf.settings.ap3DModel = LETTER;
-                break;
-        }
-
-        return AP3DModelToName(conf.settings.ap3DModel);
-    }
-
     std::string cyclePigColor() {
         using enum PigColor;
 
@@ -919,15 +881,8 @@ namespace OptionCB {
         LOG_AND_RETURN_IF_ERR(Config::writeDefault(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml"));
 
         Utility::platformLog("Loading config into UI");
-        ConfigError err = conf.loadFromFile(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml", true); // ignore errors, attempt to convert
-        if(err != ConfigError::NONE){
-            if(err == ConfigError::MISSING_APTWWHD){
-                conf.aptwwhdLoadedCorrectly = false;
-            }
-            else LOG_AND_RETURN_IF_ERR(err);
-            return ConfigError::NONE;
-        }
-        conf.aptwwhdLoadedCorrectly = true;
+        LOG_AND_RETURN_IF_ERR(conf.loadFromFile(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml", true)); // ignore errors, attempt to convert
+
         return ConfigError::NONE;
     }
     
@@ -942,10 +897,6 @@ bool wasUpdated() {
 
 bool wasConverted() {
     return conf.converted;
-}
-
-bool wasAptwwhdLoaded() {
-    return conf.aptwwhdLoadedCorrectly;
 }
 
 std::string getSeed() {
@@ -1102,10 +1053,6 @@ std::string getValue(const Option& option) {
         //    return fromBool(conf.settings.player_in_casual_clothes);
         case Option::PigColor:
             return PigColorToName(conf.settings.pig_color);
-        case Option::SGIM:
-            return fromBool(conf.settings.sgim != SGIM::SAMEMODEL);
-        case Option::AP3DModel:
-            return fromBool(conf.settings.ap3DModel != AP3DModel::SPHERES);
         case Option::StartingGear: // placeholder
             return "";
         case Option::StartingHP:
@@ -1324,10 +1271,6 @@ TriggerCallback getCallback(const Option& option) {
             return &toggleCTMC;
         //case Option::CasualClothes:
         //    return &toggleCasualClothes;
-        case Option::SGIM:
-            return &toggleSGIM;
-        case Option::AP3DModel:
-            return &toggleAP3DModel;
         case Option::PigColor:
             return &cyclePigColor;
         case Option::StartingGear: // placeholder
@@ -1481,8 +1424,6 @@ std::pair<std::string, std::string> getNameDesc(const Option& option) {
         {MixMisc,                     {"Mix Misc",                            "Add miscellaneous entrances into the combined entrance pool, instead of keeping them separated."}},
         {DecoupleEntrances,           {"Decouple Entrances",                  "Decouple entrances when shuffling. This means you may not end up where you came from if you go back through an entrance."}},
         {RandomStartIsland,           {"Randomize Starting Island",           "Randomzies which island you start the game on."}},
-        {SGIM,                        {"Same Game Item Model",                "This options allows to have the correct model display over their item if someone else is playing WWHD/SD, as opposed to having a generic AP item"}},
-        {AP3DModel,                   {"AP 3D Model",                         "By default the AP Item is a letter model with the AP logo on it. \nThis changes it to a full 3D models of the AP logo"}},
 
         {PigColor,                    {"Pig Color",                           "Controls the color of the big pig on Outset Island."}},
 

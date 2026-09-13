@@ -5,11 +5,12 @@
 #include <utility/file.hpp>
 #include <utility/platform.hpp>
 
-PlandomizerError loadPlandomizer(const YAML::Node yamlNode, std::vector<Plandomizer>& plandos, size_t numWorlds, bool sgim)
+PlandomizerError loadPlandomizer(const fspath& plandoFilepath, std::vector<Plandomizer>& plandos, size_t numWorlds)
 {
     LOG_TO_DEBUG("Loading plandomizer file");
 
-    if(yamlNode.IsNull()) {
+    YAML::Node plandoTree;
+    if(!LoadYAML(plandoTree, plandoFilepath)) {
         Utility::platformLog("Will skip using plando file");
         return PlandomizerError::NONE;
     }
@@ -24,23 +25,16 @@ PlandomizerError loadPlandomizer(const YAML::Node yamlNode, std::vector<Plandomi
         auto& plandomizer = plandos[i];
 
         // Grab the YAML object which holds the plando info for this world.
-        if (!yamlNode || !yamlNode.IsMap()) {
+        if (!plandoTree[worldName] || !plandoTree[worldName].IsMap()) {
             continue;
         }
 
-        const YAML::Node& world = yamlNode;
-        int slot = world["Slot"].as<int>(0);
+        const YAML::Node& world = plandoTree[worldName];
+
         // Process locations
-        if (world["Locations"] && world["Locations"].IsMap())
+        if (world["locations"] && world["locations"].IsMap())
         {
-            std::set<std::string> reqBoss;
-            // Process required bosses so we can insert them asap
-            if (world["Required Bosses"] && world["Required Bosses"].IsSequence()){
-                for (const auto& location : world["Required Bosses"]){
-                    reqBoss.insert(location.as<std::string>());
-                }
-            }
-            for (const auto& locationObject : world["Locations"])
+            for (const auto& locationObject : world["locations"])
             {
                 if (locationObject.first.IsNull())
                 {
@@ -51,31 +45,16 @@ PlandomizerError loadPlandomizer(const YAML::Node yamlNode, std::vector<Plandomi
                 // the item name and potential world id from those children.
                 // If no world id is given, then the current world's id will be used.
                 int plandoWorldId = i;
-                std::string itemName = "Unknown";
-                std::string playerName = "Unknown";
-                bool apRequired;
-                int itemSlot;
+                std::string itemName;
                 if (locationObject.second.IsMap())
                 {
-                    if (locationObject.second["player"])
+                    if (locationObject.second["item"])
                     {
-                        itemSlot = locationObject.second["player"].as<int>();
-                    }
-                    if(locationObject.second["player_name"])
-                    {
-                        playerName = locationObject.second["player_name"].as<std::string>();
-                    }
-                    if (locationObject.second["classification"])
-                    {
-                        apRequired = locationObject.second["classification"].as<std::string>().find("progression") != std::string::npos || locationObject.second["classification"].as<std::string>().find("trap") != std::string::npos;
-                    }
-                    if (locationObject.second["name"])
-                    {
-                        itemName = locationObject.second["name"].as<std::string>();
+                        itemName = locationObject.second["item"].as<std::string>();
                     }
                     else
                     {
-                        ErrorLog::getInstance().log("Plandomizer Error: Missing key \"name\" in location \"" + locationObject.first.as<std::string>() + "\"");
+                        ErrorLog::getInstance().log("Plandomizer Error: Missing key \"item\" in location \"" + locationObject.first.as<std::string>() + "\"");
                         return PlandomizerError::MISSING_ITEM_KEY;
                     }
                     if (locationObject.second["world"])
@@ -108,25 +87,15 @@ PlandomizerError loadPlandomizer(const YAML::Node yamlNode, std::vector<Plandomi
                 // Get GameItem
                 const GameItem& gameItem = nameToGameItem(itemName);
 
-                bool isReqBoss = false;
-                if(reqBoss.find(locationName) != reqBoss.end()) {
-                    Utility::platformLog("Found a req loc at " + locationName);
-                    isReqBoss = true;
-                }
-                
-                // we're on an AP item (if sgim is on, make this always false if the other game is wind waker)
-                if (gameItem == GameItem::INVALID || (itemSlot != slot && !sgim)) plandomizer.locationsStr.insert({locationName, {GameItem::ArchipelagoItem, plandoWorldId, itemName, playerName, apRequired, isReqBoss}});
-                // this is our item
-                else plandomizer.locationsStr.insert({locationName, {gameItem, plandoWorldId, itemName, playerName, apRequired, isReqBoss}});
-
+                plandomizer.locationsStr.insert({locationName, {gameItem, plandoWorldId}});
                 LOG_TO_DEBUG("\tPlandomizing " +  gameItemToName(gameItem) + " [W" + std::to_string(plandoWorldId + 1) + "] to " + locationName + " [W" + std::to_string(i + 1) + "]");
             }
         }
 
         // Process entrances
-        if (world["Entrances"] && world["Entrances"].IsMap())
+        if (world["entrances"] && world["entrances"].IsMap())
         {
-            for (const auto entrance : world["Entrances"])
+            for (const auto entrance : world["entrances"])
             {
                 if (entrance.first.IsNull())
                 {
@@ -139,7 +108,7 @@ PlandomizerError loadPlandomizer(const YAML::Node yamlNode, std::vector<Plandomi
         }
 
         // Process starting island
-        /*if (world["starting island"] && world["starting island"].IsScalar())
+        if (world["starting island"] && world["starting island"].IsScalar())
         {
             const std::string& island = world["starting island"].as<std::string>("");
             plandomizer.startingIslandRoomNum = islandNameToRoomNum(island);
@@ -173,7 +142,6 @@ PlandomizerError loadPlandomizer(const YAML::Node yamlNode, std::vector<Plandomi
                 LOG_TO_DEBUG(std::string("\t\t") + itemName);
             }
         }
-        */
     }
 
     return PlandomizerError::NONE;

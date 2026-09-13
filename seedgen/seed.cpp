@@ -2501,7 +2501,7 @@ std::string hash_for_config(const Config& config) {
     }
 
     // Seed RNG
-    const Seed_t integer_seed = 2;
+    const Seed_t integer_seed = seedFromString(permalink);
     Random_Init(integer_seed);
 
     return generate_seed_hash();

@@ -373,11 +373,5 @@ TextReplacements generate_text_replacements(World& world)
      {{"English", word_wrap_string(beedle900EnglishPronoun + beedle900.getUTF16Name("English") + beedle900EnglishConjugation + u"just " + TEXT_COLOR_RED + u"900 Rupees" + TEXT_COLOR_DEFAULT, 43) + u"\nBuy it! Buy it! Buy buy buy!\n" + TWO_CHOICES + u"I'll buy it\nNo thanks" + TEXT_END},
       {"Spanish", word_wrap_string(CAPITAL + beedle900SpanishPronoun + beedle900.getUTF16Name("Spanish") + beedle900SpanishConjugation + TEXT_COLOR_RED + u"900 Rupias" + TEXT_COLOR_DEFAULT, 43) + u"\nCompra... ¡Compra!\n" + TWO_CHOICES + u"Lo quiero\nNo, gracias" + TEXT_END},
       {"French",  word_wrap_string(beedle900.getUTF16Name("French") + u" seulement " + TEXT_COLOR_RED + u"900 Rubis" + TEXT_COLOR_DEFAULT, 43) + u".\nAcheter!\n" + TWO_CHOICES + u"Oui\nSans façon" + TEXT_END}}},
-     
-     //Custom AP Text
-     {"00253",
-     {{"English", word_wrap_string(u"You found an " + TEXT_COLOR_RED + u"Archipelago item!" + TEXT_COLOR_DEFAULT + u"\nThis item belongs to " + TEXT_COLOR_RED + u"another game" + TEXT_COLOR_DEFAULT + u". \nYou should tell your friends about it!\0"s, 43)},
-      {"Spanish", word_wrap_string(u"Haz un obtenido un " + TEXT_COLOR_RED + u"objeto de Archipelago!" + TEXT_COLOR_DEFAULT + u"\nEste objeto es para " + TEXT_COLOR_RED + u"otro juego" + TEXT_COLOR_DEFAULT + u". \nDicelo a tus amigos!\0"s, 43)},
-      {"French",  word_wrap_string(u"Vous recevez un " + TEXT_COLOR_RED + u"objet d'Archipelago!" + TEXT_COLOR_DEFAULT + u"\nCet objet appartient à " + TEXT_COLOR_RED + u"un autre jeu" + TEXT_COLOR_DEFAULT + u". \nVous devriez prévenir vos amis!\0"s, 43)}}},
  };
 }

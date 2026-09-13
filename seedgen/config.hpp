@@ -10,7 +10,6 @@
 
 enum struct [[nodiscard]] ConfigError {
     NONE = 0,
-    MISSING_APTWWHD,
     COULD_NOT_OPEN,
     MISSING_KEY,
     DIFFERENT_FILE_VERSION,
@@ -43,12 +42,10 @@ public:
 
     std::string seed;
     Settings settings;
-    YAML::Node apPlando;
 
     bool converted = false;
     bool updated = false;
     bool configSet = false;
-    bool aptwwhdLoadedCorrectly = false;
 
     Config();
     
@@ -56,7 +53,6 @@ public:
     void resetDefaultPreferences(const bool& paths = false);
     ConfigError loadFromFile(const fspath& filePath, const fspath& preferencesPath, bool ignoreErrors = false);
     YAML::Node settingsToYaml() const;
-    void YamlToSettings(YAML::Node node);
     YAML::Node preferencesToYaml() const;
     ConfigError writeSettings(const fspath& filePath) const;
     ConfigError writePreferences(const fspath& preferencesPath) const;

@@ -12,4 +12,3 @@ logic/out/*
 CMakeLists.txt.user
 build-*
 .venv
-/new_dir

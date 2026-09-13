@@ -2281,17 +2281,17 @@
   Game Item Id: 0x97
 
 - Names:
-    English: Archipelago Item
-    Spanish: Objeto de Archipelago
-    French: Objet d'Archipelago
+    English: Fathers Letter
+    Spanish: Carta del padre
+    French: Lettre de Père
   Pretty Names:
-    English: "|Archipelago Item|"
-    Spanish: "un |Objeto de Archipelago|"
-    French: "un |Objet d'Archipelago|"
+    English: "|Fathers Letter|"
+    Spanish: "la |Carta del padre|"
+    French: "la |Lettre de Père|"
   Gender:
     English: None
-    Spanish: Male
-    French: Male
+    Spanish: Female
+    French: Female
   Plurality:
     English: Singular
     Spanish: Singular

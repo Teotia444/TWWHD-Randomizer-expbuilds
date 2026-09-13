@@ -89,8 +89,6 @@ namespace OptionCB {
     std::string randomizeColorsOrderly();
     std::string randomizeColorsChaotically();
 
-    std::string toggleSGIM();
-    std::string toggleAP3DModel();
     std::string cyclePigColor();
 
     // this one gets special handling
@@ -140,7 +138,6 @@ namespace ColorCB {
 
 bool wasUpdated();
 bool wasConverted();
-bool wasAptwwhdLoaded();
 std::string getSeed();
 std::string getSeedHash();
 std::string getPermalink();

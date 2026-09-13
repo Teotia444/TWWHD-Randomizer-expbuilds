@@ -1,6 +1,5 @@
 
 #include "EntranceShuffle.hpp"
-#include "utility/platform.hpp"
 
 #include <map>
 #include <utility>
@@ -256,18 +255,18 @@ static EntranceShuffleError validateWorld(WorldPool& worlds, const Entrance* ent
 {
     LOG_TO_DEBUG("Validating World");
     // Ensure that all item locations are still reachable within the given world
-    /*if (!allLocationsReachable(worlds, itemPool))
+    if (!allLocationsReachable(worlds, itemPool))
     {
         #ifdef ENABLE_DEBUG
             LOG_TO_DEBUG("Error: All locations not reachable");
             logMissingLocations(worlds);
         #endif
         return EntranceShuffleError::ALL_LOCATIONS_NOT_REACHABLE;
-    }*/
+    }
 
     // Ensure that there's at least one sphere zero location available to place an item
     // for the beginning of the seed
-    /*ItemPool noItems = {};
+    ItemPool noItems = {};
     LocationPool progLocations = {};
     GET_COMPLETE_PROGRESSION_LOCATION_POOL(progLocations, worlds);
     auto locs = getAccessibleLocations(worlds, noItems, progLocations);
@@ -303,9 +302,9 @@ static EntranceShuffleError validateWorld(WorldPool& worlds, const Entrance* ent
         {
             return EntranceShuffleError::NOT_ENOUGH_SPHERE_ZERO_LOCATIONS;
         }
-    }*/
+    }
 
-    /*for (auto& world : worlds)
+    for (auto& world : worlds)
     {
         // Ensure that all required bosses are assigned to a single island
         auto& settings = world.getSettings();
@@ -349,7 +348,7 @@ static EntranceShuffleError validateWorld(WorldPool& worlds, const Entrance* ent
                 }
             }
         }
-    }*/
+    }
 
     return EntranceShuffleError::NONE;
 }
@@ -412,7 +411,7 @@ static EntranceShuffleError shuffleEntrances(WorldPool& worlds, EntrancePool& en
 
         if (entrance->getConnectedArea() == nullptr)
         {
-            Utility::platformLog("Could not connect " + entrance->getOriginalName() + ". Error: " + errorToName(err));
+            LOG_TO_DEBUG("Could not connect " + entrance->getOriginalName() + ". Error: " + errorToName(err));
             return EntranceShuffleError::NO_MORE_VALID_ENTRANCES;
         }
     }
@@ -440,6 +439,7 @@ static EntranceShuffleError shuffleEntrancePool(World& world, WorldPool& worlds,
     {
         retryCount--;
         std::vector<EntrancePair> rollbacks = {};
+
         if (const EntranceShuffleError err = shuffleEntrances(worlds, entrancePool, targetEntrances, rollbacks); err != EntranceShuffleError::NONE)
         {
             LOG_TO_DEBUG("Failed to place all entrances in a pool for world " + std::to_string(world.getWorldId() + 1) + ". Will retry " + std::to_string(retryCount) + " more times.");
@@ -568,7 +568,7 @@ static EntranceShuffleError setPlandomizerEntrances(World& world, WorldPool& wor
             else
             {
                 ErrorLog::getInstance().log("Entrance \"" + entrance->getOriginalName() + "\"'s type is not being shuffled and thus can't be plandomized.");
-                continue;
+                return EntranceShuffleError::PLANDOMIZER_ERROR;
             }
         }
 
@@ -609,7 +609,7 @@ static EntranceShuffleError setPlandomizerEntrances(World& world, WorldPool& wor
         else
         {
             ErrorLog::getInstance().log("Entrance \"" + entrance->getOriginalName() + "\" is not being shuffled and thus can't be plandomized.");
-            continue;
+            return EntranceShuffleError::PLANDOMIZER_ERROR;
         }
 
     }
@@ -695,8 +695,6 @@ EntrancePools createEntrancePools(World& world, std::set<EntranceType>& poolsToM
                           (mix_caves ? 1 : 0) +
                           (mix_doors ? 1 : 0) +
                           (mix_misc ? 1 : 0);
-
-    Utility::platformLog("currently active:" + std::to_string(settings.mix_doors) + std::to_string(settings.randomize_door_entrances) +std::to_string(settings.randomize_misc_entrances) +std::to_string(settings.mix_misc));
 
     // Determine entrance pools based on settings, to be shuffled in the order we set them by
     EntrancePools entrancePools = {};
@@ -936,18 +934,13 @@ EntranceShuffleError randomizeEntrances(WorldPool& worlds)
         auto entrancePools = createEntrancePools(world, poolsToMix);
         auto targetEntrancePools = createTargetEntrances(entrancePools);
 
-        Utility::platformLog("hi 1");
-
         // Set Plandomized entrances at this point
         err = setPlandomizerEntrances(world, worlds, entrancePools, targetEntrancePools, poolsToMix);
-                Utility::platformLog("hi 2");
-
         if (err != EntranceShuffleError::NONE)
         {
             LOG_TO_DEBUG("| Encountered when setting plandomizer entrances");
             return err;
         }
-        Utility::platformLog("hi 3");
 
         // Shuffle the entrances
         for (auto& [type, entrancePool] : entrancePools)
@@ -959,20 +952,16 @@ EntranceShuffleError randomizeEntrances(WorldPool& worlds)
                 return err;
             }
         }
-        Utility::platformLog("hi 4");
 
         // Now set the islands the dungeons are in
         for (auto& [name, dungeon] : world.dungeons)
         {
             dungeon.islands = dungeon.startingArea->findIslands();
         }
-        Utility::platformLog("hi 5");
-
     }
 
     // Validate the worlds one last time to ensure everything went okay
     ENTRANCE_SHUFFLE_ERROR_CHECK(validateWorld(worlds, nullptr, completeItemPool));
-        Utility::platformLog("hi 6");
 
     return EntranceShuffleError::NONE;
 }

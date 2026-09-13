@@ -20,27 +20,27 @@ void Settings::resetDefaultSettings() {
     progression_dungeons = ProgressionDungeons::Standard;
     progression_great_fairies = true;
     progression_puzzle_secret_caves = true;
-    progression_combat_secret_caves = true;
-    progression_short_sidequests = true;
-    progression_long_sidequests = true;
-    progression_spoils_trading = true;
-    progression_minigames = true;
+    progression_combat_secret_caves = false;
+    progression_short_sidequests = false;
+    progression_long_sidequests = false;
+    progression_spoils_trading = false;
+    progression_minigames = false;
     progression_free_gifts = true;
-    progression_mail = true;
-    progression_platforms_rafts = true;
-    progression_submarines = true;
-    progression_eye_reef_chests = true;
-    progression_big_octos_gunboats = true;
-    progression_triforce_charts = true;
-    progression_treasure_charts = true;
+    progression_mail = false;
+    progression_platforms_rafts = false;
+    progression_submarines = false;
+    progression_eye_reef_chests = false;
+    progression_big_octos_gunboats = false;
+    progression_triforce_charts = false;
+    progression_treasure_charts = false;
     progression_expensive_purchases = true;
     progression_misc = true;
-    progression_tingle_chests = true;
-    progression_battlesquid = true;
-    progression_savage_labyrinth = true;
-    progression_island_puzzles = true;
-    progression_dungeon_secrets = true;
-    progression_obscure = true;
+    progression_tingle_chests = false;
+    progression_battlesquid = false;
+    progression_savage_labyrinth = false;
+    progression_island_puzzles = false;
+    progression_dungeon_secrets = false;
+    progression_obscure = false;
 
     dungeon_small_keys = PlacementOption::OwnDungeon;
     dungeon_big_keys = PlacementOption::OwnDungeon;
@@ -63,7 +63,7 @@ void Settings::resetDefaultSettings() {
 
     korl_hints = false;
     korl_sword_hints = false;
-    kreeb_bow_hints = 0;
+    kreeb_bow_hints = false;
     ho_ho_hints = false;
     ho_ho_triforce_hints = false;
     path_hints = 0;
@@ -80,7 +80,7 @@ void Settings::resetDefaultSettings() {
     performance = false;
     reveal_full_sea_chart = true;
     add_shortcut_warps_between_dungeons = false;
-    do_not_generate_spoiler_log = true;
+    do_not_generate_spoiler_log = false;
     remove_swords = false;
     required_boss_items = false;
     skip_rematch_bosses = true;
@@ -90,6 +90,11 @@ void Settings::resetDefaultSettings() {
     chest_type_matches_contents = false;
 
     starting_gear = {
+        GameItem::ProgressiveSword,
+        GameItem::ProgressiveShield,
+        GameItem::BalladOfGales,
+        GameItem::SongOfPassing,
+        GameItem::ProgressiveMagicMeter,
         GameItem::ProgressiveSail
     };
 
@@ -107,11 +112,11 @@ void Settings::resetDefaultSettings() {
     starting_blue_chu_jellys = 0;
     remove_music = false;
 
-    do_not_generate_spoiler_log = true;
+    do_not_generate_spoiler_log = false;
     start_with_random_item = false;
     random_item_slide_item = false;
-    classic_mode = true;
-    plandomizer = true;
+    classic_mode = false;
+    plandomizer = false;
 
     open_drc = true;
     progressive_magic_always_double = false;
@@ -129,15 +134,13 @@ void Settings::resetDefaultSettings() {
 void Settings::resetDefaultPreferences(const bool& paths) {
     if(paths) {
         #ifdef DEVKITPRO
-            plandomizerFile = Utility::get_app_save_path() / "world.aptwwhd";
+            plandomizerFile = Utility::get_app_save_path() / "plandomizer.yaml";
         #else
             plandomizerFile.clear();
         #endif
     }
 
     pig_color = PigColor::Random;
-    ap3DModel = AP3DModel::LETTER;
-    sgim = SGIM::GENERICAP;
 
     target_type = TargetTypePreference::Hold;
     camera = CameraPreference::Standard;
@@ -292,10 +295,6 @@ uint8_t Settings::getSetting(const Option& option) const {
             return chest_type_matches_contents;
         case Option::PigColor:
             return static_cast<std::underlying_type_t<PigColor>>(pig_color);
-        case Option::AP3DModel:
-            return static_cast<std::underlying_type_t<AP3DModel>>(ap3DModel);
-        case Option::SGIM:
-            return static_cast<std::underlying_type_t<SGIM>>(sgim);
         // Can't return these like everything else, just here as placeholder
         case Option::StartingGear:
         case Option::ExcludedLocations:
@@ -505,10 +504,6 @@ void Settings::setSetting(const Option& option, const size_t& value) {
             chest_type_matches_contents = value; return;
         case Option::PigColor:
             pig_color = static_cast<PigColor>(value); return;
-        case Option::AP3DModel:
-            ap3DModel = static_cast<AP3DModel>(value); return;
-        case Option::SGIM:
-            sgim = static_cast<SGIM>(value); return;
         // Can't set these like everything else, just here as placeholder
         case Option::StartingGear: 
         case Option::ExcludedLocations:
@@ -634,26 +629,6 @@ static const std::unordered_map<GameVersion, std::string> gameVersionNameMap = {
     {GameVersion::SD, "SD"}
 };
 
-static const std::unordered_map<std::string, SGIM> nameSGIMMap = {
-    {"GenericAP", SGIM::GENERICAP},
-    {"SameModel", SGIM::SAMEMODEL}
-};
-
-static const std::unordered_map<SGIM, std::string> SGIMNameMap = {
-    {SGIM::GENERICAP, "GenericAP"},
-    {SGIM::SAMEMODEL, "SameModel"}
-};
-
-static const std::unordered_map<std::string, AP3DModel> nameAP3DModelMap = {
-    {"Letter", AP3DModel::LETTER},
-    {"Spheres", AP3DModel::SPHERES}
-};
-
-static const std::unordered_map<AP3DModel, std::string> AP3DModelNameMap = {
-    {AP3DModel::LETTER, "Letter"},
-    {AP3DModel::SPHERES, "Spheres"}
-};
-
 static const std::unordered_map<std::string, PigColor> namePigColorMap = {
     {"Black", PigColor::Black},
     {"Pink", PigColor::Pink},
@@ -773,42 +748,6 @@ std::string GameVersionToName(const GameVersion& version) {
     if (gameVersionNameMap.contains(version))
     {
         return gameVersionNameMap.at(version);
-    }
-
-    return "INVALID";
-}
-
-SGIM nameToSGIM(const std::string& name) {
-    if (nameSGIMMap.contains(name))
-    {
-        return nameSGIMMap.at(name);
-    }
-
-    return SGIM::INVALID;
-}
-
-std::string SGIMToName(const SGIM& type) {
-    if (SGIMNameMap.contains(type))
-    {
-        return SGIMNameMap.at(type);
-    }
-
-    return "INVALID";
-}
-
-AP3DModel nameToAP3DModel(const std::string& name) {
-    if (nameAP3DModelMap.contains(name))
-    {
-        return nameAP3DModelMap.at(name);
-    }
-
-    return AP3DModel::INVALID;
-}
-
-std::string AP3DModelToName(const AP3DModel& type) {
-    if (AP3DModelNameMap.contains(type))
-    {
-        return AP3DModelNameMap.at(type);
     }
 
     return "INVALID";
@@ -988,14 +927,6 @@ std::string UIDisplayPreferenceToName(const UIDisplayPreference& preference)
 
 // Make sure there aren't any naming conflicts when adding future settings
 int nameToSettingInt(const std::string& name) {
-    if (nameSGIMMap.contains(name))
-    {
-        return static_cast<std::underlying_type_t<SGIM>>(nameSGIMMap.at(name));
-    }
-    if (nameAP3DModelMap.contains(name))
-    {
-        return static_cast<std::underlying_type_t<AP3DModel>>(nameAP3DModelMap.at(name));
-    }
     if (namePigColorMap.contains(name))
     {
         return static_cast<std::underlying_type_t<PigColor>>(namePigColorMap.at(name));
@@ -1093,8 +1024,6 @@ Option nameToSetting(const std::string& name) {
         {"Num Required Dungeons", Option::NumRequiredDungeons},
         {"Damage Multiplier", Option::DamageMultiplier},
         {"CTMC", Option::CTMC},
-        {"Same Game Item Model", Option::SGIM},
-        {"AP 3D Model", Option::AP3DModel},
         {"Pig Color", Option::PigColor},
         {"Starting Gear", Option::StartingGear},
         {"Excluded Locations", Option::ExcludedLocations},
@@ -1206,8 +1135,6 @@ std::string settingToName(const Option& setting) {
         {Option::NumRequiredDungeons, "Num Required Dungeons"},
         {Option::DamageMultiplier, "Damage Multiplier"},
         {Option::CTMC, "CTMC"},
-        {Option::SGIM, "Same Game Item Model"},
-        {Option::AP3DModel, "AP3DModel"},
         {Option::PigColor, "PigColor"},
         {Option::StartingGear, "Starting Gear"},
         {Option::ExcludedLocations, "Excluded Locations"},

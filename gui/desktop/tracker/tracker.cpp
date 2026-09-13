@@ -100,7 +100,7 @@ void MainWindow::initialize_tracker_world(Settings& settings,
     if(trackerWorld.getSettings().plandomizer)
     {
         std::vector<Plandomizer> plandos(1);
-        PlandomizerError err = loadPlandomizer(config.apPlando, plandos, 1, settings.sgim == SGIM::SAMEMODEL);
+        PlandomizerError err = loadPlandomizer(trackerWorld.getSettings().plandomizerFile, plandos, 1);
         if (err != PlandomizerError::NONE)
         {
             show_warning_dialog("Could not load provided plandomizer file. Continuing without plandomizer data.");
@@ -454,7 +454,7 @@ bool MainWindow::autosave_current_tracker_config()
     std::ofstream autosave_file(trackerPreferences.autosaveFilePath);
     if (autosave_file.is_open() == false)
     {
-        //show_error_dialog("Failed to open " + Utility::toUtf8String(trackerPreferences.autosaveFilePath));
+        show_error_dialog("Failed to open " + Utility::toUtf8String(trackerPreferences.autosaveFilePath));
         return false;
     }
 
@@ -589,12 +589,12 @@ void MainWindow::load_tracker_autosave()
         return;
     }
 
-    /*Config trackerConfig;
+    Config trackerConfig;
     if (const ConfigError err = trackerConfig.loadFromFile(trackerPreferences.autosaveFilePath, preferencesPath, true); err != ConfigError::NONE)
     {
         show_warning_dialog("Could not load tracker autosave config\nError: " + ConfigErrorGetName(err));
         return;
-    }*/
+    }
 
     YAML::Node root;
     if(!LoadYAML(root, trackerPreferences.autosaveFilePath)) {
@@ -673,7 +673,7 @@ void MainWindow::load_tracker_autosave()
         }
     }
 
-    initialize_tracker_world(config.settings, markedItems, markedLocations, entranceConnections, chartMappings, requiredBosses_, true);
+    initialize_tracker_world(trackerConfig.settings, markedItems, markedLocations, entranceConnections, chartMappings, requiredBosses_, true);
 
     update_tracker();
 }
@@ -1015,7 +1015,7 @@ void MainWindow::check_special_accessibility_conditions()
     auto& trackerWorld = trackerWorlds[0];
     auto startingItems = trackerWorld.getStartingItems();
 
-    /*if (trackerWorld.locationTable["Forsaken Fortress - Helmaroc King Heart Container"]->marked)
+    if (trackerWorld.locationTable["Forsaken Fortress - Helmaroc King Heart Container"]->marked)
     {
         auto songOfPassing = Item(GameItem::SongOfPassing, &trackerWorld);
         if (elementInPool(songOfPassing, trackerInventory) || elementInPool(songOfPassing, startingItems)) {
@@ -1041,7 +1041,7 @@ void MainWindow::check_special_accessibility_conditions()
         {
             trackerWorld.locationTable["Mailbox - Letter from Baito"]->hasBeenFound = true;
         }
-    }*/
+    }
 
     // If chart randomization is on, the tracker logic uses the world's chart mappings and not just the tracked ones
     // That can leak the mappings, so set the location as inaccessible as long as its chart mapping is not tracked

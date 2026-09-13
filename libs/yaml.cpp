@@ -2,7 +2,6 @@
 
 #include <utility/file.hpp>
 #include <command/Log.hpp>
-#include <miniz.h>
 
 bool LoadYAML(YAML::Node& out, const fspath& path, const bool& resourceFile /* = false */) {
     std::string file;

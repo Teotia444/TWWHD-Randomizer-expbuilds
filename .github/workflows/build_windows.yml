@@ -59,7 +59,6 @@ jobs:
           target: 'desktop'
           arch: 'win64_mingw'
           cache: true
-          modules: 'qtwebsockets'
 
       - name: Install GCC 11.2.0
         uses: egor-tensin/setup-mingw@v3

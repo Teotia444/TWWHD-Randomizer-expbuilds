@@ -38,7 +38,7 @@ static FillError fastFill(ItemPool& items, LocationPool& locations)
 
     // Get rid of locations which already have items
     filterAndEraseFromPool(locations, [](const Location* loc){return loc->currentItem.getGameItemId() != GameItem::INVALID;});
-    //ENOUGH_SPACE_CHECK(items, locations);
+    ENOUGH_SPACE_CHECK(items, locations);
 
     while (!items.empty() && !locations.empty())
     {
@@ -53,12 +53,10 @@ static FillError fastFill(ItemPool& items, LocationPool& locations)
 
 static FillError fillTheRest(ItemPool& items, LocationPool& locations)
 {
-    // Completely skip filling the rest of progression stuff. replace them with junk instead
-
     // First place the non consumable junk already in the pool
     // Filter out the consumable junk to place afterwards
-    // auto consumableJunk = filterAndEraseFromPool(items, [](const Item& i){return i.isConsumableJunkItem();});
-    // FILL_ERROR_CHECK(fastFill(items, locations));
+    auto consumableJunk = filterAndEraseFromPool(items, [](const Item& i){return i.isConsumableJunkItem();});
+    FILL_ERROR_CHECK(fastFill(items, locations));
 
     // For the remaining locations, get items from the consumable junk. If the consumable junk runs out, just get more random
     // consumable junk
@@ -67,13 +65,13 @@ static FillError fillTheRest(ItemPool& items, LocationPool& locations)
         if (location->currentItem.getGameItemId() == GameItem::INVALID)
         {
             Item item;
-            /* if (!consumableJunk.empty())
+            if (!consumableJunk.empty())
             {
                 item = popRandomElement(consumableJunk);
             }
-            else */
+            else
             {
-                item = location->world->getItem("Green Rupee");
+                item = location->world->getItem(getRandomJunk());
             }
             location->currentItem = item;
             LOG_TO_DEBUG("Placed " + item.getName() + " at " + location->getName() + " in world " + std::to_string(location->world->getWorldId() + 1));
@@ -331,7 +329,7 @@ void determineMajorItems(WorldPool& worlds, ItemPool& itemPool, LocationPool& al
 {
     LOG_TO_DEBUG("Determining Major Items");
     LOG_TO_DEBUG("New Major Items: [");
-    auto progressionLocations = filterFromPool(allLocations, [](const Location* location){return location->currentItem.isApRequired();});
+    auto progressionLocations = filterFromPool(allLocations, [](const Location* location){return location->progression;});
 
     // Combine the item pool as well as all items that have already been placed to test
     std::vector<Item*> totalItemPool = {};
@@ -356,7 +354,7 @@ void determineMajorItems(WorldPool& worlds, ItemPool& itemPool, LocationPool& al
         // Don't check junk items
         if (!item->isJunkItem())
         {
-            /*// Temporarily take this item out of the pool
+            // Temporarily take this item out of the pool
             const auto gameItemId = item->getGameItemId();
             item->setGameItemId(GameItem::NOTHING);
 
@@ -374,7 +372,7 @@ void determineMajorItems(WorldPool& worlds, ItemPool& itemPool, LocationPool& al
             else
             {
                 item->setDelayedItemId(gameItemId);
-            }*/
+            }
         }
     }
     LOG_TO_DEBUG("]");
@@ -667,13 +665,13 @@ static FillError placeNonProgressLocationPlandomizerItems(WorldPool& worlds, Ite
         if (!item.isJunkItem())
         {
             item = removeElementFromPool(itemPool, item);
-            // Accept trying to place major items in non-progress locations (trust the aptwwhd file)
-            /*if (item.isMajorItem())
+            // Don't accept trying to place major items in non-progress locations
+            if (item.isMajorItem())
             {
                 ErrorLog::getInstance().log("Attempted to plandomize major item \"" + gameItemToName(item.getGameItemId()) + "\" in non-progress location \"" + location->getName() + "\"");
                 ErrorLog::getInstance().log("Plandomizing major items in non-progress locations is not allowed.");
                 return FillError::PLANDOMIZER_ERROR;
-            }*/
+            }
         }
         location->currentItem = item;
         LOG_TO_DEBUG("Placed " + item.getName() + " at " + location->getName());
@@ -737,8 +735,8 @@ FillError fill(WorldPool& worlds)
     // Handle dungeon and/or boss items first if necessary. Generally
     // we need to place items that go into more restrictive location pools first before
     // we can place other items.
-    //FILL_ERROR_CHECK(placeBossItems(worlds, itemPool, allLocations));
-    //FILL_ERROR_CHECK(handleDungeonItems(worlds, itemPool));
+    FILL_ERROR_CHECK(placeBossItems(worlds, itemPool, allLocations));
+    FILL_ERROR_CHECK(handleDungeonItems(worlds, itemPool));
 
     // Recalculate major items again since new items may now be required depending on
     // what items were placed when handling dungeon items
@@ -747,28 +745,28 @@ FillError fill(WorldPool& worlds)
     auto majorItems = filterAndEraseFromPool(itemPool, [](const Item& i){return i.isMajorItem();});
     auto progressionLocations = filterFromPool(allLocations, [](const Location* loc){return loc->progression && loc->currentItem.getGameItemId() == GameItem::INVALID;});
 
-    //FILL_ERROR_CHECK(validateEnoughLocations(worlds));
+    FILL_ERROR_CHECK(validateEnoughLocations(worlds));
 
     // Place all major items in the Item Pool using assumed fill.
     // Don't assume we have any non-major items.
-    //ItemPool noAssumedItems = {};
-    //FILL_ERROR_CHECK(assumedFill(worlds, majorItems, noAssumedItems, progressionLocations));
+    ItemPool noAssumedItems = {};
+    FILL_ERROR_CHECK(assumedFill(worlds, majorItems, noAssumedItems, progressionLocations));
 
     // Then place the rest of the non-major progression items using assumed fill.
-    //auto remainingProgressionItems = filterAndEraseFromPool(itemPool, [](const Item& i){return !i.isJunkItem();});
+    auto remainingProgressionItems = filterAndEraseFromPool(itemPool, [](const Item& i){return !i.isJunkItem();});
 
     // TODO: It should be possible to speed this next fill up by adding back the major items
     // to the item pool resulting in less searching iterations, but I'm not confident
     // it's logically sound so I'll research it later.
-    //FILL_ERROR_CHECK(assumedFill(worlds, remainingProgressionItems, itemPool, allLocations));
+    FILL_ERROR_CHECK(assumedFill(worlds, remainingProgressionItems, itemPool, allLocations));
 
     // Fill the remaining locations with junk
     FILL_ERROR_CHECK(fillTheRest(itemPool, allLocations));
 
-    /*if (!gameBeatable(worlds))
+    if (!gameBeatable(worlds))
     {
         LOG_ERR_AND_RETURN(FillError::GAME_NOT_BEATABLE);
-    }*/
+    }
 
     return FillError::NONE;
 }
