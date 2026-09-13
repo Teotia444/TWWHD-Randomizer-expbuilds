@@ -1588,8 +1588,14 @@ void MainWindow::on_ap_message(QString message){
 
 
     qDebug() << "Message received:" << content.value("cmd");
+    if(content.value("cmd").toString().contains("ConnectionRefused")){
+        QMessageBox messageBox;
+        messageBox.critical(0,"Error","Invalid connection to the server! Make sure to check you are using the correct slot. Error: " + content.value("errors").toArray()[0].toString());
+        messageBox.setFixedSize(500,200);
+        return;
+    }
 
-    if(content.value("cmd").toString().contains("Connected")){
+    else if(content.value("cmd").toString().contains("Connected")){
         tempLocationHold = content.value("checked_locations").toArray();
     }
 
