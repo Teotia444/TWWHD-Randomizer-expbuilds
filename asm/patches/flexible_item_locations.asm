@@ -221,6 +221,33 @@ return_is_buying_beedle_20_item:
   beq 0x02212CAC ; Didn't get the 20 rupee item yet, continue as normal
   b 0x02212C9C ; Did get the 20 rupee item, use alternate items
 
+; When buying an item at Beedle's special Rock Spire shop, the original flags can break if he is selling more than 1 of the same item
+; Ordinarily, he first checks if it is one of the 3 expensive item IDs, marks the item sold out, then checks the ID again for the event bit to set
+; Instead, start by checking if the expensive item corresponding to this slot was already sold
+.org 0x2215570 ; in daNpc_Bs1_c::next_msgStatus
+  ; To cram this in fewer instructions we do some stupid math to get the event bit
+  ; Slot 0 uses bit 0x2020, slot 1 uses bit 0x2010, slot 2 uses bit 0x2008
+  ; Alternatively we can express this as (0x20 >> (slot index)) + 0x2000
+  lha r3, 0x940(r27) ; Load the selected item slot (pointer to Beedle's actor is in r27)
+  li r4, 0x20
+  srw r4, r4, r3 ; 0x20 >> (slot index)
+  addi r4, r4, 0x2000 ; get actual event bit
+
+  lwz r3, gameInfo_ptr@l(r28)
+  addi r3, r3, 0x644
+  bl isEventBit
+  cmplwi r3, 0 ; Check if this item was already obtained
+  bne 0x02215630 ; Run the normal purchase code if it was (don't sell out the item/set an event bit)
+
+; If we are buying an expensive item, determine the event bit to set from slot index instead of item ID
+.org 0x022155AC ; in daNpc_Bs1_c::next_msgStatus
+  ; The selected slot index is already in r0
+  cmpwi r0, 0x1 ; Compiler for HD put the check for the heart piece (second slot, index 1) first
+.org 0x022155B8 ; in daNpc_Bs1_c::next_msgStatus
+  cmpwi r0, 0x0 ; Followed by the check for the empty bottle (first slot, index 0)
+.org 0x022155C0 ; in daNpc_Bs1_c::next_msgStatus
+  cmpwi r0, 0x2 ; And finally the check for the Treasure Chart (third slot, index 2)
+
 
 ; Three items are spawned by a call to fastCreateItem:
 ; * The item buried under black soil that you need the pig to dig up.

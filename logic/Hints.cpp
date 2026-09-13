@@ -881,7 +881,7 @@ HintError generateHints(WorldPool& worlds)
             // this can happen if we've avoided korl hints earlier but we had ho ho triforce hints on
             // assignHoHoHints generate the triforce hints anyway so breaking out of that loop is not a big deal
             if(hintPlacementOptions.empty()) break;
-            
+
             // iterate to the next placement option on each index of the hint locations
             std::string placementOption = hintPlacementOptions[i % hintPlacementOptions.size()];
             // add the hint location to that placement option
