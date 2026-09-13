@@ -40,7 +40,8 @@ static int testSettings(const Settings& settings, bool& settingToChange, const s
         const fspath preferencesFilename = ERROR_CONFIG_PATH "/" + settingName + " " + config.seed + "_error_preferences.yaml";
         ConfigError err = config.writeToFile(errorConfigFilename, preferencesFilename);
 
-        int retVal = generateWorlds(worlds, settingsVector);
+        YAML::Node empty;
+        int retVal = generateWorlds(worlds, settingsVector, empty);
 
         if (retVal == 0)
         {
@@ -86,7 +87,9 @@ static int multiWorldTest(const Settings& settings)
     WorldPool worlds (worldCount);
     std::vector<Settings> settingsVector (worldCount, settings);
 
-    int retVal = generateWorlds(worlds, settingsVector);
+    YAML::Node empty;
+    int retVal = generateWorlds(worlds, settingsVector, empty);
+
 
     if (retVal != 0)
     {
@@ -179,10 +182,10 @@ void runLogicTests(Config& newConfig)
     settings1.barren_hints = 5;
     TEST(settings1, settings1.korl_hints, "5 barren hints");
     settings1.item_hints = 5;
-    TEST(settings1, settings1.ho_ho_hints, "5 item hints");
+    TEST(settings1, dummy, "5 item hints");
     settings1.location_hints = 5;
-    TEST(settings1, settings1.ho_ho_hints, "5 location hints");
-    TEST(settings1, settings1.kreeb_bow_hints, "kreeb bow hints");
+    TEST(settings1, dummy, "5 location hints");
+    TEST(settings1, dummy, "kreeb bow hints");
     TEST(settings1, settings1.use_always_hints, "use always hints");
     TEST(settings1, settings1.clearer_hints, "clearer hints");
     TEST(settings1, settings1.hint_importance, "hint importance");
@@ -226,15 +229,15 @@ void runLogicTests(Config& newConfig)
     TEST(settings2, settings2.hint_importance, "hint importance");
     TEST(settings2, settings2.clearer_hints, "clearer hints");
     TEST(settings2, settings2.use_always_hints, "use always hints");
-    TEST(settings2, settings2.kreeb_bow_hints, "kreeb bow hints");
+    TEST(settings2, dummy, "kreeb bow hints");
     settings2.path_hints = 5;
     TEST(settings2, settings2.korl_hints, "5 path hints");
     settings2.barren_hints = 5;
     TEST(settings2, settings2.korl_hints, "5 barren hints");
     settings2.item_hints = 5;
-    TEST(settings2, settings2.ho_ho_hints, "5 item hints");
+    TEST(settings2, dummy, "5 item hints");
     settings2.location_hints = 5;
-    TEST(settings2, settings2.ho_ho_hints, "5 location hints");
+    TEST(settings2, dummy, "5 location hints");
     settings2.num_required_dungeons = 3;
     TEST(settings2, dummy, "race mode 3 dungeon");
     settings2.num_required_dungeons = 4;
@@ -318,7 +321,9 @@ void testSettings(Config& newConfig, int testCount /*= 1*/)
         WorldPool worlds (worldCount);
         std::vector<Settings> settingsVector (1, config.settings);
 
-        int retVal = generateWorlds(worlds, settingsVector);
+        YAML::Node empty;
+        int retVal = generateWorlds(worlds, settingsVector, empty);
+
 
         if (retVal == 0)
         {

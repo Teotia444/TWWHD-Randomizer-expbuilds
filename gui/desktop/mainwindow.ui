@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="autoFillBackground">
-   <bool>false</bool>
+   <bool>true</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -35,7 +35,7 @@
          <x>0</x>
          <y>0</y>
          <width>1054</width>
-         <height>668</height>
+         <height>732</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -306,15 +306,12 @@
             </item>
             <item>
              <layout class="QGridLayout" name="gridLayout">
-              <item row="1" column="3">
-               <widget class="QPushButton" name="output_folder_browse_button">
+              <item row="0" column="3">
+               <widget class="QPushButton" name="base_game_path_browse_button">
                 <property name="text">
                  <string>Browse</string>
                 </property>
                </widget>
-              </item>
-              <item row="0" column="2">
-               <widget class="QLineEdit" name="base_game_path"/>
               </item>
               <item row="0" column="0">
                <widget class="QLabel" name="label">
@@ -323,20 +320,40 @@
                 </property>
                </widget>
               </item>
-              <item row="1" column="2">
-               <widget class="QLineEdit" name="output_folder"/>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_2">
+                <property name="text">
+                 <string>Output Folder</string>
+                </property>
+               </widget>
               </item>
-              <item row="0" column="3">
-               <widget class="QPushButton" name="base_game_path_browse_button">
+              <item row="1" column="3">
+               <widget class="QPushButton" name="output_folder_browse_button">
                 <property name="text">
                  <string>Browse</string>
                 </property>
                </widget>
               </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="label_2">
+              <item row="1" column="2">
+               <widget class="QLineEdit" name="output_folder"/>
+              </item>
+              <item row="0" column="2">
+               <widget class="QLineEdit" name="base_game_path"/>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_11">
                 <property name="text">
-                 <string>Output Folder</string>
+                 <string>APTWWHD File</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QLineEdit" name="aptwwhd_path"/>
+              </item>
+              <item row="2" column="3">
+               <widget class="QPushButton" name="aptwwhd_browse_button">
+                <property name="text">
+                 <string>Browse</string>
                 </property>
                </widget>
               </item>
@@ -947,73 +964,6 @@
                 <widget class="QCheckBox" name="chest_type_matches_contents">
                  <property name="text">
                   <string>Chest Type Matches Contents</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item>
-             <widget class="QGroupBox" name="groupBox_2">
-              <property name="title">
-               <string>Convenience Tweaks</string>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_4">
-               <item row="1" column="0">
-                <widget class="QCheckBox" name="skip_rematch_bosses">
-                 <property name="text">
-                  <string>Skip Boss Rematches</string>
-                 </property>
-                 <property name="checked">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1">
-                <widget class="QCheckBox" name="add_shortcut_warps_between_dungeons">
-                 <property name="text">
-                  <string>Add Shortcut Warps Between Dungeons</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QCheckBox" name="instant_text_boxes">
-                 <property name="text">
-                  <string>Instant Text Boxes</string>
-                 </property>
-                 <property name="checked">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="0">
-                <widget class="QCheckBox" name="invert_sea_compass_x_axis">
-                 <property name="text">
-                  <string>Invert Sea Compass X-Axis</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="2">
-                <widget class="QCheckBox" name="reveal_full_sea_chart">
-                 <property name="text">
-                  <string>Reveal Full Sea Chart</string>
-                 </property>
-                 <property name="checked">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="3">
-                <widget class="QCheckBox" name="quiet_swift_sail">
-                 <property name="text">
-                  <string>Quiet Swift Sail</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="2">
-                <widget class="QCheckBox" name="remove_music">
-                 <property name="text">
-                  <string>Remove Music</string>
                  </property>
                 </widget>
                </item>
@@ -1720,6 +1670,180 @@
               </property>
              </spacer>
             </item>
+            <item>
+             <widget class="QGroupBox" name="gridGroupBox_2">
+              <property name="title">
+               <string>In-Game Preferences</string>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_34">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_28">
+                 <item>
+                  <widget class="QLabel" name="label_for_ui_display">
+                   <property name="text">
+                    <string>UI Display</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="ui_display">
+                   <item>
+                    <property name="text">
+                     <string>On</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Off</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_24">
+                 <item>
+                  <widget class="QLabel" name="label_for_target_type">
+                   <property name="text">
+                    <string>Target Type</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="target_type">
+                   <item>
+                    <property name="text">
+                     <string>Hold</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Switch</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_25">
+                 <item>
+                  <widget class="QLabel" name="label_for_camera">
+                   <property name="text">
+                    <string>Camera</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="camera">
+                   <item>
+                    <property name="text">
+                     <string>Standard</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Reverse Left/Right</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_26">
+                 <item>
+                  <widget class="QLabel" name="label_for_first_person_camera">
+                   <property name="text">
+                    <string>First-Person Camera</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="first_person_camera">
+                   <item>
+                    <property name="text">
+                     <string>Standard</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Reverse Up/Down</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_27">
+                 <item>
+                  <widget class="QLabel" name="label_for_gyroscope">
+                   <property name="text">
+                    <string>Gyroscope</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="gyroscope">
+                   <property name="currentText">
+                    <string>Off</string>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>Off</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>On</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="groupBox_2">
+              <property name="title">
+               <string>Convenience Tweaks</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_4">
+               <item row="0" column="3">
+                <widget class="QCheckBox" name="quiet_swift_sail">
+                 <property name="text">
+                  <string>Quiet Swift Sail</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QCheckBox" name="invert_sea_compass_x_axis">
+                 <property name="text">
+                  <string>Invert Sea Compass X-Axis</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QCheckBox" name="ap3dmodel">
+                 <property name="text">
+                  <string>Use the 3D model for AP Items</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="3">
+                <widget class="QCheckBox" name="sgim">
+                 <property name="text">
+                  <string>Same Game Item Model</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
            </layout>
           </widget>
           <widget class="QWidget" name="advanced_options_tab">
@@ -1745,41 +1869,6 @@
                <string>Advanced Options</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_7">
-               <item row="1" column="0">
-                <widget class="QCheckBox" name="performance">
-                 <property name="text">
-                  <string>Performance</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="0">
-                <widget class="QCheckBox" name="do_not_generate_spoiler_log">
-                 <property name="text">
-                  <string>Do Not Generate Spoiler Log</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="1">
-                <widget class="QCheckBox" name="random_item_slide_item">
-                 <property name="text">
-                  <string>Start With Random Item Sliding Item</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QCheckBox" name="classic_mode">
-                 <property name="text">
-                  <string>Classic Mode</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="1" column="1">
-                <widget class="QCheckBox" name="fix_rng">
-                 <property name="text">
-                  <string>Fix RNG</string>
-                 </property>
-                </widget>
-               </item>
                <item row="3" column="0">
                 <widget class="QCheckBox" name="required_boss_items">
                  <property name="sizePolicy">
@@ -1800,7 +1889,58 @@
                  </property>
                 </widget>
                </item>
-               <item row="4" column="0" colspan="2">
+               <item row="4" column="1">
+                <widget class="QCheckBox" name="instant_text_boxes">
+                 <property name="text">
+                  <string>Instant Text Boxes</string>
+                 </property>
+                 <property name="checked">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QCheckBox" name="skip_rematch_bosses">
+                 <property name="text">
+                  <string>Skip Boss Rematches</string>
+                 </property>
+                 <property name="checked">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QCheckBox" name="reveal_full_sea_chart">
+                 <property name="text">
+                  <string>Reveal Full Sea Chart</string>
+                 </property>
+                 <property name="checked">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QCheckBox" name="performance">
+                 <property name="text">
+                  <string>Performance</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QCheckBox" name="classic_mode">
+                 <property name="text">
+                  <string>Classic Mode</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QCheckBox" name="random_item_slide_item">
+                 <property name="text">
+                  <string>Start With Random Item Sliding Item</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="13" column="0" colspan="2">
                 <layout class="QHBoxLayout" name="horizontalLayout_33">
                  <property name="sizeConstraint">
                   <enum>QLayout::SizeConstraint::SetNoConstraint</enum>
@@ -1843,6 +1983,34 @@
                   </widget>
                  </item>
                 </layout>
+               </item>
+               <item row="1" column="1">
+                <widget class="QCheckBox" name="fix_rng">
+                 <property name="text">
+                  <string>Fix RNG</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QCheckBox" name="do_not_generate_spoiler_log">
+                 <property name="text">
+                  <string>Do Not Generate Spoiler Log</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QCheckBox" name="remove_music">
+                 <property name="text">
+                  <string>Remove Music</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="1">
+                <widget class="QCheckBox" name="add_shortcut_warps_between_dungeons">
+                 <property name="text">
+                  <string>Add Shortcut Warps Between Dungeons</string>
+                 </property>
+                </widget>
                </item>
               </layout>
              </widget>
@@ -2121,10 +2289,10 @@
                <string>Logic Tweaks</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_9">
-               <item row="0" column="1">
-                <widget class="QCheckBox" name="progressive_magic_always_double">
+               <item row="0" column="0">
+                <widget class="QCheckBox" name="open_drc">
                  <property name="text">
-                  <string>Progressive Magic is Always Double</string>
+                  <string>Open DRC</string>
                  </property>
                 </widget>
                </item>
@@ -2135,149 +2303,12 @@
                  </property>
                 </widget>
                </item>
-               <item row="0" column="0">
-                <widget class="QCheckBox" name="open_drc">
+               <item row="0" column="1">
+                <widget class="QCheckBox" name="progressive_magic_always_double">
                  <property name="text">
-                  <string>Open DRC</string>
+                  <string>Progressive Magic is Always Double</string>
                  </property>
                 </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item>
-             <widget class="QGroupBox" name="gridGroupBox_2">
-              <property name="title">
-               <string>In-Game Preferences</string>
-              </property>
-              <layout class="QHBoxLayout" name="horizontalLayout_34">
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_28">
-                 <item>
-                  <widget class="QLabel" name="label_for_ui_display">
-                   <property name="text">
-                    <string>UI Display</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="ui_display">
-                   <item>
-                    <property name="text">
-                     <string>On</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Off</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_24">
-                 <item>
-                  <widget class="QLabel" name="label_for_target_type">
-                   <property name="text">
-                    <string>Target Type</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="target_type">
-                   <item>
-                    <property name="text">
-                     <string>Hold</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Switch</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_25">
-                 <item>
-                  <widget class="QLabel" name="label_for_camera">
-                   <property name="text">
-                    <string>Camera</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="camera">
-                   <item>
-                    <property name="text">
-                     <string>Standard</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Reverse Left/Right</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_26">
-                 <item>
-                  <widget class="QLabel" name="label_for_first_person_camera">
-                   <property name="text">
-                    <string>First-Person Camera</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="first_person_camera">
-                   <item>
-                    <property name="text">
-                     <string>Standard</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>Reverse Up/Down</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_27">
-                 <item>
-                  <widget class="QLabel" name="label_for_gyroscope">
-                   <property name="text">
-                    <string>Gyroscope</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="gyroscope">
-                   <property name="currentText">
-                    <string>Off</string>
-                   </property>
-                   <item>
-                    <property name="text">
-                     <string>Off</string>
-                    </property>
-                   </item>
-                   <item>
-                    <property name="text">
-                     <string>On</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                </layout>
                </item>
               </layout>
              </widget>
@@ -2414,7 +2445,7 @@ color: lightgray</string>
              </rect>
             </property>
             <property name="currentIndex">
-             <number>2</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="overworld_page">
              <property name="cursor">
@@ -2480,7 +2511,7 @@ color: lightgray</string>
                <cursorShape>ArrowCursor</cursorShape>
               </property>
               <property name="autoFillBackground">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
               <property name="styleSheet">
                <string notr="true"/>
@@ -2704,6 +2735,9 @@ font-size: 15px;</string>
                    <width>360</width>
                    <height>290</height>
                   </size>
+                 </property>
+                 <property name="autoFillBackground">
+                  <bool>false</bool>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">background: transparent;</string>
@@ -3315,6 +3349,168 @@ color: lightgray</string>
              </item>
             </layout>
            </widget>
+           <widget class="QWidget" name="widget" native="true">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>550</y>
+              <width>421</width>
+              <height>141</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(160, 160, 160, 0.85);</string>
+            </property>
+            <widget class="QPushButton" name="connect_ap_button">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>10</y>
+               <width>131</width>
+               <height>24</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background: rgba(79, 79, 79, 0.85);
+color: lightgray</string>
+             </property>
+             <property name="text">
+              <string>Connect to AP</string>
+             </property>
+            </widget>
+            <widget class="QLineEdit" name="ap_ip">
+             <property name="geometry">
+              <rect>
+               <x>140</x>
+               <y>40</y>
+               <width>261</width>
+               <height>24</height>
+              </rect>
+             </property>
+             <property name="autoFillBackground">
+              <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgba(255,255,255,255); color: black;</string>
+             </property>
+            </widget>
+            <widget class="QLineEdit" name="ap_player_name">
+             <property name="geometry">
+              <rect>
+               <x>140</x>
+               <y>70</y>
+               <width>261</width>
+               <height>24</height>
+              </rect>
+             </property>
+             <property name="autoFillBackground">
+              <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgba(255,255,255,255); color: black;</string>
+             </property>
+            </widget>
+            <widget class="QLabel" name="connected_status_label">
+             <property name="geometry">
+              <rect>
+               <x>280</x>
+               <y>10</y>
+               <width>131</width>
+               <height>20</height>
+              </rect>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LayoutDirection::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(255, 0, 0);
+background-color: rgba(255, 255, 255, 0);
+font: 13pt &quot;Segoe UI&quot;;</string>
+             </property>
+             <property name="text">
+              <string>Not Connected</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+             </property>
+            </widget>
+            <widget class="QLabel" name="label_4">
+             <property name="geometry">
+              <rect>
+               <x>12</x>
+               <y>42</y>
+               <width>111</width>
+               <height>21</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(0, 0, 0);
+font: 12pt &quot;Segoe UI&quot;;
+background-color: rgba(255, 255, 255, 0);
+</string>
+             </property>
+             <property name="text">
+              <string>Archipelago IP:</string>
+             </property>
+            </widget>
+            <widget class="QLabel" name="label_12">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>70</y>
+               <width>111</width>
+               <height>21</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(0, 0, 0);
+font: 12pt &quot;Segoe UI&quot;;
+background-color: rgba(255, 255, 255, 0);
+</string>
+             </property>
+             <property name="text">
+              <string>Player Name:</string>
+             </property>
+            </widget>
+            <widget class="QLabel" name="label_13">
+             <property name="geometry">
+              <rect>
+               <x>10</x>
+               <y>100</y>
+               <width>131</width>
+               <height>21</height>
+              </rect>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: rgb(0, 0, 0);
+font: 12pt &quot;Segoe UI&quot;;
+background-color: rgba(255, 255, 255, 0);
+</string>
+             </property>
+             <property name="text">
+              <string>Server Password:</string>
+             </property>
+            </widget>
+            <widget class="QLineEdit" name="ap_password">
+             <property name="geometry">
+              <rect>
+               <x>140</x>
+               <y>100</y>
+               <width>261</width>
+               <height>24</height>
+              </rect>
+             </property>
+             <property name="autoFillBackground">
+              <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgba(255,255,255,255); color: black;</string>
+             </property>
+             <property name="placeholderText">
+              <string>leave blank if the server doesn't require one</string>
+             </property>
+            </widget>
+           </widget>
           </widget>
          </widget>
         </item>
@@ -3339,134 +3535,11 @@ color: lightgray</string>
      </widget>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_29">
-      <item>
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Seed (optional)</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="seed"/>
-      </item>
-      <item>
-       <widget class="QPushButton" name="generate_seed_button">
-        <property name="text">
-         <string>New seed</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="seed_hash_label">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>165</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>165</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Seed Hash:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_4">
-      <item>
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Permalink (copy paste to share your settings):</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="permalink"/>
-      </item>
-      <item>
-       <widget class="QPushButton" name="copy_permalink">
-        <property name="text">
-         <string>Copy</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="paste_permalink">
-        <property name="text">
-         <string>Paste</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QPushButton" name="about_button">
         <property name="text">
          <string>About</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="open_logs_folder_button">
-        <property name="text">
-         <string>Open Logs Folder</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_5">
-        <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="reset_settings_to_default">
-        <property name="minimumSize">
-         <size>
-          <width>180</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Reset All Settings to Default</string>
         </property>
        </widget>
       </item>

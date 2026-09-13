@@ -25,6 +25,18 @@ constexpr uint8_t MAXIMUM_BARREN_HINT_COUNT = 7;
 constexpr uint8_t MAXIMUM_ITEM_HINT_COUNT = 7;
 constexpr uint8_t MAXIMUM_LOCATION_HINT_COUNT = 7;
 
+enum struct SGIM {
+    GENERICAP = 0,
+    SAMEMODEL,
+    INVALID
+};
+
+enum struct AP3DModel {
+    LETTER = 0,
+    SPHERES,
+    INVALID
+};
+
 enum struct PigColor : uint8_t {
     Black = 0,
     Pink,
@@ -208,6 +220,8 @@ enum struct Option {
 
     // Cosmetics
     PigColor,
+    AP3DModel,
+    SGIM,
 
 
     DamageMultiplier,
@@ -282,7 +296,7 @@ public:
     bool ho_ho_triforce_hints;
     bool korl_hints;
     bool korl_sword_hints;
-    bool kreeb_bow_hints;
+    uint8_t kreeb_bow_hints;
     bool clearer_hints;
     bool use_always_hints;
     bool hint_importance;
@@ -307,6 +321,8 @@ public:
     bool chest_type_matches_contents;
 
     PigColor pig_color;
+    AP3DModel ap3DModel;
+    SGIM sgim;
 
     std::vector<GameItem> starting_gear;
     std::set<std::string> excluded_locations;
@@ -362,6 +378,12 @@ public:
 
 GameVersion nameToGameVersion(const std::string& name);
 std::string GameVersionToName(const GameVersion& version);
+
+SGIM nameToSGIM(const std::string& name);
+std::string SGIMToName(const SGIM& type);
+
+AP3DModel nameToAP3DModel(const std::string& name);
+std::string AP3DModelToName(const AP3DModel& type);
 
 PigColor nameToPigColor(const std::string& name);
 std::string PigColorToName(const PigColor& color);

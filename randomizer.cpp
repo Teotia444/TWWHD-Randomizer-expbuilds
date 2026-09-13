@@ -23,6 +23,8 @@
 #include <utility/file.hpp>
 #include <utility/time.hpp>
 
+#include <miniz.h>
+
 #include <gui/desktop/update_dialog_header.hpp>
 
 #ifdef DEVKITPRO
@@ -187,22 +189,27 @@ public:
             ErrorLog::getInstance().log("Could not generate permalink for RNG seeding.");
             return 1;
         }
-        const Seed_t integer_seed = seedFromString(permalink);
+        const Seed_t integer_seed = 2;
         Random_Init(integer_seed);
 
         LogInfo::setSeedHash(generate_seed_hash());
 
         UPDATE_DIALOG_TITLE("Randomizing - Hash: " + LogInfo::getSeedHash());
 
+        Utility::platformLog("Randomizing...");
+        UPDATE_DIALOG_VALUE(5);
+
         // Create all necessary worlds (for any potential multiworld support in the future)
         WorldPool worlds(numPlayers);
         std::vector<Settings> settingsVector (numPlayers, config.settings);
 
-        Utility::platformLog("Randomizing...");
-        UPDATE_DIALOG_VALUE(5);
-        if (generateWorlds(worlds, settingsVector) != 0) {
+
+        Utility::platformLog(std::to_string(settingsVector[0].getSetting(Option::RandomizeCaveEntrances)));
+
+        if (generateWorlds(worlds, settingsVector, config.apPlando) != 0) {
             return 1;
         }
+        Utility::platformLog("Randomizing 3...");
 
         generateNonSpoilerLog(worlds);
         if (!config.settings.do_not_generate_spoiler_log) {

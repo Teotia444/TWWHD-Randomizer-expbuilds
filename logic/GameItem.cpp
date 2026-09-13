@@ -6,6 +6,7 @@
 #include <logic/World.hpp>
 #include <logic/PoolFunctions.hpp>
 #include <utility/string.hpp>
+#include <command/Log.hpp>
 
 GameItem nameToGameItem(const std::string& name)
 {
@@ -149,7 +150,7 @@ GameItem nameToGameItem(const std::string& name)
         {"Fountain Idol", GameItem::FountainIdol},
         {"Postman Statue", GameItem::PostmanStatue},
         {"Shop Guru Statue", GameItem::ShopGuruStatue},
-        {"Fathers Letter", GameItem::FathersLetter},
+        {"Archipelago Item", GameItem::ArchipelagoItem},
         {"Note to Mom", GameItem::NoteToMom},
         {"Maggie's Letter", GameItem::MaggiesLetter},
         {"Moblin's Letter", GameItem::MoblinsLetter},
@@ -402,7 +403,7 @@ std::string gameItemToName(GameItem item)
         {GameItem::FountainIdol, "Fountain Idol"},
         {GameItem::PostmanStatue, "Postman Statue"},
         {GameItem::ShopGuruStatue, "Shop Guru Statue"},
-        {GameItem::FathersLetter, "Fathers Letter"},
+        {GameItem::ArchipelagoItem, "Archipelago Item"},
         {GameItem::NoteToMom, "Note to Mom"},
         {GameItem::MaggiesLetter, "Maggie's Letter"},
         {GameItem::MoblinsLetter, "Moblin's Letter"},
@@ -847,13 +848,28 @@ std::string Item::getUTF8Name(const std::string& language /*= "English"*/, const
 }
 
 std::u16string Item::getUTF16Name(const std::string& language /*= "English"*/, const Text::Type& type /*= Text::Type::STANDARD*/, const Text::Color& color /*= Text::Color::RED*/, const bool& showWorld /*= false*/) const
-{
-    std::u16string str = Utility::Str::toUTF16(world->itemTranslations[gameItemId][language].types[type]);
+{   
+    std::u16string str;
+    if(displayName.empty()){
+        str = Utility::Str::toUTF16(world->itemTranslations[gameItemId][language].types[type]);
+    }
+    else{
+        if(strcmp(language.c_str(), "English") == 0){
+            str = Utility::Str::toUTF16(playerName + "'s " + displayName);
+        }
+        if(strcmp(language.c_str(), "Spanish") == 0){
+            str = Utility::Str::toUTF16(displayName + " para " + playerName);
+        }
+        if(strcmp(language.c_str(), "French") == 0){
+            str = Utility::Str::toUTF16(displayName + " de " + playerName);
+        }
+    }
+     
     str = Text::apply_name_color(str, color);
-    if (showWorld)
+    /*if (showWorld)
     {
         str += u" for Player " + Utility::Str::toUTF16(std::to_string(world->getWorldId() + 1));
-    }
+    }*/
     return str;
 }
 

@@ -6,6 +6,7 @@
 #include <command/Log.hpp>
 #include <filetypes/util/msbtMacros.hpp>
 #include <utility/string.hpp>
+#include <utility/platform.hpp>
 
 template<typename Container>
 static Location* getHintableLocation(Container& locations)
@@ -39,10 +40,9 @@ static HintError calculatePossiblePathLocations(WorldPool& worlds)
                 world.goalLocations.push_back(dungeon.bossLocation);
             }
         }
-
         for (auto& [name, location] : world.locationTable)
         {
-            if (!location->progression && !location->categories.contains(LocationCategory::BlueChuChu))
+            if (!location->currentItem.isApRequired() && !location->categories.contains(LocationCategory::BlueChuChu))
             {
                 nonRequiredLocations.insert({location.get(), location->currentItem});
                 location->currentItem = {GameItem::INVALID, location->world};
@@ -308,12 +308,19 @@ static HintError generatePathHintLocations(World& world, std::list<Hint>& hints)
     std::vector<Location*> goalLocations = {};
     for (auto& goalLocation : world.goalLocations)
     {
-        shufflePool(goalLocation->pathLocations);
-        // Initially we want to pull path hints from required dungeons before pulling from Ganondorf
-        if (goalLocation->getName() != "Ganon's Tower - Defeat Ganondorf")
+        auto possiblePathLocations = goalLocation->pathLocations;
+
+        auto hintLocation = getHintableLocation(possiblePathLocations);
+        if (hintLocation == nullptr)
         {
-            goalLocations.push_back(goalLocation);
+            LOG_TO_DEBUG("No more path locations for " + goalLocation->getName());
+            filterAndEraseFromPool(goalLocations, [&goalLocation](Location* goal){return goal == goalLocation;});
+            continue;
         }
+
+        LOG_AND_RETURN_IF_ERR(generatePathHintMessage(hintLocation, goalLocation, hints));
+        hintLocation->hasBeenHinted = true;
+        LOG_TO_DEBUG("Chose \"" + hintLocation->getName() + "\" as path hint for " + goalLocation->getName())
     }
 
     bool addedGanonPathLocation = false;
@@ -446,9 +453,13 @@ static HintError generateItemHintMessage(Location* location, std::list<Hint>& hi
     std::list<std::string> hintRegions = location->hintRegions;
 
     // If this is an item in a dungeon, use the dungeon's island(s) for the hint instead
-    if (world->dungeons.contains(hintRegions.front()))
+    if (!hintRegions.empty() && world->dungeons.contains(hintRegions.front()))
     {
         hintRegions = world->dungeons.at(hintRegions.front()).islands;
+    }
+    if(hintRegions.empty()){
+        hintRegions.emplace_back(location->getName());
+        Utility::platformLog("Warning: could not generate a hint region for " + location->getName());
     }
 
     for (const std::string& hintRegion : hintRegions)
@@ -517,11 +528,11 @@ static HintError generateItemHintLocations(World& world, std::list<Hint>& hints)
     std::vector<Location*> possibleItemHintLocations = {};
     for (auto& [name, location] : world.locationTable)
     {
-        if (location->progression              &&  // if the location is a progression location...
-           !location->currentItem.isJunkItem() &&  // and does not have a junk item...
-           !location->hasKnownVanillaItem      &&  // and does not have a known vanilla item...
-           !location->hasExpectedItem          &&  // and does not have an expected item...
-           !location->hasBeenHinted            &&  // and has not been hinted at yet...
+        if (location->currentItem.isApRequired() &&  // if the location is a progression location...
+           !location->currentItem.isJunkItem()   &&  // and does not have a junk item...
+           !location->hasKnownVanillaItem        &&  // and does not have a known vanilla item...
+           !location->hasExpectedItem            &&  // and does not have an expected item...
+           !location->hasBeenHinted              &&  // and has not been hinted at yet...
            !(settings.ho_ho_triforce_hints && location->currentItem.isTriforceShard())) // and isn't a shard when ho ho will hint shards...
            
            {
@@ -609,7 +620,7 @@ static HintError generateAlwaysHints(World& world, std::list<Hint>& hints)
     std::vector<Location*> alwaysLocations = {};
     for (auto& [name, location] : world.locationTable)
     {
-        if (location->progression && location->hintPriority == "Always")
+        if (location->currentItem.isApRequired() && location->hintPriority == "Always")
         {
             alwaysLocations.push_back(location.get());
         }
@@ -678,9 +689,9 @@ static HintError assignHoHoHints(World& world, WorldPool& worlds, std::list<Hint
     // If ho ho is hinting triforces, make those hints now
     if (world.getSettings().ho_ho_triforce_hints)
     {
-        for (const auto location : world.getProgressionLocations())
+        for (const auto location : world.getLocations())
         {
-            if (location->currentItem.isTriforceShard())
+            if (location->currentItem.isTriforceShard() || location->currentItem.displayName.find("Triforce") != std::string::npos)
             {
                 LOG_AND_RETURN_IF_ERR(generateItemHintMessage(location, hints));
             }
@@ -762,13 +773,16 @@ static HintError assignKreebHints(World& world)
     // Get all bow locations
     // Shuffle locations to prevent any possible meta-gaming where the last bow might be
     // since otherwise they'll appear in order of location id
-    auto allLocations = world.getProgressionLocations();
+    auto allLocations = world.getLocations();
     shufflePool(allLocations);
+    int amountChosen = 0;
     for (auto& location : allLocations)
     {
-        if (location->currentItem.getGameItemId() == GameItem::ProgressiveBow)
+        if (amountChosen >= world.getSettings().kreeb_bow_hints) break; 
+        if (location->currentItem.getGameItemId() == GameItem::ProgressiveBow || location->currentItem.displayName.find("Bow") != std::string::npos)
         {
             LOG_AND_RETURN_IF_ERR(generateItemHintMessage(location, world.kreebHints));
+            amountChosen++;
         }
     }
     return HintError::NONE;
@@ -819,6 +833,7 @@ HintError generateHints(WorldPool& worlds)
         auto& settings = world.getSettings();
         uint8_t totalNumHints = settings.path_hints + settings.barren_hints + settings.item_hints + settings.location_hints;
         uint8_t totalMadeHints = hints.size();
+        
         LOG_AND_RETURN_IF_ERR(generateLocationHintLocations(world, hints, totalNumHints - totalMadeHints));
 
         // Sort hints by type
@@ -828,12 +843,12 @@ HintError generateHints(WorldPool& worlds)
             return h1.type < h2.type;
         });
         hints.assign(hintsVector.begin(), hintsVector.end());
-
         // Assign Kreeb Bow Hints if the setting is enabled
-        if (settings.kreeb_bow_hints)
+        if (settings.kreeb_bow_hints > 0)
         {
             assignKreebHints(world);
         }
+
 
         // Assign Korl Sword Hints if the setting is enabled
         if (settings.korl_sword_hints)

@@ -142,7 +142,7 @@ ModificationError ModifyChest::writeLocation(const Item& item) {
 
 ModificationError ModifyChest::setCTMCType(ACTR& chest, const Item& item) {
     if(item.isSmallKey() || item.isBigKey()) {
-        if(item.getWorld()->getSettings().progression_dungeons == ProgressionDungeons::RaceMode) {
+        /*if(item.getWorld()->getSettings().progression_dungeons == ProgressionDungeons::RaceMode) {
             // In race mode, only put keys for required dungeons in dark wood chests (the other keys go in light wood chests).
             // In some extreme entrance rando situations, traversing through unrequired dungeons may still
             // be required, so put small/big keys that unlock progression locations in dark wood chests also
@@ -157,12 +157,13 @@ ModificationError ModifyChest::setCTMCType(ACTR& chest, const Item& item) {
 
             LOG_AND_RETURN_IF_ERR(setParam(chest, 0x00F00000, uint8_t(0))) // Light wood chests for unrequired keys for empty dungeons
             return ModificationError::NONE;
-        }
+        }*/
 
         LOG_AND_RETURN_IF_ERR(setParam(chest, 0x00F00000, uint8_t(1))) // Dark wood chest for Small and Big Keys
         return ModificationError::NONE;
     }
-    else if(std::ranges::any_of(item.getChainLocations(), [](const auto& location){ return location->progression; })) {
+    
+    else if(item.isApRequired()) {
         // If any of this item's chain locations are progression, then put the item in a spiky chest
         LOG_AND_RETURN_IF_ERR(setParam(chest, 0x00F00000, uint8_t(2))) // Metal chests for progress items (excluding keys)
         return ModificationError::NONE;
@@ -505,7 +506,6 @@ bool writeLocations(WorldPool& worlds) {
     UPDATE_DIALOG_LABEL("Saving items...");
 
     ModifyChest::setCTMC(worlds[0].getSettings().chest_type_matches_contents);
-
     for (auto& [name, location] : worlds[0].locationTable) {
         if (const ModificationError err = location->method->writeLocation(location->currentItem); err != ModificationError::NONE) {
             ErrorLog::getInstance().log("Encountered ModificationError::" + modErrorToName(err) + " while saving location " + location->getName());

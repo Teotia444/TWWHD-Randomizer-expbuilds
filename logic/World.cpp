@@ -212,7 +212,7 @@ LocationPool World::getLocations(bool onlyProgression /*= false*/)
 {
     LocationPool locations = {};
     for (auto& [name, location] : locationTable) {
-        if (!onlyProgression || location->progression)
+        if (!onlyProgression || location->currentItem.isApRequired())
         {
             locations.push_back(location.get());
         }
@@ -432,7 +432,37 @@ World::WorldLoadingError World::setDungeonLocations()
 
 World::WorldLoadingError World::determineRequiredDungeons(WorldPool& worlds)
 {
-    if (settings.progression_dungeons != ProgressionDungeons::Disabled)
+    std::vector<Dungeon> dungeonPool = {};
+    for (auto& [name, dungeon] : dungeons)
+    {
+        // Verify that each dungeon has a boss location
+        if (dungeon.bossLocation == nullptr)
+        {
+            ErrorLog::getInstance().log("Dungeon \"" + dungeon.name + "\" has no set boss location");
+            LOG_ERR_AND_RETURN(WorldLoadingError::DUNGEON_HAS_NO_BOSS_LOCATION);
+        }
+
+        dungeonPool.push_back(dungeon);
+    }
+
+    for (const Dungeon& dungeon : dungeonPool)
+    {
+        auto allDungeonLocations = dungeon.locations;
+        // Add any outside dependent locations from this dungeon's locations
+        const auto& outsideLocs = dungeon.getOutsideDependentLocations();
+        allDungeonLocations.insert(allDungeonLocations.end(), outsideLocs.begin(), outsideLocs.end());
+        for (auto dungeonLocation : allDungeonLocations)
+        {
+            if (plandomizer.locations.contains(dungeonLocation))
+            {
+                LOG_TO_DEBUG("Chose dungeon : " + dungeon.name);
+                dungeons[dungeon.name].isRequiredDungeon = true;
+                break;
+            }
+        }
+    }
+
+    /*if (settings.progression_dungeons != ProgressionDungeons::Disabled)
     {
         std::vector<Dungeon> dungeonPool = {};
         for (auto& [name, dungeon] : dungeons)
@@ -597,7 +627,7 @@ World::WorldLoadingError World::determineRequiredDungeons(WorldPool& worlds)
                 dungeon.bossLocation->isRequiredBossLocation = true;
             }
         }
-    }
+    }*/
 
     return reparseMacro("All Required Bosses Defeated");
 }
@@ -1155,11 +1185,11 @@ World::WorldLoadingError World::processPlandomizerLocations(WorldPool& worlds)
         LOG_TO_DEBUG("Plandomizer Location for world " + std::to_string(worldId + 1) + " - " + locationName + ": " + itemName + " [W" + std::to_string(plandoWorldId + 1) + "]");
         Location* location = locationTable[locationName].get();
 
-        if (location->hasKnownVanillaItem)
+        /*if (location->hasKnownVanillaItem)
         {
             ErrorLog::getInstance().log("Plandomizer Error: Attempted to plandomize item \"" + itemName + "\" at a location \"" + locationName + "\" which already has vanilla item \"" + location->currentItem.getName() + "\"");
             return WorldLoadingError::PLANDOMIZER_ERROR;
-        }
+        }*/
 
         location->plandomized = true;
         Item item = itemsWorld.getItem(itemName);
@@ -1169,9 +1199,15 @@ World::WorldLoadingError World::processPlandomizerLocations(WorldPool& worlds)
         // major item layout. Place non-progress plandomized locations later
         // so that the entrance randomizer doesn't consider potential out
         // of logic items such as extra bottles.
+        location->currentItem.setApRequired(plandoItem.apRequired);
+        location->isRequiredBossLocation = plandoItem.isDungeonRequired;
         if (location->progression)
         {
             location->currentItem = item;
+            location->currentItem.displayName = plandoItem.displayName;
+            location->currentItem.playerName = plandoItem.playerName;
+            location->currentItem.setApRequired(plandoItem.apRequired);
+            location->isRequiredBossLocation = plandoItem.isDungeonRequired;
             LOG_TO_DEBUG("Plandomized " + itemName + " at " + locationName);
             // Remove placed items from the item's world's item pool
             removeElementFromPool(itemsWorld.getItemPoolReference(), item);
@@ -1388,6 +1424,10 @@ std::string World::getUTF8HintRegion(const std::string& hintRegion, const std::s
 }
 std::u16string World::getUTF16HintRegion(const std::string& hintRegion, const std::string& language /*= "English"*/, const Text::Type& type /*= Text::Type::STANDARD*/, const Text::Color& color /*= Text::Color::RED*/) const
 {
+    if(hintRegions.find(hintRegion) == hintRegions.end()){ // this is ugly. figure out why some locations never get a region assigned
+        return Text::apply_name_color(Utility::Str::toUTF16(hintRegion), color);
+    }
+    
     std::u16string str = Utility::Str::toUTF16(hintRegions.at(hintRegion).at(language).types.at(type));
     return Text::apply_name_color(str, color);
 }

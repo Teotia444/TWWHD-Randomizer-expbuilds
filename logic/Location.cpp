@@ -134,6 +134,8 @@ std::string Location::getName() const
 // Calculates whether the current item can be barren given it's placement at this specific location in mind
 bool Location::currentItemCanBeBarren() const
 {
+    return !currentItem.isApRequired();
+
     if (currentItem.getGameItemId() == GameItem::GameBeatable)
     {
         return false;
@@ -181,7 +183,7 @@ bool Location::currentItemCanBeBarren() const
 // if it's a required race mode location
 bool Location::isBarrenAsChainLocation() const
 {
-    return !progression || (currentItem.canBeInBarrenRegion() && !isRequiredBossLocation);
+    return !currentItem.isApRequired() || (currentItem.canBeInBarrenRegion() && !isRequiredBossLocation);
 }
 
 std::u16string Location::generateImportanceText(const std::string& language) const
@@ -217,7 +219,7 @@ std::u16string Location::generateImportanceText(const std::string& language) con
 
     // If this item is on the path to Ganondorf, then it is required
     const auto& requiredLocations = world->locationTable["Ganon's Tower - Defeat Ganondorf"]->pathLocations;
-    if (elementInPool(this, requiredLocations))
+    if (elementInPool(this, requiredLocations) || item.isApRequired())
     {
         return u" (" + TEXT_COLOR_GREEN + required + TEXT_COLOR_DEFAULT + u")";
     }
@@ -227,7 +229,7 @@ std::u16string Location::generateImportanceText(const std::string& language) con
     {
         return u" (" + TEXT_COLOR_GRAY + notRequired + TEXT_COLOR_DEFAULT + u")";
     }
-
+    
     // If the item doesn't fall into required or not required, then it's possibly required
     return u" (" + TEXT_COLOR_YELLOW + possiblyRequired + TEXT_COLOR_DEFAULT + u")";
 }

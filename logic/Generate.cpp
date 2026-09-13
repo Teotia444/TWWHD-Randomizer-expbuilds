@@ -20,7 +20,7 @@
 
 #define WORLD_LOADING_ERROR_CHECK(err) if (err != World::WorldLoadingError::NONE) {ErrorLog::getInstance().log(world.getLastErrorDetails()); return 1;}
 
-int generateWorlds(WorldPool& worlds, std::vector<Settings>& settingsVector)
+int generateWorlds(WorldPool& worlds, std::vector<Settings>& settingsVector, YAML::Node plando)
 {
   #ifdef ENABLE_TIMING
       ScopedTimer<"Building and Filling took ", std::chrono::milliseconds> timer;
@@ -60,7 +60,7 @@ int generateWorlds(WorldPool& worlds, std::vector<Settings>& settingsVector)
       if (usePlando)
       {
           std::vector<Plandomizer> plandos(worlds.size());
-          PlandomizerError err = loadPlandomizer(plandoFilepath, plandos, worlds.size());
+          PlandomizerError err = loadPlandomizer(plando, plandos, worlds.size(), worlds[0].getSettings().sgim == SGIM::SAMEMODEL);
           if (err != PlandomizerError::NONE)
           {
               return 1;
@@ -215,7 +215,7 @@ int generateWorlds(WorldPool& worlds, std::vector<Settings>& settingsVector)
       UPDATE_DIALOG_VALUE(15);
       UPDATE_DIALOG_LABEL("Generating Playthrough");
   #endif
-  generatePlaythrough(worlds);
+  //generatePlaythrough(worlds);
 
   #ifndef LOGIC_TESTS
       Utility::platformLog("Generating Hints");

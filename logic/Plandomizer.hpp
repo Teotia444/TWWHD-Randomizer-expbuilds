@@ -26,6 +26,10 @@ struct PlandomizerItem
 {
     GameItem gameItem = GameItem::INVALID;
     int world = -1;
+    std::string displayName = "";
+    std::string playerName = "";
+    bool apRequired = false;
+    bool isDungeonRequired = false;
 };
 
 struct Plandomizer
@@ -41,5 +45,5 @@ struct Plandomizer
     uint8_t startingIslandRoomNum = 0;
 };
 
-PlandomizerError loadPlandomizer(const fspath& plandoFilepath, std::vector<Plandomizer>& plandos, size_t numWorlds);
+PlandomizerError loadPlandomizer(const YAML::Node yamlNode, std::vector<Plandomizer>& plandos, size_t numWorlds, bool sgim);
 std::string errorToName(PlandomizerError err);

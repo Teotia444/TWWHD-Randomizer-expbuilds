@@ -1,0 +1,214 @@
+.org 0x025b0330 ; In dScnPly_Execute 0x803FE87C
+  bl give_archipelago_item
+
+; Every frame, check if the Archipelago client has set an item ID to give to the player.
+; The byte is cleared after the item is given. We put this function in `dScnPly_Execute`, which is run every frame.
+.org @NextFreeSpace
+.global give_archipelago_item
+give_archipelago_item:
+  stwu    sp, -0x10 (sp)
+  mflr    r0
+  stw     r0, 0x14 (sp)
+  stw     r31, 0xC (sp)
+  
+  ; Store value of r3 in r31
+  mr      r31, r3
+  
+  ; load the dcomifg instance 
+  bl dComIfG_instance
+  mr r4, r3
+
+  addi r4, r4, 0x514E
+
+  ; Load the address of the ap item byte into r4
+  lbz     r3, 0 (r4)
+  lbz     r5, 1 (r4)
+  
+  ;verify we instanced dcomifg correctly, if not skip
+  cmpwi   r5, 0x1
+  bne     dcomifg_maintainence
+
+  ; If item ID is 0xFF, there's no item to give
+  cmpwi   r3, 0xFF
+  beq     give_archipelago_item_end
+  
+  ; Branch to execItemGet to give the item
+  bl      execItemGet
+
+  ; reload the dcomifg instance
+  bl dComIfG_instance
+  mr r4, r3
+
+  addi r4, r4, 0x514E
+
+  dcomifg_maintainence:
+  ; set the item val byte to 0xFF
+  li      r5, 0xFF
+  stb     r5, 0 (r4)
+  ; also make sure the instance is marked as initialized
+  li      r5, 0x1
+  stb     r5, 1 (r4)
+
+  give_archipelago_item_end:
+  ; Restore the value of r3
+  mr      r3, r31
+  
+  bl fopOvlpM_IsPeek  ; this is the line we overwrote on 0x025b0330
+  
+  lwz     r31, 0xC (sp)
+  lwz     r0, 0x14 (sp)
+  mtlr    r0
+  addi    sp, sp, 0x10
+
+  blr
+
+
+; Allocate 0x40 bytes in memory for the player's slot name
+.global archipelago_slot_name
+archipelago_slot_name:
+  .space 0x40
+.align 2 ; Align to the next 4 bytes
+
+
+; Allocate 49 shorts in memory for the charts mapping
+.global archipelago_charts_mapping
+archipelago_charts_mapping:
+  .space 0x62
+.align 2 ; Align to the next 4 bytes
+
+; Remove the execItemGet call for demo items.
+; Instead, let the Archipelago client call execItemGet when the player should receive an item. However, certain items
+; should still be given to Link, so we need to check for those specific items. In particular, we only skip the call to
+; execItemGet if it's an item ID used by Archipelago.
+.org 0x021230e8
+    b check_give_item
+
+.org @NextFreeSpace
+.global check_give_item
+check_give_item:
+  lbz     r3, 1870(r31) ; r3 = m_itemNo (This is the line we replaced.)
+
+  ; Rupees, Piece of Heart, Heart Container
+  cmpwi   r3, 0x01
+  blt     call_execItemGet
+  cmpwi   r3, 0x08
+  ble     skip_execItemGet
+
+  ; Silver Rupee
+  cmpwi   r3, 0x0F
+  beq     skip_execItemGet
+
+  ; DRC Keys
+  cmpwi   r3, 0x13
+  blt     call_execItemGet
+  cmpwi   r3, 0x14
+  ble     skip_execItemGet
+
+  ; DRC Dungeon Map and Compass, FW Small Key
+  cmpwi   r3, 0x1B
+  blt     call_execItemGet
+  cmpwi   r3, 0x1D
+  ble     skip_execItemGet
+
+  ; Joy Pendant, some progression items
+  cmpwi   r3, 0x1F
+  blt     call_execItemGet
+  cmpwi   r3, 0x2A
+  ble     skip_execItemGet
+
+  ; Bait Bag, Boomerang
+  cmpwi   r3, 0x2C
+  blt     call_execItemGet
+  cmpwi   r3, 0x2D
+  ble     skip_execItemGet
+
+  ; Hookshot, Delivery Bag, Bombs
+  cmpwi   r3, 0x2F
+  blt     call_execItemGet
+  cmpwi   r3, 0x31
+  ble     skip_execItemGet
+
+  ; Skull Hammer, Deku Leaf, Progressive Bows
+  cmpwi   r3, 0x33
+  blt     call_execItemGet
+  cmpwi   r3, 0x36
+  ble     skip_execItemGet
+
+  ; Swords, Shields, Piece of Heart (Alternate Message), FW Big Key, FW Dungeon Map
+  cmpwi   r3, 0x38
+  blt     call_execItemGet
+  cmpwi   r3, 0x41
+  ble     skip_execItemGet
+
+  ; Hero's Charm
+  cmpwi   r3, 0x43
+  beq     skip_execItemGet
+
+  ; Spoils
+  cmpwi   r3, 0x45
+  blt     call_execItemGet
+  cmpwi   r3, 0x4A
+  ble     skip_execItemGet
+
+  ; Empty Bottle
+  cmpwi   r3, 0x50
+  beq     skip_execItemGet
+
+  ; FW Compass, TotG and FF Dungeon Items, Triforce Shards, Goddess Pearls
+  cmpwi   r3, 0x5A
+  blt     call_execItemGet
+  cmpwi   r3, 0x6B
+  ble     skip_execItemGet
+
+  ; Songs, ET Dungeon Items, WT Small Key
+  cmpwi   r3, 0x6D
+  blt     call_execItemGet
+  cmpwi   r3, 0x77
+  ble     skip_execItemGet
+
+  ; WT Big Key, Bait, WT Dungeon Map and Compass
+  cmpwi   r3, 0x81
+  blt     call_execItemGet
+  cmpwi   r3, 0x85
+  ble     skip_execItemGet
+
+  ; Delivery Bag Items
+  cmpwi   r3, 0x98
+  blt     call_execItemGet
+  cmpwi   r3, 0x9C
+  ble     skip_execItemGet
+
+  ; Fill-Up Coupon
+  cmpwi   r3, 0x9E
+  beq     skip_execItemGet
+
+  ; Tingle Statues
+  cmpwi   r3, 0xA3
+  blt     call_execItemGet
+  cmpwi   r3, 0xA7
+  ble     skip_execItemGet
+
+  ; Hurricane Spin, Wallet, Bomb Bag, Quiver, Magic Meter
+  cmpwi   r3, 0xAA
+  blt     call_execItemGet
+  cmpwi   r3, 0xB2
+  ble     skip_execItemGet
+
+  ; Rainbow Rupee
+  cmpwi   r3, 0xB8
+  beq     skip_execItemGet
+
+  ; Charts
+  cmpwi   r3, 0xC2
+  blt     call_execItemGet
+  cmpwi   r3, 0xFE
+  ble     skip_execItemGet
+
+  ; Else, branch to execItemGet
+  b       call_execItemGet
+
+skip_execItemGet:
+  b 0x021230f0 ; skip execItemGet
+
+call_execItemGet:
+  b 0x021230ec ; execItemGet
