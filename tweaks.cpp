@@ -28,6 +28,7 @@
 #include <command/Log.hpp>
 #include <command/GamePath.hpp>
 #include <command/RandoSession.hpp>
+#include "utility/platform.hpp"
 
 #define FILETYPE_ERROR_CHECK(func) {  \
     if(const auto error = func; error != decltype(error)::NONE) {\
@@ -2771,7 +2772,7 @@ TweakError show_dungeon_markers_on_chart(World& world) {
             const auto& bossIslands = bossArea->findIslands();
 
             const std::string& islandName = bossIslands.front();
-            room_numbers.emplace(islandNameToRoomNum(islandName));
+            room_numbers.emplace(islandNameToRoomNum(islandName));     
         }
     }
 

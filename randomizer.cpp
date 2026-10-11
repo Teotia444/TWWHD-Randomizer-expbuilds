@@ -209,8 +209,7 @@ public:
         if (generateWorlds(worlds, settingsVector, config.apPlando) != 0) {
             return 1;
         }
-        Utility::platformLog("Randomizing 3...");
-
+        
         generateNonSpoilerLog(worlds);
         if (!config.settings.do_not_generate_spoiler_log) {
             generateSpoilerLog(worlds);

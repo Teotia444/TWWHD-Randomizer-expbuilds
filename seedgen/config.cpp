@@ -245,7 +245,7 @@ ConfigError Config::loadFromFile(const fspath& filePath, const fspath& preferenc
         }
         //GET_FIELD(root, "randomize_door_entrances", settings.randomize_door_entrances)
 
-        GET_AP_FIELD(root, "randomize_secret_cave_inner_entrances", "Options", settings.randomize_misc_entrances)
+        //GET_AP_FIELD(root, "randomize_secret_cave_inner_entrances", "Options", settings.randomize_misc_entrances)
         bool mix;
         GET_AP_FIELD(root, "mix_entrances", "Options", mix)
         settings.mix_dungeons = mix;
@@ -254,7 +254,8 @@ ConfigError Config::loadFromFile(const fspath& filePath, const fspath& preferenc
         settings.mix_caves = mix;
         settings.mix_doors = mix;
         settings.mix_misc = mix;
-        settings.decouple_entrances = mix;
+        
+        settings.decouple_entrances = true;
 
         //GET_FIELD(root, "mix_dungeons", settings.mix_dungeons)
         //GET_FIELD(root, "mix_bosses", settings.mix_bosses)

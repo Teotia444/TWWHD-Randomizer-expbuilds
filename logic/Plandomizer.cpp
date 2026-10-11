@@ -110,7 +110,7 @@ PlandomizerError loadPlandomizer(const YAML::Node yamlNode, std::vector<Plandomi
 
                 bool isReqBoss = false;
                 if(reqBoss.find(locationName) != reqBoss.end()) {
-                    Utility::platformLog("Found a req loc at " + locationName);
+                    //Utility::platformLog("Found a req loc at " + locationName);
                     isReqBoss = true;
                 }
                 

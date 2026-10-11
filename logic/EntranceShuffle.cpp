@@ -461,7 +461,7 @@ static EntranceShuffleError shuffleEntrancePool(World& world, WorldPool& worlds,
     return EntranceShuffleError::RAN_OUT_OF_RETRIES;
 }
 
-static EntranceShuffleError processPlandomizerEntrances(World& world)
+static EntranceShuffleError processPlandomizerEntrances(World& world, EntrancePools& entrancePools)
 {
     // Sanity check that the entrances put in for plandomizer are good
     for (auto& [originalEntranceStr, replacementEntranceStr] : world.plandomizer.entrancesStr)
@@ -502,8 +502,37 @@ static EntranceShuffleError processPlandomizerEntrances(World& world)
             ErrorLog::getInstance().log("Plandomizer Error: Entrance \"" + replacementEntranceStr + "\" is not a known connection.");
             return EntranceShuffleError::PLANDOMIZER_ERROR;
         }
-
+        if(!entrancePools.contains(originalEntrance->getEntranceType()) || !entrancePools.contains(replacementEntrance->getEntranceType())){
+            //ErrorLog::getInstance().log("Warning: Entrance \"" + originalEntranceStr + "\" : \"" + replacementEntranceStr + "\" wont be shuffled.");
+            continue;
+        }
+        if(world.plandomizer.entrances.find(originalEntrance) != world.plandomizer.entrances.end()){
+            world.plandomizer.entrances.erase(originalEntrance);
+        }
         world.plandomizer.entrances.insert({originalEntrance, replacementEntrance});
+
+        // also add the other way around (this covers both non decoupled and decoupled)
+        if(world.plandomizer.entrances.find(replacementEntrance) == world.plandomizer.entrances.end()){
+            replacementEntrance = world.getEntrance(originalEntranceConnection, originalEntranceParent);
+            originalEntrance = world.getEntrance(replacementEntranceConnection, replacementEntranceParent);
+            // Sanity check the entrance pointers
+            if (originalEntrance == nullptr)
+            {
+                ErrorLog::getInstance().log("Plandomizer Error: Entrance \"" + originalEntranceStr + "\" is not a known connection.");
+                return EntranceShuffleError::PLANDOMIZER_ERROR;
+            }
+            if (replacementEntrance == nullptr)
+            {
+                ErrorLog::getInstance().log("Plandomizer Error: Entrance \"" + replacementEntranceStr + "\" is not a known connection.");
+                return EntranceShuffleError::PLANDOMIZER_ERROR;
+            }
+            if(!entrancePools.contains(originalEntrance->getEntranceType()) || !entrancePools.contains(replacementEntrance->getEntranceType())){
+                //ErrorLog::getInstance().log("Warning: Entrance \"" + originalEntranceStr + "\" : \"" + replacementEntranceStr + "\" wont be shuffled.");
+                continue;
+            }
+            world.plandomizer.entrances.insert({originalEntrance, replacementEntrance});
+            Utility::platformLog("also had to do " + originalEntrance->getOriginalName() + ": " + replacementEntrance->getOriginalName());
+        }
         LOG_TO_DEBUG("Plandomizer Entrance for world " + std::to_string(world.getWorldId() + 1) + " - " + originalEntranceStr + ": " + replacementEntranceStr);
     }
 
@@ -568,7 +597,7 @@ static EntranceShuffleError setPlandomizerEntrances(World& world, WorldPool& wor
             else
             {
                 ErrorLog::getInstance().log("Entrance \"" + entrance->getOriginalName() + "\"'s type is not being shuffled and thus can't be plandomized.");
-                continue;
+                return EntranceShuffleError::PLANDOMIZER_ERROR;
             }
         }
 
@@ -609,7 +638,7 @@ static EntranceShuffleError setPlandomizerEntrances(World& world, WorldPool& wor
         else
         {
             ErrorLog::getInstance().log("Entrance \"" + entrance->getOriginalName() + "\" is not being shuffled and thus can't be plandomized.");
-            continue;
+            return EntranceShuffleError::PLANDOMIZER_ERROR;
         }
 
     }
@@ -922,9 +951,6 @@ EntranceShuffleError randomizeEntrances(WorldPool& worlds)
         // Set entrance data for all entrances, even those we aren't shuffling
         ENTRANCE_SHUFFLE_ERROR_CHECK(setAllEntrancesData(world));
 
-        // Process plandomizer entrance data (but don't place plandomzier entrances yet)
-        ENTRANCE_SHUFFLE_ERROR_CHECK(processPlandomizerEntrances(world));
-
         // This algorithm works similarly to the assumed fill algorithm used to
         // place items within the world. First, we disconnect all the entrances
         // that we're going to shuffle and "assume" that we have access to them
@@ -936,18 +962,15 @@ EntranceShuffleError randomizeEntrances(WorldPool& worlds)
         auto entrancePools = createEntrancePools(world, poolsToMix);
         auto targetEntrancePools = createTargetEntrances(entrancePools);
 
-        Utility::platformLog("hi 1");
-
+        // Process plandomizer entrance data (but don't place plandomzier entrances yet)
+        ENTRANCE_SHUFFLE_ERROR_CHECK(processPlandomizerEntrances(world, entrancePools));
         // Set Plandomized entrances at this point
         err = setPlandomizerEntrances(world, worlds, entrancePools, targetEntrancePools, poolsToMix);
-                Utility::platformLog("hi 2");
-
         if (err != EntranceShuffleError::NONE)
         {
             LOG_TO_DEBUG("| Encountered when setting plandomizer entrances");
             return err;
         }
-        Utility::platformLog("hi 3");
 
         // Shuffle the entrances
         for (auto& [type, entrancePool] : entrancePools)
@@ -959,20 +982,15 @@ EntranceShuffleError randomizeEntrances(WorldPool& worlds)
                 return err;
             }
         }
-        Utility::platformLog("hi 4");
-
         // Now set the islands the dungeons are in
         for (auto& [name, dungeon] : world.dungeons)
         {
             dungeon.islands = dungeon.startingArea->findIslands();
         }
-        Utility::platformLog("hi 5");
-
     }
 
     // Validate the worlds one last time to ensure everything went okay
     ENTRANCE_SHUFFLE_ERROR_CHECK(validateWorld(worlds, nullptr, completeItemPool));
-        Utility::platformLog("hi 6");
 
     return EntranceShuffleError::NONE;
 }
