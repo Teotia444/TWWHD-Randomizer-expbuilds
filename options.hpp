@@ -20,10 +20,10 @@ constexpr uint16_t MAXIMUM_STARTING_BLUE_CHU_JELLYS = 15;
 constexpr uint8_t MAXIMUM_NUM_DUNGEONS = 6;
 constexpr float MAXIMUM_DAMAGE_MULTIPLIER = 80.0f;
 
-constexpr uint8_t MAXIMUM_PATH_HINT_COUNT = 7;
-constexpr uint8_t MAXIMUM_BARREN_HINT_COUNT = 7;
-constexpr uint8_t MAXIMUM_ITEM_HINT_COUNT = 7;
-constexpr uint8_t MAXIMUM_LOCATION_HINT_COUNT = 7;
+constexpr uint8_t MAXIMUM_PATH_HINT_COUNT = 15;
+constexpr uint8_t MAXIMUM_BARREN_HINT_COUNT = 15;
+constexpr uint8_t MAXIMUM_ITEM_HINT_COUNT = 15;
+constexpr uint8_t MAXIMUM_LOCATION_HINT_COUNT = 15;
 
 enum struct SGIM {
     GENERICAP = 0,

@@ -308,19 +308,12 @@ static HintError generatePathHintLocations(World& world, std::list<Hint>& hints)
     std::vector<Location*> goalLocations = {};
     for (auto& goalLocation : world.goalLocations)
     {
-        auto possiblePathLocations = goalLocation->pathLocations;
-
-        auto hintLocation = getHintableLocation(possiblePathLocations);
-        if (hintLocation == nullptr)
+        shufflePool(goalLocation->pathLocations);
+        // Initially we want to pull path hints from required dungeons before pulling from Ganondorf
+        if (goalLocation->getName() != "Ganon's Tower - Defeat Ganondorf")
         {
-            LOG_TO_DEBUG("No more path locations for " + goalLocation->getName());
-            filterAndEraseFromPool(goalLocations, [&goalLocation](Location* goal){return goal == goalLocation;});
-            continue;
+            goalLocations.push_back(goalLocation);
         }
-
-        LOG_AND_RETURN_IF_ERR(generatePathHintMessage(hintLocation, goalLocation, hints));
-        hintLocation->hasBeenHinted = true;
-        LOG_TO_DEBUG("Chose \"" + hintLocation->getName() + "\" as path hint for " + goalLocation->getName())
     }
 
     bool addedGanonPathLocation = false;
