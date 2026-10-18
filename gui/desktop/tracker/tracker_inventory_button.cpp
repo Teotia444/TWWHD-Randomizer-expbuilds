@@ -99,7 +99,8 @@ int TrackerInventoryButton::getState() {
 }
 
 void TrackerInventoryButton::setState(int state_) {
-    this->state = state_;
+    if(state_ >= itemStates.size() - 1) this->state = itemStates.size() - 1; // cap in case ap does bs
+    else this->state = state_;
 }
 
 void TrackerInventoryButton::mouseReleaseEvent(QMouseEvent* e)

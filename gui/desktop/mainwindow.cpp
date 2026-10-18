@@ -133,7 +133,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->install_custom_model->setVisible(false);
     // Setup Tracker
     initialize_tracker();
-    //load_tracker_autosave();
+    load_tracker_autosave();
+    ui->ap_ip->setText(QString::fromStdString(trackerPreferences.serverIp));
+    ui->ap_player_name->setText(QString::fromStdString(trackerPreferences.serverSlot));
+    ui->ap_password->setText(QString::fromStdString(trackerPreferences.serverPassword));
     connect(&apWS, &QWebSocket::connected, this, &MainWindow::on_ap_connected);
 }
 
@@ -1434,6 +1437,9 @@ void MainWindow::on_aptwwhd_browse_button_clicked()
 
 void MainWindow::on_connect_ap_button_clicked()
 {
+    trackerPreferences.serverIp=ui->ap_ip->text().toStdString();
+    trackerPreferences.serverSlot=ui->ap_player_name->text().toStdString();
+    trackerPreferences.serverPassword=ui->ap_password->text().toStdString();
     apWS.close();
     if(ui->aptwwhd_path->text().isEmpty()){
         QMessageBox messageBox;

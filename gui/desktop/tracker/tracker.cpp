@@ -241,7 +241,6 @@ void MainWindow::initialize_tracker_world(Settings& settings,
                 removeElementFromPool(startingInventoryCopy, item);
             }
         }
-
         // Then update buttons with the current inventory
         for (auto& itemState : inventoryButton->itemStates)
         {
@@ -252,7 +251,6 @@ void MainWindow::initialize_tracker_world(Settings& settings,
                 removeElementFromPool(trackerInventoryCopy, item);
             }
         }
-
         // Then update the icon
         inventoryButton->updateIcon();
     }
@@ -481,6 +479,9 @@ bool MainWindow::autosave_current_tracker_preferences()
     pref["items_color"] = trackerPreferences.itemsColor.name().toStdString();
     pref["locations_color"] = trackerPreferences.locationsColor.name().toStdString();
     pref["stats_color"] = trackerPreferences.statsColor.name().toStdString();
+    pref["server_ip"] = trackerPreferences.serverIp;
+    pref["server_slot"] = trackerPreferences.serverSlot;
+    pref["server_password"] = trackerPreferences.serverPassword;
     pref["autosave_file_override"] = Utility::toUtf8String(trackerPreferences.autosaveFilePath);
 
     std::ofstream preferences_file(Utility::get_app_save_path() / "tracker_preferences.yaml");
@@ -583,18 +584,32 @@ void MainWindow::load_tracker_autosave()
         trackerPreferences.showCharts = pref["show_charts"].as<bool>();
     }
 
+    if (pref["server_ip"])
+    {
+        trackerPreferences.serverIp = pref["server_ip"].as<std::string>();
+    }
+    if (pref["server_slot"])
+    {
+        trackerPreferences.serverSlot = pref["server_slot"].as<std::string>();
+    }
+    if (pref["server_password"])
+    {
+        trackerPreferences.serverPassword = pref["server_password"].as<std::string>();
+    }
+
     if (!std::filesystem::exists(trackerPreferences.autosaveFilePath))
     {
         // No autosave file, don't try to do anything
         return;
     }
 
-    /*Config trackerConfig;
-    if (const ConfigError err = trackerConfig.loadFromFile(trackerPreferences.autosaveFilePath, preferencesPath, true); err != ConfigError::NONE)
+
+    Config trackerConfig;
+    if (const ConfigError err = trackerConfig.loadFromRegularYML(trackerPreferences.autosaveFilePath, preferencesPath, true); err != ConfigError::NONE)
     {
         show_warning_dialog("Could not load tracker autosave config\nError: " + ConfigErrorGetName(err));
         return;
-    }*/
+    }
 
     YAML::Node root;
     if(!LoadYAML(root, trackerPreferences.autosaveFilePath)) {

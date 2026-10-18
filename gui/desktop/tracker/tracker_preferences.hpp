@@ -17,4 +17,5 @@ struct TrackerPreferences {
     QColor itemsColor = {105, 137, 28, 255};
     QColor locationsColor = {160, 160, 160, 255};
     QColor statsColor = {79, 79, 79, 255};
+    std::string serverIp, serverSlot, serverPassword;
 };
