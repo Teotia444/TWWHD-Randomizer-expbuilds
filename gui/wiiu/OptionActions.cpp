@@ -948,12 +948,12 @@ bool wasAptwwhdLoaded() {
     return conf.aptwwhdLoadedCorrectly;
 }
 
-std::string getSeed() {
-    return conf.seed;
+std::string getPlayer() {
+    return conf.apName;
 }
 
-std::string getSeedHash() {
-    return hash_for_config(conf);
+std::string getHash() {
+    return conf.apHash;
 }
 
 std::string getPermalink() {

@@ -92,7 +92,7 @@ static void printBasicInfo(std::ofstream& log)
 
 void generateSpoilerLog(WorldPool& worlds)
 {
-    std::ofstream spoilerLog(Utility::get_logs_path() / (LogInfo::getSeedHash() + " Spoiler Log.txt"));
+    std::ofstream spoilerLog(Utility::get_logs_path() / (LogInfo::getApHash() + LogInfo::getApName() +" Spoiler Log.txt"));
 
     Utility::platformLog("Generating spoiler log...");
     printBasicInfo(spoilerLog);
@@ -356,7 +356,7 @@ void generateSpoilerLog(WorldPool& worlds)
 
 void generateNonSpoilerLog(WorldPool& worlds)
 {
-    std::ofstream nonSpoilerLog(Utility::get_logs_path() / (LogInfo::getSeedHash() + " Non-Spoiler Log.txt"));
+    std::ofstream nonSpoilerLog(Utility::get_logs_path() / (LogInfo::getApHash() + LogInfo::getApName() + " Non-Spoiler Log.txt"));
 
     Utility::platformLog("Generating non-spoiler log...");
     printBasicInfo(nonSpoilerLog);

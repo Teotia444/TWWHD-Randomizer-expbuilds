@@ -531,7 +531,7 @@ static EntranceShuffleError processPlandomizerEntrances(World& world, EntrancePo
                 continue;
             }
             world.plandomizer.entrances.insert({originalEntrance, replacementEntrance});
-            Utility::platformLog("also had to do " + originalEntrance->getOriginalName() + ": " + replacementEntrance->getOriginalName());
+            //Utility::platformLog("also had to do " + originalEntrance->getOriginalName() + ": " + replacementEntrance->getOriginalName());
         }
         LOG_TO_DEBUG("Plandomizer Entrance for world " + std::to_string(world.getWorldId() + 1) + " - " + originalEntranceStr + ": " + replacementEntranceStr);
     }

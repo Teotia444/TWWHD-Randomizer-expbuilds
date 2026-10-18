@@ -44,6 +44,8 @@ public:
     std::string seed;
     Settings settings;
     YAML::Node apPlando;
+    std::string apName;
+    std::string apHash;
 
     bool converted = false;
     bool updated = false;
@@ -54,6 +56,7 @@ public:
     
     void resetDefaultSettings();
     void resetDefaultPreferences(const bool& paths = false);
+    ConfigError loadFromRegularYML(const fspath& filePath, const fspath& preferencesPath, bool ignoreErrors = false);
     ConfigError loadFromFile(const fspath& filePath, const fspath& preferencesPath, bool ignoreErrors = false);
     YAML::Node settingsToYaml() const;
     void YamlToSettings(YAML::Node node);

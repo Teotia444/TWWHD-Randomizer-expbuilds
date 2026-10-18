@@ -1498,6 +1498,23 @@ TweakError set_damage_multiplier(const float& multiplier) {
     return TweakError::NONE;
 }
 
+TweakError apply_ap_slot_name(const std::string& slotName){
+    if(!custom_symbols.contains("archipelago_slot_name")) LOG_ERR_AND_RETURN(TweakError::MISSING_SYMBOL);
+    const uint32_t slot_name_addr = custom_symbols.at("archipelago_slot_name");
+    g_session.openGameFile("code/cking.rpx@RPX@ELF").addAction([slot_name_addr, slotName](RandoSession* session, FileType* data)-> int {
+        CAST_ENTRY_TO_FILETYPE(elf, FileTypes::ELF, data)
+
+        std::string name = "\0";
+        if(slotName.length() < 0x40) name = slotName;
+        std::vector<uint8_t> bytes(name.begin(), name.end());
+        RPX_ERROR_CHECK(elfUtil::write_bytes(elf, elfUtil::AddressToOffset(elf, slot_name_addr), bytes));
+
+        return true;
+    });
+
+    return TweakError::NONE;
+}
+
 TweakError set_pig_color(const PigColor& color) {
     if(!custom_symbols.contains("outset_pig_color")) LOG_ERR_AND_RETURN(TweakError::MISSING_SYMBOL);
     const uint32_t pig_color_address = custom_symbols.at("outset_pig_color");
@@ -2698,25 +2715,31 @@ TweakError make_tingle_statue_reward_rupee_rainbow_colored() {
     return TweakError::NONE;
 }
 
-TweakError show_seed_hash_on_title_screen(const std::u16string& hash) { // make sure hash is null terminated
+TweakError show_ap_slot_on_title_screen(const std::u16string& name, const std::u16string& hash) { // make sure both are null terminated
     using namespace NintendoWare::Layout;
 
     RandoSession::CacheEntry& entry = g_session.openGameFile("content/Common/Layout/Title_00.szs@YAZ0@SARC@blyt/Title_00.bflyt@BFLYT");
     
-    // add hash
-    entry.addAction([hash](RandoSession* session, FileType* data) -> int {
+    // add slot
+    entry.addAction([name, hash](RandoSession* session, FileType* data) -> int {
         CAST_ENTRY_TO_FILETYPE(layout, FileTypes::FLYTFile, data)
 
         Pane& newPane = layout.rootPane.children[0].children[1].children[3].duplicateChildPane(1); // hidden version number text
         txt1& textPane = *dynamic_cast<txt1*>(newPane.pane.get());
-        textPane.name = "T_Hash";
+        textPane.name = "T_apslot";
         textPane.name.resize(0x18);
-        textPane.text = u"Seed Hash:\n" + hash;
+        if((hash.length()) * 2 < name.length()) {
+            textPane.text = u"Slot name:\n" + name + u"\n\nAP Hash:\n" + hash;
+            textPane.translation.Y = -75.0f;
+        }
+        else {
+            textPane.text = u"Slot name: " + name + u"\nAP Hash:\n" + hash;
+            textPane.translation.Y = -90.0f;
+        }
         textPane.fontIndex = 0;
         textPane.restrictedLen = (12 + hash.length()) * 2;
         textPane.lineAlignment = txt1::LineAlignment::CENTER;
         textPane.translation.X = -491.0f;
-        textPane.translation.Y = -113.0f;
         textPane.width = 205.0f;
         textPane.height = 100.0f;
 
@@ -4227,8 +4250,10 @@ TweakError change_rock_in_dragon_roost_pond() {
 TweakError apply_necessary_tweaks(const Settings& settings) {
     LOG_AND_RETURN_IF_ERR(Load_Custom_Symbols(Utility::get_data_path() / "asm/custom_symbols.yaml"));
 
-    const std::string seedHash = LogInfo::getSeedHash();
-    const std::u16string u16_seedHash = Utility::Str::toUTF16(seedHash);
+    const std::string apSlotName = LogInfo::getApName();
+    const std::string apSlotHash = LogInfo::getApHash();
+    const std::u16string u16_name = Utility::Str::toUTF16(apSlotName);
+    const std::u16string u16_hash = Utility::Str::toUTF16(apSlotHash);
 
     TWEAK_ERR_CHECK(updateCodeSize());
 
@@ -4340,7 +4365,7 @@ TweakError apply_necessary_tweaks(const Settings& settings) {
     TWEAK_ERR_CHECK(disable_invisible_walls());
     TWEAK_ERR_CHECK(update_tingle_statue_item_get_funcs());
     TWEAK_ERR_CHECK(make_tingle_statue_reward_rupee_rainbow_colored());
-    TWEAK_ERR_CHECK(show_seed_hash_on_title_screen(u16_seedHash));
+    TWEAK_ERR_CHECK(show_ap_slot_on_title_screen(u16_name, u16_hash));
     TWEAK_ERR_CHECK(implement_key_bag());
     TWEAK_ERR_CHECK(add_chest_in_place_jabun_cutscene());
     TWEAK_ERR_CHECK(add_chest_in_place_master_sword());
@@ -4370,6 +4395,7 @@ TweakError apply_necessary_tweaks(const Settings& settings) {
         TWEAK_ERR_CHECK(set_casual_clothes());
     }
     TWEAK_ERR_CHECK(set_pig_color(settings.pig_color));
+    TWEAK_ERR_CHECK(apply_ap_slot_name(apSlotName));
 
     return TweakError::NONE;
 }

@@ -12,7 +12,7 @@ bool confirmRandomize() {
     ScreenClear();
 
     // pull from the internal menu config
-    OSScreenPutFontEx(SCREEN_TV, 0, 0, ("Preparing to patch with seed \"" + getSeed() + "\" and hash \"" + getSeedHash() + "\".").c_str());
+    OSScreenPutFontEx(SCREEN_TV, 0, 0, ("Preparing to patch for player \"" + getPlayer() + "\" and server hash \"" + getHash() + "\".").c_str());
     OSScreenPutFontEx(SCREEN_DRC, 0, 0, "Look at the TV for more information.");
 
     OSScreenPutFontEx(SCREEN_TV, 0, 2, "Press A to continue with randomization.");

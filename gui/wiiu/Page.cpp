@@ -94,8 +94,6 @@ void SeedPage::drawTV() const {
         board.drawTV(PAGE_FIRST_ROW, 0);
     }
     else {
-        // OSScreenPutFontEx(SCREEN_TV, 0, PAGE_FIRST_ROW, ("The current seed is \"" + getSeed() + "\". Hash: " + getSeedHash()).c_str());
-        // OSScreenPutFontEx(SCREEN_TV, 0, PAGE_FIRST_ROW + 1, "Press A to generate a new seed, press X to enter manually");
 
         // const std::vector<std::string>& permaLines = wrap_string("Permalink: \"" + getPermalink() + "\".", ScreenSizeData::tv_line_length);
         // for(size_t i = 0; i < permaLines.size(); i++) {
@@ -110,7 +108,11 @@ void SeedPage::drawTV() const {
         // bar.replace(0, count, count, '-');
         //OSScreenPutFontEx(SCREEN_TV, 0, 6 + permaLines.size() + 2, ("Hold B to reset all settings to default [" + bar + "]").c_str());
         if(!wasAptwwhdLoaded()) OSScreenPutFontEx(SCREEN_TV, 0, PAGE_FIRST_ROW, ("No valid APTWWHD file was loaded! Please check your sd card before attempting generation."));
-        else OSScreenPutFontEx(SCREEN_TV, 0, PAGE_FIRST_ROW, ("Found the APTWWHD file! Generate with Start (+)."));
+        else {
+            OSScreenPutFontEx(SCREEN_TV, 0, PAGE_FIRST_ROW, ("Found the APTWWHD file! Generate with Start (+)."));
+            OSScreenPutFontEx(SCREEN_TV, 0, PAGE_FIRST_ROW + 1, ("The current player is \"" + getPlayer() + "\"."));
+            OSScreenPutFontEx(SCREEN_TV, 0, PAGE_FIRST_ROW + 2, "The current AP Hash is \"" + getHash() + "\".");
+        }
         const std::vector<std::string>& warnLines = wrap_string(warnings, ScreenSizeData::tv_line_length);
         const size_t startLine = ScreenSizeData::tv_num_lines - 3 - warnLines.size();
         for(size_t i = 0; i < warnLines.size(); i++) {

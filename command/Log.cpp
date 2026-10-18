@@ -23,8 +23,12 @@ const Config& LogInfo::getConfig() {
     return getInstance().config;
 }
 
-const std::string& LogInfo::getSeedHash() {
-    return getInstance().seedHash;
+const std::string& LogInfo::getApName() {
+    return getInstance().slotName;
+}
+
+const std::string& LogInfo::getApHash() {
+    return getInstance().slotHash;
 }
 
 

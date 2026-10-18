@@ -192,9 +192,9 @@ public:
         const Seed_t integer_seed = 2;
         Random_Init(integer_seed);
 
-        LogInfo::setSeedHash(generate_seed_hash());
+        LogInfo::setApInfos(config.apName, config.apHash);
 
-        UPDATE_DIALOG_TITLE("Randomizing - Hash: " + LogInfo::getSeedHash());
+        UPDATE_DIALOG_TITLE("Randomizing for " + LogInfo::getApName());
 
         Utility::platformLog("Randomizing...");
         UPDATE_DIALOG_VALUE(5);

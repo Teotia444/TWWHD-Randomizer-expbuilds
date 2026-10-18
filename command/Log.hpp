@@ -14,7 +14,7 @@
 class LogInfo {
 private:
     Config config;
-    std::string seedHash;
+    std::string slotName, slotHash;
 
     LogInfo();
     ~LogInfo();
@@ -25,9 +25,10 @@ public:
     LogInfo& operator=(const LogInfo&) = delete;
 
     static void setConfig(const Config& config_) { getInstance().config = config_; }
-    static void setSeedHash(const std::string& seedHash_) { getInstance().seedHash = seedHash_; }
+    static void setApInfos(const std::string& slotName, const std::string& slotHash) { getInstance().slotName = slotName;  getInstance().slotHash = slotHash;}
     static const Config& getConfig();
-    static const std::string& getSeedHash();
+    static const std::string& getApName();
+    static const std::string& getApHash();
 };
 
 
