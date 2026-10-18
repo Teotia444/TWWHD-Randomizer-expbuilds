@@ -12,6 +12,7 @@
 #include <QWebSocket>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QMessageBox>
 
 #include <seedgen/config.hpp>
 #include <logic/Location.hpp>
@@ -53,7 +54,6 @@ public:
 
 protected:
     bool eventFilter(QObject *object, QEvent *event) override;
-
 private:
     Ui::MainWindow *ui;
     Config config;
@@ -148,8 +148,7 @@ public:
     YAML::Node APconfig;
     YAML::Node APplando;
 
-    void update_items(Item item);
-    void update_locations(QString locName);
+    void update_items(std::map<std::string, int>);
     void on_ap_connected();
     void on_ap_message(QString message);
     void on_ap_disconnected();
@@ -345,6 +344,7 @@ public:
     void update_locations_color();
     void update_stats_color();
     bool trackerStarted = false;
+    QMessageBox initialConnectMsg;
     TrackerPreferences trackerPreferences;
     Settings trackerSettings = Settings();
     WorldPool trackerWorlds = {};

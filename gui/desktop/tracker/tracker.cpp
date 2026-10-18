@@ -610,6 +610,7 @@ void MainWindow::load_tracker_autosave()
         show_warning_dialog("Could not load tracker autosave config\nError: " + ConfigErrorGetName(err));
         return;
     }
+    trackerConfig.settings.excluded_locations = config.settings.excluded_locations; // also hacky but we need this to fetch which locs are hidden in the yaml
 
     YAML::Node root;
     if(!LoadYAML(root, trackerPreferences.autosaveFilePath)) {
@@ -1157,7 +1158,6 @@ void MainWindow::update_tracker_areas_and_autosave()
             remainingLocations++;
         }
     }
-
     ui->locations_checked_number->setText(std::to_string(checkedLocations).c_str());
     ui->locations_accessible_number->setText(std::to_string(accessibleLocations).c_str());
     ui->locations_remaining_number->setText(std::to_string(remainingLocations).c_str());

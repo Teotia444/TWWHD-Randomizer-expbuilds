@@ -138,6 +138,13 @@ MainWindow::MainWindow(QWidget *parent)
     ui->ap_player_name->setText(QString::fromStdString(trackerPreferences.serverSlot));
     ui->ap_password->setText(QString::fromStdString(trackerPreferences.serverPassword));
     connect(&apWS, &QWebSocket::connected, this, &MainWindow::on_ap_connected);
+    connect(&apWS, &QWebSocket::textMessageReceived, this, &MainWindow::on_ap_message);
+    connect(&apWS, &QWebSocket::disconnected, this, &MainWindow::on_ap_disconnected);
+    connect(&apWS, &QWebSocket::errorOccurred, this, [this](QAbstractSocket::SocketError e){
+        QMessageBox messageBox;
+        messageBox.critical(0,"Error","Invalid connection to the server! Make sure the IP address is correct. Error: " + apWS.errorString());
+        messageBox.setFixedSize(500,200);
+    });
 }
 
 MainWindow::~MainWindow()
@@ -1434,24 +1441,39 @@ void MainWindow::on_aptwwhd_browse_button_clicked()
     }
 }
 
-
 void MainWindow::on_connect_ap_button_clicked()
 {
     trackerPreferences.serverIp=ui->ap_ip->text().toStdString();
     trackerPreferences.serverSlot=ui->ap_player_name->text().toStdString();
     trackerPreferences.serverPassword=ui->ap_password->text().toStdString();
+
+    initialConnectMsg.setText(QString::fromStdString("Connecting to " + trackerPreferences.serverIp + " with slot " + trackerPreferences.serverSlot + "..."));
+    initialConnectMsg.setInformativeText(QString::fromStdString("This may take a quick minute if you're connecting on a server with a lot already checked!"));
+
+    initialConnectMsg.setStandardButtons(QMessageBox::NoButton);
+    initialConnectMsg.show();
+
     apWS.close();
     if(ui->aptwwhd_path->text().isEmpty()){
         QMessageBox messageBox;
         messageBox.critical(0,"Error","No APTWWHD files were provided! The tracker won't launch");
         messageBox.setFixedSize(500,200);
+
+        initialConnectMsg.hide();
+        initialConnectMsg.close();
+
         return;
     }
 
     ConfigError err = config.loadFromFile(Utility::get_app_save_path() / "config.yaml", Utility::get_app_save_path() / "preferences.yaml");
     if(err != ConfigError::NONE){
         show_error_dialog("Failed to load APTWWHD file\ncode " + ConfigErrorGetName(err));
+        initialConnectMsg.hide();
+        initialConnectMsg.close();
+        return;
     }
+
+    config.settings.decouple_entrances = false; // this is very hacky
 
 
     config.settings.starting_gear = {
@@ -1464,11 +1486,8 @@ void MainWindow::on_connect_ap_button_clicked()
     apWS.open(url);
     initialize_tracker_world(config.settings);
 
-
-
     // Get the first search iteration
     update_tracker();
-
     switch_to_overworld_tracker();
 }
 
@@ -1476,20 +1495,18 @@ void MainWindow::on_ap_connected(){
     ui->connected_status_label->setText("Connected");
     ui->connected_status_label->setStyleSheet("QLabel#connected_status_label {color: rgb(0, 255, 0);background-color: rgba(255, 255, 255, 0);font: 13pt \"Segoe UI\";}");
 
-    connect(&apWS, &QWebSocket::textMessageReceived, this, &MainWindow::on_ap_message);
-
     QJsonObject connectData;
     QJsonObject version;
     version.insert("class", "Version");
     version.insert("major", 0);
     version.insert("minor", 6);
-    version.insert("build", 7);
+    version.insert("build", 8);
 
     connectData.insert("cmd", "Connect");
     connectData.insert("password", ui->ap_password->text().isEmpty() ? "" : ui->ap_password->text());
     connectData.insert("game", "The Wind Waker HD");
     connectData.insert("name", ui->ap_player_name->text());
-    connectData.insert("uuid", "61564a12-71bb-40ae-93df-94f0550c1e69");
+    connectData.insert("uuid", QUuid::createUuid().toString(QUuid::StringFormat::WithoutBraces));
     connectData.insert("version", version);
     connectData.insert("items_handling", 7);
     QJsonArray tags = {"WWHDIntegrated", "NoText", "Tracker"};
@@ -1525,65 +1542,22 @@ void MainWindow::on_ap_connected(){
 
 }
 
-void MainWindow::update_items(Item item){
-    trackerInventory.emplace_back(item);
+void MainWindow::update_items(std::map<std::string, int> toUpgradeList){
     // Update buttons with the current inventory
     for (auto inventoryButton : ui->tracker_tab->findChildren<TrackerInventoryButton*>())
     {
         for (auto& itemState : inventoryButton->itemStates)
         {
-            if (itemState.gameItem == nameToGameItem(item.getName()))
+            if (toUpgradeList.contains(gameItemToName(itemState.gameItem)) && toUpgradeList[gameItemToName(itemState.gameItem)] > 0)
             {
-                if(inventoryButton->getState() >= inventoryButton->itemStates.size() - 1) return;
+                toUpgradeList[gameItemToName(itemState.gameItem)]--;
+                if(inventoryButton->getState() >= inventoryButton->itemStates.size() - 1) continue;
                 inventoryButton->setState(inventoryButton->getState() + 1);
                 // Then update the icon
                 inventoryButton->updateIcon();
-                return;
             }
         }
     }
-}
-
-void MainWindow::update_locations(QString locName){
-    if (trackerWorlds[0].locationTable.contains(locName.toStdString()))
-    {
-        trackerWorlds[0].locationTable[locName.toStdString()]->marked = true;
-        for(auto area : ui->tracker_tab->findChildren<TrackerAreaWidget*>()){
-            if(currentTrackerArea.starts_with(area->getPrefix())) {
-                qDebug() << "found"; //todo
-                area->updateArea();
-            }
-        }
-    }
-    int checkedLocations = 0;
-    int accessibleLocations = 0;
-    int remainingLocations = 0;
-    for (auto loc : trackerWorlds[0].getLocations(!trackerPreferences.showNonProgressLocations))
-    {
-        // Don't do anything with hint locations
-        if (loc->categories.contains(LocationCategory::HoHoHint) || loc->categories.contains(LocationCategory::BlueChuChu))
-        {
-            continue;
-        }
-        if (loc->marked)
-        {
-            checkedLocations++;
-        }
-        else if (loc->hasBeenFound)
-        {
-            accessibleLocations++;
-            remainingLocations++;
-        }
-        else
-        {
-            remainingLocations++;
-        }
-    }
-    ui->locations_checked_number->setText(std::to_string(checkedLocations).c_str());
-    ui->locations_accessible_number->setText(std::to_string(accessibleLocations).c_str());
-    ui->locations_remaining_number->setText(std::to_string(remainingLocations).c_str());
-
-    update_tracker();
 }
 
 
@@ -1592,12 +1566,14 @@ void MainWindow::on_ap_message(QString message){
     QJsonArray dumbArr = doc.array();
     QJsonObject content = dumbArr.first().toObject();
 
+    std::map<std::string, int> itemsUpdate;
 
     qDebug() << "Message received:" << content.value("cmd");
     if(content.value("cmd").toString().contains("ConnectionRefused")){
         QMessageBox messageBox;
         messageBox.critical(0,"Error","Invalid connection to the server! Make sure to check you are using the correct slot. Error: " + content.value("errors").toArray()[0].toString());
         messageBox.setFixedSize(500,200);
+        apWS.close();
         return;
     }
 
@@ -1610,13 +1586,12 @@ void MainWindow::on_ap_message(QString message){
         content = dumbArr.at(1).toObject();
         foreach (const QJsonValue& val, content.value("items").toArray()){
             QJsonObject currentItem = val.toObject();
-            qDebug() << QString::number(currentItem.value("item").toInt());
             QString itemName = gameItemToId.value(QString::number(currentItem.value("item").toInt())).toString();
-            qDebug() << "yo item" << itemName;
             if(itemName.isEmpty()) continue;
-            Item item = Item(itemName.toStdString(), &trackerWorlds[0]);
-
-            update_items(item);
+            if(!itemsUpdate.contains(itemName.toStdString())) itemsUpdate.emplace(itemName.toStdString(), 1);
+            else itemsUpdate[itemName.toStdString()]++;
+            Item it = Item(itemName.toStdString(), &trackerWorlds[0]);
+            trackerInventory.emplace_back(it);
         }
     }
 
@@ -1637,33 +1612,54 @@ void MainWindow::on_ap_message(QString message){
         foreach (const QJsonValue& val, tempLocationHold){
             QString locationName = gameLocationToId.value(QString::number(val.toInt())).toString();
             if(locationName.isEmpty()) continue;
-            update_locations(locationName);
+            //update_locations(locationName);
+            if (trackerWorlds[0].locationTable.contains(locationName.toStdString()))
+            {
+                trackerWorlds[0].locationTable[locationName.toStdString()]->marked = true;
+            }
         }
+        // close the ap msg now so that we loaded everything in
+        initialConnectMsg.hide();
+        initialConnectMsg.close();
     }
     else if(content.value("cmd").toString().contains("ReceivedItems")){
         foreach (const QJsonValue& val, content.value("items").toArray()) {
             QJsonObject currentItem = val.toObject();
-            qDebug() << QString::number(currentItem.value("item").toInt());
+            //qDebug() << QString::number(currentItem.value("item").toInt());
             QString itemName = gameItemToId.value(QString::number(currentItem.value("item").toInt())).toString();
-            qDebug() << "yo item" << itemName;
+            //qDebug() << "yo item" << itemName;
             if(itemName.isEmpty()) continue;
             Item item = Item(itemName.toStdString(), &trackerWorlds[0]);
-
-            update_items(item);
+            if(!itemsUpdate.contains(itemName.toStdString())) itemsUpdate.emplace(itemName.toStdString(), 1);
+            else itemsUpdate[itemName.toStdString()]++;
+            trackerInventory.emplace_back(item);
+            //update_items(item);
         }
+        initialConnectMsg.hide();
+        initialConnectMsg.close();
     }
 
     else if(content.value("cmd").toString().contains("RoomUpdate")){
         foreach (const QJsonValue& val, content.value("checked_locations").toArray()){
             QString locationName = gameLocationToId.value(QString::number(val.toInt())).toString();
             if(locationName.isEmpty()) continue;
-            update_locations(locationName);
+            //update_locations(locationName);
+            if (trackerWorlds[0].locationTable.contains(locationName.toStdString()))
+            {
+                trackerWorlds[0].locationTable[locationName.toStdString()]->marked = true;
+            }
         }
     }
+    if(!itemsUpdate.empty()) update_items(itemsUpdate);
+    update_tracker();
 
 }
 
 void MainWindow::on_ap_disconnected(){
-
+    ui->connected_status_label->setText("Not Connected");
+    ui->connected_status_label->setStyleSheet("QLabel#connected_status_label {color: rgb(255, 0, 0);background-color: rgba(255, 255, 255, 0);font: 13pt \"Segoe UI\";}");
+    initialConnectMsg.hide();
+    initialConnectMsg.close();
+    apWS.close();
 }
 
