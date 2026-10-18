@@ -110,8 +110,8 @@ void SeedPage::drawTV() const {
         if(!wasAptwwhdLoaded()) OSScreenPutFontEx(SCREEN_TV, 0, PAGE_FIRST_ROW, ("No valid APTWWHD file was loaded! Please check your sd card before attempting generation."));
         else {
             OSScreenPutFontEx(SCREEN_TV, 0, PAGE_FIRST_ROW, ("Found the APTWWHD file! Generate with Start (+)."));
-            OSScreenPutFontEx(SCREEN_TV, 0, PAGE_FIRST_ROW + 1, ("The current player is \"" + getPlayer() + "\"."));
-            OSScreenPutFontEx(SCREEN_TV, 0, PAGE_FIRST_ROW + 2, "The current AP Hash is \"" + getHash() + "\".");
+            OSScreenPutFontEx(SCREEN_TV, 0, PAGE_FIRST_ROW + 1, ("The current player is \"" + getPlayer() + "\".").c_str());
+            OSScreenPutFontEx(SCREEN_TV, 0, PAGE_FIRST_ROW + 2, ("The current AP Hash is \"" + getHash() + "\".").c_str());
         }
         const std::vector<std::string>& warnLines = wrap_string(warnings, ScreenSizeData::tv_line_length);
         const size_t startLine = ScreenSizeData::tv_num_lines - 3 - warnLines.size();

@@ -212,7 +212,7 @@ LocationPool World::getLocations(bool onlyProgression /*= false*/)
 {
     LocationPool locations = {};
     for (auto& [name, location] : locationTable) {
-        if (!onlyProgression || location->currentItem.isApRequired())
+        if (!onlyProgression || (location->progression && !settings.excluded_locations.contains(location->getName())))
         {
             locations.push_back(location.get());
         }
