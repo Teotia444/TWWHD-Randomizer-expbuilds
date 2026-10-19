@@ -1079,6 +1079,11 @@ std::string Config::getPermalink(const bool& internal /* = false */) const {
     permalink += seed;
     permalink += '\0';
 
+    // TODO: Since we're supporting custom logic, we also need the permalink to log what logic is being used
+    // we could just add the whole contents of the logic files, but that would make for huge permalinks
+    // which is not ideal. convert the file contents to sha256
+    SHA256 allLogicHash;
+
     // Pack the settings up
     PackedBitsWriter bitsWriter;
     for(const Option& option : PERMALINK_OPTIONS) {

@@ -69,7 +69,7 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>5</number>
           </property>
           <widget class="QWidget" name="getting_started_tab">
            <attribute name="title">
@@ -2121,6 +2121,13 @@
                <string>Logic Tweaks</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_9">
+               <item row="0" column="0">
+                <widget class="QCheckBox" name="open_drc">
+                 <property name="text">
+                  <string>Open DRC</string>
+                 </property>
+                </widget>
+               </item>
                <item row="0" column="1">
                 <widget class="QCheckBox" name="progressive_magic_always_double">
                  <property name="text">
@@ -2129,18 +2136,18 @@
                 </widget>
                </item>
                <item row="0" column="2">
-                <widget class="QLabel" name="dummy_label">
-                 <property name="text">
-                  <string/>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="0">
-                <widget class="QCheckBox" name="open_drc">
-                 <property name="text">
-                  <string>Open DRC</string>
-                 </property>
-                </widget>
+                <layout class="QHBoxLayout" name="custom_logic_layout">
+                 <item>
+                  <widget class="QLabel" name="custom_logic_label">
+                   <property name="text">
+                    <string>Custom Logic</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="custom_logic"/>
+                 </item>
+                </layout>
                </item>
               </layout>
              </widget>
@@ -2480,7 +2487,7 @@ color: lightgray</string>
                <cursorShape>ArrowCursor</cursorShape>
               </property>
               <property name="autoFillBackground">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
               <property name="styleSheet">
                <string notr="true"/>

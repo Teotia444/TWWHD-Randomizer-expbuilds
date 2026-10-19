@@ -4,6 +4,12 @@
 #include <unordered_map>
 
 static const std::unordered_map<std::string, std::string> optionDescriptions = {
+    // Logic
+    {
+        "custom_logic_layout",
+        "This controls which logic scheme will be used to randomize the game. Leave this to Default Logic if you do not wish to modify the logic scheme."
+    },
+
     // Progression Locations
     {
       "progression_dungeons",

@@ -59,6 +59,9 @@ private:
     QStringListModel* progressionLocationsModel = nullptr;
     QStringListModel* excludedLocationsModel = nullptr;
 
+    // All items for logic
+    QStringList logicList;
+
     // Variables for setting the mixed pools
     // combobox as we want
     QList<QStandardItem*> poolCheckBoxes;
@@ -88,6 +91,7 @@ private:
     void setup_gear_menus();
     void setup_location_menus();
     void setup_color_options();
+    void setup_logic_list();
     void setup_mixed_pools_combobox();
     void apply_config_settings();
     int  calculate_total_progress_locations();
@@ -314,6 +318,8 @@ private slots:
     void open_chart_mapping_list(uint8_t islandNum);
     void tracker_give_and_map_chart(TrackerLabel* label, GameItem chart);
     void tracker_set_required_boss(const QString& bossName, Qt::CheckState checked);
+
+    void on_custom_logic_currentTextChanged(const QString &arg1);
 
 public:
     void update_items_color();

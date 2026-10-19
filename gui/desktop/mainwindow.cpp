@@ -94,6 +94,7 @@ MainWindow::MainWindow(QWidget *parent)
     }
     
     // Load in config
+    setup_logic_list();
     setup_mixed_pools_combobox();
     load_locations();
     load_config_into_ui();
@@ -191,6 +192,16 @@ void MainWindow::show_info_dialog(const std::string& msg, const std::string& tit
     messageBox->setText(msg.c_str());
     messageBox->setIcon(QMessageBox::NoIcon);
     messageBox->exec();
+}
+
+void MainWindow::setup_logic_list(){
+    ui->custom_logic->clear();
+    std::vector<fspath> allLogic = getAllCustomLogicFolders();
+    ui->custom_logic->addItem("Default Logic");
+    std::sort(allLogic.begin(), allLogic.end());
+    for (auto entry : allLogic) {
+        ui->custom_logic->addItem(QString(entry.c_str()));
+    }
 }
 
 void MainWindow::setup_mixed_pools_combobox()
@@ -462,10 +473,29 @@ void MainWindow::apply_config_settings()
         }
     }
 
+    // Same thing for the logic folder execpt we just reset it if it's incorrect
+    if(!config.settings.logic.empty() && !std::filesystem::is_directory(Utility::get_logic_path() / config.settings.logic)) {
+        config.settings.logic.clear();
+    }
+    
     // Directories and Seed
     ui->base_game_path->setText(Utility::toQString(config.gameBaseDir));
     ui->output_folder->setText(Utility::toQString(config.outputDir));
     ui->seed->setText(QString::fromStdString(config.seed));
+
+    // Logic handling
+    if(config.settings.logic.empty()){
+        ui->custom_logic->setCurrentIndex(0); // base logic is the empty "folder" name
+    }
+    else{
+        if(ui->custom_logic->findText(QString(config.settings.logic.c_str())) == -1){ // this should never happen as it will be caught earlier
+            config.settings.logic.clear();
+            ui->custom_logic->setCurrentIndex(0);
+        }
+        else{
+            ui->custom_logic->setCurrentIndex(ui->custom_logic->findText(QString(config.settings.logic.c_str())));
+        }
+    }
 
     // Progression settings
     APPLY_CHECKBOX_SETTING(config, ui, progression_battlesquid);
@@ -1380,3 +1410,10 @@ void MainWindow::on_paste_permalink_clicked()
     auto permalink = QGuiApplication::clipboard()->text();
     on_permalink_textEdited(permalink);
 }
+
+void MainWindow::on_custom_logic_currentTextChanged(const QString &arg1)
+{
+    config.settings.logic = arg1.toStdString();
+    update_permalink_and_seed_hash();
+}
+
