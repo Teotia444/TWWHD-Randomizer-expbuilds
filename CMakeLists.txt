@@ -88,6 +88,7 @@ file(COPY "asm/patch_diffs" DESTINATION "${CMAKE_BINARY_DIR}/data/asm")         
 file(COPY "assets" DESTINATION "${CMAKE_BINARY_DIR}/data")                                               # Assets for the patcher
 file(COPY "logic/data/base/" DESTINATION "${CMAKE_BINARY_DIR}/data/logic" REGEX "^.*example.*$" EXCLUDE) # World, macros, and location info
 file(COPY "customizer/data/" DESTINATION "${CMAKE_BINARY_DIR}/data/customizer")                          # Default model info
+file(COPY "logic/data/shipped/" DESTINATION "${CMAKE_BINARY_DIR}/data/custom_logic/")                    # Default shipped additional logic files
 
 if(QT_GUI)
   message("Building with Qt GUI")
