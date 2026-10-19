@@ -26,6 +26,8 @@ if(DEFINED EMBED_DATA)
   endif()
 endif()
 
+# TODO: Copy shipped logic 
+
 # Set Icon on Windows
 file(WRITE "${CMAKE_CURRENT_SOURCE_DIR}/icon.rc" "IDI_ICON1 ICON DISCARDABLE \"appicon.ico\"")
 set(app_icon_resource_windows "${CMAKE_CURRENT_SOURCE_DIR}/icon.rc")

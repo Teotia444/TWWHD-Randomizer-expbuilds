@@ -83,11 +83,11 @@ string(LENGTH "${CMAKE_SOURCE_DIR}/" SOURCE_PATH_SIZE)
 add_compile_definitions(SOURCE_PATH_SIZE=${SOURCE_PATH_SIZE})
 
 # Put data files together for easier manipulation
-file(COPY "asm/custom_symbols.yaml" DESTINATION "${CMAKE_BINARY_DIR}/data/asm")                    # Custom symbols for inserted code
-file(COPY "asm/patch_diffs" DESTINATION "${CMAKE_BINARY_DIR}/data/asm")                            # Diffs for precompiled ASM patches
-file(COPY "assets" DESTINATION "${CMAKE_BINARY_DIR}/data")                                         # Assets for the patcher
-file(COPY "logic/data/" DESTINATION "${CMAKE_BINARY_DIR}/data/logic" REGEX "^.*example.*$" EXCLUDE) # World, macros, and location info
-file(COPY "customizer/data/" DESTINATION "${CMAKE_BINARY_DIR}/data/customizer")                     # Default model info
+file(COPY "asm/custom_symbols.yaml" DESTINATION "${CMAKE_BINARY_DIR}/data/asm")                          # Custom symbols for inserted code
+file(COPY "asm/patch_diffs" DESTINATION "${CMAKE_BINARY_DIR}/data/asm")                                  # Diffs for precompiled ASM patches
+file(COPY "assets" DESTINATION "${CMAKE_BINARY_DIR}/data")                                               # Assets for the patcher
+file(COPY "logic/data/base/" DESTINATION "${CMAKE_BINARY_DIR}/data/logic" REGEX "^.*example.*$" EXCLUDE) # World, macros, and location info
+file(COPY "customizer/data/" DESTINATION "${CMAKE_BINARY_DIR}/data/customizer")                          # Default model info
 
 if(QT_GUI)
   message("Building with Qt GUI")
