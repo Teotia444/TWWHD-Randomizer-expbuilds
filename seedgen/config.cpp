@@ -1034,7 +1034,7 @@ PermalinkError Config::loadPermalink(std::string b64permalink) {
         else if(option == Option::ExcludedLocations) {
             load.settings.excluded_locations.clear();
 
-            const auto& locations = getAllLocationsNames();
+            const auto& locations = getAllLocationsNames(settings.logic);
             if(locations.empty()) {
                 LOG_ERR_AND_RETURN(PermalinkError::COULD_NOT_LOAD_LOCATIONS);
             }
@@ -1101,7 +1101,7 @@ std::string Config::getPermalink(const bool& internal /* = false */) const {
             }
         }
         else if(option == Option::ExcludedLocations) {
-            const auto& locations = getAllLocationsNames();
+            const auto& locations = getAllLocationsNames(settings.logic);
             if(locations.empty()) {
                 ErrorLog::getInstance().log("Could not load location names for permalink");
                 return "";

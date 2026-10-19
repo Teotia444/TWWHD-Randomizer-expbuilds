@@ -400,6 +400,6 @@ Option nameToSetting(const std::string& name);
 std::string settingToName(const Option& setting);
 
 std::set<std::string> getDefaultExcludedLocations();
-const std::set<std::string>& getAllLocationsNames();
+const std::set<std::string>& getAllLocationsNames(fspath logicPath);
 
 const std::vector<fspath> getAllCustomLogicFolders();

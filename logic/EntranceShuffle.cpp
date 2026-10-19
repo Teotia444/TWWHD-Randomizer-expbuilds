@@ -7,6 +7,7 @@
 #include <logic/PoolFunctions.hpp>
 #include <logic/Search.hpp>
 #include <logic/Fill.hpp>
+#include <logic/CustomLogic.hpp>
 #include <utility/file.hpp>
 #include <utility/string.hpp>
 #include <seedgen/random.hpp>
@@ -58,10 +59,11 @@ static void logMissingLocations(WorldPool& worlds)
 }
 #endif
 
-static std::list<EntranceInfoPair> loadEntranceShuffleTable()
+static std::list<EntranceInfoPair> loadEntranceShuffleTable(fspath logicPath)
 {
     YAML::Node entrancePairs;
-    if(!LoadYAML(entrancePairs, Utility::get_data_path() / "logic/entrance_shuffle_table.yaml", true)) {
+    CustomLogic::LogicError err = CustomLogic::loadEntranceShuffleTableYaml(Utility::get_current_logic_folder(logicPath), entrancePairs);
+    if(err != CustomLogic::NONE && err != CustomLogic::NON_ESSENTIAL_FILE_ERROR) {
         ErrorLog::getInstance().log("Failed to load entrance_shuffle_table.yaml");
         return {};
     }
@@ -129,7 +131,7 @@ static std::list<EntranceInfoPair> loadEntranceShuffleTable()
 
 EntranceShuffleError setAllEntrancesData(World& world)
 {
-    for (auto& [type, forwardEntry, returnEntry, savewarp, windWarp] : loadEntranceShuffleTable())
+    for (auto& [type, forwardEntry, returnEntry, savewarp, windWarp] : loadEntranceShuffleTable(world.getSettings().logic))
     {
         auto forwardEntrance = world.getEntrance(forwardEntry.parentArea, forwardEntry.connectedArea);
         if (forwardEntrance == nullptr)

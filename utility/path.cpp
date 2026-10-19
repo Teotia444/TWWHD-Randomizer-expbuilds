@@ -2,6 +2,7 @@
 
 #include <version.hpp>
 #include <utility/file.hpp>
+#include <utility/platform.hpp>
 
 #ifdef QT_GUI
     #if defined(__APPLE__) || defined(__linux__)
@@ -57,6 +58,11 @@ namespace Utility {
         }
 
         return path;
+    }
+
+    fspath get_current_logic_folder(fspath logic){
+        if(logic.empty()) return get_data_path() / "logic/";
+        else return get_logic_path() / logic;
     }
 
     fspath get_logic_path() {

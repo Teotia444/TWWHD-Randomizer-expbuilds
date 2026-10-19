@@ -83,7 +83,7 @@ public:
     WorldLoadingError determineProgressionLocations();
     WorldLoadingError setDungeonLocations();
     WorldLoadingError determineRequiredDungeons(WorldPool& worlds);
-    int loadWorld(const fspath& worldFilePath, const fspath& macrosFilePath, const fspath& locationDataPath, const fspath& itemDataPath, const fspath& areaDataPath);
+    int loadWorld();
     Entrance* getEntrance(const std::string& parentArea, const std::string& connectedArea);
     Entrance* getEntrance(Area* parentArea, Area* connectedArea);
     void removeEntrance(Entrance* entranceToRemove);

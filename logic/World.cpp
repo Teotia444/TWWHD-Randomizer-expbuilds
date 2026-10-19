@@ -11,6 +11,7 @@
 #include <logic/PoolFunctions.hpp>
 #include <logic/Search.hpp>
 #include <logic/flatten/flatten.hpp>
+#include <logic/CustomLogic.hpp>
 #include <command/Log.hpp>
 #include <utility/platform.hpp>
 #include <utility/string.hpp>
@@ -1107,7 +1108,8 @@ World::WorldLoadingError World::loadAreaTranslations(const YAML::Node& areaObjec
 World::WorldLoadingError World::loadDungeonExitInfo()
 {
     YAML::Node dungeonExitTree;
-    if(!LoadYAML(dungeonExitTree, Utility::get_data_path() / "logic/dungeon_entrance_info.yaml", true)) {
+    CustomLogic::LogicError err = CustomLogic::loadDungeonEntranceInfoYaml(Utility::get_current_logic_folder(settings.logic), dungeonExitTree);
+    if(err != CustomLogic::NONE && err != CustomLogic::NON_ESSENTIAL_FILE_ERROR) {
         ErrorLog::getInstance().log("Could not load dungeon_entrance_info.yaml");
         return WorldLoadingError::DATA_FILE_ERROR;
     }
@@ -1182,13 +1184,14 @@ World::WorldLoadingError World::processPlandomizerLocations(WorldPool& worlds)
 }
 
 // Load the world based on the given world graph file, macros file, loation data file, item data file, and area data file
-int World::loadWorld(const fspath& worldFilePath, const fspath& macrosFilePath, const fspath& locationDataPath, const fspath& itemDataPath, const fspath& areaDataPath)
+int World::loadWorld()
 {
     LOG_TO_DEBUG("Loading world");
     // load and parse items
     YAML::Node itemDataTree;
-    if(!LoadYAML(itemDataTree, itemDataPath, true)) {
-        ErrorLog::getInstance().log("Could not load " + Utility::toUtf8String(itemDataPath));
+    CustomLogic::LogicError err = CustomLogic::loadItemDataYaml(Utility::get_current_logic_folder(settings.logic), itemDataTree);
+    if(err != CustomLogic::NONE && err != CustomLogic::NON_ESSENTIAL_FILE_ERROR) {
+        ErrorLog::getInstance().log("Could not load item_data.yaml");
         return 1;
     }
     for (const auto& item : itemDataTree)
@@ -1203,8 +1206,9 @@ int World::loadWorld(const fspath& worldFilePath, const fspath& macrosFilePath, 
 
     // load world graph
     YAML::Node worldDataTree;
-    if(!LoadYAML(worldDataTree, worldFilePath, true)) {
-        ErrorLog::getInstance().log("Could not load " + Utility::toUtf8String(worldFilePath));
+    err = CustomLogic::loadWorldYaml(Utility::get_current_logic_folder(settings.logic), worldDataTree);
+    if(err != CustomLogic::NONE && err != CustomLogic::NON_ESSENTIAL_FILE_ERROR) {
+        ErrorLog::getInstance().log("Could not load world.yaml");
         return 1;
     }
     // First pass to get area names
@@ -1218,8 +1222,9 @@ int World::loadWorld(const fspath& worldFilePath, const fspath& macrosFilePath, 
 
     // Read and parse macros
     YAML::Node macroListTree;
-    if(!LoadYAML(macroListTree, macrosFilePath, true)) {
-        ErrorLog::getInstance().log("Could not load " + Utility::toUtf8String(macrosFilePath));
+    err = CustomLogic::loadMacrosYaml(Utility::get_current_logic_folder(settings.logic), macroListTree);
+    if(err != CustomLogic::NONE && err != CustomLogic::NON_ESSENTIAL_FILE_ERROR) {
+        ErrorLog::getInstance().log("Could not load macros.yaml");
         return 1;
     }
     if (const WorldLoadingError err = loadMacros(macroListTree); err != WorldLoadingError::NONE)
@@ -1231,8 +1236,9 @@ int World::loadWorld(const fspath& worldFilePath, const fspath& macrosFilePath, 
 
     // Read and parse location data
     YAML::Node locationDataTree;
-    if(!LoadYAML(locationDataTree, locationDataPath, true)) {
-        ErrorLog::getInstance().log("Could not load " + Utility::toUtf8String(locationDataPath));
+    err = CustomLogic::loadLocationDataYaml(Utility::get_current_logic_folder(settings.logic), locationDataTree);
+    if(err != CustomLogic::NONE && err != CustomLogic::NON_ESSENTIAL_FILE_ERROR) {
+        ErrorLog::getInstance().log("Could not load location_data.yaml");
         return 1;
     }
     for (const auto& locationObject : locationDataTree)
@@ -1258,8 +1264,9 @@ int World::loadWorld(const fspath& worldFilePath, const fspath& macrosFilePath, 
 
     // Read and parse area translations for hints/spoiler logs in other languages
     YAML::Node areaDataTree;
-    if(!LoadYAML(areaDataTree, areaDataPath, true)) {
-        ErrorLog::getInstance().log("Could not load " + Utility::toUtf8String(areaDataPath));
+    err = CustomLogic::loadAreaNamesYaml(Utility::get_current_logic_folder(settings.logic), areaDataTree);
+    if(err != CustomLogic::NONE && err != CustomLogic::NON_ESSENTIAL_FILE_ERROR) {
+        ErrorLog::getInstance().log("Could not load area_names.yaml");
         return 1;
     }
     for (const auto& areaObject : areaDataTree)

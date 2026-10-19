@@ -22,6 +22,8 @@
 #include <utility/file.hpp>
 #include <utility/color.hpp>
 
+#include <logic/CustomLogic.hpp>
+
 #define UPDATE_CONFIG_STATE(config, ui, name) config.settings.name = ui->name->isChecked(); update_permalink_and_seed_hash(); update_progress_locations_text();
 #define UPDATE_CONFIG_STATE_MIXED_POOLS(config, name) config.settings.name = (name.checkState() == Qt::Checked); update_permalink_and_seed_hash();
 #define APPLY_CHECKBOX_SETTING(config, ui, name) if(config.settings.name) {ui->name->setCheckState(Qt::Checked);} else {ui->name->setCheckState(Qt::Unchecked);}
@@ -416,7 +418,7 @@ void MainWindow::setup_location_menus()
     excludedLocationsModel = new QStringListModel(this);
 
     QStringList progressLocations;
-    const auto& allLocations = getAllLocationsNames();
+    const auto& allLocations = getAllLocationsNames(config.settings.logic);
     if(allLocations.empty()) {
         show_error_dialog("Failed to load location names, check the error log for details.");
     }
@@ -457,6 +459,25 @@ void MainWindow::update_plandomizer_widget_visbility()
 
 void MainWindow::apply_config_settings()
 {
+    // Validate the state of the logic folder, we just reset it if it's incorrect
+    if(!config.settings.logic.empty() && !std::filesystem::is_directory(Utility::get_logic_path() / config.settings.logic)) {
+        config.settings.logic.clear();
+    }
+
+    // Logic handling
+    if(config.settings.logic.empty()){
+        ui->custom_logic->setCurrentIndex(0); // base logic is the empty "folder" name
+    }
+    else{
+        if(ui->custom_logic->findText(QString(config.settings.logic.c_str())) == -1){ // this should never happen as it will be caught earlier
+            config.settings.logic.clear();
+            ui->custom_logic->setCurrentIndex(0);
+        }
+        else{
+            ui->custom_logic->setCurrentIndex(ui->custom_logic->findText(QString(config.settings.logic.c_str())));
+        }
+    }
+
     // Validate the state of plando options to avoid seed hash errors
     if(config.settings.plandomizer && !std::filesystem::is_regular_file(config.settings.plandomizerFile)) {
         QMessageBox confirmDialog;
@@ -473,29 +494,12 @@ void MainWindow::apply_config_settings()
         }
     }
 
-    // Same thing for the logic folder execpt we just reset it if it's incorrect
-    if(!config.settings.logic.empty() && !std::filesystem::is_directory(Utility::get_logic_path() / config.settings.logic)) {
-        config.settings.logic.clear();
-    }
-    
     // Directories and Seed
     ui->base_game_path->setText(Utility::toQString(config.gameBaseDir));
     ui->output_folder->setText(Utility::toQString(config.outputDir));
     ui->seed->setText(QString::fromStdString(config.seed));
 
-    // Logic handling
-    if(config.settings.logic.empty()){
-        ui->custom_logic->setCurrentIndex(0); // base logic is the empty "folder" name
-    }
-    else{
-        if(ui->custom_logic->findText(QString(config.settings.logic.c_str())) == -1){ // this should never happen as it will be caught earlier
-            config.settings.logic.clear();
-            ui->custom_logic->setCurrentIndex(0);
-        }
-        else{
-            ui->custom_logic->setCurrentIndex(ui->custom_logic->findText(QString(config.settings.logic.c_str())));
-        }
-    }
+
 
     // Progression settings
     APPLY_CHECKBOX_SETTING(config, ui, progression_battlesquid);
@@ -1361,7 +1365,8 @@ bool MainWindow::eventFilter(QObject *target, QEvent *event)
 void MainWindow::load_locations()
 {
     YAML::Node locationDataTree;
-    if(!LoadYAML(locationDataTree, Utility::get_data_path() / "logic/location_data.yaml", true)) {
+    CustomLogic::LogicError err = CustomLogic::loadLocationDataYaml(Utility::get_current_logic_folder(config.settings.logic), locationDataTree);
+    if(err != CustomLogic::NONE && err != CustomLogic::NON_ESSENTIAL_FILE_ERROR) {
         show_error_dialog("Could not load location_data.yaml");
         return;
     }
@@ -1413,7 +1418,8 @@ void MainWindow::on_paste_permalink_clicked()
 
 void MainWindow::on_custom_logic_currentTextChanged(const QString &arg1)
 {
-    config.settings.logic = arg1.toStdString();
+    if(ui->custom_logic->currentIndex() == 0) config.settings.logic = "";
+    else config.settings.logic = arg1.toStdString();
     update_permalink_and_seed_hash();
 }
 

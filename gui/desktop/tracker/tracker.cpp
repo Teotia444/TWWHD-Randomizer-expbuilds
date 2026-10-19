@@ -110,7 +110,7 @@ void MainWindow::initialize_tracker_world(Settings& settings,
         }
     }
 
-    if (trackerWorld.loadWorld(Utility::get_data_path() / "logic/world.yaml", Utility::get_data_path() / "logic/macros.yaml", Utility::get_data_path() / "logic/location_data.yaml", Utility::get_data_path() / "logic/item_data.yaml", Utility::get_data_path() / "logic/area_names.yaml"))
+    if (trackerWorld.loadWorld())
     {
         show_error_dialog("Could not build world for app tracker");
         return;

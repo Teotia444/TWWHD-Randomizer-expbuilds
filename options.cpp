@@ -9,6 +9,8 @@
 #include <utility/platform.hpp>
 #include <utility/string.hpp>
 
+#include <logic/CustomLogic.hpp>
+
 Settings::Settings() {
     resetDefaultSettings();
     resetDefaultPreferences(true);
@@ -1192,7 +1194,7 @@ std::set<std::string> getDefaultExcludedLocations()
     };
 }
 
-const std::set<std::string>& getAllLocationsNames()
+const std::set<std::string>& getAllLocationsNames(fspath logicPath)
 {
     static std::set<std::string> locNames = {};
 
@@ -1200,7 +1202,8 @@ const std::set<std::string>& getAllLocationsNames()
     // The data folder is read-only for most builds, and it shouldn't be changing anyways
     if(locNames.empty()) {
         YAML::Node locationDataTree;
-        if(!LoadYAML(locationDataTree, Utility::get_data_path() / "logic/location_data.yaml", true)) {
+        CustomLogic::LogicError err = CustomLogic::loadLocationDataYaml(Utility::get_current_logic_folder(logicPath), locationDataTree);
+        if(err != CustomLogic::NONE && err != CustomLogic::NON_ESSENTIAL_FILE_ERROR) {
             ErrorLog::getInstance().log("Unable to load location_data.yaml");
             locNames.clear();
             return locNames;
