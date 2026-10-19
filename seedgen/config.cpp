@@ -5,6 +5,7 @@
 
 #include <libs/yaml.hpp>
 #include <libs/base64pp.hpp>
+#include <libs/hashing.hpp>
 
 #include <version.hpp>
 #include <options.hpp>
@@ -125,6 +126,11 @@ ConfigError Config::loadFromFile(const fspath& filePath, const fspath& preferenc
     }
 
     GET_FIELD_NO_FAIL(root, "seed", seed)
+
+    // a little dumb
+    std::string tempLogic;
+    GET_FIELD(root, "logic", tempLogic)
+    settings.logic = tempLogic;
 
     if(!root["progression_dungeons"]) {
         if(!ignoreErrors) LOG_ERR_AND_RETURN(ConfigError::MISSING_KEY);
@@ -485,6 +491,8 @@ YAML::Node Config::settingsToYaml() const {
     SET_FIELD(root, "game_version", GameVersionToName(settings.game_version))
 
     SET_FIELD(root, "seed", seed)
+
+    SET_FIELD(root, "logic", Utility::toUtf8String(settings.logic))
 
     SET_FIELD(root, "progression_dungeons", ProgressionDungeonsToName(settings.progression_dungeons))
     SET_FIELD(root, "progression_great_fairies", settings.progression_great_fairies)

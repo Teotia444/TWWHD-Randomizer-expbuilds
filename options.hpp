@@ -99,6 +99,9 @@ enum struct Option {
     // Internal
     GameVersion,
 
+    // Logic
+    Logic,
+
     // Progression
     ProgressDungeons,
     ProgressGreatFairies,
@@ -233,6 +236,8 @@ enum struct Option {
 class Settings {
 public:
     GameVersion game_version;
+
+    fspath logic;
 
     ProgressionDungeons progression_dungeons;
     bool progression_great_fairies;
@@ -396,3 +401,5 @@ std::string settingToName(const Option& setting);
 
 std::set<std::string> getDefaultExcludedLocations();
 const std::set<std::string>& getAllLocationsNames();
+
+const std::vector<fspath> getAllCustomLogicFolders();
