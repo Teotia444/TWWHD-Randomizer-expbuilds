@@ -837,7 +837,8 @@ std::string Item::getName() const
 {
     if (world != nullptr)
     {
-        return world->itemTranslations.at(gameItemId).at("English").types.at(Text::Type::STANDARD);
+        if(!world->itemTranslations.at(gameItemId).empty() && !world->itemTranslations.at(gameItemId).at("English").types.at(Text::Type::STANDARD).empty())
+            return world->itemTranslations.at(gameItemId).at("English").types.at(Text::Type::STANDARD);
     }
     return gameItemToName(gameItemId);
 }

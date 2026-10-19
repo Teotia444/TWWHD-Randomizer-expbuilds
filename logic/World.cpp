@@ -208,11 +208,11 @@ int World::getStartingHeartCount() const
     return settings.starting_hcs + (settings.starting_pohs / 4);
 }
 
-LocationPool World::getLocations(bool onlyProgression /*= false*/)
+LocationPool World::getLocations(bool onlyProgression /*= false*/, bool tracker)
 {
     LocationPool locations = {};
     for (auto& [name, location] : locationTable) {
-        if (!onlyProgression || (location->progression && !settings.excluded_locations.contains(location->getName())))
+        if (!onlyProgression || (tracker && location->progression && !settings.excluded_locations.contains(location->getName())) || (!tracker && location->currentItem.isApRequired()))
         {
             locations.push_back(location.get());
         }

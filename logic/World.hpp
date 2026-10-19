@@ -71,7 +71,7 @@ public:
     ItemPool getStartingItems() const;
     ItemPool& getStartingItemsReference();
     int getStartingHeartCount() const;
-    LocationPool getLocations(bool onlyProgression = false);
+    LocationPool getLocations(bool onlyProgression = false, bool tracker = false);
     LocationPool getProgressionLocations();
     size_t getNumOverworldProgressionLocations();
     Area* getArea(const std::string& areaName);

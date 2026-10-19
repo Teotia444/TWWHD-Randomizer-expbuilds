@@ -402,7 +402,7 @@ bool MainWindow::autosave_current_tracker_config()
     YAML::Node root = trackerConfig.settingsToYaml();
 
     // Save which locations have been marked
-    for (auto loc : trackerWorld.getLocations())
+    for (auto loc : trackerWorld.getLocations(false, true))
     {
         if (loc->marked)
         {
@@ -1137,7 +1137,7 @@ void MainWindow::update_tracker_areas_and_autosave()
     int checkedLocations = 0;
     int accessibleLocations = 0;
     int remainingLocations = 0;
-    for (auto loc : trackerWorlds[0].getLocations(!trackerPreferences.showNonProgressLocations))
+    for (auto loc : trackerWorlds[0].getLocations(!trackerPreferences.showNonProgressLocations, true))
     {
         // Don't do anything with hint locations
         if (loc->categories.contains(LocationCategory::HoHoHint) || loc->categories.contains(LocationCategory::BlueChuChu))
