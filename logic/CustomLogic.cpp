@@ -50,3 +50,8 @@ CustomLogic::LogicError CustomLogic::loadLocationDataYaml(fspath yamlPath, YAML:
     }
     return CustomLogic::NONE;
 }
+
+bool CustomLogic::validateCustomLogicEssential(fspath yamlPath){
+    YAML::Node dummy;
+    return CustomLogic::loadWorldYaml(yamlPath, dummy) == CustomLogic::NONE && CustomLogic::loadMacrosYaml(yamlPath, dummy) == CustomLogic::NONE;
+}

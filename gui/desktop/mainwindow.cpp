@@ -1222,6 +1222,9 @@ void MainWindow::update_permalink_and_seed_hash()
     currentPermalink = ui->permalink->text();
 
     // Also update seed hash
+    if(!CustomLogic::validateCustomLogicEssential(Utility::get_current_logic_folder(config.settings.logic))){
+        config.settings.logic.clear();
+    }
     const std::string hash = hash_for_config(config);
     if(hash.empty()) {
         show_warning_dialog("Could not get seed hash.\nPlease tell a dev and provide the error log if you see this message.");
@@ -1237,6 +1240,12 @@ void MainWindow::on_permalink_textEdited(const QString &newPermalink)
     if (err == PermalinkError::INVALID_VERSION)
     {
         show_error_dialog("The permalink you pasted does not match the current version of the randomizer.");
+        ui->permalink->setText(currentPermalink);
+        return;
+    }
+    else if (err == PermalinkError::INVALID_LOGIC){
+        // TODO: this is not very descriptive...
+        show_error_dialog("The permalink you pasted uses custom logic that is either not installed or not identical to what is installed.");
         ui->permalink->setText(currentPermalink);
         return;
     }
@@ -1418,6 +1427,11 @@ void MainWindow::on_paste_permalink_clicked()
 
 void MainWindow::on_custom_logic_currentTextChanged(const QString &arg1)
 {
+    if(!CustomLogic::validateCustomLogicEssential(Utility::get_current_logic_folder(arg1.toStdString())) && ui->custom_logic->currentIndex() != 0){
+        show_error_dialog("Warning: invalid logic folder selected. Reset to default logic");
+        ui->custom_logic->setCurrentIndex(0);
+        return;
+    }
     if(ui->custom_logic->currentIndex() == 0) config.settings.logic = "";
     else config.settings.logic = arg1.toStdString();
     update_permalink_and_seed_hash();

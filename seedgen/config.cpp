@@ -11,6 +11,7 @@
 #include <options.hpp>
 #include <keys/keys.hpp>
 #include <logic/GameItem.hpp>
+#include <logic/CustomLogic.hpp>
 #include <seedgen/seed.hpp>
 #include <seedgen/packed_bits.hpp>
 #include <utility/color.hpp>
@@ -972,15 +973,17 @@ PermalinkError Config::loadPermalink(std::string b64permalink) {
         LOG_ERR_AND_RETURN(PermalinkError::BAD_ENCODING);
     }
 
-    // Split the string into 3 parts along the null terminator delimiter
+    // Split the string into 5 parts along the null terminator delimiter
     // 1st part - Version string
     // 2nd part - seed string
-    // 3rd part - packed bits representing settings
+    // 3rd part - sha256 of logic
+    // 4th part - logic name
+    // 5th part - packed bits representing settings
     std::vector<std::string> permaParts = {};
     const char delimiter = '\0';
     size_t pos = permalink.find(delimiter);
     while (pos != std::string::npos) {
-        if (permaParts.size() != 2) {
+        if (permaParts.size() != 4) {
             permaParts.push_back(permalink.substr(0, pos));
             permalink.erase(0, pos + 1);
         }
@@ -992,7 +995,7 @@ PermalinkError Config::loadPermalink(std::string b64permalink) {
         pos = permalink.find(delimiter);
     }
 
-    if (permaParts.size() != 3) {
+    if (permaParts.size() != 5) {
         std::string errorStr = "Bad permalink, parts: ";
         for (const std::string& part : permaParts) {
             errorStr += part + ", ";
@@ -1004,7 +1007,8 @@ PermalinkError Config::loadPermalink(std::string b64permalink) {
 
     const std::string version = permaParts[0];
     load.seed = permaParts[1];
-    const std::string optionsBytes = permaParts[2];
+    const std::string optionsBytes = permaParts[4];
+    load.settings.logic = permaParts[3];
 
     if (version != RANDOMIZER_VERSION) {
         LOG_ERR_AND_RETURN(PermalinkError::INVALID_VERSION);
@@ -1047,6 +1051,10 @@ PermalinkError Config::loadPermalink(std::string b64permalink) {
                 }
             }
         }
+        else if(option == Option::Logic){
+            // we handle this separately
+            continue;
+        }
         else {
             const size_t len = getOptionBitCount(option);
             if(len == static_cast<size_t>(-1)) {
@@ -1063,6 +1071,52 @@ PermalinkError Config::loadPermalink(std::string b64permalink) {
         LOG_ERR_AND_RETURN(PermalinkError::INCORRECT_LENGTH);
     }
 
+    SHA256 allLogicHash;
+    std::string dummies;
+    bool isEmbed = Utility::toUtf8String(Utility::get_current_logic_folder(settings.logic))[0] == ':';
+
+    if(Utility::getFileContents(Utility::get_current_logic_folder(settings.logic) / "world.yaml", dummies, isEmbed) != 0) {
+        ErrorLog::getInstance().log("Could not load world.yaml");
+        LOG_ERR_AND_RETURN(PermalinkError::INVALID_LOGIC);
+    }
+    allLogicHash.add(dummies.data(), dummies.size());
+    dummies = "";
+    if(Utility::getFileContents(Utility::get_current_logic_folder(settings.logic) / "macros.yaml", dummies, isEmbed) != 0) {
+        ErrorLog::getInstance().log("Could not load macros.yaml");
+        LOG_ERR_AND_RETURN(PermalinkError::INVALID_LOGIC);
+    }
+    allLogicHash.add(dummies.data(), dummies.size());
+    dummies = "";
+    if(Utility::getFileContents(Utility::get_current_logic_folder(settings.logic) / "area_names.yaml", dummies, isEmbed) != 0) {
+        ErrorLog::getInstance().log("Could not load area_names.yaml");
+    }
+    allLogicHash.add(dummies.data(), dummies.size());
+    dummies = "";
+    if(Utility::getFileContents(Utility::get_current_logic_folder(settings.logic) / "dungeon_entrance_info.yaml", dummies, isEmbed) != 0) {
+        ErrorLog::getInstance().log("Could not load dungeon_entrance_info.yaml");
+    }
+    allLogicHash.add(dummies.data(), dummies.size());
+    dummies = "";
+    if(Utility::getFileContents(Utility::get_current_logic_folder(settings.logic) / "entrance_shuffle_table.yaml", dummies, isEmbed) != 0) {
+        ErrorLog::getInstance().log("Could not load entrance_shuffle_table.yaml");
+    }
+    allLogicHash.add(dummies.data(), dummies.size());
+    dummies = "";
+    if(Utility::getFileContents(Utility::get_current_logic_folder(settings.logic) / "item_data.yaml", dummies, isEmbed) != 0) {
+        ErrorLog::getInstance().log("Could not load item_data.yaml");
+    }
+    allLogicHash.add(dummies.data(), dummies.size());
+    dummies = "";
+    if(Utility::getFileContents(Utility::get_current_logic_folder(settings.logic) / "location_data.yaml", dummies, isEmbed) != 0) {
+        ErrorLog::getInstance().log("Could not load location_data.yaml");
+    }
+    allLogicHash.add(dummies.data(), dummies.size());
+    dummies = "";
+    if(strcmp(allLogicHash.getHash().c_str(), permaParts[2].c_str()) != 0){
+        ErrorLog::getInstance().log("Invalid hashes: compared current: " + allLogicHash.getHash() + " to perma: " + permaParts[2]);
+        LOG_ERR_AND_RETURN(PermalinkError::INVALID_LOGIC);
+    }
+
     // Only overwrite our current config if there were no errors
     load.configSet = true;
     *this = load;
@@ -1077,12 +1131,7 @@ std::string Config::getPermalink(const bool& internal /* = false */) const {
     permalink += RANDOMIZER_VERSION;
     permalink += '\0';
     permalink += seed;
-    permalink += '\0';
-
-    // TODO: Since we're supporting custom logic, we also need the permalink to log what logic is being used
-    // we could just add the whole contents of the logic files, but that would make for huge permalinks
-    // which is not ideal. convert the file contents to sha256
-    SHA256 allLogicHash;
+    permalink += '\0';    
 
     // Pack the settings up
     PackedBitsWriter bitsWriter;
@@ -1112,6 +1161,10 @@ std::string Config::getPermalink(const bool& internal /* = false */) const {
                 bitsWriter.write(bit, 1);
             }
         }
+        else if(option == Option::Logic){
+            // we handle this separately
+            continue;
+        }
         else {
             const size_t len = getOptionBitCount(option);
             if(len == static_cast<size_t>(-1)) {
@@ -1122,9 +1175,59 @@ std::string Config::getPermalink(const bool& internal /* = false */) const {
             bitsWriter.write(settings.getSetting(option), len);
         }
     }
+    bitsWriter.flush();
+
+    // Since we're supporting custom logic, we also need the permalink to log what logic is being used
+    // we could just add the whole contents of the logic files, but that would make for huge permalinks
+    // which is not ideal. convert the file contents to sha256
+    SHA256 allLogicHash;
+    std::string dummies;
+    bool isEmbed = Utility::toUtf8String(Utility::get_current_logic_folder(settings.logic))[0] == ':';
+
+    if(Utility::getFileContents(Utility::get_current_logic_folder(settings.logic) / "world.yaml", dummies, isEmbed) != 0) {
+        ErrorLog::getInstance().log("Could not load world.yaml");
+        return "";
+    }
+    allLogicHash.add(dummies.data(), dummies.size());
+    dummies = "";
+    if(Utility::getFileContents(Utility::get_current_logic_folder(settings.logic) / "macros.yaml", dummies, isEmbed) != 0) {
+        ErrorLog::getInstance().log("Could not load macros.yaml");
+        return "";
+    }
+    allLogicHash.add(dummies.data(), dummies.size());
+    dummies = "";
+    if(Utility::getFileContents(Utility::get_current_logic_folder(settings.logic) / "area_names.yaml", dummies, isEmbed) != 0) {
+        ErrorLog::getInstance().log("Could not load area_names.yaml");
+    }
+    allLogicHash.add(dummies.data(), dummies.size());
+    dummies = "";
+    if(Utility::getFileContents(Utility::get_current_logic_folder(settings.logic) / "dungeon_entrance_info.yaml", dummies, isEmbed) != 0) {
+        ErrorLog::getInstance().log("Could not load dungeon_entrance_info.yaml");
+    }
+    allLogicHash.add(dummies.data(), dummies.size());
+    dummies = "";
+    if(Utility::getFileContents(Utility::get_current_logic_folder(settings.logic) / "entrance_shuffle_table.yaml", dummies, isEmbed) != 0) {
+        ErrorLog::getInstance().log("Could not load entrance_shuffle_table.yaml");
+    }
+    allLogicHash.add(dummies.data(), dummies.size());
+    dummies = "";
+    if(Utility::getFileContents(Utility::get_current_logic_folder(settings.logic) / "item_data.yaml", dummies, isEmbed) != 0) {
+        ErrorLog::getInstance().log("Could not load item_data.yaml");
+    }
+    allLogicHash.add(dummies.data(), dummies.size());
+    dummies = "";
+    if(Utility::getFileContents(Utility::get_current_logic_folder(settings.logic) / "location_data.yaml", dummies, isEmbed) != 0) {
+        ErrorLog::getInstance().log("Could not load location_data.yaml");
+    }
+    allLogicHash.add(dummies.data(), dummies.size());
+
+    
+    permalink += allLogicHash.getHash();
+    permalink += '\0';
+    permalink += Utility::toUtf8String(settings.logic);
+    permalink += '\0';
 
     // Add the packed bits to the permalink
-    bitsWriter.flush();
     for (const auto& byte : bitsWriter.getBytes()) {
         permalink += byte;
     }
@@ -1221,6 +1324,8 @@ std::string PermalinkErrorGetName(PermalinkError err) {
             return "UNHANDLED_OPTION";
         case PermalinkError::COULD_NOT_LOAD_LOCATIONS:
             return "COULD_NOT_LOAD_LOCATIONS";
+        case PermalinkError::INVALID_LOGIC:
+            return "INVALID_LOGIC";
         default:
             return "UNKNOWN";
     }

@@ -16,4 +16,5 @@ namespace CustomLogic {
     LogicError loadEntranceShuffleTableYaml(fspath yamlPath, YAML::Node &out);
     LogicError loadItemDataYaml(fspath yamlPath, YAML::Node &out);
     LogicError loadLocationDataYaml(fspath yamlPath, YAML::Node &out);
+    bool validateCustomLogicEssential(fspath yamlPath);
 }

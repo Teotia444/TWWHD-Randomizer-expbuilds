@@ -31,6 +31,7 @@ enum struct [[nodiscard]] PermalinkError {
     COULD_NOT_READ,
     UNHANDLED_OPTION,
     COULD_NOT_LOAD_LOCATIONS,
+    INVALID_LOGIC,
     UNKNOWN,
     COUNT
 };
