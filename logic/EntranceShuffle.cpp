@@ -512,7 +512,7 @@ static EntranceShuffleError processPlandomizerEntrances(World& world, EntrancePo
         world.plandomizer.entrances.insert({originalEntrance, replacementEntrance});
 
         // also add the other way around (this covers both non decoupled and decoupled)
-        if(world.plandomizer.entrances.find(replacementEntrance) == world.plandomizer.entrances.end()){
+        if(world.plandomizer.entrances.find(replacementEntrance) == world.plandomizer.entrances.end() && world.getSettings().decouple_entrances){
             replacementEntrance = world.getEntrance(originalEntranceConnection, originalEntranceParent);
             originalEntrance = world.getEntrance(replacementEntranceConnection, replacementEntranceParent);
             // Sanity check the entrance pointers

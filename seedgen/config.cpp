@@ -670,7 +670,7 @@ ConfigError Config::loadFromFile(const fspath& filePath, const fspath& preferenc
         settings.mix_doors = mix;
         settings.mix_misc = mix;
         
-        settings.decouple_entrances = true;
+        settings.decouple_entrances = false;
 
         //GET_FIELD(root, "mix_dungeons", settings.mix_dungeons)
         //GET_FIELD(root, "mix_bosses", settings.mix_bosses)
